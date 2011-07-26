@@ -26,7 +26,15 @@ gem 'sqlite3'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
- group :development, :test do
+group :development, :test do
    gem 'webrat'
+   gem "selenium-client"
+   gem 'database_cleaner'
+   gem 'cucumber-rails'
+   gem 'capybara'
    gem 'cucumber'
- end
+   gem 'rspec-rails'
+   gem 'fastercsv'
+end
+
+gem 'heroku'
