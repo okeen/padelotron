@@ -10,7 +10,7 @@ module NavigationHelpers
 
       when /^the new player page$/
         new_player_path
-
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
