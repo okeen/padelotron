@@ -4,9 +4,9 @@
       <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
 
       <ul>
-      <% @team.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -16,16 +16,9 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :player1_id %><br />
-    <%= f.text_field :player1_id %>
-  </div>
-  <div class="field">
-    <%= f.label :player2_id %><br />
-    <%= f.text_field :player2_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <h3>Compañero</h3>
+    <%= collection_select :team, :player2_id, Player.all, :id, :name %><br />
+
   </div>
   <div class="actions">
     <%= f.submit %>
