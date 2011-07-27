@@ -6,7 +6,7 @@ Feature: New player creation
 
   Background: Existing player "player" with email "a@a.com"
     Given an existing player "player" with email "a@a.com"
-
+    
   Scenario: Create a new player with name "El lider" and email "leader@coremain.es"
     When I go to the new player page
     And I enter "El lider" as username and "leader@coremain.es" as email

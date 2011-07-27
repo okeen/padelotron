@@ -1,4 +1,6 @@
 Padelotron::Application.routes.draw do
+  resources :teams
+
   resources :players
 
   # The priority is based upon order of creation:

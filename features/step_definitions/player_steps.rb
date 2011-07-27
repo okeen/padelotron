@@ -14,5 +14,4 @@ end
 Then /^I should see the recently created player with name "([^"]*)" and email "([^"]*)"$/ do |name,email|
   page.should have_selector("p", :content => name)
   page.should have_selector( "p", :content => email)
-
 end

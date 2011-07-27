@@ -10,7 +10,9 @@ module NavigationHelpers
 
       when /^the new player page$/
         new_player_path
-      
+     when /^the new team page$/
+        new_team_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
