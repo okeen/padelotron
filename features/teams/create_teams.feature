@@ -12,6 +12,7 @@ Feature: New Team creation
   Scenario: Create a new team named "team1" for "player1" and "player2"
     When I go to the new team page
     And I enter "team1" as team name
+    And I select "player1" as first player
     And I select "player2" as team mate
     And I press "Create Team"
     Then I should see "Team creation process opened."
