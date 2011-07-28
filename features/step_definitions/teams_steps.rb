@@ -13,7 +13,7 @@ When /^I select "([^"]*)" as first player$/ do |first_player_name|
   select first_player_name, :from => "team_player1_id"
 end
 
-Then /^"([^"]*)" should receive a "([^"]*)" membership ask email from "([^"]*)"$/ do |confirmation_player, team_name, initiator_player|
+Then /^"([^"]*)" should receive a "([^"]*)" membership ask email from "([^"]*)"$/ do |confirmation_player_email, team_name, initiator_player|
   email = ActionMailer::Base.deliveries.first
   email.should_not be_blank
   puts email.inspect

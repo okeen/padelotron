@@ -1,4 +1,6 @@
 Padelotron::Application.routes.draw do
+
+  match "confirmations/:code" => "confirmations#show", :as => "show_confirmation"
   resources :teams
 
   resources :players
