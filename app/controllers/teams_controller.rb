@@ -44,7 +44,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        TeamCreationMailer.team_membership_ask_mail(@team).deliver
+        
         format.html { redirect_to(@team, :notice => "Team creation process opened. An email have been sent to #{@team.player2.name} to confirm the team creation") }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
       else

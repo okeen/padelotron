@@ -7,7 +7,7 @@ Feature: New Team creation
   Background: Existing players "player1/1a@a.com" and "player2/2@a.com"
     Given an existing player "player1" with email "1@a.com"
     Given an existing player "player2" with email "2@a.com"
-@wip
+
   Scenario: Create a new team named "team1" for "player1" and "player2"
     When I go to the new team page
     And I enter "team1" as team name
