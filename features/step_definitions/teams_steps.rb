@@ -42,8 +42,7 @@ Then /^"([^"]*)" should receive a "([^"]*)" membership confirmation email$/ do |
   email.to.should be_include(player)
   email.subject.should == "Padelotron. You joined #{team_name}"
   email.body.should be_include "You just joined the team #{team_name}"
-  ActionMailer::Base.deliveries.delete(email)
-
+  
 end
 
 Then /^"([^"]*)" should receive a "([^"]*)" team cancelation email$/ do |player, team_name|
@@ -52,5 +51,5 @@ Then /^"([^"]*)" should receive a "([^"]*)" team cancelation email$/ do |player,
   email.to.should be_include(player)
   email.subject.should == "Padelotron. You rejected joining #{team_name}"
   email.body.should be_include "You just rejected joining the team #{team_name}."
-  ActionMailer::Base.deliveries.delete(email)
+  
 end

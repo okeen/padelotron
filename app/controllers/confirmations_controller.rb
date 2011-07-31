@@ -8,7 +8,11 @@ class ConfirmationsController < ApplicationController
   end
 
   def do_confirmation
-    @confirmable.confirm!
+    if (@confirmation.action == 'accept')
+      @confirmable.confirm!
+    else
+      @confirmable.reject!
+    end
   end
 
   private
