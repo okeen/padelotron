@@ -9,6 +9,13 @@ class Team < ActiveRecord::Base
 
   has_many :confirmations, :as => :confirmable
 
+  def confirm!
+    update_attributes :status => 'confirmed'
+  end
+
+  def to_s
+    "team #{self.name}"
+  end
   private
 
   def create_confirmations
@@ -18,6 +25,10 @@ class Team < ActiveRecord::Base
   end
 
   def deliver_confirmation_ask_email
+    TeamCreationMailer.team_membership_ask_mail(self).deliver
+  end
+
+  def deliver_confirmation_team_joined_or_rejected
     TeamCreationMailer.team_membership_ask_mail(self).deliver
   end
 end

@@ -1,2 +1,10 @@
-<h1>Confirmations#show</h1>
-<p>Find me in app/views/confirmations/show.html.erb</p>
+<h1>Confirm action</h1>
+
+<%  %>
+
+<p>Are you sure you want to <%= confirmation_message(@confirmation)%>?</p>
+
+<%= confirm_confirmation_button(@confirmation)%>
+<br></br>
+<%= cancel_confirmation_button(@confirmation)%>
+

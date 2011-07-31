@@ -31,14 +31,26 @@ When /^I click in the "([^"]*)" button of the received email$/ do |button|
   email = ActionMailer::Base.deliveries.first
   email.should_not be_blank
   confirm_url,reject_url = email.body.to_s.scan /\/confirmations\/\d*/
-  next_url = button == 'OK' ? confirm_url : reject_url
+  next_url = button == 'Confirm' ? confirm_url : reject_url
+  ActionMailer::Base.deliveries.delete(email)
   visit next_url
 end
 
 Then /^"([^"]*)" should receive a "([^"]*)" membership confirmation email$/ do |player, team_name|
-  pending # express the regexp above with the code you wish you had
+  email = ActionMailer::Base.deliveries.first
+  email.should_not be_blank
+  email.to.should be_include(player)
+  email.subject.should == "Padelotron. You joined #{team_name}"
+  email.body.should be_include "You just joined the team #{team_name}"
+  ActionMailer::Base.deliveries.delete(email)
+
 end
 
 Then /^"([^"]*)" should receive a "([^"]*)" team cancelation email$/ do |player, team_name|
-  pending # express the regexp above with the code you wish you had
+  email = ActionMailer::Base.deliveries.first
+  email.should_not be_blank
+  email.to.should be_include(player)
+  email.subject.should == "Padelotron. You rejected joining #{team_name}"
+  email.body.should be_include "You just rejected joining the team #{team_name}."
+  ActionMailer::Base.deliveries.delete(email)
 end

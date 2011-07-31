@@ -1,2 +1,5 @@
-<h1>Confirmations#do_confirmation</h1>
-<p>Find me in app/views/confirmations/do_confirmation.html.erb</p>
+<% if @confirmation.action == 'accept' %>
+  <p>You joined <%=@confirmation.confirmable.name %></p>
+<% else %>
+  <p>You rejected joining <%=@confirmation.confirmable.name %></p>
+<% end %>
