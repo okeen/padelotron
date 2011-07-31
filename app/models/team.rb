@@ -9,13 +9,24 @@ class Team < ActiveRecord::Base
 
   has_many :confirmations, :as => :confirmable
 
+  def players
+    [player1,player2]
+  end
+  
   def confirm!
     update_attributes :status => 'confirmed'
+    deliver_team_joined_confirmation_email
+  end
+
+  def reject!
+    update_attributes :status => 'rejected'
+    deliver_team_cancellation_email
   end
 
   def to_s
     "team #{self.name}"
   end
+
   private
 
   def create_confirmations
@@ -28,7 +39,11 @@ class Team < ActiveRecord::Base
     TeamCreationMailer.team_membership_ask_mail(self).deliver
   end
 
-  def deliver_confirmation_team_joined_or_rejected
-    TeamCreationMailer.team_membership_ask_mail(self).deliver
+  def deliver_team_joined_confirmation_email
+    TeamCreationMailer.team_membership_confirmation(self).deliver
+  end
+
+  def deliver_team_cancellation_email
+    TeamCreationMailer.team_membership_cancellation(self).deliver
   end
 end

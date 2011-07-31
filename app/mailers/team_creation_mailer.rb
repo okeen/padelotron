@@ -8,4 +8,26 @@ class TeamCreationMailer < ActionMailer::Base
       :subject => "Padelotron. #{@team.player1.name} wants you to join a team"
   end
 
+  def team_membership_confirmation(team)
+    team_membership_new_status(team, 'confirm')
+  end
+
+  def team_membership_cancellation(team)
+    team_membership_new_status(team, 'cancel')
+  end
+
+  private
+
+  def team_membership_new_status(team, action)
+    @team = team
+    if (action == 'confirm')
+      subject = "Padelotron. You joined #{@team.name}"
+      @message = "You just joined the team #{@team.name}"
+    else
+      subject = "Padelotron. You rejected joining #{@team.name}"
+      @message = "You just rejected joining the team #{@team.name}"
+    end
+    mail :to => @team.players.collect(&:email), :subject => subject
+  end
+
 end
