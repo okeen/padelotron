@@ -50,6 +50,24 @@ Then /^"([^"]*)" should receive a "([^"]*)" team cancelation email$/ do |player,
   email.should_not be_blank
   email.to.should be_include(player)
   email.subject.should == "Padelotron. You rejected joining #{team_name}"
-  email.body.should be_include "You just rejected joining the team #{team_name}."
-  
+  email.body.should be_include "You just rejected joining the team #{team_name}."  
 end
+
+
+Given /^an existing and confirmed team "([^"]*)" for "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see '(\d+)' team listed$/ do |team_count|
+  pending # express the regexp above with the code you wish you had
+  # usad team_count.to_i (casting a Integer) para comprobar q hay team_count objetos DOM q muestran equipos...
+end
+
+Then /^I should see team "([^"]*)" basic info with "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should not see team "([^"]*)" basic info$/ do |team_name|
+  pending # express the regexp above with the code you wish you had
+end
+

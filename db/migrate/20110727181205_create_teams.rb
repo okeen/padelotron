@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :name
       t.integer :player1_id
       t.integer :player2_id
-      t.string :status
+      t.string :status, :dafault => 'new'
 
       t.timestamps
     end

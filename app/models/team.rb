@@ -5,6 +5,8 @@ class Team < ActiveRecord::Base
   belongs_to :player1, :class_name => "Player"
   belongs_to :player2, :class_name => "Player"
 
+  default_scope where(:status => "confirmed")
+
   after_create :create_confirmations, :deliver_confirmation_ask_email
 
   has_many :confirmations, :as => :confirmable
@@ -26,6 +28,7 @@ class Team < ActiveRecord::Base
   def to_s
     "team #{self.name}"
   end
+
 
   private
 
