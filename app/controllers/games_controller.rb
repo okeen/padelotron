@@ -44,6 +44,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        GameConfirmationMailer.friendly_game_confirmation_email(@game).deliver
         format.html { redirect_to(@game, :notice => "Friendly game creation process initialized, an email has been send to #{@game.team2.name} to confirm the game.") }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else
