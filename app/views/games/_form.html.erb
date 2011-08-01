@@ -12,22 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :team1_id %><br />
-    <%= f.text_field :team1_id %>
+    <h3>Equipo 1</h3>
+    <%= collection_select :game, :team1_id, Team.all, :id, :name %><br />
   </div>
   <div class="field">
-    <%= f.label :team2_id %><br />
-    <%= f.text_field :team2_id %>
+    <h3>Equipo 2</h3>
+    <%= collection_select :game, :team2_id, Team.all, :id, :name %><br />
   </div>
   <div class="field">
     <%= f.label :play_date %><br />
     <%= f.datetime_select :play_date %>
   </div>
-  <div class="field">
-    <%= f.label :game_type %><br />
-    <%= f.text_field :game_type %>
-  </div>
+  <%= f.hidden_field :game_type, :value => "friendly" %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Friendly"%>
   </div>
 <% end %>

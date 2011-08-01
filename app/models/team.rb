@@ -11,6 +11,7 @@ class Team < ActiveRecord::Base
   
 
   has_many :confirmations, :as => :confirmable
+  has_many :games, :finder_sql => 'select * from games g where g.team1_id == #{id} or g.team2_id == #{id}'
 
   def players
     [player1,player2]

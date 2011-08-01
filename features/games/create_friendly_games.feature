@@ -17,7 +17,7 @@ Feature: New friendly game creation
     When I go to the new friendly game page
     And I select "team1" as first team
     And I select "team2" as second team
-    And I select '12'/'08'/'2011', '17':'00' as play date
+    And I select '12'/"August"/'2011', '17':'00' as play date
     And I press "Create Friendly"
     Then I should see "Friendly game creation process initialized, an email has been send to team2 to confirm the game."
     And "3@a.com" should receive a friendly game offer from "team1" for '12'/'08'/'2011', '17':'00' 
