@@ -8,6 +8,7 @@ class Team < ActiveRecord::Base
   default_scope where(:status => "confirmed")
 
   after_create :create_confirmations, :deliver_confirmation_ask_email
+  
 
   has_many :confirmations, :as => :confirmable
 
@@ -36,6 +37,11 @@ class Team < ActiveRecord::Base
     ["accept", "reject"].each do |action_name|
       self.confirmations << Confirmation.new(:action => action_name, :code => rand(100000000000).to_s)
     end
+    set_initial_status
+  end
+
+  def set_initial_status
+    update_attributes :status => 'new'
   end
 
   def deliver_confirmation_ask_email

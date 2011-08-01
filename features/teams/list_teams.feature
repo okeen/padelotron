@@ -16,7 +16,7 @@ Feature: Team listing
 @wip
   Scenario: List all the confirmed teams
     When I go to the teams index page
-    Then I should see '1' team listed
+    Then I should see '2' teams listed
     And I should see team "team1" basic info with "player1" and "player2"
     And I should see team "team2" basic info with "player1" and "player3"
     And I should not see team "team3" basic info
@@ -30,6 +30,4 @@ Feature: Team listing
     And I should not see team "team1" basic info
     And I should not see team "team2" basic info
     And I should not see team "team3" basic info
-
-
 

@@ -1,29 +1,7 @@
 <h1>Listing teams</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Player1</th>
-    <th>Player2</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @teams.each do |team| %>
-  <tr>
-    <td><%= team.name %></td>
-    <td><%= team.player1_id %></td>
-    <td><%= team.player2_id %></td>
-    <td><%= team.status %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+   <%=  render :partial => 'team_info', :locals => {:team => team} %>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Team', new_team_path %>

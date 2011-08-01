@@ -1,0 +1,8 @@
+<div class="team_panel">
+  <h4 class="team_name"><%= team.name %></h4>
+  <ul class="player_list">
+    <% team.players.each do |player| %>
+      <li class="player"><%= player.name %> </li>
+    <% end %>
+  </ul>  
+</div>
