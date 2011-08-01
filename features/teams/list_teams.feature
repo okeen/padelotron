@@ -13,6 +13,7 @@ Feature: Team listing
     Given an existing and confirmed team "team2" for "player1" and "player3"
     And a "team3" team creation process for "player2" and "player3" initiated by "player3"
 
+@wip
   Scenario: List all the confirmed teams
     When I go to the teams index page
     Then I should see '1' team listed

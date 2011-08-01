@@ -55,19 +55,25 @@ end
 
 
 Given /^an existing and confirmed team "([^"]*)" for "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
-  pending # express the regexp above with the code you wish you had
+  team = Team.create( :name => team_name,
+                      :player1 => Player.find_by_name(player1_name),
+                      :player2 => Player.find_by_name(player2_name)
+                    )
+  team.confirm!
 end
 
-Then /^I should see '(\d+)' team listed$/ do |team_count|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see '(\d+)' team listed$/ do |team_count|  
   # usad team_count.to_i (casting a Integer) para comprobar q hay team_count objetos DOM q muestran equipos...
+  page.should have_selector "div.team_panel", :count => team_count.to_i
 end
 
 Then /^I should see team "([^"]*)" basic info with "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
-  pending # express the regexp above with the code you wish you had
+  page.should have_selector "h4.team_name", :content => team_name
+  page.should have_selector "li.player", :content => player1_name
+  page.should have_selector "li.player", :content => player2_name
 end
 
 Then /^I should not see team "([^"]*)" basic info$/ do |team_name|
-  pending # express the regexp above with the code you wish you had
+  page.should_not have_selector "div.team_panel > h4.team_name", :content => team_name
 end
 
