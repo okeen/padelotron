@@ -1,5 +1,7 @@
 Padelotron::Application.routes.draw do
 
+  resources :games
+
   get "confirmations/:code" => "confirmations#show", :as => "show_confirmation"
   post "confirmations/:code/do" => "confirmations#do_confirmation", :as => "do_confirmation"
   resources :teams

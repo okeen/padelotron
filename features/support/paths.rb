@@ -14,6 +14,8 @@ module NavigationHelpers
         new_team_path
      when /^the teams index page$/
         teams_path
+     when /^the new friendly game page$/
+        new_game_path
 
 
 
