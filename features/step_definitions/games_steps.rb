@@ -3,6 +3,8 @@ Given /^an existing and confirmed friendly game between "([^"]*)" and "([^"]*)" 
   Game.create_friendly(Team.find_by_name(team1_name),
                        Team.find_by_name(team2_name),
                        Date.today + 12.hours)
+  #skip the sent email
+  
 end
 
 When /^I select "([^"]*)" as first team$/ do |first_team_name|
@@ -22,5 +24,10 @@ When /^I select '(\d+)'\/"([^"]*)"\/'(\d+)', '(\d+)':'(\d+)' as play date$/ do |
 end
 
 Then /^"([^"]*)" should receive a friendly game offer from "([^"]*)" for '(\d+)'\/'(\d+)'\/'(\d+)', '(\d+)':'(\d+)'$/ do |player_email, rival_team_name, day, month, year, hours, minutes|
-  pending # express the regexp above with the code you wish you had
+  email = ActionMailer::Base.deliveries.last
+  email.should_not be_blank
+  email.to.should be_include(player_email)
+  email.subject.should == "Friendly game offer from #{rival_team_name} received" 
+  email.body.should be_include("You received an offer to play a padel game against #{rival_team_name} at #{day}/#{month}/#{year}, #{hours}:#{minutes}")
+  
 end

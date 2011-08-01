@@ -60,6 +60,7 @@ Given /^an existing and confirmed team "([^"]*)" for "([^"]*)" and "([^"]*)"$/ d
                       :player2 => Player.find_by_name(player2_name)
                     )
   team.confirm!
+  ActionMailer::Base.deliveries.clear
 end
 
 Then /^I should see '(\d+)' teams listed$/ do |team_count|

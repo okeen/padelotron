@@ -12,6 +12,7 @@ Feature: New friendly game creation
     Given an existing and confirmed team "team1" for "player1" and "player2"
     Given an existing and confirmed team "team2" for "player3" and "player4"
 
+@wip
   Scenario: Create a friendly game through the new friendly game page
     When I go to the new friendly game page
     And I select "team1" as first team
