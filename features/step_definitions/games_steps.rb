@@ -24,7 +24,3 @@ end
 Then /^"([^"]*)" should receive a friendly game offer from "([^"]*)" for '(\d+)'\/'(\d+)'\/'(\d+)', '(\d+)':'(\d+)'$/ do |player_email, rival_team_name, day, month, year, hours, minutes|
   pending # express the regexp above with the code you wish you had
 end
-
-Then /^I should see '(\d+)' teams listed$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
-end

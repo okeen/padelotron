@@ -10,7 +10,7 @@ Feature: Team membership confirmation ask for other team
     And a "team1" team creation process for "player1" and "player2" initiated by "player1"
 
 
-  Scenario: Click on email's confirmation OK button to confirm membership
+ Scenario: Click on email's confirmation OK button to confirm membership
     When I click in the "Confirm" button of the received email
     Then I should see "Are you sure you want to join team1?"
     When I press "Yes"

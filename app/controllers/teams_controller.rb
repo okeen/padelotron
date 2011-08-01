@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.xml
   def show
-    @team = Team.find(params[:id])
+    @team = Team.send(:with_exclusive_scope) {Team.find(params[:id])}
 
     respond_to do |format|
       format.html # show.html.erb

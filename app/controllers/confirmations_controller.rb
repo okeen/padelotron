@@ -18,6 +18,6 @@ class ConfirmationsController < ApplicationController
   private
   def load_confirmation_and_confirmable
     @confirmation = Confirmation.find_by_code(params[:code])
-    @confirmable = @confirmation.confirmable
+    @confirmable = @confirmation.confirmable_type.constantize.send(:with_exclusive_scope) {@confirmation.confirmable}
   end
 end
