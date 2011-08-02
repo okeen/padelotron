@@ -38,7 +38,12 @@ Given /^a friendly game creation process between "([^"]*)" and "([^"]*)" for tod
                        Date.today + 12.hours)
 end
 
-When /^"([^"]*)" click in the "([^"]*)" button of the received friendly confirmation email$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+When /^"([^"]*)" clicks in the "([^"]*)" button of the received friendly confirmation email$/ do |player_email, button|
+  email = ActionMailer::Base.deliveries.first
+  email.should_not be_blank
+  confirm_url,reject_url = email.body.to_s.scan /\/confirmations\/\d*/
+  next_url = button == 'Confirm' ? confirm_url : reject_url
+  ActionMailer::Base.deliveries.delete(email)
+  visit next_url
 end
 
