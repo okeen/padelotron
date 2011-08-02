@@ -1,10 +1,11 @@
 
 Given /^an existing and confirmed friendly game between "([^"]*)" and "([^"]*)" for today$/ do |team1_name, team2_name|
-  Game.create_friendly(Team.find_by_name(team1_name),
+  game = Game.create_friendly(Team.find_by_name(team1_name),
                        Team.find_by_name(team2_name),
                        Date.today + 12.hours)
-  #skip the sent email
-  
+  game.confirm!
+  #skip the sent email, it's already confirmed so we are not testing that
+  ActionMailer::Base.deliveries.clear
 end
 
 When /^I select "([^"]*)" as first team$/ do |first_team_name|
@@ -29,5 +30,15 @@ Then /^"([^"]*)" should receive a friendly game offer from "([^"]*)" for '(\d+)'
   email.to.should be_include(player_email)
   email.subject.should == "Friendly game offer from #{rival_team_name} received" 
   email.body.should be_include("You received an offer to play a padel game against #{rival_team_name} at #{day}/#{month}/#{year}, #{hours}:#{minutes}")
-  
 end
+
+Given /^a friendly game creation process between "([^"]*)" and "([^"]*)" for today initiated by "([^"]*)"$/ do |team1_name, team2_name, initiating_team_name|
+  game = Game.create_friendly(Team.find_by_name(team1_name),
+                       Team.find_by_name(team2_name),
+                       Date.today + 12.hours)
+end
+
+When /^"([^"]*)" click in the "([^"]*)" button of the received friendly confirmation email$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+

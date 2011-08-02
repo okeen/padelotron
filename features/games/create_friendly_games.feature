@@ -12,7 +12,6 @@ Feature: New friendly game creation
     Given an existing and confirmed team "team1" for "player1" and "player2"
     Given an existing and confirmed team "team2" for "player3" and "player4"
 
-@wip
   Scenario: Create a friendly game through the new friendly game page
     When I go to the new friendly game page
     And I select "team1" as first team
@@ -20,6 +19,7 @@ Feature: New friendly game creation
     And I select '12'/"August"/'2011', '17':'00' as play date
     And I press "Create Friendly"
     Then I should see "Friendly game creation process initialized, an email has been send to team2 to confirm the game."
-    And "3@a.com" should receive a friendly game offer from "team1" for '12'/'08'/'2011', '17':'00' 
+    And "3@a.com" should receive a friendly game offer from "team1" for '12'/'08'/'2011', '17':'00'
+    And "4@a.com" should receive a friendly game offer from "team1" for '12'/'08'/'2011', '17':'00'
 
 
