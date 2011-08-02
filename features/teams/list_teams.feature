@@ -13,6 +13,7 @@ Feature: Team listing
     Given an existing and confirmed team "team2" for "player1" and "player3"
     And a "team3" team creation process for "player2" and "player3" initiated by "player3"
 
+@buggy_test
   Scenario: List all the confirmed teams
     When I go to the teams index page
     Then I should see '2' teams listed
@@ -20,10 +21,12 @@ Feature: Team listing
     And I should see team "team2" basic info with "player1" and "player3"
     And I should not see team "team3" basic info
 
+@wip
    Scenario: Show the available teams to play a game today
     Given an existing and confirmed team "team4" for "player3" and "player4"
     Given an existing and confirmed friendly game between "team1" and "team2" for today
-    When I follow "Show available teams for today"
+    When I go to the teams index page
+    And I follow "Show available teams for today"
     Then I should see '1' teams listed
     And I should see team "team4" basic info with "player1" and "player2"
     And I should not see team "team1" basic info

@@ -4,7 +4,9 @@ Padelotron::Application.routes.draw do
 
   get "confirmations/:code" => "confirmations#show", :as => "show_confirmation"
   post "confirmations/:code/do" => "confirmations#do_confirmation", :as => "do_confirmation"
+
   resources :teams
+  get "teams/available" => "teams#available", :as => "available_teams"
 
   resources :players
 

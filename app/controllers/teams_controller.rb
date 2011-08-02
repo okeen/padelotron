@@ -10,6 +10,15 @@ class TeamsController < ApplicationController
     end
   end
 
+  def available
+    @teams = Team.available.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @teams }
+    end
+  end
+
   # GET /teams/1
   # GET /teams/1.xml
   def show
