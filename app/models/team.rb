@@ -31,6 +31,22 @@ class Team < ActiveRecord::Base
     "team #{self.name}"
   end
 
+  #TODO: refactorizar esto para no crear estos cuatro métodos por cada confirmable
+  def confirmation_message
+    "joined #{self.name}"
+  end
+
+  def rejection_message
+    "rejected joining #{self.name}"
+  end
+
+  def confirmation_ask_message
+    "join #{self.name}?"
+  end
+
+  def rejection_ask_message
+    "reject joining #{self.name}"
+  end
 
   private
 

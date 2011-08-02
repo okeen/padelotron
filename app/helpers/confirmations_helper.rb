@@ -1,16 +1,23 @@
 module ConfirmationsHelper
 
-  def confirmation_message(confirmation)
-    puts confirmation.inspect
+  def confirmation_ask_message(confirmation)
     if confirmation.action == 'accept'
-      "join #{confirmation.confirmable.name}"
+      confirmation.confirmation_ask_message
     else
-      "reject joining #{confirmation.confirmable.name}"
+      confirmation.rejection_ask_message
+    end
+  end
+
+  def confirmation_message(confirmation)
+    if confirmation.action == 'accept'
+      confirmation.confirmation_message
+    else
+      confirmation.rejection_message
     end
   end
 
   def confirm_confirmation_button(confirmation)
-    button_to "Yes", do_confirmation_url(@confirmation)
+    button_to "Yes", do_confirmation_url(confirmation)
   end
 
   def cancel_confirmation_button(confirmation)

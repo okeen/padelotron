@@ -19,14 +19,14 @@ Feature: Friendly game confirmation ask for other team
     Then I should see "Are you sure you want to confirm the friendly game against team1?"
     When I press "Yes"
     Then I should see "You confirmed a game against team1"
-    And "1@a.com" should receive a "team1" membership confirmation email
-    And "2@a.com" should receive a "team1" membership confirmation email
+    And "1@a.com" and "2@a.com" should receive a friendly game against "team2" confirmation email
+    And "3@a.com" and "4@a.com" should receive a friendly game against "team1" confirmation email
 
   Scenario: Click on friendly game confirmation email's Reject button to reject membership
     When I click in the "Reject" button of the received email
-    Then I should see "Are you sure you want to reject joining team1?"
+    Then I should see "Are you sure you want to reject the friendly game against team1?"
     When I press "Yes"
-    Then I should see "You rejected joining team1"
-    And "1@a.com" should receive a "team1" team cancelation email
-    And "2@a.com" should receive a "team1" team cancelation email
+    Then I should see "You rejected playing a game against team1"
+    And "1@a.com" and "2@a.com" should receive a friendly game against "team2" cancellation email
+    And "3@a.com" and "4@a.com" should receive a friendly game against "team1" cancellation email
 
