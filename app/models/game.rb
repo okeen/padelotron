@@ -11,14 +11,15 @@ class Game < ActiveRecord::Base
     [team1,team2]
   end
 
+  
   def confirm!
     update_attributes :status => 'confirmed'
-    #deliver_team_joined_confirmation_email
+    deliver_game_confirmation_email
   end
 
   def reject!
     update_attributes :status => 'rejected'
-    #deliver_team_cancellation_email
+    deliver_game_cancellation_email
   end
 
   def self.create_friendly(team1,team2,play_date)
@@ -35,7 +36,7 @@ class Game < ActiveRecord::Base
   end
 
   def rejection_message
-    "reject playing a game against #{self.team1.name}"
+    "rejected playing a game against #{self.team1.name}"
   end
   #messages to show in confirmations
   def confirmation_ask_message
@@ -57,7 +58,18 @@ class Game < ActiveRecord::Base
   end
 
   def deliver_game_confirmation_ask_email
-    GameConfirmationMailer.friendly_game_confirmation_email(self).deliver
+      GameConfirmationMailer.friendly_game_confirmation_ask(self).deliver
   end
-  
+
+  def deliver_game_confirmation_email
+    self.teams.each do |team|
+      GameConfirmationMailer.friendly_game_confirmation(self, team).deliver
+    end
+  end
+
+  def deliver_game_cancellation_email
+    self.teams.each do |team|
+      GameConfirmationMailer.friendly_game_cancellation(self, team).deliver
+    end
+  end
 end

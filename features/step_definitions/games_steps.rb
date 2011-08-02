@@ -47,3 +47,16 @@ When /^"([^"]*)" clicks in the "([^"]*)" button of the received friendly confirm
   visit next_url
 end
 
+Then /^"([^"]*)" and "([^"]*)" should receive a friendly game against "([^"]*)" confirmation email$/ do |player1_email, player2_email, rival_team_name|
+  email = ActionMailer::Base.deliveries.select {|email| email.to.include?(player1_email) and email.to.include?(player2_email)}.first
+  email.should_not be_blank
+  email.subject.should == "Friendly game against #{rival_team_name} confirmed"
+  email.body.should be_include("You confirmed a friendly game against #{rival_team_name}")
+end
+
+Then /^"([^"]*)" and "([^"]*)" should receive a friendly game against "([^"]*)" cancellation email$/ do |player1_email, player2_email, rival_team_name|
+  email = ActionMailer::Base.deliveries.select {|email| email.to.include?(player1_email) and email.to.include?(player2_email)}.first
+  email.should_not be_blank
+  email.subject.should == "Friendly game against #{rival_team_name} cancelled"
+  email.body.should be_include("You cancelled a friendly game against #{rival_team_name}")
+end

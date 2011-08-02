@@ -13,7 +13,6 @@ Feature: Friendly game confirmation ask for other team
     And an existing and confirmed team "team2" for "player3" and "player4"
     And a friendly game creation process between "team1" and "team2" for today initiated by "team1"
 
-@wip
  Scenario: Click on friendly game confirmation email's OK button to confirm friendly game
     When "player3" clicks in the "Confirm" button of the received friendly confirmation email
     Then I should see "Are you sure you want to confirm the friendly game against team1?"

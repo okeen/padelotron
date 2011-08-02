@@ -1,0 +1,11 @@
+Hello world!
+
+You received an offer to play a padel game against <%= @game.team1.name %> at <%= @game.play_date.strftime "%d/%m/%Y, %H:%M" %>
+
+
+To confirm the game, please click on the following link:
+  <%= link_to "Aceptar", show_confirmation_url(@game.confirmations.to_accept) %>
+To reject the game, please click on the following link:
+  <%= link_to "Rechazar", show_confirmation_url(@game.confirmations.to_reject) %>
+
+
