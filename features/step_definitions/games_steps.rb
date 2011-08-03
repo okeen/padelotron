@@ -32,7 +32,7 @@ Then /^"([^"]*)" should receive a friendly game offer from "([^"]*)" for '(\d+)'
   email.body.should be_include("You received an offer to play a padel game against #{rival_team_name} at #{day}/#{month}/#{year}, #{hours}:#{minutes}")
 end
 
-Given /^a friendly game creation process between "([^"]*)" and "([^"]*)" for today initiated by "([^"]*)"$/ do |team1_name, team2_name, initiating_team_name|
+Given /^a friendly game "([^"]*)" creation process between "([^"]*)" and "([^"]*)" for today initiated by "([^"]*)"$/ do |game_description, team1_name, team2_name, initiating_team_name|
   game = Game.create_friendly(Team.find_by_name(team1_name),
                        Team.find_by_name(team2_name),
                        Date.today + 12.hours)
@@ -60,3 +60,34 @@ Then /^"([^"]*)" and "([^"]*)" should receive a friendly game against "([^"]*)" 
   email.subject.should == "Friendly game against #{rival_team_name} cancelled"
   email.body.should be_include("You cancelled a friendly game against #{rival_team_name}")
 end
+
+Given /^an existing and confirmed game "([^"]*)" between "([^"]*)" and "([^"]*)" for today$/ do |game_desc, team1_name, team2_name|
+  game = Game.create(:description => game_desc,
+                     :team1 => Team.find_by_name(team1_name),
+                     :team2 => Team.find_by_name(team1_name),
+                     :play_date => Date.today.beginning_of_day)
+  game.confirm!
+end
+
+Then /^I should see '(\d+)' games listed$/ do |game_count|
+  page.should have_selector("div.game_panel", :count => game_count.to_i)
+end
+
+Then /^I should see the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today at "([^"]*)":"([^"]*)"$/ do |game_desc, team1_name, team2_name, hours, minutes|
+  page.should have_selector("div.game_panel h4.description", :content => game_desc) do |game_elem|
+    game_elem.should have_selector("h4.team1", :content => team1_name)
+    game_elem.should have_selector("h4.team2", :content => team2_name)
+    game_elem.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
+  end
+end
+
+When /^I click on the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today$/ do |game_desc, team1, team2|
+  within "div.game_panel h4.description" do
+    follow "view info"
+  end
+end
+
+Then /^I should see today at "([^"]*)":"([^"]*)" as game play date$/ do |hours, minutes|
+  page.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
+end
+

@@ -21,3 +21,4 @@ class Confirmation < ActiveRecord::Base
   end
 
 end
+

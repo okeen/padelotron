@@ -5,7 +5,8 @@ class CreateGames < ActiveRecord::Migration
       t.integer :team2_id
       t.datetime :play_date
       t.string :game_type
-
+      t.string :description
+      
       t.timestamps
     end
   end

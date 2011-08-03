@@ -4,7 +4,8 @@ Feature: New friendly game creation
   As a Player and team member
   I want to create a friendly game against other teams to play in some available date
 
-  Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com", existing confirmed team "team1" and "team2"
+  Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com",
+    existing confirmed team "team1" and "team2"
     Given an existing player "player1" with email "1@a.com"
     Given an existing player "player2" with email "2@a.com"
     Given an existing player "player3" with email "3@a.com"
