@@ -12,12 +12,9 @@ class Team < ActiveRecord::Base
   has_many :confirmations, :as => :confirmable
   has_many :games, :finder_sql => 'select * from games g where g.team1_id == #{id} or g.team2_id == #{id}'
 
-  class << self
-    #TODO implementar lógica??
-    def available
-      where(true)
-    end
-  end
+  scope :available_for_today, lambda {
+    joins(:games).where(':play_date > ?', Date.today.end_of_day)
+  }
 
   def players
     [player1,player2]

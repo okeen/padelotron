@@ -11,6 +11,17 @@ class Game < ActiveRecord::Base
     [team1,team2]
   end
 
+  #aplicamos operador lambda para q evalúe la condición justo al ejecutarlo
+  scope :for_date, lambda { |date|
+      where("play_date >= :start_date AND play_date <= :end_date",{
+          :start_date => date.beginning_of_day,
+          :end_date => date.end_of_day }
+      ).order(:play_date)
+  }
+  scope :for_today, lambda {
+      for_date(Date.today)
+  }
+  
   
   def confirm!
     update_attributes :status => 'confirmed'
