@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20110802181623) do
     t.integer  "team1_id"
     t.integer  "team2_id"
     t.datetime "play_date"
-    t.string   "game_type"
+    t.string   "game_type",   :default => "friendly"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

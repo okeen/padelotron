@@ -3,12 +3,14 @@ class Game < ActiveRecord::Base
   belongs_to :team1, :class_name => "Team"
   belongs_to :team2, :class_name => "Team"
 
-  after_create :create_confirmations_if_friendly_game, :deliver_game_confirmation_ask_email
-  
-  has_many :confirmations, :as => :confirmable
+  include Confirmable
 
   def teams
     [team1,team2]
+  end
+
+  def players
+    teams.collect(&:players).flatten
   end
 
   #aplicamos operador lambda para q evalúe la condición justo al ejecutarlo
@@ -21,22 +23,7 @@ class Game < ActiveRecord::Base
   scope :for_today, lambda {
       for_date(Date.today)
   }
-  
-  
-  def confirm!
-    update_attributes :status => 'confirmed'
-    deliver_game_confirmation_email
-  end
-
-  def reject!
-    update_attributes :status => 'rejected'
-    deliver_game_cancellation_email
-  end
-
-  def self.create_friendly(team1,team2,play_date)
-    Game.create(:team1 => team1,:team2 => team2, :play_date => play_date, :game_type => 'friendly')
-  end
-
+    
   def is_friendly?
     game_type == "friendly"
   end
@@ -58,29 +45,15 @@ class Game < ActiveRecord::Base
     "reject the friendly game against #{self.team1.name}"
   end
 
+  def needs_confirmation?
+    is_friendly?
+    true
+  end
+
   private
 
-  def create_confirmations_if_friendly_game
-    if self.is_friendly?
-      ["accept", "reject"].each do |action_name|
-        self.confirmations << Confirmation.new(:action => action_name, :code => rand(100000000000).to_s)
-      end
-    end
+  def confirmating_player_groups
+    teams
   end
 
-  def deliver_game_confirmation_ask_email
-      GameConfirmationMailer.friendly_game_confirmation_ask(self).deliver
-  end
-
-  def deliver_game_confirmation_email
-    self.teams.each do |team|
-      GameConfirmationMailer.friendly_game_confirmation(self, team).deliver
-    end
-  end
-
-  def deliver_game_cancellation_email
-    self.teams.each do |team|
-      GameConfirmationMailer.friendly_game_cancellation(self, team).deliver
-    end
-  end
 end

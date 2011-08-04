@@ -33,9 +33,9 @@ Then /^"([^"]*)" should receive a friendly game offer from "([^"]*)" for '(\d+)'
 end
 
 Given /^a friendly game "([^"]*)" creation process between "([^"]*)" and "([^"]*)" for today initiated by "([^"]*)"$/ do |game_description, team1_name, team2_name, initiating_team_name|
-  game = Game.create_friendly(Team.find_by_name(team1_name),
-                       Team.find_by_name(team2_name),
-                       Date.today + 12.hours)
+  game = Game.create(:team1 => Team.find_by_name(team1_name),
+                     :team2 => Team.find_by_name(team2_name),
+                     :play_date =>  Date.today + 12.hours)
 end
 
 When /^"([^"]*)" clicks in the "([^"]*)" button of the received friendly confirmation email$/ do |player_email, button|
