@@ -6,13 +6,16 @@ Feature: Set friendly game result
 
   Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com",
   existing confirmed team "team1" and "team2", existing confirmed game between "team1" and "team2" for today
-    Given an existing player "player1" with email "1@a.com"
-    Given an existing player "player2" with email "2@a.com"
-    Given an existing player "player3" with email "3@a.com"
-    Given an existing player "player4" with email "4@a.com"
-    Given an existing and confirmed team "team1" for "player1" and "player2"
-    Given an existing and confirmed team "team2" for "player3" and "player4"
-    Given an existing and confirmed game "game1" between "team1" and "team2" for today
+    Given 4 players exist
+    And the following teams exist:
+        |name | player1        | player2        |
+        |team1| the 1st player | the 2nd player |
+        |team2| the 1st player | the 3rd player |
+        |team3| the 2nd player | the 3rd player |
+
+    When I confirm the team "team1"
+    And I confirm the team "team2"
+    Given an existing and confirmed friendly game "game1" between "team1" and "team2" for today
 
 @todo
   Scenario: Store a result for one game played

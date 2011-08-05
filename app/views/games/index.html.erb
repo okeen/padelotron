@@ -1,29 +1,6 @@
 <h1>Listing games</h1>
 
-<table>
-  <tr>
-    <th>Team1</th>
-    <th>Team2</th>
-    <th>Play date</th>
-    <th>Game type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @games.each do |game| %>
-  <tr>
-    <td><%= game.team1_id %></td>
-    <td><%= game.team2_id %></td>
-    <td><%= game.play_date %></td>
-    <td><%= game.game_type %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+   <%=  render :partial => 'game_info', :locals => {:game => game} %>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Game', new_game_path %>

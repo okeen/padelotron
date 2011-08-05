@@ -10,9 +10,8 @@ class Team < ActiveRecord::Base
   has_many :games, :finder_sql => 'select * from games g where g.team1_id == #{id} or g.team2_id == #{id}'
 
   scope :available_for_today, lambda {
-    joins(:games).where(':play_date > ?', Date.today.end_of_day)
+    where('not id in (?)',Game.for_today.collect(&:teams).flatten.collect(&:id))
   }
-
   
   def players
     [player1,player2]

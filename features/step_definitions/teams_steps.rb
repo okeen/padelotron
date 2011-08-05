@@ -1,4 +1,8 @@
 
+When /^I confirm the team "([^"]*)"$/ do |team_name|
+  Team.send(:with_exclusive_scope) {Team.find_by_name(team_name).confirm!}
+end
+
 When /^I enter "([^"]*)" as team name$/ do |team_name|
   within "form#new_team" do |form|
     fill_in "team_name", :with => team_name
@@ -13,10 +17,11 @@ When /^I select "([^"]*)" as first player$/ do |first_player_name|
   select first_player_name, :from => "team_player1_id"
 end
 
-Then /^"([^"]*)" should receive a "([^"]*)" membership ask email from "([^"]*)"$/ do |confirmation_player_email, team_name, initiator_player|
-  email = ActionMailer::Base.deliveries.first
+Then /^#{capture_model} should receive a "([^"]*)" membership ask email from "([^"]*)"$/ do |player_ref, team_name, initiator_player|
+  player = model(player_ref)
+  email = ActionMailer::Base.deliveries.last
   email.should_not be_blank
-  email.to.should be_include(confirmation_player_email)
+  email.to.should be_include(player.email)
   email.subject.should == "Padelotron. #{initiator_player} wants you to join a team"
   email.body.should be_include "#{initiator_player} has created a team named #{team_name} in Padelotron and he wants you to join it!"
 end
@@ -36,19 +41,20 @@ When /^I click in the "([^"]*)" button of the received email$/ do |button|
   visit next_url
 end
 
-Then /^"([^"]*)" should receive a "([^"]*)" membership confirmation email$/ do |player, team_name|
-  email = ActionMailer::Base.deliveries.first
+Then /^#{capture_model} should receive a "([^"]*)" membership confirmation email$/ do |player_ref, team_name|
+  player = model(player_ref)
+  email = ActionMailer::Base.deliveries.last
   email.should_not be_blank
-  email.to.should be_include(player)
+  email.to.should be_include(player.email)
   email.subject.should == "Padelotron. You joined #{team_name}"
   email.body.should be_include "You just joined the team #{team_name}"
-  
 end
 
-Then /^"([^"]*)" should receive a "([^"]*)" team cancelation email$/ do |player, team_name|
-  email = ActionMailer::Base.deliveries.first
+Then /^#{capture_model} should receive a "([^"]*)" membership cancellation email$/ do |player_ref, team_name|
+  player = model(player_ref)
+  email = ActionMailer::Base.deliveries.last
   email.should_not be_blank
-  email.to.should be_include(player)
+  email.to.should be_include(player.email)
   email.subject.should == "Padelotron. You rejected joining #{team_name}"
   email.body.should be_include "You just rejected joining the team #{team_name}."  
 end

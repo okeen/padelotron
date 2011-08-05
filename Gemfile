@@ -28,13 +28,15 @@ gem 'sqlite3'
 # and rake tasks are available in development mode:
 group :development, :test do
    gem 'webrat'
-   gem "selenium-client"
    gem 'database_cleaner'
    gem 'cucumber-rails'
    gem 'capybara'
    gem 'cucumber'
    gem 'rspec-rails'
-   gem 'fastercsv'
+   gem "factory_girl_rails"
+   gem "pickle"
+   gem "chronic"
+   gem "timecop"
 end
 
 gem 'heroku'

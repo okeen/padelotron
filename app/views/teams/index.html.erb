@@ -1,6 +1,6 @@
 <h1>Listing teams</h1>
 
-<% link_to "Show available teams for today", available_teams_path %>
+<%= link_to "Show available teams for today", available_teams_path %>
 <% @teams.each do |team| %>
    <%=  render :partial => 'team_info', :locals => {:team => team} %>
 <% end %>

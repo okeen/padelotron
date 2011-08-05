@@ -1,15 +1,27 @@
 
-p1 = Player.create :name => "player_1", :email => "player_1@a.com"
-p2 = Player.create :name => "player_2", :email => "player_2@a.com"
-p3 = Player.create :name => "player_3", :email => "player_3@a.com"
-p4 = Player.create :name => "player_4", :email => "player_4@a.com"
+p1 = FactoryGirl.create :player
+p2 = FactoryGirl.create :player
+p3 = FactoryGirl.create :player
+p4 = FactoryGirl.create :player
+p5 = FactoryGirl.create :player
+p6 = FactoryGirl.create :player
 
-t1 = Team.create :name => 'team_1', :player1=> p1, :player2 => p2
+t1 = FactoryGirl.create :team , :player1 => p1, :player2 => p2
+t2 = FactoryGirl.create :team , :player1 => p3, :player2 => p4
+t3 = FactoryGirl.create :team , :player1 => p5, :player2 => p6
+t4 = FactoryGirl.create :team , :player1 => p1, :player2 => p3
+
 t1.confirm!
-t2 = Team.create :name => 'team_2', :player1=> p3, :player2 => p4
 t2.confirm!
-t2 = Team.create :name => 'team_3', :player1=> p1, :player2 => p4
+t3.confirm!
 
+Player.all.each { |player| puts "Created player: #{player.reload.inspect}}"}
+Team.all.each { |team| puts "Created team: #{team.reload.inspect}"}
 
+g1 = FactoryGirl.create :friendly_game, :team1 => t1, :team2 => t2,
+                        :description => 'unconfirmed game'
+puts "Created unconfirmed Friendly game: #{g1.reload.inspect}"
 
-
+g2 = FactoryGirl.create :friendly_game, :team1 => t2, :team2 => t3
+g2.confirm!
+puts "Created Friendly confirmed game: #{g2.reload.inspect}"

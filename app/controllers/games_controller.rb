@@ -13,7 +13,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.xml
   def show
-    @game = Game.find(params[:id])
+    @game = Game.send(:with_exclusive_scope) {Game.find(params[:id])}
 
     respond_to do |format|
       format.html # show.html.erb

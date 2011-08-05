@@ -4,15 +4,19 @@ module Confirmable
   included do
     has_many :confirmations, :as => :confirmable
 
-    after_create :create_confirmations_if_needed,
-                 :deliver_ask_email,
-                 :set_initial_status
-
+    after_create :set_initial_status,
+      :create_confirmations_if_needed,
+      :deliver_ask_email
+      
     default_scope where(:status => "confirmed")
-
+    
+    scope :unconfirmed, where(:status => 'new')
+    
   end
 
-  module ClassMethods end
+  module ClassMethods
+  
+  end
 
   module InstanceMethods
     def confirm!
@@ -23,7 +27,7 @@ module Confirmable
     end
 
     def reject!
-      update_attributes :status => 'rejected'
+      update_attribute :status , 'rejected'
       deliver_cancellation_email
       #callback to insert custom behaviour
       on_reject
@@ -37,7 +41,7 @@ module Confirmable
     private
 
     def create_confirmations_if_needed
-      return unless self.needs_confirmation?
+      return true unless self.needs_confirmation?
       ["accept", "reject"].each do |action_name|
         self.confirmations << Confirmation.new(:action => action_name, :code => rand(100000000000).to_s)
       end
@@ -64,7 +68,8 @@ module Confirmable
     end
 
     def set_initial_status
-      update_attributes :status => 'new'
+      update_attribute :status , 'new'
+      save
     end
 
     def on_confirm

@@ -27,7 +27,11 @@ class GameMailer < ActionMailer::Base
     @game = game
     @email_destination_team = email_destination_team
     @rival_team = game.teams.reject {|team| team == email_destination_team}.first
-    
+
+#    puts "Game teams: #{game.teams.inspect}"
+#    puts "Destiny team #{@email_destination_team.inspect}"
+#    puts "Rival team #{@rival_team.inspect}"
+
     if (action == 'confirm')
       subject = "Friendly game against #{@rival_team.name} confirmed"
       @message = "You confirmed a friendly game against #{@rival_team.name}"

@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20110802181623) do
     t.datetime "play_date"
     t.string   "game_type",   :default => "friendly"
     t.string   "description"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",      :default => "new"
   end
 
   create_table "players", :force => true do |t|

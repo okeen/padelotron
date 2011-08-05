@@ -5,6 +5,7 @@ module ApplicationHelper
       (
       "<li>#{link_to("Players", players_path)}</li>"+
       "<li>#{link_to("Teams", teams_path)}</li>"+
+      "<li>#{link_to("Games", games_path)}</li>"+
       "<li>#{link_to("Create a Game", new_game_path)}</li>"
         ).html_safe
     end

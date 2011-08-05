@@ -5,27 +5,37 @@ Feature: Team listing
   I want to view all available teams and see their info
 
   Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com", existing confirmed team "team1" and still to confirm "team2"
-    Given an existing player "player1" with email "1@a.com"
-    Given an existing player "player2" with email "2@a.com"
-    Given an existing player "player3" with email "3@a.com"
-    Given an existing player "player4" with email "4@a.com"
-    Given an existing and confirmed team "team1" for "player1" and "player2"
-    Given an existing and confirmed team "team2" for "player1" and "player3"
-    And a "team3" team creation process for "player2" and "player3" initiated by "player3"
+    Given 4 players exist
+    And the following teams exist:
+        |name | player1        | player2        |
+        |team1| the 1st player | the 2nd player |
+        |team2| the 1st player | the 3rd player |
+        |team3| the 2nd player | the 3rd player |
+
+    When I confirm the team "team1"
+    And I confirm the team "team2"
 
 @buggy_test
   Scenario: List all the confirmed teams
-    When I go to the teams index page
+    When I go to the teams page
     Then I should see '2' teams listed
     And I should see team "team1" basic info with "player1" and "player2"
     And I should see team "team2" basic info with "player1" and "player3"
     And I should not see team "team3" basic info
 
-@wip
-   Scenario: Show the available teams to play a game today
-    Given an existing and confirmed team "team4" for "player3" and "player4"
-    Given an existing and confirmed friendly game between "team1" and "team2" for today
-    When I go to the teams index page
+@todo
+  Scenario: Show the available teams to play a game today
+    Given the following teams exist:
+        |name | player1        | player2        |
+        |team4| the 3rd player | the 4th player |
+    When I confirm the team "team4"
+
+    Given the following games exist:
+        |description | team1        | team2        | play_date          |
+        |game1       | the 1st team | the 2nd team | 01 Feb 2011, 17:30 |
+
+    When I confirm the game "game1"
+    When I go to the teams page
     And I follow "Show available teams for today"
     Then I should see '1' teams listed
     And I should see team "team4" basic info with "player1" and "player2"

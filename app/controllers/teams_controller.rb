@@ -11,10 +11,10 @@ class TeamsController < ApplicationController
   end
 
   def available
-    @teams = Team.available.all
+    @teams = Team.available_for_today.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :action => 'index'}
       format.xml  { render :xml => @teams }
     end
   end
