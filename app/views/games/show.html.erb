@@ -1,7 +1,7 @@
 <%= game_title(@game) %>
 <p id="notice"><%= notice %></p>
 
- <div class="game_panel">
+<div class="game_panel">
   <h4 name="description"><%= @game.description %></h4>
   <h4 name="play_date"><%= @game.play_date%></h4>
   <ul class="teams_list" name="teams_list">
@@ -14,4 +14,22 @@
       </ul>
     <% end %>
   </ul>
+  <%= set_game_result_button(@game) %>
+  <div class="game_result_panel" >
+    <h4>Please set the result of the game</h4>
+    <form name="result">
+      <table class="result_sets_table">
+        <tr>
+          <th><%= @game.team1.name %></th>
+          <th><%= @game.team2.name %></th>
+          <th>Agregar set</th>
+        </tr>
+        <tr>
+          <td><input type="text" name="result[set[0][team1]]"></input></td>
+          <td><input type="text" name="result[set[0][team2]]"></input></td>
+        </tr>
+      </table>
+      <input type="submit" value="Enviar resultado"></input>
+    </form>
+  </div>
 </div>

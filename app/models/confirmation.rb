@@ -6,15 +6,11 @@ class Confirmation < ActiveRecord::Base
   delegate :confirmation_ask_message, :to => :confirmable
   delegate :rejection_ask_message, :to => :confirmable
 
-  class<<self
-    def to_accept
-      where(:action=> 'accept').first
-    end
+  scope :to_accept
+      where(:action=> 'accept')
 
-    def to_reject
-      where(:action=> 'reject').first
-    end
-  end
+  scope :to_reject
+      where(:action=> 'reject')
 
   def to_param
     code

@@ -1,0 +1,8 @@
+div.game_panel {
+    border: 1px solid;
+}
+
+div.game_result_panel {
+    display: none;
+}
+

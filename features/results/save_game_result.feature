@@ -17,9 +17,9 @@ Feature: Set friendly game result
     And I confirm the team "team2"
     Given an existing and confirmed friendly game "game1" between "team1" and "team2" for today
 
-@todo
+@wip
   Scenario: Store a result for one game played
-    When I go to the games index page
+    When I go to the games page
     And I click on the game "game1" between "team1" and "team2" for today
     Then I should see "Friendly game between team1 and team2"
     And I should see today at "00":"00" as game play date

@@ -8,7 +8,7 @@ FactoryGirl.define do
     association :team2, :factory => :team
     play_date { DateTime.now }
     game_type "friendly"
-    description Factory.next(:game_description)
+    description  "mierda" #Factory.next(:game_description)
   end
 
 end

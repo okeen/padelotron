@@ -6,7 +6,8 @@ Feature: Game listing
 
   Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com",
   existing confirmed team "team1","team2", "team3", existing confirmed game between "team1" and "team2" for today
-    Given 4 players exist
+    Given the date is "01 February 2011"
+    And 4 players exist
     And the following teams exist:
         |name | player1        | player2        |
         |team1| the 1st player | the 2nd player |

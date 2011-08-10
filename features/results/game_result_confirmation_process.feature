@@ -23,6 +23,8 @@ Feature: Game result confirmation process asking all the members if result is co
 
     When I confirm the team "team1"
     And I confirm the team "team2"
+    And I confirm the team "team3"
+
     Given the following games exist:
         |description | team1        | team2        | play_date          |
         |game1       | the 1st team | the 2nd team | 01 Feb 2011, 17:30 |
@@ -32,20 +34,23 @@ Feature: Game result confirmation process asking all the members if result is co
 
 
 @todo
- Scenario: Click on game result confirmation email's OK button to confirm friendly game
-    When "player3" clicks in the "Confirm" button of the received friendly confirmation email
-    Then I should see "Are you sure you want to confirm the friendly game against team1?"
+ Scenario: Click on game result confirmation email's OK button to confirm the game result
+    When the 3rd player clicks in the "Confirm" button of the received game result confirmation email
+    Then I should see "Are you sure you want to confirm the result of the game"
     When I press "Yes"
-    Then I should see "You confirmed a game against team1"
-    And "1@a.com" and "2@a.com" should receive a friendly game against "team2" confirmation email
-    And "3@a.com" and "4@a.com" should receive a friendly game against "team1" confirmation email
+    Then I should see "Game result confirmed"
+    And the 1st player should receive a game "game1" result confirmation email
+    And the 2nd player should receive a game "game2" result confirmation email
+    And the 3rd player should receive a game "game3" result confirmation email
+    And the 4th player should receive a game "game4" result confirmation email
 
 @todo
   Scenario: Click on game result confirmation email's Reject button to reject membership
-    When I click in the "Reject" button of the received email
-    Then I should see "Are you sure you want to reject the friendly game against team1?"
+    When the 3rd player clicks in the "Reject" button of the received game result confirmation email
+    Then I should see "Are you sure you want to reject the the result of the game game1?"
     When I press "Yes"
-    Then I should see "You rejected playing a game against team1"
-    And "1@a.com" and "2@a.com" should receive a friendly game against "team2" cancellation email
-    And "3@a.com" and "4@a.com" should receive a friendly game against "team1" cancellation email
-
+    Then I should see "You rejected the result of game1"
+    And the 1st player should receive a game "game1" result cancellation email
+    And the 2nd player should receive a game "game2" result cancellation email
+    And the 3rd player should receive a game "game3" result cancellation email
+    And the 4th player should receive a game "game4" result cancellation email
