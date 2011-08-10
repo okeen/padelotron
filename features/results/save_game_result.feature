@@ -25,7 +25,7 @@ Feature: Set friendly game result
     And I should see today at "00":"00" as game play date
     When I press "Set the result"
     Then I should see "Please set the result of the game"
-    When I enter "20"-"12" as game result
+    When I enter "6"-"4" as game result
     And I press "Send the result"
     Then I should see "Game result sent, an email has been sent to all the players to confirm the result"
     

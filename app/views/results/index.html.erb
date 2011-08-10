@@ -1,0 +1,27 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Result sets</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.game_id %></td>
+    <td><%= result.result_sets %></td>
+    <td><%= result.status %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result', new_result_path %>

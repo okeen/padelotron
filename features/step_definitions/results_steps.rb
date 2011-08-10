@@ -4,7 +4,10 @@ Given /^game "([^"]*)" result confirmation process between "([^"]*)" and "([^"]*
 end
 
 When /^I enter "([^"]*)"\-"([^"]*)" as game result$/ do |team1_result, team2_result|
-  pending # express the regexp above with the code you wish you had
+  within "form#new_result" do
+    fill_in "result[0[team1]]", :with => team1_result
+    fill_in "result[0[team2]]", :with => team2_result
+  end
 end
 
 When /^#{capture_model} clicks in the "([^"]*)" button of the received game result confirmation email$/ do |arg1, arg2|
