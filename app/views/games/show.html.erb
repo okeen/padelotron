@@ -17,7 +17,9 @@
   <%= set_game_result_button(@game) %>
   <div class="game_result_panel inactive" >
     <h4>Please set the result of the game</h4>
-    <%= form_for @game.build_result  do |f| %>
+    <%= form_for @game.build_result,
+                 :url =>game_result_path(@game),
+                 :remote => true                   do |f| %>
       <table class="result_sets_table">
         <tr>
           <th><%= @game.team1.name %></th>
@@ -25,13 +27,14 @@
           <th>Agregar set</th>
         </tr>
         <tr class="result_set_row">
-          <td><input class="result_set_team_score_input" type="text" name="result[0[team1]]"></input></td>
-          <td><input class="result_set_team_score_input" type="text" name="result[0[team2]]"></input></td>
+          <td><input class="result_set_team_score_input" type="text" name="result[result_sets][0][team1]"></input></td>
+          <td><input class="result_set_team_score_input" type="text" name="result[result_sets][0][team2]"></input></td>
           <td><button class="result_add_new_set_button" onclick="return false;">+</button></td>
         </tr>
       </table>
     <h3 class="provisional_score">Score: 0:0</h3>
-      <%= f.submit "Send the result" %>
+    <label>Disconforme?</label> <%= check_box_tag "result[movida]", :no, false, %>
+    <%= f.submit "Send the result" %>
     <% end %>
   </div>
 </div>

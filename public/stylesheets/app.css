@@ -6,3 +6,6 @@ div.game_result_panel.inactive {
     display: none;
 }
 
+h3.provisional_score.hay_movida {
+    color: red;
+}

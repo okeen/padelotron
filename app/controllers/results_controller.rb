@@ -1,19 +1,11 @@
 class ResultsController < ApplicationController
-  # GET /results
-  # GET /results.xml
-  def index
-    @results = Result.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @results }
-    end
-  end
-
+  before_filter :load_game
+  
   # GET /results/1
   # GET /results/1.xml
   def show
-    @result = Result.find(params[:id])
+    @result = @game.result
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +16,7 @@ class ResultsController < ApplicationController
   # GET /results/new
   # GET /results/new.xml
   def new
-    @result = Result.new
+    @result = @game.build_result
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +32,7 @@ class ResultsController < ApplicationController
   # POST /results
   # POST /results.xml
   def create
-    @result = Result.new(params[:result])
+    @result = @game.build_result(params[:result])
 
     respond_to do |format|
       if @result.save
@@ -79,5 +71,11 @@ class ResultsController < ApplicationController
       format.html { redirect_to(results_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def load_game
+    @game = Game.find(params[:game_id])
   end
 end
