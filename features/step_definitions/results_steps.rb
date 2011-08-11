@@ -5,8 +5,8 @@ end
 
 When /^I enter "([^"]*)"\-"([^"]*)" as game result$/ do |team1_result, team2_result|
   within "form#new_result" do
-    fill_in "result[0[team1]]", :with => team1_result
-    fill_in "result[0[team2]]", :with => team2_result
+    fill_in "result[result_sets][0][team1]", :with => team1_result
+    fill_in "result[result_sets][0][team2]", :with => team2_result
   end
 end
 

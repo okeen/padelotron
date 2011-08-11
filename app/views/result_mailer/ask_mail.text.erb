@@ -1,0 +1,16 @@
+Hi :
+
+You received a result offer for the game <%= @result.game.description %> you played
+
+To confirm the result, please click on the following link:
+  <%= link_to "Aceptar", show_confirmation_url(@result.confirmations.to_accept.first) %>
+To reject the result, please click on the following link:
+  <%= link_to "Rechazar", show_confirmation_url(@result.confirmations.to_reject.first) %>
+
+
+
+Thanks for using Padelotron
+
+www.padelotron.heroku.com
+
+

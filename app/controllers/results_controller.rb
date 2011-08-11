@@ -36,7 +36,9 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to(@result, :notice => 'Result was successfully created.') }
+        format.html { redirect_to(@game, :notice => 'Game result sent, an email has been sent to all the players to confirm the result') }
+        format.js { render :text => 'Game result sent, an email has been sent to all the players to confirm the result' }
+
         format.xml  { render :xml => @result, :status => :created, :location => @result }
       else
         format.html { render :action => "new" }

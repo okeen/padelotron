@@ -17,7 +17,6 @@ Feature: Set friendly game result
     And I confirm the team "team2"
     Given an existing and confirmed friendly game "game1" between "team1" and "team2" for today
 
-@wip
   Scenario: Store a result for one game played
     When I go to the games page
     And I click on the game "game1" between "team1" and "team2" for today
