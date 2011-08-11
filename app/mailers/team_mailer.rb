@@ -31,8 +31,8 @@ class TeamMailer < ActionMailer::Base
       @message = "You just rejected joining the team #{@team.name}"
     end
     mail :to => @team.players.collect(&:email), :subject => subject
-  rescue
-    logger.error "Error sending membership #{action} email for #{@team.players.collect(&:email)}"
+#  rescue
+#    logger.error "Error sending membership #{action} email for #{@team.players.collect(&:email)}"
   end
 
 end

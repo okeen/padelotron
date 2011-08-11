@@ -43,8 +43,8 @@ class GameMailer < ActionMailer::Base
     mail :to => email_destination_team.players.collect(&:email),
          :subject => subject
 
-  rescue
-    logger.error "Error sending game #{action} email for #{@email_destination_team.players.collect(&:email)}"
+#  rescue
+#    logger.error "Error sending game #{action} email for #{@email_destination_team.players.collect(&:email)}"
   end
 
 end

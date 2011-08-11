@@ -26,25 +26,24 @@ class ResultMailer < ActionMailer::Base
   def friendly_result_new_status(result, email_destination_team, action)
     @result = result
     @email_destination_team = email_destination_team
-    @rival_team = result.teams.reject {|team| team == email_destination_team}.first
+    @rival_team = result.game.teams.reject {|team| team == email_destination_team}.first
 
+    puts "Sending #{action} for #{result.inspect} to #{email_destination_team.players.collect(&:email)}"
 #    puts "result teams: #{result.teams.inspect}"
 #    puts "Destiny team #{@email_destination_team.inspect}"
 #    puts "Rival team #{@rival_team.inspect}"
 
     if (action == 'confirm')
-      subject = "Friendly result against #{@rival_team.name} confirmed"
-      @message = "You confirmed a friendly result against #{@rival_team.name}"
+      subject = "Game result for game #{@result.game.description} confirmed"
     else
-      subject = "Friendly result against #{@rival_team.name} cancelled"
-      @message = "You cancelled a friendly result against #{@rival_team.name}"
+      subject = "Game result for game #{@result.game.description} cancelled"
     end
 
     mail :to => email_destination_team.players.collect(&:email),
          :subject => subject
 
-  rescue
-    logger.error "Error sending result #{action} email for #{@email_destination_team.players.collect(&:email)}"
+#  rescue
+#    logger.error "Error sending result #{action} email for #{@email_destination_team.players.collect(&:email)}"
   end
 
 end

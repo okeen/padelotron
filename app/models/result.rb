@@ -19,18 +19,25 @@ class Result < ActiveRecord::Base
   
   #messages to show in confirmations
   def confirmation_message
-    "confirmed the result of the game #{game.description} against #{team1.name}"
+    "confirmed the result of the game #{game.description}"
   end
 
   def rejection_message
-    "rejected the result of the game #{game.description} against #{team1.name}"
+    "rejected the result of the game #{game.description}"
   end
   #messages to show in confirmations
   def confirmation_ask_message
-    "confirm the result of the game #{game.description} against #{team1.name}"
+    "confirm the result of the game #{game.description}"
   end
 
   def rejection_ask_message
-    "reject the result of the game #{game.description} against #{team1.name}"
+    "reject the result of the game #{game.description}"
   end
+
+  private
+
+  def confirmating_player_groups
+    game.teams
+  end
+
 end

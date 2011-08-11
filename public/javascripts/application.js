@@ -48,6 +48,7 @@ $(function() {
     $('input.result_set_team_score_input').live('keypress', function(e){
         if (e.charCode == 0 && e.keyCode == 9 && isSecondScoreBox(e.target)) {
             addNewResultRow();
+            return;
         }
         var set_values = $(e.target).parent().parent().parent()
         .find("tr.result_set_row").map(function(row_index){
