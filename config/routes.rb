@@ -9,7 +9,11 @@ Padelotron::Application.routes.draw do
 
   get "teams/available" => "teams#available", :as => "available_teams"
   resources :teams
-  
+
+  devise_for :players, :controllers => { :omniauth_callbacks => "players/omniauth_callbacks" }
+  devise_scope :player do
+    get '/players/auth/:provider' => 'players/omniauth_callbacks#passthru'
+  end
   resources :players
 
   # The priority is based upon order of creation:

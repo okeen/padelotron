@@ -4,5 +4,32 @@ class Player < ActiveRecord::Base
   validates :email, :presence => true,  :uniqueness => true
 
   has_many :teams, :finder_sql => 'select * from teams t where t.player1_id == #{id} or t.player2_id == #{id}'
- 
+
+  devise :database_authenticatable, :omniauthable
+
+  before_create :init_devise_password
+
+
+  def self.find_or_create_by_name_and_email(name,email)
+    Player.find_by_email_and_name(email,name) || Player.create(:name => name, :email => email)
+  end
+  
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token['extra']['user_hash']
+    player = Player.find_or_create_by_name_and_email(data["name"],data["email"])
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |player|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
+        player.email = data["email"]
+      end
+    end
+  end
+
+  private
+
+  def init_devise_password
+    password = Devise.friendly_token[0,20]
+  end
 end

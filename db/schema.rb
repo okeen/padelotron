@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810154147) do
+ActiveRecord::Schema.define(:version => 20110811235318) do
 
   create_table "confirmations", :force => true do |t|
     t.string   "code"
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(:version => 20110810154147) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
-    t.string   "email"
+    t.string   "email",                             :default => "", :null => false
+    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

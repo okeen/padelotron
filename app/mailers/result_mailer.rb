@@ -28,11 +28,6 @@ class ResultMailer < ActionMailer::Base
     @email_destination_team = email_destination_team
     @rival_team = result.game.teams.reject {|team| team == email_destination_team}.first
 
-    puts "Sending #{action} for #{result.inspect} to #{email_destination_team.players.collect(&:email)}"
-#    puts "result teams: #{result.teams.inspect}"
-#    puts "Destiny team #{@email_destination_team.inspect}"
-#    puts "Rival team #{@rival_team.inspect}"
-
     if (action == 'confirm')
       subject = "Game result for game #{@result.game.description} confirmed"
     else

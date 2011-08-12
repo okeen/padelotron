@@ -39,5 +39,6 @@ group :development, :test do
    gem "chronic"
    gem "timecop"
 end
-
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem "oa-oauth", :require => "omniauth/oauth"
 gem 'heroku'

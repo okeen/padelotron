@@ -7,6 +7,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <%= if player_signed_in?
+        puts "Current: #{current_player.inspect}"
+        render 'players/player_panel', :locals => {:player => current_player}
+      else
+        link_to "Sign in with Facebook", player_omniauth_authorize_path(:facebook)
+      end
+  %>
   <%= top_navigation_menu %>
 
 <%= yield %>
