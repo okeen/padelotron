@@ -41,4 +41,5 @@ group :development, :test do
 end
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem "oa-oauth", :require => "omniauth/oauth"
+gem 'koala'
 gem 'heroku'

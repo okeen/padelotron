@@ -8,6 +8,25 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
+  case 
+  when Rails.env.production?
+    config.omniauth :facebook, '270031589679955',
+                  '4e4e4c8e723e2bf6df566624161a543c',
+                  {:scope => 'email',
+                  :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+                
+  when Rails.env.development?
+    config.omniauth :facebook, '270031589679955',
+                  '4e4e4c8e723e2bf6df566624161a543c',
+                  :scope => 'email'
+    
+  when Rails.env.test?
+    config.omniauth :facebook,'270031589679955',
+                  '4e4e4c8e723e2bf6df566624161a543c',
+                  :scope => 'email'
+        OmniAuth.config.full_host = 'http://localhost:3000/' # issue 257
+end
+
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -194,11 +213,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook,
-                  '270031589679955',
-                  'b47ad4200553a3b8949242a8143947c8',
-                  :scope => 'email'
-
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

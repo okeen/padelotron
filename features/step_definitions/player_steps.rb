@@ -15,3 +15,18 @@ Then /^I should see the recently created player with name "([^"]*)" and email "(
   page.should have_selector("p", :content => name)
   page.should have_selector( "p", :content => email)
 end
+
+
+When /^I enter #{capture_model} 's email as Email$/ do |player_ref|
+  player = model(player_ref)
+  within_window "Log In | Facebook" do
+      fill_in 'Email:', :with => player.email
+  end
+end
+
+When /^I enter #{capture_model} 's password as Password$/ do |player_ref|
+  player = model(player_ref)
+  within_window "Log In | Facebook" do
+      fill_in 'Password:', :with => player.encrypted_password
+  end
+end
