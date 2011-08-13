@@ -13,11 +13,11 @@
 
   <div class="field">
     <h3>Equipo 1</h3>
-    <%= collection_select :game, :team1_id, Team.all, :id, :name %><br />
+    <%= collection_select :game, :team1_id, current_player.teams, :id, :name %><br />
   </div>
   <div class="field">
     <h3>Equipo 2</h3>
-    <%= collection_select :game, :team2_id, Team.all, :id, :name %><br />
+    <%= collection_select :game, :team2_id, Team.all - current_player.teams, :id, :name %><br />
   </div>
   <div class="field">
     <%= f.label :play_date %><br />

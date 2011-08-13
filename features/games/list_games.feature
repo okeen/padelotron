@@ -24,17 +24,22 @@ Feature: Game listing
 
     When I confirm the game "game1"
 
-
   Scenario: List all the confirmed games
     When I go to the games page
     Then I should see '1' games listed
     And I should see the game "game1" between "team1" and "team2" for today at "00":"00"
 
-  Scenario: Show details of a game between "team1" and "team2"
-    When I go to the games page
+  Scenario: Show details of a game between "team1" and "team2" by loged in "player1"
+    When I login as the first player
+    And I go to the games page
     Then I should see the game "game1" between "team1" and "team2" for today at "00":"00"
     When I click on the game "game1" between "team1" and "team2" for today
     Then I should see "Friendly game between team1 and team2"
     And I should see today at "00":"00" as game play date
-    
-    
+
+  Scenario: Hide details of a game between "team1" and "team2" by unknow visitor
+    When I go to the games page
+    Then I should see the game "game1" between "team1" and "team2" for today at "00":"00"
+    When I click on the game "game1" between "team1" and "team2" for today
+    Then I should see "Sign in with Facebook"
+    And I should not see the game "game1" between "team1" and "team2" for today at "00":"00"

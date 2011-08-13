@@ -28,14 +28,18 @@ end
 
 Given /^a "([^"]*)" team creation process for "([^"]*)" and "([^"]*)" initiated by "([^"]*)"$/ do |team_name, player1, player2, initiating_player|
   team = Team.create(:name => team_name,
-              :player1 => Player.find_by_name(player1),
-              :player2 => Player.find_by_name(player2))
+    :player1 => Player.find_by_name(player1),
+    :player2 => Player.find_by_name(player2))
 end
 
-When /^I click in the "([^"]*)" button of the received email$/ do |button|
+When /^#{capture_model} clicks in the "([^"]*)" button of the received email$/ do |player_ref,button|
+  player = model(player_ref)
+  login_as player, :scope => :player
   email = ActionMailer::Base.deliveries.first
   email.should_not be_blank
   confirm_url,reject_url = email.body.to_s.scan /\/confirmations\/\d*/
+  confirm_url.should_not be_blank
+  reject_url.should_not be_blank
   next_url = button == 'Confirm' ? confirm_url : reject_url
   ActionMailer::Base.deliveries.delete(email)
   visit next_url
@@ -62,16 +66,20 @@ end
 
 Given /^an existing and confirmed team "([^"]*)" for "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
   team = Team.create( :name => team_name,
-                      :player1 => Player.find_by_name(player1_name),
-                      :player2 => Player.find_by_name(player2_name)
-                    )
+    :player1 => Player.find_by_name(player1_name),
+    :player2 => Player.find_by_name(player2_name)
+  )
   team.confirm!
   ActionMailer::Base.deliveries.clear
 end
 
 Then /^I should see '(\d+)' teams listed$/ do |team_count|
-  # usad team_count.to_i (casting a Integer) para comprobar q hay team_count objetos DOM q muestran equipos...
-  page.should have_selector("div.team_panel", :count => team_count.to_i)
+  if team_count == '0'
+    page.should_not have_selector("div.team_panel")
+  else
+    # usad team_count.to_i (casting a Integer) para comprobar q hay team_count objetos DOM q muestran equipos...
+    page.should have_selector("div.team_panel", :count => team_count.to_i)
+  end
 end
 
 Then /^I should see team "([^"]*)" basic info with "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|

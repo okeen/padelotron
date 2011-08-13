@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  # GET /teams
+  before_filter :authenticate_player!, :except => [:index]
+   # GET /teams
   # GET /teams.xml
   def index
     @teams = Team.all
@@ -49,7 +50,7 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.xml
   def create
-    @team = Team.new(params[:team])
+    @team = Team.new(params[:team].merge(:player1_id => current_player.id))
 
     respond_to do |format|
       if @team.save

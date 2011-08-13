@@ -22,6 +22,7 @@ end
 
 When /^#{capture_model} clicks in the "([^"]*)" button of the received game result confirmation email$/ do |player_ref, button|
   player = model(player_ref)
+  login_as player, :scope => :player
   email = ActionMailer::Base.deliveries.last
   email.should_not be_blank
   email.to.should be_include(player.email)

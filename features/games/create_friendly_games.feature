@@ -17,7 +17,6 @@ Feature: New friendly game creation
     And I confirm the team "team2"
     And I login as the first player
 
-@wip
   Scenario: Create a friendly game through the new friendly game page
     When I go to the new friendly game page
     And I select the first team as first team

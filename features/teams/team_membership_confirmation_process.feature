@@ -15,7 +15,7 @@ Feature: Team membership confirmation ask for other team
         |team1| the 1st player | the 2nd player |
 
  Scenario: Click on email's confirmation OK button to confirm membership
-    When I click in the "Confirm" button of the received email
+    When the 2nd player clicks in the "Confirm" button of the received email
     Then I should see "Are you sure you want to join team1?"
     When I press "Yes"
     Then I should see "You joined team1"
@@ -23,7 +23,7 @@ Feature: Team membership confirmation ask for other team
     And the 2nd player should receive a "team1" membership confirmation email
 
   Scenario: Click on email's confirmation Reject button to reject membership
-    When I click in the "Reject" button of the received email
+    When the 2nd player clicks in the "Reject" button of the received email
     Then I should see "Are you sure you want to reject joining team1?"
     When I press "Yes"
     Then I should see "You rejected joining team1"

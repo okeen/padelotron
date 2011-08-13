@@ -17,8 +17,10 @@ Feature: Set friendly game result
     And I confirm the team "team2"
     Given an existing and confirmed friendly game "game1" between "team1" and "team2" for today
 
+
   Scenario: Store a result for one game played
-    When I go to the games page
+    When I login as the first player
+    And I go to the games page
     And I click on the game "game1" between "team1" and "team2" for today
     Then I should see "Friendly game between team1 and team2"
     And I should see today at "00":"00" as game play date
@@ -27,4 +29,12 @@ Feature: Set friendly game result
     When I enter "6"-"4" as game result
     And I press "Send the result"
     Then I should see "Game result sent, an email has been sent to all the players to confirm the result"
-    
+
+  Scenario: Don't allow players not belonging to the game store a result
+    Given another player exists
+    When I login as the 5th player
+    And I go to the games page
+    And I click on the game "game1" between "team1" and "team2" for today
+    Then I should see "Friendly game between team1 and team2"
+    And I should see today at "00":"00" as game play date
+    And I should not see "Set the result"

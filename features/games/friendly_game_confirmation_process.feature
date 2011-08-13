@@ -16,7 +16,7 @@ Feature: Friendly game confirmation ask for other team
     And I confirm the team "team2"
     Given a friendly game "game1" creation process between "team1" and "team2" for today initiated by "team1"
 
- Scenario: Click on friendly game confirmation email's OK button to confirm friendly game
+Scenario: Click on friendly game confirmation email's OK button to confirm friendly game
     When the 3rd player clicks in the "Confirm" button of the received friendly confirmation email
     Then I should see "Are you sure you want to confirm the friendly game against team1?"
     When I press "Yes"

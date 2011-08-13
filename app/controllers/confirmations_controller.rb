@@ -1,5 +1,5 @@
 class ConfirmationsController < ApplicationController
-  before_filter :load_confirmation_and_confirmable
+  before_filter :load_confirmation_and_confirmable, :authenticate_player!
   
   def show
     respond_to do |format|

@@ -52,6 +52,7 @@ end
 
 When /^#{capture_model} clicks in the "([^"]*)" button of the received friendly confirmation email$/ do |player_name, button|
   player = model(player_name)
+  login_as player, :scope => :player
   email = ActionMailer::Base.deliveries.last
   email.should_not be_blank
   email.to.should be_include(player.email)
@@ -90,6 +91,10 @@ Then /^I should see the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today
     game_elem.should have_selector("li.team2", :content => team2_name)
     game_elem.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
   end
+end
+
+Then /^I should not see the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today at "([^"]*)":"([^"]*)"$/ do |game_desc, team1_name, team2_name, hours, minutes|
+  page.should_not have_selector("div.game_panel a[name=description]", :content => game_desc)
 end
 
 When /^I click on the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today$/ do |game_desc, team1, team2|

@@ -1,9 +1,11 @@
 class Team < ActiveRecord::Base
 
-  validates :name, :presence => true, :uniqueness => true
-  
   belongs_to :player1, :class_name => "Player"
   belongs_to :player2, :class_name => "Player"
+
+  validates :name, :presence => true, :uniqueness => true
+  validates_associated :player1
+  validates_associated :player2
 
   include Confirmable
 

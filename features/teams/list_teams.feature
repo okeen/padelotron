@@ -24,6 +24,13 @@ Feature: Team listing
     And I should see team "team2" basic info with "player1" and "player3"
     And I should not see team "team3" basic info
 
+  Scenario: Don't show available teams for today to unknown visitors
+    When I go to the teams page
+    And I follow "Show available teams for today"
+    Then I should see "Sign in with Facebook"
+    Then I should see '0' teams listed
+
+@buggy_test
   Scenario: Show the available teams to play a game today
     Given the following teams exist:
         |name | player1        | player2        |
@@ -35,6 +42,7 @@ Feature: Team listing
         |game1       | the 1st team | the 2nd team | 01 Feb 2011, 17:30 |
 
     When I confirm the game "game1"
+    And I login as the first player
     And I go to the teams page
     And I follow "Show available teams for today"
     Then I should see '1' teams listed
