@@ -24,7 +24,7 @@ Devise.setup do |config|
     config.omniauth :facebook,'270031589679955',
                   '4e4e4c8e723e2bf6df566624161a543c',
                   :scope => 'email'
-        OmniAuth.config.full_host = 'http://localhost:3000/' # issue 257
+        #OmniAuth.config.full_host = 'http://localhost/' # issue 257
 end
 
   # ==> ORM configuration
@@ -224,3 +224,13 @@ end
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
 end
+
+#module Devise
+#  module Encryptors
+#    class Md5 < Base
+#      def self.digest(password, stretches, salt, pepper)
+#        password
+#      end
+#    end
+#  end
+#end

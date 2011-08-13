@@ -1,4 +1,5 @@
 about=List versions of all Rails frameworks and the environment
+create_and_load_facebook_test_users=
 cucumber=Alias for cucumber:ok
 cucumber\:all=Run all features
 cucumber\:ok=Run features that should pass

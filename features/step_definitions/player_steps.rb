@@ -30,3 +30,10 @@ When /^I enter #{capture_model} 's password as Password$/ do |player_ref|
       fill_in 'Password:', :with => player.encrypted_password
   end
 end
+
+When /^I login as #{capture_model}$/ do |player_ref|
+  player = model(player_ref)
+  login_as player, :scope => :player
+  visit root_path
+  page.should have_content "Kaixo #{player.name}"
+end

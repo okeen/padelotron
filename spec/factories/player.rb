@@ -12,7 +12,7 @@ FactoryGirl.define do
     @@facebook_players[n-1]['name']
   end
 
-  sequence :encrypted_password do |n|
+  sequence :password do |n|
     @@facebook_players[n-1]['password']
   end
 
@@ -27,16 +27,16 @@ FactoryGirl.define do
   factory :player do
     name {Factory.next(:player_name)}
     email {Factory.next(:email)}
-    encrypted_password {Factory.next :encrypted_password}
+    password {Factory.next :password}
+    password_confirmation {"#{password}"}
     facebook_id {Factory.next :facebook_id}
   end
 
-  
   sequence :unconnected_player_name do |n|
     @@facebook_players[@@offset + n]['name']
   end
 
-  sequence :unconnected_encrypted_password do |n|
+  sequence :unconnected_password do |n|
     @@facebook_players[@@offset + n]['password']
   end
 
@@ -51,7 +51,8 @@ FactoryGirl.define do
   factory :unconnected_player, :class => 'Player' do
     name {Factory.next(:unconnected_player_name)}
     email {Factory.next(:unconnected_email)}
-    encrypted_password {Factory.next :unconnected_encrypted_password}
+    password {Factory.next :unconnected_password}
+    password_confirmation {"#{password}"}
     facebook_id {Factory.next :unconnected_facebook_id}
   end
 

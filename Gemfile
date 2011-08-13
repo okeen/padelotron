@@ -39,6 +39,7 @@ group :development, :test do
    gem "chronic"
    gem "timecop"
 end
+gem "mongrel", '>= 1.2.0.pre2' 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'koala'

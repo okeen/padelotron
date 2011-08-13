@@ -4,11 +4,15 @@ Feature: Log in with my Facebook account
   As a Player
   I want to log in with my facebook account
 
+  Before do
+      request.env["devise.mapping"] = Devise.mappings[:player]
+  end
+
   Background: Existing facebook user "player1" with password "player1"
     Given a player exist
     And an unconnected player exist
 
-  @wip
+  @buggy_test
   @selenium
   Scenario: Log in with the last players Facebook account and link with Facebook Connect
     When I go to the root page
@@ -19,9 +23,9 @@ Feature: Log in with my Facebook account
     And I press "Permitir"
     Then I should see "Kaixo "
 
+  @buggy_test
   @selenium
   Scenario: Log in with an already facebook-connected "player1"'s Facebook account
-    Given I am logged out
     When I go to the root page
     And I follow "Sign in with Facebook"
     And I enter the first player 's email as Email

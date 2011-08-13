@@ -31,7 +31,7 @@ task :create_and_load_facebook_test_users => :environment do
       YAML.load(File.open(@@file_name)) : []
   puts "Loaded App test users: #{@current_test_users}"
 
-  @current_test_users.count.upto 100 do |index|
+  @current_test_users.count.upto 200 do |index|
       name = next_name(index)
       create_facebook_user(name, true)
   end

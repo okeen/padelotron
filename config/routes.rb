@@ -12,7 +12,9 @@ Padelotron::Application.routes.draw do
 
   devise_for :players, :controllers => { :omniauth_callbacks => "players/omniauth_callbacks" }
   devise_scope :player do
+    get '/auth/:provider/callback' => 'players/omniauth_callbacks#facebook'
     get '/players/auth/:provider' => 'players/omniauth_callbacks#passthru'
+    get "sign_in", :to => "devise/sessions#new"
   end
   resources :players
 

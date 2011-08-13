@@ -36,7 +36,9 @@ begin
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
-# You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
+#Capybara.server_port = 3001
+#Capybara.app_host = "localhost:3001"
+## You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
 #   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
@@ -47,3 +49,10 @@ end
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
+include Warden::Test::Helpers
+
+  After{ Warden.test_reset! }
+#
+#World(Warden::Test::Helpers,Warden::Test::WardenHelpers)
+#
+#After{ Warden.test_reset! }
