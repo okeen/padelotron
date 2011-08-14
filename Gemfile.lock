@@ -155,6 +155,7 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.6.0)
     rubyzip (0.9.4)
+    sass (3.1.7)
     selenium-webdriver (0.2.2)
       childprocess (>= 0.1.9)
       ffi (>= 1.0.7)
@@ -196,6 +197,7 @@ DEPENDENCIES
   pickle
   rails (= 3.0.7)
   rspec-rails
+  sass
   sqlite3
   timecop
   webrat

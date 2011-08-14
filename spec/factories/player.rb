@@ -33,19 +33,19 @@ FactoryGirl.define do
   end
 
   sequence :unconnected_player_name do |n|
-    @facebook_players[@@offset + n]['name']
+    @facebook_players[@offset + n]['name']
   end
 
   sequence :unconnected_password do |n|
-    @facebook_players[@@offset + n]['password']
+    @facebook_players[@offset + n]['password']
   end
 
   sequence :unconnected_email do |n|
-    @facebook_players[@@offset + n]['email']
+    @facebook_players[@offset + n]['email']
   end
 
   sequence :unconnected_facebook_id do |n|
-    @facebook_players[@@offset + n]['id'].to_i
+    @facebook_players[@offset + n]['id'].to_i
   end
 
   factory :unconnected_player, :class => 'Player' do

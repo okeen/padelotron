@@ -10,13 +10,13 @@ class Player < ActiveRecord::Base
   before_create :init_devise_password
 
 
-  def self.find_or_create_by_name_and_email(name,email)
-    Player.find_by_email_and_name(email,name) || Player.create(:name => name, :email => email)
+  def self.find_or_create_by_name_and_email(facebook_id,name,email)
+    Player.find_by_email_and_name(email,name) || Player.create(:name => name, :email => email, :facebook_id => facebook_id)
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    player = Player.find_or_create_by_name_and_email(data["name"],data["email"])
+    player = Player.find_or_create_by_name_and_email(data["id"],data["name"],data["email"])
   end
 
   def self.new_with_session(params, session)
@@ -27,6 +27,9 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def facebook_url
+    "http://graph.facebook.com/#{facebook_id}"
+  end
   private
 
   def init_devise_password

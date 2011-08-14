@@ -1,0 +1,18 @@
+<div class="player_panel">
+  <div class="player_info_subpanel">
+    <div class="player_photo">
+      <%= player_photo(player) %>
+    </div>
+    <div class="player_info">
+      <h3><%= player.name%></h3>
+      <ul class="player_stats_list">
+        <li>Partidos jugados:</li>
+        <li>Equipos:</li>
+        <li>% vistorias:</li>
+      </ul>
+    </div>
+  </div>
+  <div class="player_emblems_subpanel">
+    Emblemas: <%=player_achievements_panel(player)%>
+  </div>
+</div>
