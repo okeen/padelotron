@@ -53,6 +53,7 @@ FactoryGirl.define do
     email {Factory.next(:unconnected_email)}
     password {Factory.next :unconnected_password}
     password_confirmation {"#{password}"}
+    encrypted_password {"#{password}"}
     facebook_id {Factory.next :unconnected_facebook_id}
   end
 
