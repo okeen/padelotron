@@ -45,3 +45,4 @@ gem "oa-oauth", :require => "omniauth/oauth"
 gem 'koala'
 gem 'heroku'
 gem "sass"
+gem "paperclip", "~> 2.3"

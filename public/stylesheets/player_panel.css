@@ -2,10 +2,13 @@ div.player_panel {
   height: 200px;
   width: 700px; }
   div.player_panel div.player_info_subpanel {
-    height: 80%;
     padding: 5px; }
     div.player_panel div.player_info_subpanel div.player_photo {
       width: 70px;
       float: left; }
     div.player_panel div.player_info_subpanel div.player_info {
       margin-left: 71px; }
+      div.player_panel div.player_info_subpanel div.player_info h3 {
+        margin: 0px; }
+      div.player_panel div.player_info_subpanel div.player_info ul {
+        padding-left: 10px; }

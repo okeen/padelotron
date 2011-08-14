@@ -4,7 +4,6 @@ div.player_panel {
   width: 700px;
 
   div.player_info_subpanel {
-    height: 80%;
     padding: 5px;
     $photo_margin: 70px;
 
@@ -14,6 +13,10 @@ div.player_panel {
     }
     div.player_info {
         margin-left: $photo_margin +1px;
+        h3 {
+          margin: 0px;
+        }
+        ul {padding-left: 10px}
     }
   }
 }
