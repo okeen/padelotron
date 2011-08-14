@@ -1,0 +1,19 @@
+div.player_panel {
+  
+  height: 200px;
+  width: 700px;
+
+  div.player_info_subpanel {
+    height: 80%;
+    padding: 5px;
+    $photo_margin: 70px;
+
+    div.player_photo {
+        width: $photo_margin;
+        float: left;
+    }
+    div.player_info {
+        margin-left: $photo_margin +1px;
+    }
+  }
+}
