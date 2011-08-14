@@ -16,7 +16,6 @@ Feature: Team listing
     When I confirm the team "team1"
     And I confirm the team "team2"
 
-@buggy_test
   Scenario: List all the confirmed teams
     When I go to the teams page
     Then I should see '2' teams listed
@@ -30,7 +29,6 @@ Feature: Team listing
     Then I should see "Sign in with Facebook"
     Then I should see '0' teams listed
 
-@buggy_test
   Scenario: Show the available teams to play a game today
     Given the following teams exist:
         |name | player1        | player2        |
