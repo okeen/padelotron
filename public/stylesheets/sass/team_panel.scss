@@ -1,0 +1,38 @@
+div.team_panel {
+  width: 250px;
+  height: 70px;
+  padding: 5px;
+  margin-top: 10px;
+
+  $photo_height: 50px;
+
+  border: 1px solid;
+  border: {
+    radius: 7px 7px 7px 7px;
+  }
+
+  div.team_photo {
+    float: left;
+    img {
+        width: $photo_height;
+        height: 70px;
+    }
+  }
+  div.team_info {
+    margin-left: $photo_height +1px;
+    height: 60px;
+    h4 {
+      margin: 0px;
+    }
+    ul.team_players {
+      list-style: none;
+      margin: {top: 15px; bottom: 0px;}
+      padding-left: 5px;
+      li {
+        float: left;
+        width: 49%;
+        img { height: 30px; width: 30px;}
+      }
+    }
+  }
+}

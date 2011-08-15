@@ -1,0 +1,28 @@
+div.team_panel {
+  width: 250px;
+  height: 70px;
+  padding: 5px;
+  margin-top: 10px;
+  border: 1px solid;
+  border-radius: 7px 7px 7px 7px; }
+  div.team_panel div.team_photo {
+    float: left; }
+    div.team_panel div.team_photo img {
+      width: 50px;
+      height: 70px; }
+  div.team_panel div.team_info {
+    margin-left: 51px;
+    height: 60px; }
+    div.team_panel div.team_info h4 {
+      margin: 0px; }
+    div.team_panel div.team_info ul.team_players {
+      list-style: none;
+      margin-top: 15px;
+      margin-bottom: 0px;
+      padding-left: 5px; }
+      div.team_panel div.team_info ul.team_players li {
+        float: left;
+        width: 49%; }
+        div.team_panel div.team_info ul.team_players li img {
+          height: 30px;
+          width: 30px; }

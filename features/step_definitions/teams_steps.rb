@@ -83,7 +83,7 @@ Then /^I should see '(\d+)' teams listed$/ do |team_count|
 end
 
 Then /^I should see team "([^"]*)" basic info with "([^"]*)" and "([^"]*)"$/ do |team_name, player1_name, player2_name|
-  page.should have_xpath("//h4[text()='#{team_name}']")
+  page.should have_xpath("//h4/a[text()='#{team_name}']")
   page.should have_selector("li.player", :content => player1_name)
   page.should have_selector("li.player", :content => player2_name)
 end

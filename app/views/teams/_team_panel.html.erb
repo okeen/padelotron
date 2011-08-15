@@ -1,0 +1,14 @@
+<div class="team_panel">
+  <div class="team_photo">
+    <%= team_photo(team) %>
+  </div>
+  <div class="team_info">
+    <h4 class="team_name"><%= link_to team.name, team_path(team) %></h4>
+    <ul class="team_players">
+      <% team.players.each do |player| %>
+        <li class="player"><%= player_photo(player, :size => :square)%><%= link_to player.name , player_path(player) %> </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

@@ -2,7 +2,7 @@
 
 <%= link_to "Show available teams for today", available_teams_path %>
 <% @teams.each do |team| %>
-   <%=  render :partial => 'team_info', :locals => {:team => team} %>
+   <%=  render :partial => 'team_panel', :locals => {:team => team} %>
 <% end %>
 
 <%= link_to 'New Team', new_team_path %>
