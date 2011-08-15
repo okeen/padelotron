@@ -1,25 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @team.name %>
-</p>
+<div class="team_show">
+  <div class="team_info_upper_subpanel">
+    <fieldset class="team_emblems">
+      <legend>Emblemas</legend>
+      <%= team_emblems(@team) %>
+    </fieldset>
 
-<p>
-  <b>Player1:</b>
-  <%= @team.player1_id %>
-</p>
+    <div class="team_info_subpanel">
+      <%= team_photo(@team) %>
+      <h2><%= @team.name %></h2>
+      <ul id="team_stats">
+        <li>partidos jugados: </li>
+        <li>Ganados: </li>
+        <li>Perdidos: </li>
+        <li>% victorias: </li>
+      </ul>
+    </div>
+  </div>
 
-<p>
-  <b>Player2:</b>
-  <%= @team.player2_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @team.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+  <fieldset><legend>Jugadores</legend>
+    <ul class="team_players">
+      <% @team.players.each do |player| %>
+        <li class="player"><%= player_photo(player, :size => :normal)%><%= link_to player.name , player_path(player) %> </li>
+      <% end %>
+    </ul>
+  </fieldset>
+</div>
