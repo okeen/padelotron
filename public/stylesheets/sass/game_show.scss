@@ -1,0 +1,52 @@
+div.game_info {
+    padding: 15px;
+    h2[name=title] {color: blue}
+    h4,h2 {
+        margin: {left: 25%; right: 25%;}
+    }
+
+    h4[name=description] {
+        margin: {left: 5px; right: 0px;}
+    }
+
+    div.game_teams_subpanel {
+        $team_photo_width: 50px;
+        $team_photo_height: 70px;
+
+        height: $team_photo_height + 2px;
+        border: 0px solid;
+        border: {
+            radius: 7px 7px 7px 7px;
+            color: red;
+        }
+        img {
+            width: $team_photo_width;
+            height: $team_photo_height;
+        }
+        span {
+            margin: {left: 5%; right: 5%}
+            padding-top: 10px;
+        }
+        div.first_team {
+            float: left;
+            width: 40%;
+            img {
+                float: left;
+            }
+            h3 {
+                margin-left: $team_photo_width +2
+            }
+        }
+        div.second_team {
+            float: right;
+            width: 40%;
+            img {
+                float: right;
+            }
+            h3 {
+                margin-right: $team_photo_width +2
+            }
+        }
+    }
+    
+}

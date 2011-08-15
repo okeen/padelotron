@@ -38,4 +38,8 @@ module GamesHelper
   def show_game_link(game)
     link_to "View", game_path(game)
   end
+
+  def facebook_game_comments_panel(game)
+    "<fb:comments href='#{game_url(game)}' num_posts='10' width='500'></fb:comments>".html_safe
+  end
 end

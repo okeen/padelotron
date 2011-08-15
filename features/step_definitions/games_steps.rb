@@ -102,6 +102,6 @@ When /^I click on the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today$/
 end
 
 Then /^I should see today at "([^"]*)":"([^"]*)" as game play date$/ do |hours, minutes|
-  page.should have_selector("h4[name=play_date]", :content => "#{hours}:#{minutes}")
+  page.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
 end
 

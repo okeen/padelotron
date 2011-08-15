@@ -1,0 +1,36 @@
+div.game_info {
+  padding: 15px; }
+  div.game_info h2[name=title] {
+    color: blue; }
+  div.game_info h4, div.game_info h2 {
+    margin-left: 25%;
+    margin-right: 25%; }
+  div.game_info h4[name=description] {
+    margin-left: 5px;
+    margin-right: 0px; }
+  div.game_info div.game_teams_subpanel {
+    height: 72px;
+    border: 0px solid;
+    border-radius: 7px 7px 7px 7px;
+    border-color: red; }
+    div.game_info div.game_teams_subpanel img {
+      width: 50px;
+      height: 70px; }
+    div.game_info div.game_teams_subpanel span {
+      margin-left: 5%;
+      margin-right: 5%;
+      padding-top: 10px; }
+    div.game_info div.game_teams_subpanel div.first_team {
+      float: left;
+      width: 40%; }
+      div.game_info div.game_teams_subpanel div.first_team img {
+        float: left; }
+      div.game_info div.game_teams_subpanel div.first_team h3 {
+        margin-left: 52px; }
+    div.game_info div.game_teams_subpanel div.second_team {
+      float: right;
+      width: 40%; }
+      div.game_info div.game_teams_subpanel div.second_team img {
+        float: right; }
+      div.game_info div.game_teams_subpanel div.second_team h3 {
+        margin-right: 52px; }
