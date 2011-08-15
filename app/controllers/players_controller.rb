@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  before_filter :load_facebook_metadata, :only => :show
+
   # GET /players
   # GET /players.xml
   def index
@@ -79,5 +81,20 @@ class PlayersController < ApplicationController
       format.html { redirect_to(players_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def load_facebook_metadata
+    @player = Player.find(params[:id])
+    @facebook_metadata_tags = {
+      'og:title' => @player.name,
+      'og:type' => 'athlete',
+      'og:url' => player_url(@player),
+      'og:image' => "http://graph.facebook.com/#{@player.facebook_id}/picture)",
+      'og:site_name' => "Padelotron",
+      'fb:app_id' => "270031589679955",
+      'og:description' => "#{@player.name}'s page at Padelotron"
+    }
   end
 end

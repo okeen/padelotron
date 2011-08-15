@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   
   before_filter :authenticate_player!, :except => [:index]
+  before_filter :load_facebook_metadata, :only => :show
+
   # GET /games
   # GET /games.xml
   def index
@@ -81,5 +83,19 @@ class GamesController < ApplicationController
       format.html { redirect_to(games_url) }
       format.xml  { head :ok }
     end
+  end
+
+   private
+
+  def load_facebook_metadata
+    @game = Game.find(params[:id])
+    @facebook_metadata_tags = {
+      'og:title' => @game.description,
+      'og:type' => 'sports_game',
+      'og:url' => game_url(@game),
+      'og:site_name' => "Padelotron",
+      'fb:app_id' => "270031589679955",
+      'og:description' => "#{@game.description}'s page at Padelotron"
+    }
   end
 end

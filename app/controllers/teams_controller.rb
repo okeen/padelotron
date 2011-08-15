@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_player!, :except => [:index]
+  before_filter :load_facebook_metadata, :only => :show
+
    # GET /teams
   # GET /teams.xml
   def index
@@ -90,5 +92,20 @@ class TeamsController < ApplicationController
       format.html { redirect_to(teams_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def load_facebook_metadata
+    @team = Team.find(params[:id])
+    @facebook_metadata_tags = {
+      'og:title' => @team.name,
+      'og:type' => 'sports_team',
+      'og:url' => team_url(@team),
+      'og:image' => @team.image.url,
+      'og:site_name' => "Padelotron",
+      'fb:app_id' => "270031589679955",
+      'og:description' => "#{@team.name}'s page at Padelotron"
+    }
   end
 end

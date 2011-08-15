@@ -16,6 +16,12 @@ module ApplicationHelper
     photo_url+= "?type=#{options[:size].to_s}" if options[:size]
     link_to image_tag(photo_url), player.facebook_url
   end
-  
+
+  def facebook_metadata_tags(resource)
+    links = resource.collect do |tag,value|
+      content_tag :meta, "", :property => tag, :content => value
+    end
+    links.join("\n").html_safe
+  end
 end
 

@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>Padelotron</title>
+
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <%= facebook_metadata_tags(@facebook_metadata_tags) if @facebook_metadata_tags %>
 </head>
 <body>
   <%= if player_signed_in?
