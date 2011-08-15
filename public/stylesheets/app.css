@@ -5,8 +5,12 @@ div.game_panel {
 div.game_result_panel.inactive {
     display: none;
 }
-
-h3.provisional_score.hay_movida {
-    color: red;
-    
+.clickable_container a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: parent;
+  text-decoration: none;
+  vertical-align: middle;
 }
+    

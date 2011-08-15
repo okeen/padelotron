@@ -1,6 +1,6 @@
 <h1>Listing games</h1>
 
 <% @games.each do |game| %>
-   <%=  render :partial => 'game_info', :locals => {:game => game} %>
+   <%=  render :partial => 'game_panel', :locals => {:game => game} %>
 <% end %>
 

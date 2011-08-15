@@ -86,15 +86,15 @@ Then /^I should see '(\d+)' games listed$/ do |game_count|
 end
 
 Then /^I should see the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today at "([^"]*)":"([^"]*)"$/ do |game_desc, team1_name, team2_name, hours, minutes|
-  page.should have_selector("div.game_panel a[name=description]", :content => game_desc) do |game_elem|
-    game_elem.should have_selector("li.team1", :content => team1_name)
-    game_elem.should have_selector("li.team2", :content => team2_name)
+  page.should have_selector("div.game_panel a h4", :content => game_desc) do |game_elem|
+    game_elem.should have_selector("div.game_teams_subpanel div.first_team", :content => team1_name)
+    game_elem.should have_selector("div.game_teams_subpanel div.second_team", :content => team2_name)
     game_elem.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
   end
 end
 
 Then /^I should not see the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today at "([^"]*)":"([^"]*)"$/ do |game_desc, team1_name, team2_name, hours, minutes|
-  page.should_not have_selector("div.game_panel a[name=description]", :content => game_desc)
+  page.should_not have_selector("div.game_panel a h4", :content => game_desc)
 end
 
 When /^I click on the game "([^"]*)" between "([^"]*)" and "([^"]*)" for today$/ do |game_desc, team1, team2|

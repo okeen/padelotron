@@ -24,6 +24,7 @@ Feature: Game listing
 
     When I confirm the game "game1"
 
+
   Scenario: List all the confirmed games
     When I go to the games page
     Then I should see '1' games listed

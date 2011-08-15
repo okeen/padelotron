@@ -1,0 +1,16 @@
+<div class="game_panel clickable_container">
+  <a href="<%= game_path(game)%>">
+
+    <div class="game_teams_subpanel">
+      <span>VS</span>
+      <%= first_team_info(game) %>
+      <%= second_team_info(game) %>
+    </div>
+
+    <h4><%= game.game_type%></h4>
+    <h4><%= game.description%></h4>
+    <%= game_date_and_location(game)%>
+    <%= game_like_button(game) %>
+  </a>
+
+</div>
