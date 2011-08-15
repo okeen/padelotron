@@ -7,27 +7,22 @@ $(function() {
     $('button.result_add_new_set_button').live('click', function(e){
         addNewResultRow();
     });
+    
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '270031589679955',
+            status: true,
+            cookie: true,
+            xfbml: true
+        });
+    
 
-//    $('input#result_movida').live('click', function(e){
-//        toggleHayMovida(e.target.checked);
-//    });
-//
-//    function toggleHayMovida(hayMovida){
-//        $('h3.provisional_score').toggleClass("hay_movida");
-//        $.ajax({
-//            type: "GET",
-//            url: "/games",
-//            data: {
-//                disconformed: hayMovida
-//            },
-//            success: function(response, status){
-//                alert("OK");
-//            },
-//            error: function(response, status){
-//                alert("KO");
-//            }
-//        });
-//    }
+    };
+
+    $('body').append('<div id="fb-root"></div>');
+
+    $.getScript(document.location.protocol + '//static.ak.fbcdn.net/connect/en_US/core.debug.js');
+    
     function addNewResultRow(){
         var result_table= $('table.result_sets_table');
         var index = result_table.find("tr.result_set_row").length 
