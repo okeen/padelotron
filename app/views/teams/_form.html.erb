@@ -15,6 +15,10 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
   <%#*<div class="field">%>
     <%#*<h3>Jugador 1</h3>%>
     <%#= collection_select :team, :player1_id, Player.all, :id, :name %><br />

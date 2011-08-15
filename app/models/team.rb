@@ -3,6 +3,8 @@ class Team < ActiveRecord::Base
   belongs_to :player1, :class_name => "Player"
   belongs_to :player2, :class_name => "Player"
 
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
   validates :name, :presence => true, :uniqueness => true
   validates_associated :player1
   validates_associated :player2

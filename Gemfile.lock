@@ -51,6 +51,7 @@ GEM
     childprocess (0.2.1)
       ffi (~> 1.0.6)
     chronic (0.6.2)
+    cocaine (0.1.0)
     cucumber (1.0.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.2)
@@ -116,6 +117,11 @@ GEM
       faraday (~> 0.6.1)
       multi_json (>= 0.0.5)
     orm_adapter (0.0.5)
+    paperclip (2.3.16)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     pickle (0.4.8)
       cucumber (>= 0.8)
       rake
@@ -194,6 +200,7 @@ DEPENDENCIES
   koala
   mongrel (>= 1.2.0.pre2)
   oa-oauth
+  paperclip (~> 2.3)
   pickle
   rails (= 3.0.7)
   rspec-rails
