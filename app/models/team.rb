@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
 
   include Confirmable
 
-  has_many :games, :finder_sql => 'select * from games g where g.team1_id == #{id} or g.team2_id == #{id}'
+  has_many :games, :finder_sql => 'select * from games g where g.team1_id = #{id} or g.team2_id = #{id}'
 
   scope :available_for_today, lambda {
     where('not id in (?)',Game.for_today.collect(&:teams).flatten.collect(&:id) )
