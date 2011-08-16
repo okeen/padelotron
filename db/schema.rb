@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20110814234222) do
     t.string   "name"
     t.string   "email",                             :default => "", :null => false
     t.string   "encrypted_password", :limit => 128, :default => "", :null => false
-    t.integer  "facebook_id"
+    t.integer  "facebook_id",        :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end

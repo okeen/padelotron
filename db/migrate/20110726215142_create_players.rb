@@ -3,7 +3,7 @@ class CreatePlayers < ActiveRecord::Migration
     create_table :players do |t|
       t.string :name
       t.database_authenticatable
-      t.integer :facebook_id
+      t.integer :facebook_id, :limit => 8
 
       t.timestamps
     end
