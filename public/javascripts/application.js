@@ -7,7 +7,19 @@ $(function() {
     $('button.result_add_new_set_button').live('click', function(e){
         addNewResultRow();
     });
-    
+
+
+    $('form#new_team').bind('ajax:success', function(e){
+
+        $("<div></div>").html("yijaaaaaaaaaaa").dialog();
+    });
+
+    $('form#new_team').bind('ajax:failure', function(e){
+
+        $("<div></div>").html("errrrorrr").dialog();
+    });
+
+
     window.fbAsyncInit = function() {
         FB.init({
             appId: window._facebook_appId,
