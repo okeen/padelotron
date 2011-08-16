@@ -22,8 +22,8 @@ task :create_and_load_facebook_test_users => :environment do
     end
   end
 
-  id= '270031589679955'
-  secret = '4e4e4c8e723e2bf6df566624161a543c'
+  id= Padelotron::Application.config.facebook[RAILS_ENV][:app_id]
+  secret = Padelotron::Application.config.facebook[RAILS_ENV][:app_secret]
   @test_users = Koala::Facebook::TestUsers.new(:app_id => id, :secret => secret)
   puts "Connected with Facebook"
 

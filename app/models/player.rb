@@ -1,14 +1,11 @@
 class Player < ActiveRecord::Base
   validates :name, :presence => true, :uniqueness => true
-
   validates :email, :presence => true,  :uniqueness => true
 
   has_many :teams, :finder_sql => 'select * from teams t where t.player1_id = #{id} or t.player2_id = #{id}'
 
   devise :database_authenticatable, :omniauthable
-
   before_create :init_devise_password
-
 
   def self.find_or_create_by_name_and_email(facebook_id,name,email)
     Player.find_by_email_and_name(email,name) || Player.create(:name => name, :email => email, :facebook_id => facebook_id)

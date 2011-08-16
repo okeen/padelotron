@@ -16,8 +16,8 @@ Devise.setup do |config|
                   :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
                 
   when Rails.env.development?
-    config.omniauth :facebook, '270031589679955',
-                  '4e4e4c8e723e2bf6df566624161a543c',
+    config.omniauth :facebook, '156177704462269',
+                  'f63b10cbfd79e539214dcb3849dc8768',
                   :scope => 'email'
     
   when Rails.env.test?

@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def facebook_app_id
+    app_id = Padelotron::Application.config.facebook[RAILS_ENV][:app_id]
+    "<script type='text/javascript'>window._facebook_app_id='#{app_id}'</script>".html_safe
+  end
   def player_photo(player, options = {})
     photo_url = player.facebook_url + "/picture"
     photo_url+= "?type=#{options[:size].to_s}" if options[:size]
