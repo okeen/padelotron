@@ -14,7 +14,6 @@ Devise.setup do |config|
                   '4e4e4c8e723e2bf6df566624161a543c',
                   {:scope => 'email',
                   :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-    OmniAuth.config.full_host = 'http://padelotron.heroku.com/'
                 
   when Rails.env.development?
     config.omniauth :facebook, '270031589679955',
