@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :authenticate_player!, :except => [:index]
+  before_filter :authenticate_player!, :except => [:index, :show]
   before_filter :load_facebook_metadata, :only => :show
 
    # GET /teams
@@ -25,8 +25,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.xml
   def show
-    @team = Team.send(:with_exclusive_scope) {Team.find(params[:id])}
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @team }
@@ -97,7 +96,7 @@ class TeamsController < ApplicationController
   private
 
   def load_facebook_metadata
-    @team = Team.find(params[:id])
+    @team = Team.send(:with_exclusive_scope) {Team.find(params[:id])}
     @facebook_metadata_tags = {
       'og:title' => @team.name,
       'og:type' => 'sports_team',
@@ -105,7 +104,7 @@ class TeamsController < ApplicationController
       'og:image' => @team.image.url,
       'og:site_name' => "Padelotron",
       'fb:app_id' => "270031589679955",
-      'og:description' => "#{@team.name}'s page at Padelotron"
+      'og:description' => "#{@team.name} page at Padelotron"
     }
   end
 end

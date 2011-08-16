@@ -94,7 +94,7 @@ class PlayersController < ApplicationController
       'og:image' => "http://graph.facebook.com/#{@player.facebook_id}/picture)",
       'og:site_name' => "Padelotron",
       'fb:app_id' => "270031589679955",
-      'og:description' => "#{@player.name}'s page at Padelotron"
+      'og:description' => "#{@player.name} page at Padelotron"
     }
   end
 end

@@ -105,3 +105,16 @@ Then /^I should see today at "([^"]*)":"([^"]*)" as game play date$/ do |hours, 
   page.should have_selector("h4.play_date", :content => "#{hours}:#{minutes}")
 end
 
+Then /^I should see a like button for the game "([^"]*)"$/ do |game_desc|
+    page.should have_xpath "//div[@class='game_info']/fb:like"
+end
+
+When /^I press the like button of the game "([^"]*)"$/ do |game_desc|
+  within "div.game_info" do
+    click_button "Like"
+  end
+end
+
+Then /^the page should have the meta attribute "([^"]*)" with value "([^"]*)"$/ do |attr, value|
+  page.should have_xpath "//meta[@property='#{attr}' and contains(@content,'#{value}')]"
+end

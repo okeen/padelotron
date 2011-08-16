@@ -28,7 +28,7 @@ module GamesHelper
   end
 
   def game_like_button(game)
-
+    "<fb:like href='#{game_url(game)}' send='true' width='450' show_faces='true' action='like' font='arial'></fb:like>".html_safe
   end
 
   def game_rating_mini_stars(game)

@@ -37,3 +37,22 @@ When /^I login as #{capture_model}$/ do |player_ref|
   visit root_path
   page.should have_content "Kaixo #{player.name}"
 end
+
+Then /^I should see #{capture_model}'s name$/ do |player_ref|
+  player = model(player_ref)
+  page.should have_content player.name
+end
+
+Then /^I should see #{capture_model}'s photo$/ do |player_ref|
+  player = model(player_ref)
+  page.should have_xpath "//img[@src='#{player.facebook_url}/picture?type=large']"
+end
+
+Then /^I should see a like button for #{capture_model}$/ do |player_ref|
+  player = model(player_ref)
+  page.should have_xpath "//fb:like"
+end
+
+When /^I press the like button of #{capture_model}$/ do |player_ref|
+  player = model(player_ref)
+end

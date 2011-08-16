@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   
-  before_filter :authenticate_player!, :except => [:index]
+  before_filter :authenticate_player!, :except => [:index, :show]
   before_filter :load_facebook_metadata, :only => :show
 
   # GET /games
@@ -17,8 +17,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.xml
   def show
-    @game = Game.send(:with_exclusive_scope) {Game.find(params[:id])}
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @game }
@@ -85,17 +84,17 @@ class GamesController < ApplicationController
     end
   end
 
-   private
+  private
 
   def load_facebook_metadata
-    @game = Game.find(params[:id])
+    @game = Game.send(:with_exclusive_scope) {Game.find(params[:id])}
     @facebook_metadata_tags = {
       'og:title' => @game.description,
       'og:type' => 'sports_game',
       'og:url' => game_url(@game),
       'og:site_name' => "Padelotron",
       'fb:app_id' => "270031589679955",
-      'og:description' => "#{@game.description}'s page at Padelotron"
+      'og:description' => "#{@game.description} page at Padelotron"
     }
   end
 end

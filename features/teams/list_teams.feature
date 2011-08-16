@@ -29,6 +29,10 @@ Feature: Team listing
     Then I should see "Sign in with Facebook"
     Then I should see '0' teams listed
 
+  Scenario: Allow visitors to view teams info
+    When I go to the first team's page
+    Then I should see "team1"
+
   Scenario: Show the available teams to play a game today
     Given the following teams exist:
         |name | player1        | player2        |
@@ -38,7 +42,6 @@ Feature: Team listing
     Given the following games exist:
         |description | team1        | team2        | play_date          |
         |game1       | the 1st team | the 2nd team | 01 Feb 2011, 17:30 |
-
     When I confirm the game "game1"
     And I login as the first player
     And I go to the teams page

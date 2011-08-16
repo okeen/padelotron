@@ -92,3 +92,20 @@ Then /^I should not see team "([^"]*)" basic info$/ do |team_name|
   page.should_not have_xpath("//h4[text()='#{team_name}']")
 end
 
+Then /^I should see a like button for team with name "([^"]*)"$/ do |team_name|
+  Capybara.default_wait_time = 5
+  Capybara.ignore_hidden_elements = false
+
+  #page.should have_selector "a.connect_widget_like_button.like_button_like"
+end
+
+When /^I press the like button of team with name "([^"]*)"$/ do |team_name|
+  Capybara.default_wait_time = 5
+  Capybara.ignore_hidden_elements = false
+  within "div.facebook_like_panel" do
+    #click_on "Like"
+    link = page.find(:xpath, "//a[@class='connect_widget_like_button']", :visible => false).first
+    link.should_not be_blank
+    link.click
+  end
+end

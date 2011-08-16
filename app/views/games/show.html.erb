@@ -12,8 +12,6 @@
 
   <%= game_like_button(@game) %>
 
-
-
   <% if @game.players.include?(current_player) %>
 
     <%= set_game_result_button(@game) %>

@@ -26,5 +26,9 @@
       <% end %>
     </ul>
   </fieldset>
+  <div class="facebook_like_panel">
+    <%= team_like_button(@team) %>
+    <%= facebook_comments_panel(@team) %>
+  </div>
+  
 </div>
-<%=  facebook_comments_panel(@team) %>

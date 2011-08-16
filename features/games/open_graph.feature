@@ -1,8 +1,9 @@
-Feature: Game listing
+Feature: Game Open Graph metadata inclussion and social features
 
-  In order to know what games the people have played
-  As a Player
-  I want to view all available games
+  In order to easily share game offers and results and contact my friends,
+  As a user
+  I want to share my favourite games through Facebook with my friends
+  and interact with my friends activity.
 
   Background: Existing players "player1/1a@a.com", "player2/2@a.com" and "player3/3@a.com",
   existing confirmed team "team1","team2", "team3", existing confirmed game between "team1" and "team2" for today
@@ -24,23 +25,25 @@ Feature: Game listing
 
     When I confirm the game "game1"
 
-
-  Scenario: List all the confirmed games
-    When I go to the games page
-    Then I should see '1' games listed
-    And I should see the game "game1" between "team1" and "team2" for today at "00":"00"
-
-  Scenario: Show details of a game between "team1" and "team2" by loged in "player1"
-    When I login as the first player
+@buggy_test
+@javascript
+  Scenario: Player 4 likes the game "game1" and Player 1 sees that after
+    When I login as the 4th player
     And I go to the games page
     Then I should see the game "game1" between "team1" and "team2" for today at "00":"00"
     When I click on the game "game1" between "team1" and "team2" for today
     Then I should see "Friendly game between team1 and team2"
-    And I should see today at "00":"00" as game play date
+    And I should see a like button for the game "game1"
+    When I press the like button of the game "game1"
+    Then I should see "You like this"
 
-  Scenario: Show details of a game between "team1" and "team2" to unknown visitor
+  Scenario: Include Open Graph metadata for the game in the page headers
     When I go to the games page
     Then I should see the game "game1" between "team1" and "team2" for today at "00":"00"
     When I click on the game "game1" between "team1" and "team2" for today
     Then I should see "Friendly game between team1 and team2"
-    
+    And the page should have the meta attribute "og:title" with value "game1"
+    And the page should have the meta attribute "og:type" with value "sports_game"
+    And the page should have the meta attribute "og:url" with value "/games/1"
+    And the page should have the meta attribute "og:site_name" with value "Padelotron"
+    And the page should have the meta attribute "og:description" with value "game1 page at Padelotron"

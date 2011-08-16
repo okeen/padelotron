@@ -20,7 +20,7 @@ Feature: Log in with my Facebook account
     And I enter the first unconnected player 's email as Email
     And I enter the first unconnected player 's password as Password
     And I press "Log In"
-    And I press "Permitir"
+    And I press "Allow"
     Then I should see "Kaixo "
 
   @buggy_test
