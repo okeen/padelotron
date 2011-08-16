@@ -7,9 +7,9 @@ class AddImagesToTeams < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :teams, :image_file_name,    :string
-    remove_column :teams, :image_content_type, :string
-    remove_column :teams, :image_file_size,    :integer
-    remove_column :teams, :image_updated_at,   :datetime
+    remove_column :teams, :image_file_name
+    remove_column :teams, :image_content_type
+    remove_column :teams, :image_file_size
+    remove_column :teams, :image_updated_at
   end
 end
