@@ -60,7 +60,7 @@ class TeamsController < ApplicationController
         format.json  { render :json =>{:message => message, :model => @team}.to_json, :status => :created}
       else
         format.html { render :action => "new" }
-        format.json  { render :json =>{:errors => @team.errors}.to_json, :status => :unprocessable_entity }
+        format.json  { render :json =>@team.errors, :status => :unprocessable_entity }
       end
     end
   end

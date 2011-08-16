@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   before_filter :load_facebook_metadata, :only => :show
+  before_filter :load_facebook_player_data, :only => :create
 
   # GET /players
   # GET /players.xml
@@ -46,11 +47,15 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
+        sign_in(@player)
         format.html { redirect_to(@player, :notice => 'Player created.') }
-        format.xml  { render :xml => @player, :status => :created, :location => @player }
+        format.js  { render :json => {
+                                :message => "Player created", 
+                                :model =>@player}.to_json,
+                                :status => :created}
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+        format.js  { render :json => @player.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -97,4 +102,5 @@ class PlayersController < ApplicationController
       'og:description' => "#{@player.name} page at Padelotron"
     }
   end
+  
 end

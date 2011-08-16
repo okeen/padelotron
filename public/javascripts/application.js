@@ -11,29 +11,51 @@ $(function() {
 
     $('form#new_team').live('ajax:success', function(e, response){
 
-        $("<div></div>").html(response.message).dialog();
+        $("<div></div>").html(response.message +
+                         "<br/><input type='checkbox' name='create_facebook_request'>Send Request via Facebook</input>")
+                        .dialog({
+                            buttons: {Ok: function(){
+                                    if ($(this).find('input')[0].checked){
+                                        sendFacebookTeamRequest(response.model.team);
+                                    }
+                                    $(this).dialog("close");
+                                }
+                            }
+                        });
     });
 
     $('form#new_team').live('ajax:error', function(e, response){
-        var errors = eval(response.responseText);
-        $("<div></div>").html(errors.join("/n")).dialog();
+        var error_messages=[];
+        var errors_obj = $.parseJSON(response.responseText);
+        _(errors_obj).each( function(errors,attribute){
+            error_messages.push("-"+attribute+" " + errors.join(", "));
+        });
+        $("<div></div>").html(error_messages.join("/n"))
+                        .dialog(
+                            {title: 'Errors saving the team'}
+                    );
     });
 
+//    window.fbAsyncInit = function() {
+//        FB.init({
+//            appId: window._facebook_appId,
+//            status: true,
+//            cookie: true,
+//            xfbml: true
+//        });
+//
+//
+//    };
 
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: window._facebook_appId,
-            status: true,
-            cookie: true,
-            xfbml: true
-        });
     
-
-    };
-
-    $('body').append('<div id="fb-root"></div>');
-
-    $.getScript(document.location.protocol + '//static.ak.fbcdn.net/connect/en_US/core.debug.js');
+    function sendFacebookTeamRequest(team){
+        alert(team);
+        FB.ui({
+            method: 'apprequests',
+            message: 'You should learn more about this awesome game.',
+            data: 'tracking information for the user'
+        });
+    }
     
     function addNewResultRow(){
         var result_table= $('table.result_sets_table');

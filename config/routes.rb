@@ -10,6 +10,9 @@ Padelotron::Application.routes.draw do
   get "teams/available" => "teams#available", :as => "available_teams"
   resources :teams
 
+  post "player_session/facebook/login" => "players/facebook_sessions#login", :as => "facebook_js_login"
+  post "player_session/facebook/logout" => "players/facebook_sessions#logout", :as => "facebook_js_logout"
+
   devise_for :players, :controllers => { :omniauth_callbacks => "players/omniauth_callbacks" }
   devise_scope :player do
     get '/auth/:provider/callback' => 'players/omniauth_callbacks#facebook'

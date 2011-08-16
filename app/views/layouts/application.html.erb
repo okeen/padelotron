@@ -8,11 +8,14 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag :jquery_ui %>
+  <%= javascript_include_tag "session"%>
   <%= csrf_meta_tag %>
   <%= facebook_metadata_tags(@facebook_metadata_tags) if @facebook_metadata_tags %>
   <%= facebook_app_id %>
 </head>
 <body>
+  <fb:login-button perms="read_stream,publish_stream,email" show-faces="false" width="200" max-rows="1"></fb:login-button>
+
   <%= if player_signed_in?
         puts "Current: #{current_player.inspect}"
         render 'players/player_session_panel', :locals => {:player => current_player}
