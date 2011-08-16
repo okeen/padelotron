@@ -5,8 +5,6 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -38,8 +36,9 @@ group :development, :test do
    gem "pickle"
    gem "chronic"
    gem "timecop"
+   gem "sqlite3"
 end
-gem "mongrel", '>= 1.2.0.pre2' 
+
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'koala'
