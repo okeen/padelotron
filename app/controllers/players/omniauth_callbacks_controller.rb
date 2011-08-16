@@ -3,7 +3,7 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_filter :log_oauth_params
 
   def facebook
-    # You need to implement the method below in your model
+    logger.info "Omniauth env: #{env.inspect}"
     @player = Player.find_for_facebook_oauth(env["omniauth.auth"], current_player)
     if @player.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
@@ -21,7 +21,7 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def log_oauth_params
-    logger.debug "OAuth: " + env["omniauth.auth"].inspect
+    #logger.info "OAuth: " + env["omniauth.auth"].inspect
   end
 
 end
