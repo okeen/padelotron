@@ -37,7 +37,7 @@ rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 #Capybara.server_port = 3001
-#Capybara.app_host = "localhost:3001"
+#Capybara.app_host = "http://localhost:3001"
 ## You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #

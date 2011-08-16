@@ -9,14 +9,14 @@ $(function() {
     });
 
 
-    $('form#new_team').bind('ajax:success', function(e){
+    $('form#new_team').live('ajax:success', function(e, response){
 
-        $("<div></div>").html("yijaaaaaaaaaaa").dialog();
+        $("<div></div>").html(response.message).dialog();
     });
 
-    $('form#new_team').bind('ajax:failure', function(e){
-
-        $("<div></div>").html("errrrorrr").dialog();
+    $('form#new_team').live('ajax:error', function(e, response){
+        var errors = eval(response.responseText);
+        $("<div></div>").html(errors.join("/n")).dialog();
     });
 
 

@@ -20,6 +20,17 @@ Feature: New Team creation
     Then I should see "Team creation process opened. An email have been sent to player2 to confirm the team creation"
     And the 2nd player should receive a "team1" membership ask email from "player1"
 
+  @javascript
+  @wip
+  Scenario: Player 1 creates a new team named "team1" with "player2" using javascript browser
+    When I login as the first player
+    And I go to the new team page
+    And I enter "team1" as team name
+    And I select "player2" as team mate
+    And I press "Create Team"
+    Then I should see "Team creation process opened. An email have been sent to player2 to confirm the team creation"
+    And the 2nd player should receive a "team1" membership ask email from "player1"
+
   Scenario: Unknown visitor try to create a new team named "team1" with "player2" and gets kicked
     And I go to the new team page
     Then I should see "Sign in with Facebook"

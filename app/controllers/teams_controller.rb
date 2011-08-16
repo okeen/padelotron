@@ -55,12 +55,12 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        
-        format.html { redirect_to(@team, :notice => "Team creation process opened. An email have been sent to #{@team.player2.name} to confirm the team creation") }
-        format.xml  { render :xml => @team, :status => :created, :location => @team }
+        message = "Team creation process opened. An email have been sent to #{@team.player2.name} to confirm the team creation"
+        format.html { redirect_to(@team, :notice => message) }
+        format.json  { render :json =>{:message => message, :model => @team}.to_json, :status => :created}
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
+        format.json  { render :json =>{:errors => @team.errors}.to_json, :status => :unprocessable_entity }
       end
     end
   end
