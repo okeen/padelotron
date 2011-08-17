@@ -1,46 +1,62 @@
 $(function() {
     window.Session = Backbone.Model.extend({
         defaults: {
-            logged: false
+            logged_facebook: true,
+            logged_padelotron: false
         },
 
         initialize: function(){
-            _.bindAll(this, 'session_changed', 'first_time_session');
-
+            _.bindAll(this, 'session_changed', 'first_time_session', 'user_logged_in');
+            if ($.cookie("_padelotron_tcg")== "1"){
+                console.log("Found active Padelotron session cookie")
+                this.set({
+                    'logged_padelotron': true
+                });
+            }
         },
         session_changed: function(session_data){
             var status = session_data.status;
-            alert("Session " + status);
-            if (status == "notConnected") return;
-            var url = status == 'connected' ?
-                "/player_session/facebook/login" :
-                "/player_session/facebook/logout" ;
+            console.log("FB::session new status: "+status);
+            if (status == "notConnected") {
+                this.set({
+                    'logged_facebook': false
+                });
+                return;
+            }
+            if (this.get('logged_facebook') && this.get('logged_padelotron')) {
+                console.log("Already logged in FB, ignoring");
+                return;
+            }
             this.set({
-                'logged': session_data.status == "connected"
+                'logged_facebook': session_data.status == "connected"
                 });
             $.ajax({
-                url: url,
+                url: "/player_session/facebook/login",
                 type: 'POST',
                 data: {
                     facebook_access_token: session_data.session.access_token
                 },
-                success: function(e, response){
-                    alert("User session" + response+ " OK");
-                }
+                success: this.user_logged_in
             })
+        },
+        user_logged_in: function(e, response){
+            console.log("Padelotron::session logged in for user: ");
+            this.set({'logged_padelotron': true});
+            alert("Logged padelotron true")
+
         },
         first_time_session: function(session_data){
             //New user on site, notify it
-            $.ajax({
-                url: "/players/",
-                type: 'POST',
-                data: {
-                    facebook_access_token: session_data.session.access_token
-                },
-                success: function(response){
-                    alert("New User created OK");
-                }
-            })
+//            $.ajax({
+//                url: "/players/",
+//                type: 'POST',
+//                data: {
+//                    facebook_access_token: session_data.session.access_token
+//                },
+//                success: function(response){
+//                    alert("New User created OK");
+//                }
+//            })
         }
     });
 

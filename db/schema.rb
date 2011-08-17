@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110814234222) do
+ActiveRecord::Schema.define(:version => 20110817130703) do
 
   create_table "confirmations", :force => true do |t|
     t.string   "code"
@@ -34,11 +34,12 @@ ActiveRecord::Schema.define(:version => 20110814234222) do
 
   create_table "players", :force => true do |t|
     t.string   "name"
-    t.string   "email",                             :default => "", :null => false
-    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
-    t.integer  "facebook_id",        :limit => 8
+    t.string   "email",                              :default => "", :null => false
+    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
+    t.integer  "facebook_id",         :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "remember_created_at"
   end
 
   create_table "results", :force => true do |t|

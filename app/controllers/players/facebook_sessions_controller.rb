@@ -3,8 +3,13 @@ class Players::FacebookSessionsController < ApplicationController
   before_filter :load_facebook_player_data
 
   def login
-    @player = Player.find_by_facebook_id(params[:player][:facebook_id])
+    @player = Player.find_or_create_by_name_and_email(
+                        params[:player][:facebook_id].to_i,
+                        params[:player][:name],
+                        params[:player][:email]
+                      )
     if @player and sign_in(@player)
+      cookies[:_padelotron_tcg]= { :value => "1", :expires => DateTime.now + 30.minutes}
       render :json => {
                 :message => "Kaixo #{@player.name}",
                 :model => @player}.to_json,
@@ -18,8 +23,9 @@ class Players::FacebookSessionsController < ApplicationController
   end
 
   def logout
-    @player = Player.find_by_facebook_id(params[:player][:facebook_id])
+    @player = Player.find_by_facebook_id(params[:player][:facebook_id].to_i)
     if @player and sign_out(@player)
+      cookies[:_padelotron_tcg]= nil
       render :json => {
                 :message => "Logged out #{@player.name}",
                 :model => @player}.to_json,

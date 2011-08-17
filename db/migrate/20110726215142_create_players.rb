@@ -4,7 +4,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :name
       t.database_authenticatable
       t.integer :facebook_id, :limit => 8
-
+      t.string :extra_field
       t.timestamps
     end
   end

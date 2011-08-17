@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
   @facebook_players = YAML.load(File.open("db/fb_test_users.yaml"))
   #offset where uninstalled players start in the list
-  @offset = 100
+  @offset = @facebook_players.count - 5
 
   
   sequence :player_name do |n|

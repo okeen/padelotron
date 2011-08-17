@@ -18,7 +18,9 @@ end
 
 
 When /^I enter #{capture_model} 's email as Email$/ do |player_ref|
+  Capybara.default_wait_time= 5
   player = model(player_ref)
+  puts player.inspect
   within_window "Log In | Facebook" do
       fill_in 'Email:', :with => player.email
   end
@@ -26,8 +28,9 @@ end
 
 When /^I enter #{capture_model} 's password as Password$/ do |player_ref|
   player = model(player_ref)
+  password = FacebookTestUsers.named(player.name)['password']
   within_window "Log In | Facebook" do
-      fill_in 'Password:', :with => player.encrypted_password
+      fill_in 'Password:', :with => password
   end
 end
 
@@ -55,4 +58,15 @@ end
 
 When /^I press the like button of #{capture_model}$/ do |player_ref|
   player = model(player_ref)
+end
+
+When /^I press the FB "([^"]*)" button$/ do |button|
+  Capybara.default_wait_time= 5
+  page.find("a.fb_button").click
+end
+
+When /^I press "([^"]*)" in Facebook$/ do |button_name|
+  within_window "Log In | Facebook" do
+    When "I press \"Log In\""
+  end
 end

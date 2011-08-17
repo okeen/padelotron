@@ -36,8 +36,30 @@ begin
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
-#Capybara.server_port = 3001
-#Capybara.app_host = "http://localhost:3001"
+Capybara.configure do |c|
+  c.server_port = 3001
+  c.app_host = "http://localhost:3001"
+  #c.server {|app, port| Capybara.run_default_server(app, 3002)}
+end
+
+class FacebookTestUsers
+  unless File.exists? "db/fb_test_users.yaml"
+    raise "Please generate first the facebook test users file"
+  end
+  @facebook_players = YAML.load(File.open("db/fb_test_users.yaml"))
+  #offset where uninstalled players start in the list
+  @offset = @facebook_players.count -5
+
+  def self.named(name)
+    @facebook_players.select{ |p| p['name'] == name}.first
+  end
+
+  def self.nth(n, options = {:confirmed => true})
+    ofset = options[:confirmed] ? 0 : @offset
+    @facebook_players[n + ofset]
+  end
+
+end
 ## You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #

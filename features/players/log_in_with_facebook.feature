@@ -14,13 +14,23 @@ Feature: Log in with my Facebook account
 
   @buggy_test
   @selenium
-  Scenario: Log in with the last players Facebook account and link with Facebook Connect
+  Scenario: Log in with the last players Facebook account and link with Facebook Connect via omniauth
     When I go to the root page
     And I follow "Sign in with Facebook"
     And I enter the first unconnected player 's email as Email
     And I enter the first unconnected player 's password as Password
     And I press "Log In"
     And I press "Allow"
+    Then I should see "Kaixo "
+
+@selenium
+@wip
+  Scenario: Log in with the first connected player's Facebook account and link with Facebook Connect via Facebook Login
+    When I go to the root page
+    And I press the FB "Log In" button
+    And I enter the first player 's email as Email
+    And I enter the first player 's password as Password
+    And I press "Log In" in Facebook
     Then I should see "Kaixo "
 
   @buggy_test

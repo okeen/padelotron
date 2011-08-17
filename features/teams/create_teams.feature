@@ -21,7 +21,6 @@ Feature: New Team creation
     And the 2nd player should receive a "team1" membership ask email from "player1"
 
   @javascript
-  @wip
   Scenario: Player 1 creates a new team named "team1" with "player2" using javascript browser
     When I login as the first player
     And I go to the new team page
