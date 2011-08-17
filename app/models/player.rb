@@ -25,6 +25,14 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def as_json(options={})
+    {
+      :name => name,
+      :facebook_id => facebook_id,
+      :id => id
+   }
+  end
+  
   def facebook_url
     "http://graph.facebook.com/#{facebook_id}"
   end

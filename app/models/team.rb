@@ -25,6 +25,13 @@ class Team < ActiveRecord::Base
     "team #{self.name}"
   end
 
+  def as_json(options = {})
+    super(:only => [:name],
+          :methods => :image_url,
+          :include => {
+             :player1 => {:only => [:name, :id, :facebook_id]},
+             :player2 => {:only => [:name, :id, :facebook_id]}})
+  end
   #TODO: refactorizar esto para no crear estos cuatro métodos por cada confirmable
   def confirmation_message
     "joined #{self.name}"

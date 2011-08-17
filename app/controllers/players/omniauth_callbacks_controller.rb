@@ -6,7 +6,7 @@ class Players::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @player = Player.find_for_facebook_oauth(env["omniauth.auth"], current_player)
     if @player.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
-      cookies[:_padelotron_tcg]= { :value => "1", :expires => DateTime.now + 30.minutes}
+      cookies[:_padelotron_tcg]= { :value => "1", :expires => 30.minutes.from_now.utc}
       sign_in_and_redirect @player, :event => :authentication
     else
       session["devise.facebook_data"] = env["omniauth.auth"]

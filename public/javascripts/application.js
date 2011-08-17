@@ -49,12 +49,17 @@ $(function() {
 
     
     function sendFacebookTeamRequest(team){
-        alert(team);
+        console.debug("FB:Request panel for Team:" +team.name);
+        var msg = team.player1.name + "wants you to join the team " + team.name;
         FB.ui({
             method: 'apprequests',
-            message: 'You should learn more about this awesome game.',
+            to: team.player2.facebook_id,
+            message: msg,
             data: 'tracking information for the user'
-        });
+          },
+         function(response){
+            console.log("FB:Request created, id:" + response);
+         });
     }
     
     function addNewResultRow(){
