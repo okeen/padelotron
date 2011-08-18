@@ -34,8 +34,7 @@ module ApplicationHelper
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 
-  </script>
-    "
+  </script>".html_safe
   end
   def facebook_metadata_tags(resource)
     links = resource.collect do |tag,value|
