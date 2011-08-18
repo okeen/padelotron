@@ -17,6 +17,22 @@ class Result < ActiveRecord::Base
     end
   end
   
+  def winner
+    scores = {:team1=> 0, :team2 => 0}
+    sets.each do |set| 
+      if set.team1_score > set.team2_score
+        scores[:team1]+=1
+      else
+        scores[:team2]+=1
+      end
+    end
+    return scores[:team1] > scores[:team2] ? team1 : team2
+  end
+
+  def on_confirm
+    game.update_attribute :winner_team_id, winner.id
+  end
+  
   #messages to show in confirmations
   def confirmation_message
     "confirmed the result of the game #{game.description}"
