@@ -3,11 +3,11 @@ module ApplicationHelper
   def top_navigation_menu
     content_tag :ul, :id => 'nav' do |ul|
       (
-      "<li>#{link_to("Players", players_path)}</li>"+
-      "<li>#{link_to("Teams", teams_path)}</li>"+
-      "<li>#{link_to("Games", games_path)}</li>"+
-      "<li>#{link_to("Create a Game", new_game_path)}</li>"
-        ).html_safe
+        "<li>#{link_to("Players", players_path)}</li>"+
+          "<li>#{link_to("Teams", teams_path)}</li>"+
+          "<li>#{link_to("Games", games_path)}</li>"+
+          "<li>#{link_to("Create a Game", new_game_path)}</li>"
+      ).html_safe
     end
   end
 
@@ -21,6 +21,22 @@ module ApplicationHelper
     link_to image_tag(photo_url), player.facebook_url
   end
 
+  def google_analytics
+    "<script type='text/javascript'>
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25216991-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+    "
+  end
   def facebook_metadata_tags(resource)
     links = resource.collect do |tag,value|
       content_tag :meta, "", :property => tag, :content => value

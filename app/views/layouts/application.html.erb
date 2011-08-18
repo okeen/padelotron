@@ -12,6 +12,8 @@
   <%= csrf_meta_tag %>
   <%= facebook_metadata_tags(@facebook_metadata_tags) if @facebook_metadata_tags %>
   <%= facebook_app_id %>
+  <%=  google_analytics %>
+  
 </head>
 <body>
   <fb:login-button perms="read_stream,publish_stream,email" show-faces="false" width="200" max-rows="1"></fb:login-button>
