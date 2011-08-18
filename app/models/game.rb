@@ -4,9 +4,10 @@ class Game < ActiveRecord::Base
   belongs_to :team2, :class_name => "Team"
   belongs_to :winner_team, :class_name => "Team"
 
-  
   has_one :result
   #after_create :create_result
+
+  delegate :sets, :to => :result
   
   include Confirmable
 

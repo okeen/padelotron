@@ -9,11 +9,12 @@
     <%= second_team_info(@game) %>
   </div>
   <h4 name="description"><%= @game.description%></h4>
-
+  <% if @game.winner_team %>
+    <%= render :partial => 'game_result_panel', :locals => {:game => @game} %>
+  <% end %>
   <%= game_like_button(@game) %>
 
-  <% if @game.players.include?(current_player) %>
-
+  <% if @game.players.include?(current_player) and @game.winner_team.blank? %>
     <%= set_game_result_button(@game) %>
     <div class="game_result_panel inactive" >
       <h4>Please set the result of the game</h4>

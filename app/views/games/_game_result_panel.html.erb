@@ -1,0 +1,17 @@
+<div class="game_result_panel">
+  <p>Winner: <%= game.winner_team %> </p>
+  <table id="game_result_sets">
+    <tr>
+      <th><%= game.team1.name%></th>
+      <th</th>
+      <th><%= game.team2.name%></th>
+    </tr>
+    <% game.sets.each do |set| %>
+    <tr>
+      <td><%= set.team1_score %></td>
+      <td> - </td>
+      <td><%= set.team2_score %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
