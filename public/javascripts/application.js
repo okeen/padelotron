@@ -1,4 +1,8 @@
 $(function() {
+    //mock firebug console if undefined
+    if(typeof console === "undefined") {
+       console = { log: function() { } };
+    }
     $('button.set_game_result_button').live('click', function(e){
         var result_panel= $(e.target.parentNode).next();
         result_panel.toggleClass("inactive");

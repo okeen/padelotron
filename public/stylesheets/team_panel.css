@@ -2,6 +2,7 @@ div.team_panel {
   width: 270px;
   height: 70px;
   padding: 5px;
+  overflow: hidden;
   margin-top: 10px;
   border: 1px solid;
   border-radius: 7px 7px 7px 7px; }

@@ -24,8 +24,7 @@ Feature: Log in with my Facebook account
     Then I should see "Kaixo "
 
 @selenium
-@wip
-  Scenario: Log in with the first connected player's Facebook account and link with Facebook Connect via Facebook Login
+ Scenario: Log in with the first connected player's Facebook account and link with Facebook Connect via Facebook Login
     When I go to the root page
     And I press the FB "Log In" button
     And I enter the first player 's email as Email
