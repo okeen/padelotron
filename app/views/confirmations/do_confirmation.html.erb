@@ -1,1 +1,12 @@
-<p> You <%= confirmation_message(@confirmation) %>
+<div id="confirmed_model_panel">
+  <input type="hidden" name="model_confirmable_type" value="<%= @confirmation.confirmable_type%>"></input>
+  <input type="hidden" name="model_confirmable_id" value="<%= @confirmable.id%>"></input>
+  <input type="hidden" name="model_confirmation_message" value="<%=confirmation_message(@confirmation)%>"></input>
+
+  <p> You <%= confirmation_message(@confirmation) %> </p>
+
+  <button class="post_to_facebook">Post in Facebook</button>
+
+</div>
+
+<%= javascript_include_tag 'post_confirmation_fb'  %>
