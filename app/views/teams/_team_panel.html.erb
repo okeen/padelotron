@@ -5,8 +5,8 @@
   <div class="team_info">
     <h4 class="team_name"><%= link_to team.name, team_path(team) %></h4>
     <ul class="team_players">
-      <% team.players.each do |player| %>
-        <li class="player"><%= player_photo(player, :size => :square)%><%= link_to player.name , player_path(player) %> </li>
+      <% team.players.each_with_index do |player,i| %>
+        <li class="player" name="player<%=i+1%>"><%= player_photo(player, :size => :square)%><%= link_to player.name , player_path(player) %> </li>
       <% end %>
     </ul>
   </div>
