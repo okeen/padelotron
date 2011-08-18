@@ -30,7 +30,8 @@ class Team < ActiveRecord::Base
           :methods => :image_url,
           :include => {
              :player1 => {:only => [:name, :id, :facebook_id]},
-             :player2 => {:only => [:name, :id, :facebook_id]}})
+             :player2 => {:only => [:name, :id, :facebook_id]},
+             :confirmations => {:only => [:code, :action]   }})
   end
   #TODO: refactorizar esto para no crear estos cuatro métodos por cada confirmable
   def confirmation_message

@@ -12,16 +12,17 @@ $(function() {
     $('form#new_team').live('ajax:success', function(e, response){
 
         $("<div></div>").html(response.message +
-                         "<br/><input type='checkbox' name='create_facebook_request'>Send Request via Facebook</input>")
-                        .dialog({
-                            buttons: {Ok: function(){
-                                    if ($(this).find('input')[0].checked){
-                                        sendFacebookTeamRequest(response.model.team);
-                                    }
-                                    $(this).dialog("close");
-                                }
-                            }
-                        });
+            "<br/><input type='checkbox' name='create_facebook_request'>Send Request via Facebook</input>")
+        .dialog({
+            buttons: {
+                Ok: function(){
+                    if ($(this).find('input')[0].checked){
+                        sendFacebookTeamRequest(response.model.team);
+                    }
+                    $(this).dialog("close");
+                }
+            }
+        });
     });
 
     $('form#new_team').live('ajax:error', function(e, response){
@@ -31,35 +32,52 @@ $(function() {
             error_messages.push("-"+attribute+" " + errors.join(", "));
         });
         $("<div></div>").html(error_messages.join("/n"))
-                        .dialog(
-                            {title: 'Errors saving the team'}
-                    );
+        .dialog(
+        {
+            title: 'Errors saving the team'
+        }
+        );
     });
 
-//    window.fbAsyncInit = function() {
-//        FB.init({
-//            appId: window._facebook_appId,
-//            status: true,
-//            cookie: true,
-//            xfbml: true
-//        });
-//
-//
-//    };
+    //    window.fbAsyncInit = function() {
+    //        FB.init({
+    //            appId: window._facebook_appId,
+    //            status: true,
+    //            cookie: true,
+    //            xfbml: true
+    //        });
+    //
+    //
+    //    };
 
+    function save_team_facebook_request_id(response){
+        console.log("FB:Request created, id:" + response);
+        var request_id = response.request_ids[0];
+        if (! request_id) {
+            console.log("FB:Request response ERROR, no request id:" + response);
+            return;
+        }
+        $.ajax({
+            url: "/confirmations/" + this.team.confirmations[0].code,
+            type: 'PUT',
+            data: {
+                'confirmation[facebook_request_id]': request_id
+            },
+            success: this.user_logged_in
+        })
+    }
     
     function sendFacebookTeamRequest(team){
         console.debug("FB:Request panel for Team:" +team.name);
+        this.team=team;
         var msg = team.player1.name + "wants you to join the team " + team.name;
+        _.bind('save_team_facebook_request_id', this);
         FB.ui({
             method: 'apprequests',
             to: team.player2.facebook_id,
             message: msg,
             data: 'tracking information for the user'
-          },
-         function(response){
-            console.log("FB:Request created, id:" + response);
-         });
+        },save_team_facebook_request_id);
     }
     
     function addNewResultRow(){

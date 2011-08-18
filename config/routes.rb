@@ -1,10 +1,15 @@
 Padelotron::Application.routes.draw do
   
+  get "home" => "home#home", :as => "home"
+
   resources :games do
     resource :result
   end
 
   get "confirmations/:code" => "confirmations#show", :as => "show_confirmation"
+  post "confirmations/:code" => "confirmations#update", :as => "update_confirmation"
+  put "confirmations/:code" => "confirmations#update", :as => "update_confirmation"
+
   post "confirmations/:code/do" => "confirmations#do_confirmation", :as => "do_confirmation"
 
   get "teams/available" => "teams#available", :as => "available_teams"
