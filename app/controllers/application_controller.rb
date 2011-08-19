@@ -6,7 +6,20 @@ class ApplicationController < ActionController::Base
   def facebook_access_token
     session[:facebook_access_token]
   end
-  
+
+  def facebook_app_access_token
+    oauth = Koala::Facebook::OAuth.new(
+      Padelotron::Application.config.facebook[Rails.env][:app_id],
+      Padelotron::Application.config.facebook[Rails.env][:app_secret])
+    token = oauth.get_app_access_token
+    logger.debug "FB client token: #{token}"
+    token
+  end
+
+  def facebook_app_graph_path
+    "/#{Padelotron::Application.config.facebook[Rails.env][:app_id]}"
+  end
+
   def load_facebook_player_data
     token = params[:facebook_access_token]
     unless token.blank?

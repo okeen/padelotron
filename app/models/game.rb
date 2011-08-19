@@ -69,27 +69,27 @@ class Game < ActiveRecord::Base
     require 'koala'
     graph = Koala::Facebook::GraphAndRestAPI.new(facebook_token)
     #picture = Koala::UploadableIO.new(File.open("PATH TO YOUR EVENT IMAGE"))
-    params = {
-      #:picture => picture,
-      :name => "Padel Game: #{team1.name} VS #{team2.name}",
-      :description => "Padel game between teams #{team1.name}(#{team1.player1.name}, #{team1.player2.name})"\
-        + " and #{team2.name}(#{team2.player1.name}, #{team2.player2.name})",
-      :owner => initiator_player.facebook_id,
-      :location => "A mina casa",
-      :street => "Rua da Rosa 27",
-      :city => "Santiago Compostela",
-      :start_time => self.play_date,
-      :end_time => self.play_date + 1.hour
-    }
-    #invite the other players
-    event = graph.put_object('me', 'events', params )
+    event = graph.put_object("/#{Padelotron::Application.config.facebook[Rails.env][:app_id]}","events",
+      {
+        #:picture => picture,
+        :name => "Padel Game: #{team1.name} VS #{team2.name}",
+        :description => "Padel game between teams #{team1.name}(#{team1.player1.name}, #{team1.player2.name})"\
+          + " and #{team2.name}(#{team2.player1.name}, #{team2.player2.name})",
+        #:owner => initiator_player.facebook_id,
+        :location => "A mina casa",
+        :street => "Rua da Rosa 27",
+        :city => "Santiago Compostela",
+        :start_time => self.play_date,
+        :end_time => self.play_date + 1.hour
+      })
     update_attribute(:facebook_event_id, event['id'])
     logger.debug "Event: #{event}"
-    graph.rest_call("events.invite", {
+      invites= graph.rest_call("events.invite", {
         :eid => event['id'],
-        :uids =>  ((players) -[initiator_player]).collect(&:facebook_id).join(","),
-        :personal_message => "You have a padel game to play"
+        :uids =>  players.collect(&:facebook_id),
+        :personal_message => "You have a padel game offer"
       })
+    logger.debug "Invites: #{invites}" 
   end
 
   private
