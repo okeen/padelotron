@@ -12,18 +12,18 @@ Devise.setup do |config|
   when Rails.env.production?
     config.omniauth :facebook, '270031589679955',
                   '4e4e4c8e723e2bf6df566624161a543c',
-                  {:scope => 'email',
+                  {:scope => 'email,create_event,rsvp_event',
                   :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
                 
   when Rails.env.development?
     config.omniauth :facebook, '156177704462269',
                   'f63b10cbfd79e539214dcb3849dc8768',
-                  :scope => 'email'
+                  :scope => 'email,create_event,rsvp_event'
     
   when Rails.env.test?
     config.omniauth :facebook,'270031589679955',
                   '4e4e4c8e723e2bf6df566624161a543c',
-                  :scope => 'email'
+                  :scope => 'email,create_event,rsvp_event'
         OmniAuth.config.full_host = 'http://localhost/' # issue 257
 end
 

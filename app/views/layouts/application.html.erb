@@ -16,7 +16,7 @@
   
 </head>
 <body>
-  <fb:login-button perms="read_stream,publish_stream,email" show-faces="false" width="200" max-rows="1"></fb:login-button>
+  
 
   <%= if player_signed_in?
         puts "Current: #{current_player.inspect}"
@@ -25,7 +25,8 @@
         link_to "Sign in with Facebook", player_omniauth_authorize_path(:facebook)
       end
   %>
-  <%= top_navigation_menu %>
+<fb:login-button perms="rsvp_event,email,create_event" show-faces="false" width="200" max-rows="1"></fb:login-button>
+<%= top_navigation_menu %>
 
 <%= yield %>
 

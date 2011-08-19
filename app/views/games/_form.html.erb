@@ -4,9 +4,9 @@
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
 
       <ul>
-      <% @game.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @game.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -18,6 +18,11 @@
   <div class="field">
     <h3>Equipo 2</h3>
     <%= collection_select :game, :team2_id, Team.all - current_player.teams, :id, :name %><br />
+  </div>
+  <div class="field">
+    <h3>Crear evento en Facebook?</h3>
+    <%= f.check_box :create_facebook_event %>
+
   </div>
   <div class="field">
     <%= f.label :play_date %><br />

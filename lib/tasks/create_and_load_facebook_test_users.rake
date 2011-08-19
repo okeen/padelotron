@@ -14,7 +14,7 @@ task :create_and_load_facebook_test_users => :environment do
   def create_facebook_user(name, with_app_installed)
     begin
       puts "Creating player #{name}"
-      user = @test_users.create(with_app_installed, "email", {:name => name})
+      user = @test_users.create(with_app_installed, "email,create_event,rsvp_event", {:name => name})
       puts "Created user #{user.inspect}, #{with_app_installed}"
       @current_test_users << user.merge('name'=> name)
     rescue => e

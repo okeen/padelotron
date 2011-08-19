@@ -9,7 +9,8 @@ class Players::FacebookSessionsController < ApplicationController
                         params[:player][:email]
                       )
     if @player and sign_in(@player)
-      cookies[:_padelotron_tcg]= { :value => "1", :expires => 30.minutes.from_now.utc}
+      session[:facebook_access_token] = params[:facebook_access_token]
+      cookies[:_padelotron_tcg]= { :value => "1", :expires => 15.minutes.from_now.utc}
       render :json => {
                 :message => "Kaixo #{@player.name}",
                 :model => @player}.to_json,

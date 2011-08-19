@@ -24,10 +24,11 @@ $(function() {
             console.debug("NewModel found: " +model.get("confirmable_type") + "#" + model.get("confirmable_id"));
             $('button.post_to_facebook').live('click', this.postConfirmationInFacebook);
         },
-       render: function(){
+        render: function(){
             return this;
         },
         postConfirmationInFacebook: function(){
+
             var url = window.location.protocol + "//" + window.location.host;
             url += "/" + this.model.get('confirmable_type').toLowerCase() +"/"+this.model.get('confirmable_id');
             console.debug("FB:Feed panel for " +url);

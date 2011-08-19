@@ -42,7 +42,6 @@ $(function() {
         user_logged_in: function(e, response){
             console.log("Padelotron::session logged in for user: ");
             this.set({'logged_padelotron': true});
-            alert("Logged padelotron true")
 
         },
         first_time_session: function(session_data){

@@ -47,6 +47,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        @game.create_facebook_game_event(current_player, facebook_access_token) if @game.create_facebook_event
         format.html { redirect_to(@game, :notice => "Friendly game creation process initialized, an email has been send to #{@game.team2.name} to confirm the game.") }
         format.xml  { render :xml => @game, :status => :created, :location => @game }
       else

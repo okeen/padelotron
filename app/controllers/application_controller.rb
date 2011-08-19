@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def facebook_access_token
+    session[:facebook_access_token]
+  end
+  
   def load_facebook_player_data
     token = params[:facebook_access_token]
     unless token.blank?

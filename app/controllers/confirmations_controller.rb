@@ -10,6 +10,10 @@ class ConfirmationsController < ApplicationController
   def do_confirmation
     if (@confirmation.action == 'accept')
       @confirmable.confirm!
+       if @confirmable.class == Game and @confirmable.create_facebook_event
+         @confirmable.confirm_facebook_event_attendance(current_player,facebook_access_token)
+       end
+
     else
       @confirmable.reject!
     end
