@@ -27,24 +27,24 @@ Feature: Track team's and players game stats confirmating the result of a game
         | game7       | the 1st team | the 3rd team | 2011-8-10 |
 
   Scenario Outline: Calculate Game stats for the following Games played between teams:
-    Given a result of "<result_sets>" for the game "<game_desc>"
-    When I go to the "<first_team>"'s page
-    Then I should see 'Ganados: "<team1_won>"'
-    And I should see 'Perdidos: "<team1_lost>"'
+    Given a result of "<result_sets>" for the game "<desc>"
+    When I go to <team1>'s page
+    Then I should see "Ganados: <team1_won>"
+    And I should see "Perdidos: <team1_lost>"
 
-    When I go to the "<second_team>"'s page
-    Then I should see 'Ganados: "<second_won>"'
-    And I should see 'Perdidos: "<second_lost>"'
+    When I go to the <team2>'s page
+    Then I should see "Ganados: <second_won>"
+    And I should see "Perdidos: <second_lost>"
 
     #Current score win/lost: Team1 => 1/0; Team2 => 0/2; Team3 => 2/0; Team4 => 0/1 ;
 
 @wip
   Scenarios: Victories of Game4 => 1, Game5 => 2, Game3 => 2, Game3 => 1,
-        | desc  | result_sets  | team1_won | team1_lost | team2_won | team2_lost |
-        | game4 | 6-1/4-6/6-2  | 2         | 0          | 0         | 2          |
-        | game5 | 6-1/4-6/6-2  | 1         | 2          | 2         | 1          |
-        | game6 | 6-1/4-6/6-2  | 2         | 1          | 2         | 1          |
-        | game7 | 6-1/4-6/6-2  | 2         | 1          | 2         | 1          |
+        | desc  | result_sets  | team1_won | team1_lost | team2_won | team2_lost | team1        | team2        |
+        | game4 | 6-1/4-6/6-2  | 2         | 0          | 0         | 2          | the 1st team | the 4th team |
+        | game5 | 6-1/4-6/6-2  | 1         | 2          | 2         | 1          | the 2nd team | the 3rd team |
+        | game6 | 6-1/4-6/6-2  | 2         | 1          | 2         | 1          | the 2nd team | the 4th team |
+        | game7 | 6-1/4-6/6-2  | 2         | 1          | 2         | 1          | the 1st team | the 3rd team |
 
   Scenarios: Victories of Game4 => 4, Game5 => 3, Game3 => 4, Game3 => 4,
         | desc  | result_sets  | team1_won | team1_lost | team2_won | team2_lost |

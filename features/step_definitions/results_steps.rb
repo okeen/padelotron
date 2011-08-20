@@ -52,12 +52,13 @@ end
 
 Given /^the following games already played:$/ do |games_table|
   games_table.hashes.each do |game_data|
-    puts game_data.inspect
+    
    # Given "a confirmed friendly game exists with team1: #{game_data['team1']}, team2: #{game_data['team2']}, description: #{game_data['desc']}"
-    game = Game.create :team1 => Team.find_by_name(game_data['team1']),
+   game = Game.find_by_description(game_data['desc']) ||
+          Game.create(:team1 => Team.find_by_name(game_data['team1']),
                        :team2 => Team.find_by_name(game_data['team2']),
                        :description => game_data['desc'],
-                       :play_date => Date.today
+                       :play_date => Date.today)
     game.confirm!
     result = Game.last.create_result  \
                :result_sets =>
@@ -71,11 +72,17 @@ Given /^the following games already played:$/ do |games_table|
                            :team2=> game_data['set3'].split('-')[1]}
                    }
      result.confirm!
+     puts "Created Result: #{result.inspect}"
   end
 end
 
-Given /^a result of "([^"]*)" for the game "([^"]*)"$/ do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+Given /^a result of "([^"]*)" for the game "([^"]*)"$/ do |game_sets, game_descrition|
+  game = Game.find_by_description game_descrition
+  sets = game_sets.split("/")
+  Given "the following games already played:",
+    Cucumber::Ast::Table.parse("|desc | team1 | team2 | set1 | set2 | set3 |\n"+
+    "|#{game_descrition}| #{game.team1.name} | #{game.team1.name} |  #{sets[0]} | #{sets[1]}  |  #{sets[2]} | \n", nil, nil)
+
 end
 
 Then /^I should see 'Ganados: "([^"]*)"'$/ do |arg1|
