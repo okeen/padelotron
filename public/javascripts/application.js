@@ -14,23 +14,21 @@ $(function() {
 
     function addNewResultRow(){
         var result_table= $('table.result_sets_table');
-        var index = result_table.find("tr.result_set_row").length 
+        var index = result_table.find("tr.result_set_row").length ;
+        $("input.lastInput").removeClass("lastInput");
         var item=
         '<tr class="result_set_row">'+
         '<td><input class="result_set_team_score_input" type="text" name="result[result_sets]['+index+'][team1]"></input></td>'+
-        '<td><input class="result_set_team_score_input" type="text" name="result[result_sets]['+index+'][team2]"></input></td>'+
+        '<td><input class="result_set_team_score_input, lastInput" type="text" name="result[result_sets]['+index+'][team2]"></input></td>'+
         '<td><button class="result_add_new_set_button" onclick="return false;">+</button></td>'+
         '</tr>'
         result_table.append(item);
 
     }
 
-    function isSecondScoreBox(scoreBox){
-        var scoreSetRow = $(scoreBox).parent().parent();
-        return $(scoreSetRow.children()[1]).children()[0] == scoreBox;
-    }
-    $('input.result_set_team_score_input').live('keypress', function(e){
-        if (e.charCode == 0 && e.keyCode == 9 && isSecondScoreBox(e.target)) {
+
+    $('input.lastInput).live('keypress', function(e){
+        if (e.charCode == 0 && e.keyCode == 9 ) {
             addNewResultRow();
             return;
         }
