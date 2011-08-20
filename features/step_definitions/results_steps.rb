@@ -50,9 +50,25 @@ Then /^#{capture_model} should receive a game "([^"]*)" result cancellation emai
   email.body.should be_include("You cancelled the result of the game #{game_desc}")
 end
 
-Given /^the following games already played:$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+Given /^the following games already played:$/ do |games_table|
+  games_table.hashes.each do |game_data|
+    game = Game.new.create :team1 => game_data.team1,
+                           :team2 => game_data.team2,
+                           :description => game_data.desc,
+                           :play_date => Date.today
+    game.confirm!
+    result = game.create_result :result_sets =>
+                                    {'0' => {:team1_score => game.set1.split('-')[0],
+                                             :team2_score => game.set1.split('-')[1]},
+
+                                     '1' => {:team1_score => game.set2.split('-')[0],
+                                             :team2_score => game.set2.split('-')[1]},
+
+                                     '2' => {:team1_score => game.set3.split('-')[0],
+                                             :team2_score => game.set3.split('-')[1]}
+                                     }
+     result.confirm
+  end
 end
 
 Given /^a result of "([^"]*)" for the game "([^"]*)"$/ do |arg1, arg2|

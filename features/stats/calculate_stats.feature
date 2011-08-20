@@ -15,10 +15,10 @@ Feature: Track team's and players game stats confirmating the result of a game
         |team4| the 2nd player | the 4th player |
 
     And the following games already played:
-        |desc | team1        | team2        | set 1 | set 2 | set 2 |
-        |game1| the 1st team | the 2nd team |  6-1  |  4-6  |  6-2  |
-        |game2| the 3rd team | the 4th team |  6-4  |  4-6  |  6-1  |
-        |game3| the 2nd team | the 3rd team |  0-6  |  6-1  |  4-6  |
+        |desc | team1        | team2        | set1 | set2 | set3 |
+        |game1| the 1st team | the 2nd team |  6-1 | 4-6  |  6-2 |
+        |game2| the 3rd team | the 4th team |  6-4 | 4-6  |  6-1 |
+        |game3| the 2nd team | the 3rd team |  0-6 | 6-1  |  4-6 |
     And the following confirmed friendly games exist:
         | desc | team1         | team2        | play_date |
         | game4 | the 1st team | the 4th team | 2011-8-10 |

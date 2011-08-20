@@ -56,7 +56,9 @@ $(function() {
 
         },
         toggleSendFacebookRequest: function(){
-            this.set({sendFacebookRequest: ! this.get("sendFacebookRequest")});
+            this.set({
+                sendFacebookRequest: ! this.get("sendFacebookRequest")
+            });
         },
         savegameResultFacebookRequestId: function(response){
             if (!response) {
@@ -85,8 +87,49 @@ $(function() {
         el: "#new_result",
         
         initialize: function(){
-            _.bindAll(this, 'render','sendFacebookgameResultRequest', 'toggleSendFacebookRequest');
+            _.bindAll(this, 'render','sendFacebookgameResultRequest','showResult', "detectIfNewSet",
+                'toggleSendFacebookRequest', 'showProvisionalResult', 'addNewResultRow');
+            $('button.set_game_result_button').live('click', function(e){
+                var result_panel= $(e.target.parentNode).next();
+                result_panel.toggleClass("inactive");
+            });
+            $('button.result_add_new_set_button').live('click', this.addNewResultRow);
+            $('input.lastInput').live('keypress', this.detectIfNewSet);
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
+        },
+        detectIfNewSet: function(e){
+            if (e.charCode != 0 && e.keyCode != 9 )
+                return;
+            this.addNewResultRow();
+            var set_values = this.getCurrentSetRows(e);
+            //if (set_values.length % 2 == 0)
+                this.showProvisionalResult(set_values);
+        },
+        addNewResultRow: function (){
+            var result_table= $('table.result_sets_table');
+            var index = result_table.find("tr.result_set_row").length ;
+            $("input.lastInput").removeClass("lastInput");
+            var item=
+            '<tr class="result_set_row">'+
+            '<td><input class="result_set_team_score_input" type="text" name="result[result_sets]['+index+'][team1]"></input></td>'+
+            '<td><input class="result_set_team_score_input, lastInput" type="text" name="result[result_sets]['+index+'][team2]"></input></td>'+
+            '<td><button class="result_add_new_set_button" onclick="return false;">+</button></td>'+
+            '</tr>'
+            result_table.append(item);
+
+        },
+        getCurrentSetRows: function (e){
+            var set_values = $(e.target).parent().parent().parent()
+            .find("tr.result_set_row").map(function(row_index){
+                return $(this).find("input.result_set_team_score_input")
+                .map(function(){
+                    var value = this.value;
+                    if (this == e.target)
+                        value+= String.fromCharCode(e.charCode);
+                    return parseInt(value);
+                }).get();
+            }).get();
+            return set_values;
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();
@@ -99,8 +142,8 @@ $(function() {
             var result = this.model.attributes;
             
             var destination_players = _([result.game.team1.players[1]]).chain()
-                                       .union(result.game.team2.players)
-                                       .uniq();
+            .union(result.game.team2.players)
+            .uniq();
 
             FB.ui({
                 method: 'apprequests',
@@ -108,6 +151,23 @@ $(function() {
                 message: msg,
                 data: 'tracking information for the user'
             },this.model.saveGameFacebookRequestId);
+        },
+        showProvisionalResult: function(scoresList){
+            var score = {
+                team1: 0,
+                team2: 0
+            };
+
+            for (var i=0; i<scoresList.length / 2; i++) {
+                if (scoresList[i*2] == 6 && scoresList[i*2+1] < 6)
+                    score.team1 ++;
+                if (scoresList[i*2] < 6 && scoresList[i*2+1] == 6)
+                    score.team2 ++;
+            }
+            this.showResult(score);
+        },
+        showResult: function (score){
+            $('h3.provisional_score').html("Score: " + score.team1 + ":" + score.team2);
         }
 
     });
