@@ -52,22 +52,25 @@ end
 
 Given /^the following games already played:$/ do |games_table|
   games_table.hashes.each do |game_data|
-    game = Game.new.create :team1 => game_data.team1,
-                           :team2 => game_data.team2,
-                           :description => game_data.desc,
-                           :play_date => Date.today
+    puts game_data.inspect
+   # Given "a confirmed friendly game exists with team1: #{game_data['team1']}, team2: #{game_data['team2']}, description: #{game_data['desc']}"
+    game = Game.create :team1 => Team.find_by_name(game_data['team1']),
+                       :team2 => Team.find_by_name(game_data['team2']),
+                       :description => game_data['desc'],
+                       :play_date => Date.today
     game.confirm!
-    result = game.create_result :result_sets =>
-                                    {'0' => {:team1_score => game.set1.split('-')[0],
-                                             :team2_score => game.set1.split('-')[1]},
+    result = Game.last.create_result  \
+               :result_sets =>
+                  {'0' => {:team1=> game_data['set1'].split('-')[0],
+                           :team2=> game_data['set1'].split('-')[1]},
 
-                                     '1' => {:team1_score => game.set2.split('-')[0],
-                                             :team2_score => game.set2.split('-')[1]},
+                   '1' => {:team1=> game_data['set2'].split('-')[0],
+                           :team2=> game_data['set2'].split('-')[1]},
 
-                                     '2' => {:team1_score => game.set3.split('-')[0],
-                                             :team2_score => game.set3.split('-')[1]}
-                                     }
-     result.confirm
+                   '2' => {:team1=> game_data['set3'].split('-')[0],
+                           :team2=> game_data['set3'].split('-')[1]}
+                   }
+     result.confirm!
   end
 end
 

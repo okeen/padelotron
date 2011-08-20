@@ -15,16 +15,16 @@ Feature: Track team's and players game stats confirmating the result of a game
         |team4| the 2nd player | the 4th player |
 
     And the following games already played:
-        |desc | team1        | team2        | set1 | set2 | set3 |
-        |game1| the 1st team | the 2nd team |  6-1 | 4-6  |  6-2 |
-        |game2| the 3rd team | the 4th team |  6-4 | 4-6  |  6-1 |
-        |game3| the 2nd team | the 3rd team |  0-6 | 6-1  |  4-6 |
+        |desc | team1 | team2 | set1 | set2 | set3 |
+        |game1| team1 | team2 |  6-1 | 4-6  |  6-2 |
+        |game2| team3 | team4 |  6-4 | 4-6  |  6-1 |
+        |game3| team2 | team3 |  0-6 | 6-1  |  4-6 |
     And the following confirmed friendly games exist:
-        | desc | team1         | team2        | play_date |
-        | game4 | the 1st team | the 4th team | 2011-8-10 |
-        | game5 | the 2nd team | the 3rd team | 2011-8-10 |
-        | game6 | the 2nd team | the 4th team | 2011-8-10 |
-        | game7 | the 1st team | the 3rd team | 2011-8-10 |
+        | description | team1        | team2        | play_date |
+        | game4       | the 1st team | the 4th team | 2011-8-10 |
+        | game5       | the 2nd team | the 3rd team | 2011-8-10 |
+        | game6       | the 2nd team | the 4th team | 2011-8-10 |
+        | game7       | the 1st team | the 3rd team | 2011-8-10 |
 
   Scenario Outline: Calculate Game stats for the following Games played between teams:
     Given a result of "<result_sets>" for the game "<game_desc>"

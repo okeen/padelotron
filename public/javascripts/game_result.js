@@ -102,7 +102,7 @@ $(function() {
                 return;
             this.addNewResultRow();
             var set_values = this.getCurrentSetRows(e);
-            //if (set_values.length % 2 == 0)
+            if (set_values.length % 2 == 0)
                 this.showProvisionalResult(set_values);
         },
         addNewResultRow: function (){
