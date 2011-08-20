@@ -49,3 +49,20 @@ Then /^#{capture_model} should receive a game "([^"]*)" result cancellation emai
   email.subject.should == "Game result for game #{game_desc} cancelled"
   email.body.should be_include("You cancelled the result of the game #{game_desc}")
 end
+
+Given /^the following games already played:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  pending # express the regexp above with the code you wish you had
+end
+
+Given /^a result of "([^"]*)" for the game "([^"]*)"$/ do |arg1, arg2|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see 'Ganados: "([^"]*)"'$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Then /^I should see 'Perdidos: "([^"]*)"'$/ do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
