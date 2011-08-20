@@ -29,7 +29,12 @@ class Game < ActiveRecord::Base
   scope :for_today, lambda {
     for_date(Date.today)
   }
-    
+
+  def as_json(options)
+    super(:include => {:team1 => {:methods =>[:players]},
+                       :team2 => {:methods =>[:players]}})
+  end
+
   def is_friendly?
     game_type == "friendly"
   end

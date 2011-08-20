@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'game_result' %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="game_info">
@@ -20,7 +22,8 @@
       <h4>Please set the result of the game</h4>
       <%= form_for @game.build_result,
         :url =>game_result_path(@game),
-        :remote => true                   do |f| %>
+        :remote => true             do |f| %>
+
         <table class="result_sets_table">
           <tr>
             <th><%= @game.team1.name %></th>

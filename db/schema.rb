@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818212351) do
+ActiveRecord::Schema.define(:version => 20110819180618) do
 
   create_table "confirmations", :force => true do |t|
     t.string   "code"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20110818212351) do
     t.integer  "confirmable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "facebook_request_id", :limit => 8
+    t.text     "facebook_request_id"
   end
 
   create_table "games", :force => true do |t|
@@ -27,13 +27,14 @@ ActiveRecord::Schema.define(:version => 20110818212351) do
     t.integer  "team2_id"
     t.datetime "play_date"
     t.string   "game_type",                          :default => "friendly"
-    t.string   "description"
+    t.string   "description",                        :default => ""
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "winner_team_id"
     t.boolean  "create_facebook_event"
     t.integer  "facebook_event_id",     :limit => 8
+    t.string   "facebook_requets_ids"
   end
 
   create_table "players", :force => true do |t|

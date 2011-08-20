@@ -21,7 +21,7 @@ $(function() {
                 buttons: {
                     Ok: function(){
                         if ($(this).find('input')[0].checked){
-                            newTeamView.sendFacebookTeamRequest();
+                            newTeamView.sendFacebookTeamRequest(response.message);
                         }
                         $(this).dialog("close");
                     }
@@ -81,15 +81,14 @@ $(function() {
         render: function(){
             return this;
         },
-        sendFacebookTeamRequest: function(){
+        sendFacebookTeamRequest: function(message){
             console.debug("FB:Request panel for Team:" +this.model.get('name'));
             var team = this.model.get("team_data")
-            var msg = team.player1.name + "wants you to join the team " + team.name;
             //_.bind('save_team_facebook_request_id', this);
             FB.ui({
                 method: 'apprequests',
                 to: team.player2.facebook_id,
-                message: msg,
+                message: message,
                 data: 'tracking information for the user'
             },this.model.saveTeamFacebookRequestId);
         }

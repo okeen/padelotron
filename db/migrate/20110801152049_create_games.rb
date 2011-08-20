@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :team2_id
       t.datetime :play_date
       t.string :game_type, :default => 'friendly'
-      t.string :description
+      t.string :description, :default => ''
       t.string :status
       
       t.timestamps

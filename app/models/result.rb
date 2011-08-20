@@ -4,6 +4,7 @@ class Result < ActiveRecord::Base
 
   delegate :team1, :to => :game
   delegate :team2, :to => :game
+  delegate :winner, :to => :game
 
   include Confirmable
 
@@ -31,6 +32,18 @@ class Result < ActiveRecord::Base
 
   def on_confirm
     game.update_attribute :winner_team_id, winner.id
+  end
+
+  def as_json(options={})
+    super(:include => {
+              :game => {
+                 :include => {
+                    :team1 => {:methods => [:players]},
+                    :team2 => {:methods => [:players]}
+                  }
+               }
+           },
+         :methods => [:winner])
   end
   
   #messages to show in confirmations

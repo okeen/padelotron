@@ -36,13 +36,12 @@ class ResultsController < ApplicationController
 
     respond_to do |format|
       if @result.save
-        format.html { redirect_to(@game, :notice => 'Game result sent, an email has been sent to all the players to confirm the result') }
-        format.js { render :text => 'Game result sent, an email has been sent to all the players to confirm the result' }
-
-        format.xml  { render :xml => @result, :status => :created, :location => @result }
+        message = 'Game result sent, an email has been sent to all the players to confirm the result'
+        format.html { redirect_to(@game, :notice => message) }
+        format.js  { render :json =>{:message => message, :model => @result}.to_json, :status => :created}
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @result.errors, :status => :unprocessable_entity }
+        format.js  { render :json =>@result.errors, :status => :unprocessable_entity }
       end
     end
   end
