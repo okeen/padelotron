@@ -11,9 +11,9 @@
       <%= team_photo(@team) %>
       <h2><%= @team.name %></h2>
       <ul id="team_stats">
-        <li>partidos jugados: </li>
-        <li>Ganados: </li>
-        <li>Perdidos: </li>
+        <li>partidos jugados: <%= @team.games.count %> </li>
+        <li>Ganados: <%= @team.stat.wins %> </li>
+        <li>Perdidos: <%= @team.stat.lost %></li>
         <li>% victorias: </li>
       </ul>
     </div>

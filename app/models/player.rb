@@ -4,6 +4,8 @@ class Player < ActiveRecord::Base
 
   has_many :teams, :finder_sql => 'select * from teams t where t.player1_id = #{id} or t.player2_id = #{id}'
 
+  include Statable
+  
   devise :database_authenticatable, :omniauthable, :rememberable
   before_create :init_devise_password
 

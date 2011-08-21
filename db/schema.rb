@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110819180618) do
+ActiveRecord::Schema.define(:version => 20110820174228) do
 
   create_table "confirmations", :force => true do |t|
     t.string   "code"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(:version => 20110819180618) do
     t.integer  "game_id"
     t.text     "result_sets"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stats", :force => true do |t|
+    t.string   "statable_type"
+    t.integer  "statable_id"
+    t.integer  "wins",          :default => 0
+    t.integer  "lost",          :default => 0
+    t.float    "win_percent",   :default => 0.0
+    t.integer  "win_strike",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

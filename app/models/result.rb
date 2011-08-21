@@ -27,11 +27,12 @@ class Result < ActiveRecord::Base
         scores[:team2]+=1
       end
     end
-    return scores[:team1] > scores[:team2] ? team1 : team2
+    return scores[:team1] > scores[:team2] ? game.team1 : game.team2
   end
 
   def on_confirm
     game.update_attribute :winner_team_id, winner.id
+    Stat.update_all_for_game(game)
   end
 
   def as_json(options={})

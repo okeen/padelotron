@@ -7,6 +7,7 @@ class Game < ActiveRecord::Base
   has_one :result
   #after_create :create_result
 
+
   delegate :sets, :to => :result
   
   include Confirmable

@@ -9,6 +9,7 @@ class Team < ActiveRecord::Base
   validates_associated :player1
   validates_associated :player2
 
+  include Statable
   include Confirmable
 
   has_many :games, :finder_sql => 'select * from games g where g.team1_id = #{id} or g.team2_id = #{id}'

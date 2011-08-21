@@ -52,15 +52,20 @@ end
 
 Given /^the following games already played:$/ do |games_table|
   games_table.hashes.each do |game_data|
-    
+   team1=Team.find_by_name(game_data['team1'])
+   team2=Team.find_by_name(game_data['team2'])
+
    # Given "a confirmed friendly game exists with team1: #{game_data['team1']}, team2: #{game_data['team2']}, description: #{game_data['desc']}"
    game = Game.find_by_description(game_data['desc']) ||
-          Game.create(:team1 => Team.find_by_name(game_data['team1']),
-                       :team2 => Team.find_by_name(game_data['team2']),
+          Game.create(:team1 => team1,
+                       :team2 => team2,
                        :description => game_data['desc'],
                        :play_date => Date.today)
     game.confirm!
-    result = Game.last.create_result  \
+#    puts "Before: \n"
+#     puts "#{game.team1.name} score: #{game.team1.stat.wins}/#{game.team1.stat.lost}"
+#     puts "#{game.team2.name} score: #{game.team2.stat.wins}/#{game.team2.stat.lost}"
+    result = game.create_result  \
                :result_sets =>
                   {'0' => {:team1=> game_data['set1'].split('-')[0],
                            :team2=> game_data['set1'].split('-')[1]},
@@ -72,16 +77,21 @@ Given /^the following games already played:$/ do |games_table|
                            :team2=> game_data['set3'].split('-')[1]}
                    }
      result.confirm!
-     puts "Created Result: #{result.inspect}"
+     game.reload
+#     puts "Victory: #{result.winner.name}"
+#     puts "#{game.team1.name} score: #{game.team1.stat.wins}/#{game.team1.stat.lost}"
+#     puts "#{game.team2.name} score: #{game.team2.stat.wins}/#{game.team2.stat.lost}"
   end
 end
 
 Given /^a result of "([^"]*)" for the game "([^"]*)"$/ do |game_sets, game_descrition|
   game = Game.find_by_description game_descrition
   sets = game_sets.split("/")
-  Given "the following games already played:",
-    Cucumber::Ast::Table.parse("|desc | team1 | team2 | set1 | set2 | set3 |\n"+
-    "|#{game_descrition}| #{game.team1.name} | #{game.team1.name} |  #{sets[0]} | #{sets[1]}  |  #{sets[2]} | \n", nil, nil)
+  table = Cucumber::Ast::Table.parse("|desc | team1 | team2 | set1 | set2 | set3 |\n"+
+    "|#{game_descrition}| #{game.team1.name} | #{game.team2.name} |  #{sets[0]} | #{sets[1]}  |  #{sets[2]} | \n", nil, nil)
+puts "Data to send for game #{game.description}: #{table.inspect}"
+  Given "the following games already played:", table
+    
 
 end
 
