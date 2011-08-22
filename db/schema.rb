@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110822131311) do
+ActiveRecord::Schema.define(:version => 20110822143043) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110822131311) do
     t.integer  "win_strike",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "lost_strike"
   end
 
   create_table "teams", :force => true do |t|

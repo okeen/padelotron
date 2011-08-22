@@ -23,6 +23,7 @@ class Stat < ActiveRecord::Base
   def add_victory
     self.wins+= 1
     self.win_strike+=1
+    self.lost_strike=0
     #puts "Victory for: #{statable.name}: #{wins}/#{lost}"
     if statable.class == Team
       statable.players.each {|player| player.stat.add_victory}
@@ -34,6 +35,7 @@ class Stat < ActiveRecord::Base
   def add_defeat
     self.lost+= 1
     self.win_strike= 0
+    self.lost_strike+=1
     #puts "Defeat for: #{statable.name}: #{wins}/#{lost}"
     if statable.class == Team
       statable.players.each {|player| player.stat.add_defeat}
