@@ -25,7 +25,7 @@ module ApplicationHelper
   def  player_achievements(player)
     list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
       achievements = player.achievements.group(:achievement_type_id).collect do |achievement|
-        content_tag :li, achievement_image(achievement), 
+        content_tag :li, achievement_image(achievement),
           :class => "achievement #{'new' if achievement.read.blank?}"
       end
       achievements.join("\n").html_safe
@@ -34,7 +34,21 @@ module ApplicationHelper
       intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
       "#{intro} #{achievement.message}"
     end
+    (list + content_tag(:p, messages.join("\n"))).html_safe
+  end
 
+  def  team_achievements(team)
+    list = content_tag :ul, "Achievements", :class => "team_achievements" do |ul|
+      achievements = team.achievements.group(:achievement_type_id).collect do |achievement|
+        content_tag :li, achievement_image(achievement),
+          :class => "achievement #{'new' if achievement.read.blank?}"
+      end
+      achievements.join("\n").html_safe
+    end
+    messages =  team.achievements.collect do |achievement|
+      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+      "#{intro} #{achievement.message}"
+    end
     (list + content_tag(:p, messages.join("\n"))).html_safe
   end
 
@@ -65,7 +79,7 @@ module ApplicationHelper
   end
 
   def google_maps
-    '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA0ABhsi94_QBEemORCuekWhTJQa0g3IQ9GZqIMmInSLzwtGDKaBTUtbXqABqpHHnb5wQfJuT9uV3jQA" type="text/javascript"></script>'.html_safe
+    '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA0ABhsi94_QBEemORCuekWhTQb5oFIWqRUhWFXeBCl1qnXIchCxR2d3ijdCwerkhVW1ZKviQkM41YpQ" type="text/javascript"></script>'.html_safe
   end
 end
 

@@ -8,6 +8,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.string :state
       t.string :city
       t.string :street
+      t.string :full_address
 
       t.timestamps
     end
