@@ -1,5 +1,7 @@
 Padelotron::Application.routes.draw do
   
+  resources :achievements
+
   get "home" => "home#home", :as => "home"
 
   resources :games do

@@ -10,7 +10,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110820174228) do
+ActiveRecord::Schema.define(:version => 20110822131311) do
+
+  create_table "achievement_types", :force => true do |t|
+    t.string   "name"
+    t.string   "nature"
+    t.string   "group"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "achievements", :force => true do |t|
+    t.integer  "stat_id"
+    t.integer  "achievement_type_id"
+    t.boolean  "read"
+    t.text     "message"
+    t.datetime "expires"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "confirmations", :force => true do |t|
     t.string   "code"

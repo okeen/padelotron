@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Stat:</b>
+  <%= @achievement.stat %>
+</p>
+
+<p>
+  <b>Achievement type:</b>
+  <%= @achievement.achievement_type %>
+</p>
+
+<p>
+  <b>Read:</b>
+  <%= @achievement.read %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @achievement.message %>
+</p>
+
+<p>
+  <b>Expires:</b>
+  <%= @achievement.expires %>
+</p>
+
+
+<%= link_to 'Edit', edit_achievement_path(@achievement) %> |
+<%= link_to 'Back', achievements_path %>

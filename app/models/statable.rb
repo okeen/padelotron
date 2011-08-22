@@ -3,6 +3,8 @@ module Statable
 
   included do
     has_one :stat, :as => :statable
+    has_many :achievements, :through => :stat
+
     after_create :create_statistics
   end
 

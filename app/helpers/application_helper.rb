@@ -23,12 +23,23 @@ module ApplicationHelper
   end
 
   def  player_achievements(player)
-    content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
+    list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
       achievements = player.achievements.inject("") do |list, achievement|
-        content_tag :li, achievement_image(achievement), :class => 'achievement'
+        content_tag :li, achievement_image(achievement), :class => "achievement #{'new' if achievement.read.blank?}"
       end
       achievements.html_safe
     end
+    messages =  player.achievements.collect do |achievement|
+      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+      "#{intro} #{achievement.message}"
+    end
+
+    (list + content_tag(:p, messages.join("\n"))).html_safe
+  end
+
+  def achievement_image(achievement)
+    #image_tag
+    achievement.achievement_type.name
   end
 
   def google_analytics

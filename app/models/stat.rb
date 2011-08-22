@@ -2,6 +2,8 @@ class Stat < ActiveRecord::Base
 
   belongs_to :statable , :polymorphic => true
 
+  has_many :achievements
+
   def Stat.update_all_for_game(game)
     game.teams.each do |team|
       if game.result.winner.id == team.id
@@ -26,7 +28,7 @@ class Stat < ActiveRecord::Base
       statable.players.each {|player| player.stat.add_victory}
     end
     update_percent
-    save
+    save_and_update_achievements
   end
 
   def add_defeat
@@ -37,6 +39,13 @@ class Stat < ActiveRecord::Base
       statable.players.each {|player| player.stat.add_defeat}
     end
     update_percent
+    save_and_update_achievements
+  end
+
+  private
+
+  def save_and_update_achievements
+    save and Achievement.update_achievements_for(self.statable)
   end
 
   def update_percent
