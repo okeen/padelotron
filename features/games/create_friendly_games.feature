@@ -27,4 +27,15 @@ Feature: New friendly game creation
     And the 3rd player should receive a friendly game offer from the 1st team for '12'/'08'/'2011', '17':'00'
     And the 4th player should receive a friendly game offer from the 1st team for '12'/'08'/'2011', '17':'00'
 
+@javascript
+  Scenario: Create a friendly game through the new friendly game page in a javascript browser
+    When I go to the new friendly game page
+    And I select the first team as first team
+    And I select the 2nd team as second team
+    And I select '12'/"August"/'2011', '17':'00' as play date
+    And I press "Create Friendly"
+    Then I should see "Friendly game creation process initialized, an email has been send to team2 to confirm the game."
+    And the 3rd player should receive a friendly game offer from the 1st team for '12'/'08'/'2011', '17':'00'
+    And the 4th player should receive a friendly game offer from the 1st team for '12'/'08'/'2011', '17':'00'
+
 

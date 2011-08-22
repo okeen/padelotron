@@ -36,6 +36,8 @@ group :development, :test do
    gem "pickle"
    gem "chronic"
    gem "timecop"
+   gem "ruby-debug19"
+   gem "ruby-debug-ide19"
    gem "sqlite3"
 end
 

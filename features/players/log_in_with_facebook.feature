@@ -23,6 +23,7 @@ Feature: Log in with my Facebook account
     And I press "Allow"
     Then I should see "Kaixo "
 
+@buggy_test
 @selenium
  Scenario: Log in with the first connected player's Facebook account and link with Facebook Connect via Facebook Login
     When I go to the root page

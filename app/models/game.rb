@@ -31,9 +31,16 @@ class Game < ActiveRecord::Base
     for_date(Date.today)
   }
 
+  scope :played_by_player, lambda { |player|
+    where("team1_id in( "+
+        "select t.id from teams t where t.player1_id = #{player.id} or t.player2_id = #{player.id}) OR team2_id in( "+
+        "select t.id from teams t where t.player1_id = #{player.id} or t.player2_id = #{player.id})"
+    )
+  }
+
   def as_json(options)
     super(:include => {:team1 => {:methods =>[:players]},
-                       :team2 => {:methods =>[:players]}})
+        :team2 => {:methods =>[:players]}})
   end
 
   def is_friendly?
@@ -90,12 +97,12 @@ class Game < ActiveRecord::Base
       })
     update_attribute(:facebook_event_id, event['id'])
     logger.debug "Event: #{event}"
-      invites= graph.rest_call("events.invite", {
+    invites= graph.rest_call("events.invite", {
         :eid => event['id'],
         :uids =>  players.collect(&:facebook_id),
         :personal_message => "You have a padel game offer"
       })
-    logger.debug "Invites: #{invites}" 
+    logger.debug "Invites: #{invites}"
   end
 
   private
