@@ -12,3 +12,8 @@ div.player_panel {
         margin: 0px; }
       div.player_panel div.player_info_subpanel div.player_info ul {
         padding-left: 10px; }
+  div.player_panel div.player_emblems_subpanel ul.player_achievements {
+    height: 20px;
+    list-style: none; }
+    div.player_panel div.player_emblems_subpanel ul.player_achievements li {
+      float: left; }

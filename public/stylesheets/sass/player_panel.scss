@@ -19,4 +19,11 @@ div.player_panel {
         ul {padding-left: 10px}
     }
   }
+  div.player_emblems_subpanel {
+    ul.player_achievements {
+      height: 20px;
+      list-style: none;
+      li {float: left;}
+    }
+  }
 }

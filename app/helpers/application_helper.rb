@@ -24,11 +24,11 @@ module ApplicationHelper
 
   def  player_achievements(player)
     list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
-      achievements = player.achievements.inject("") do |list, achievement|
+      achievements = player.achievements.group(:achievement_type_id).collect do |achievement|
         content_tag :li, achievement_image(achievement), 
           :class => "achievement #{'new' if achievement.read.blank?}"
       end
-      achievements.html_safe
+      achievements.join("\n").html_safe
     end
     messages =  player.achievements.collect do |achievement|
       intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"

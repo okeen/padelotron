@@ -22,7 +22,11 @@ Then /^the player should have the new achievement "([^"]*)"$/ do |achievement_na
 end
 
 Then /^the player's achievements should include "([^"]*)"$/ do |achievement_name|
+  page.should have_selector("ul.player_achievements li img[alt='#{achievement_name}']",
+    :src => "/images/achievements/#{achievement_name}.png")
 end
 
 Then /^the player should have lost the achievement "([^"]*)"$/ do |achievement_name|
+  page.should_not have_selector("ul.player_achievements li img[alt='#{achievement_name}']",
+    :src => "/images/achievements/#{achievement_name}.png")
 end

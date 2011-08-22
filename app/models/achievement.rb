@@ -30,7 +30,7 @@ class Achievement < ActiveRecord::Base
       end
 
       if (player.stat.win_strike == 5)
-        new_achievements << player.stat.stat.achievements.create(AchievementType.HOT)
+        new_achievements << player.stat.achievements.create(AchievementType.HOT)
       end
     else if (player.stat.lost_strike > 0)
         if (player.stat.lost_strike == 3)
@@ -38,7 +38,7 @@ class Achievement < ActiveRecord::Base
         end
 
         if (player.stat.lost_strike == 5)
-          new_achievements << player.stat.stat.achievements.create(AchievementType.COLD)
+          new_achievements << player.stat.achievements.create(AchievementType.COLD)
         end
       end
     end
@@ -53,7 +53,7 @@ class Achievement < ActiveRecord::Base
       end
 
       if (team.stat.win_strike == 5)
-        new_achievements << team.stat.stat.achievements.create(AchievementType.HOT)
+        new_achievements << team.stat.achievements.create(AchievementType.HOT)
       end
     else if (team.stat.lost_strike > 0)
         if (team.stat.lost_strike == 3)
@@ -61,7 +61,7 @@ class Achievement < ActiveRecord::Base
         end
 
         if (team.stat.lost_strike == 5)
-          new_achievements << team.stat.stat.achievements.create(AchievementType.COLD)
+          new_achievements << team.stat.achievements.create(AchievementType.COLD)
         end
       end
     end
