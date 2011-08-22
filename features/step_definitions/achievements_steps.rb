@@ -13,10 +13,12 @@ Then /^the following players should have these achievements:$/ do |table|
 end
 
 Then /^I should see '(\d+)' achievements for the player$/ do |achievement_count|
-
+  page.should have_selector "ul.player_achievements li", :count => achievement_count.to_i
 end
 
 Then /^the player should have the new achievement "([^"]*)"$/ do |achievement_name|
+  page.should have_selector("ul.player_achievements li img[alt='#{achievement_name}']",
+    :src => "/images/achievements/#{achievement_name}.png")
 end
 
 Then /^the player's achievements should include "([^"]*)"$/ do |achievement_name|

@@ -25,7 +25,8 @@ module ApplicationHelper
   def  player_achievements(player)
     list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
       achievements = player.achievements.inject("") do |list, achievement|
-        content_tag :li, achievement_image(achievement), :class => "achievement #{'new' if achievement.read.blank?}"
+        content_tag :li, achievement_image(achievement), 
+          :class => "achievement #{'new' if achievement.read.blank?}"
       end
       achievements.html_safe
     end
@@ -38,8 +39,9 @@ module ApplicationHelper
   end
 
   def achievement_image(achievement)
-    #image_tag
-    achievement.achievement_type.name
+    image_tag "achievements/#{achievement.name}.png",
+          :alt => achievement.name,
+          :class => "achievement_icon"
   end
 
   def google_analytics
