@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20110822143043) do
   create_table "achievements", :force => true do |t|
     t.integer  "stat_id"
     t.integer  "achievement_type_id"
-    t.boolean  "read"
+    t.boolean  "read",                :default => false
     t.text     "message"
     t.datetime "expires"
     t.datetime "created_at"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20110822143043) do
     t.integer  "win_strike",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "lost_strike"
+    t.integer  "lost_strike",   :default => 0
   end
 
   create_table "teams", :force => true do |t|

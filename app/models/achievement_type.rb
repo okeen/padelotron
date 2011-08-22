@@ -29,6 +29,20 @@ class AchievementType < ActiveRecord::Base
     }
   end
 
+  def AchievementType.BUZZED
+    {
+      :achievement_type_id => AchievementType.named("buzzed").first.id,
+      :message => "You got the buzzed achievement"
+    }
+  end
+
+  def AchievementType.COLD
+    {
+      :achievement_type_id => AchievementType.named("cold").first.id,
+      :message => "You got the cold achievement"
+    }
+  end
+
   private
 
   
