@@ -47,3 +47,4 @@ gem 'koala'
 gem 'heroku'
 gem "sass"
 gem "paperclip", "~> 2.3"
+gem "geocoder"

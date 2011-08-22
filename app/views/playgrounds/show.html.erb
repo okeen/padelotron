@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @playground.name %>
+</p>
+
+<p>
+  <b>Sport:</b>
+  <%= @playground.sport %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @playground.number %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @playground.place %>
+</p>
+
+
+<%= link_to 'Edit', edit_playground_path(@playground) %> |
+<%= link_to 'Back', playgrounds_path %>
