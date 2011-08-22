@@ -19,7 +19,7 @@ module ApplicationHelper
   def player_photo(player, options = {})
     photo_url = player.facebook_url + "/picture"
     photo_url+= "?type=#{options[:size].to_s}" if options[:size]
-    link_to image_tag(photo_url), player.facebook_url
+    link_to image_tag(photo_url), "http://www.facebook.com/#{player.facebook_id}"
   end
 
   def google_analytics

@@ -4,7 +4,7 @@
       <%= player_photo(player) %>
     </div>
     <div class="player_info">
-      <h3><%= player.name%></h3>
+      <h3><%= link_to_unless_current player.name, player_path(player)%></h3>
       <ul class="player_stats_list">
         <li>Partidos jugados:<%= player.stat.wins + player.stat.lost %> </li>
         <li>Ganados: <%= player.stat.wins %> </li>
