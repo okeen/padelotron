@@ -1,6 +1,11 @@
 class Place < ActiveRecord::Base
-  geocoded_by :full_street_address   # can also be an IP address
+  has_many :playgrounds
+
+  geocoded_by :address
   after_validation :geocode
 
-  has_many :playgrounds
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
+  
 end

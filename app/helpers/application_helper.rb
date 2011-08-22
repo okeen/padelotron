@@ -63,5 +63,9 @@ module ApplicationHelper
     end
     links.join("\n").html_safe
   end
+
+  def google_maps
+    '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA0ABhsi94_QBEemORCuekWhTJQa0g3IQ9GZqIMmInSLzwtGDKaBTUtbXqABqpHHnb5wQfJuT9uV3jQA" type="text/javascript"></script>'.html_safe
+  end
 end
 
