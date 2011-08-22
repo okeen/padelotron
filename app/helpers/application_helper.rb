@@ -22,6 +22,15 @@ module ApplicationHelper
     link_to image_tag(photo_url), "http://www.facebook.com/#{player.facebook_id}"
   end
 
+  def  player_achievements(player)
+    content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
+      achievements = player.achievements.inject("") do |list, achievement|
+        content_tag :li, achievement_image(achievement), :class => 'achievement'
+      end
+      achievements.html_safe
+    end
+  end
+
   def google_analytics
     "<script type='text/javascript'>
       var _gaq = _gaq || [];

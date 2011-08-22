@@ -31,7 +31,7 @@ Feature: Players get achievements after they finish some quest
         Given a result of "6-2/2-6/6-2" for the game "game4"
         When I go to the players page
         Then the following players should have these achievements:
-            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
+            | player             | achievements_count | new_achievement | lost_achievement | message                                 |
             | the first player   | 1                  |  striked        |  0               |  Good! You got the strike achievement   |
             | the second player  | 1                  |  striked        |  0               |  Good! You got the strike achievement   |
             | the third player   | 1                  |  buzzed         |  0               |  Oh, no! You got the strike achievement |
@@ -44,7 +44,7 @@ Feature: Players get achievements after they finish some quest
         And a result of "6-2/2-6/6-2" for the game "game6"
         When I go to the players page
         Then the following players should have these achievements:
-            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
+            | player             | achievements_count | new_achievement | lost_achievement | message                              |
             | the first player   | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
             | the second player  | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
             | the third player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement |
@@ -58,11 +58,11 @@ Feature: Players get achievements after they finish some quest
         And a result of "6-2/2-6/2-6" for the game "game6"
         When I go to the players page
         Then the following players should have these achievements:
-            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
-            | the first player   | 1                  |  fucked         |  1               |  Good! You got the hot achievement    |
-            | the second player  | 1                  |  fucker         |  1               |  Good! You got the fucker achievement |
+            | player             | achievements_count | new_achievement | lost_achievement | message                                 |
+            | the first player   | 1                  |  fucked         |  striked         |  Good! You got the hot achievement    |
+            | the second player  | 1                  |  fucker         |  cold            |  Good! You got the fucker achievement |
             | the third player   | 0                  |  0              |  0               |                                       |
-            | the fourth player  | 1                  |  fucker         |  0               |                                       |
+            | the fourth player  | 1                  |  fucker         |  cold            |                                       |
 
 @todo
   Scenario: Player 1 and 2 win 10 games in total and get an 'initiated' achievement
@@ -78,8 +78,8 @@ Feature: Players get achievements after they finish some quest
         And a result of "6-2/2-6/6-2" for the game "game6"
         When I go to the players page
         Then the following players should have these achievements:
-            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
-            | the first player   | 3                  |  intiated       |  0               |  Good! You got the initiated achievement|
+            | player             | achievements_count | new_achievement | lost_achievement | message                                 |
+            | the first player   | 3                  |  initiated      |  0               |  Good! You got the initiated achievement|
             | the second player  | 3                  |  hot            |  0               |  Good! You got the hot achievement      |
             | the third player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement   |
             | the fourth player  | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement   |

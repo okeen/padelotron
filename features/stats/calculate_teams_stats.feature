@@ -39,12 +39,14 @@ Feature: Track team's game stats confirmating the result of a game
     And I should see "Perdidos: <team2_lost>"
 
     #Current score win/lost: Team1 => 1/0; Team2 => 0/2; Team3 => 2/0; Team4 => 0/1 ;
-  Scenarios: Victories of Game4 => 1, Game5 => 2, Game3 => 2, Game3 => 1,
+
+ Scenarios: Victories of Game4 => 1, Game5 => 2, Game3 => 2, Game3 => 1
         | desc  | result_sets  | team1_won | team1_lost | team2_won | team2_lost | team1        | team2        |
         | game4 | 6-1/4-6/6-2  | 2         | 0          | 0         | 2          | the 1st team | the 4th team |
         | game5 | 6-1/4-6/6-2  | 1         | 2          | 2         | 1          | the 2nd team | the 3rd team |
         | game6 | 6-1/4-6/6-2  | 1         | 2          | 0         | 2          | the 2nd team | the 4th team |
         | game7 | 6-1/4-6/6-2  | 2         | 0          | 2         | 1          | the 1st team | the 3rd team |
+
   Scenarios: Victories of Game4 => 4, Game5 => 3, Game3 => 4, Game3 => 4,
         | desc  | result_sets  | team1_won | team1_lost | team2_won | team2_lost |team1         | team2        |
         | game4 | 6-1/4-6/2-6  | 1         | 1          | 1         | 1          | the 1st team | the 4th team |
