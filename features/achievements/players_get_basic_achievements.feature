@@ -23,10 +23,12 @@ Feature: Players get achievements after they finish some quest
         | description | team1        | team2        | play_date |
         | game4       | the 1st team | the 2nd team | 2011-8-10 |
         | game5       | the 3rd team | the 4th team | 2011-8-10 |
-        
+        | game6       | the 1st team | the 2nd team | 2011-8-10 |
+
+
 @wip
-  Scenario: Player 1 and 2 wins 3 games and get a striked achivement
-        Given a result of "6-2/2-6/6-2" for the game "game1"
+  Scenario: Player 1 and 2 wins 3 games and get a striked achievement
+        Given a result of "6-2/2-6/6-2" for the game "game4"
         When I go to the players page
         Then the following players should have these achievements:
             | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
@@ -34,4 +36,51 @@ Feature: Players get achievements after they finish some quest
             | the second player  | 1                  |  striked        |  0               |  Good! You got the strike achievement   |
             | the third player   | 1                  |  buzzed         |  0               |  Oh, no! You got the strike achievement |
             | the fourth player  | 1                  |  buzzed         |  0               |  Oh, no! You got the strike achievement |
+
+@todo
+  Scenario: Player 1 and 2 wins 5 games and get a hot achievement
+        Given a result of "6-2/2-6/6-2" for the game "game4"
+        And a result of "6-2/2-6/6-2" for the game "game5"
+        And a result of "6-2/2-6/6-2" for the game "game6"
+        When I go to the players page
+        Then the following players should have these achievements:
+            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
+            | the first player   | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
+            | the second player  | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
+            | the third player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement |
+            | the fourth player  | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement |
+
+@todo
+ Scenario: Player 1 almost wins 5 games but he lost the last and get a fucked achievement, as he was so near to win 5 in a row
+ Player 2 and 4 get a fucker achievement as they fucked Player 1
+        Given a result of "6-2/2-6/6-2" for the game "game4"
+        And a result of "6-2/2-6/6-2" for the game "game5"
+        And a result of "6-2/2-6/2-6" for the game "game6"
+        When I go to the players page
+        Then the following players should have these achievements:
+            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
+            | the first player   | 1                  |  fucked         |  1               |  Good! You got the hot achievement    |
+            | the second player  | 1                  |  fucker         |  1               |  Good! You got the fucker achievement |
+            | the third player   | 0                  |  0              |  0               |                                       |
+            | the fourth player  | 1                  |  fucker         |  0               |                                       |
+
+@todo
+  Scenario: Player 1 and 2 win 10 games in total and get an 'initiated' achievement
+        Given the following games already played:
+            |desc |  team1 | team2 | set1 | set2 | set3 |
+            |game7|  team1 | team2 |  6-4 | 4-6  |  6-1 |
+            |game8|  team1 | team2 |  6-1 | 4-6  |  6-2 |
+            |game9|  team1 | team2 |  6-4 | 4-6  |  6-1 |
+            |game10| team1 | team2 |  6-1 | 4-6  |  6-2 |
+
+        Given a result of "6-2/2-6/6-2" for the game "game4"
+        And a result of "6-2/2-6/6-2" for the game "game5"
+        And a result of "6-2/2-6/6-2" for the game "game6"
+        When I go to the players page
+        Then the following players should have these achievements:
+            | player             | achievements_count | new_achievement | lost_Achievement | message                                 |
+            | the first player   | 3                  |  intiated       |  0               |  Good! You got the initiated achievement|
+            | the second player  | 3                  |  hot            |  0               |  Good! You got the hot achievement      |
+            | the third player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement   |
+            | the fourth player  | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement   |
 
