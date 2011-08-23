@@ -8,7 +8,7 @@ Feature: Customers create accounts to manage their Playgrounds
   Scenario: Unknown customer creates an account
         Given I am not logged
         When I go to the customers page
-        And I press "Create an account"
+        And I follow "Create an account"
         And I fill in "Association Name" with "Padel Club a Rosa"
         And I fill in "Address" with "Rua da Rosa 27, Santiago Compostela"
         And I press "Find"

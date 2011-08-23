@@ -1,5 +1,6 @@
 Padelotron::Application.routes.draw do
   
+  
   resources :playgrounds
 
   resources :places
@@ -32,6 +33,9 @@ Padelotron::Application.routes.draw do
     get "sign_out", :to => "devise/sessions#destroy"
   end
   resources :players
+
+  resources :customers
+  devise_for :customers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
