@@ -1,0 +1,7 @@
+form#new_game div#map {
+  height: 400px;
+  width: 400px;
+  float: right;
+  border: 1px solid;
+  border-radius: 7px 7px 7px 7px;
+  border-color: red; }

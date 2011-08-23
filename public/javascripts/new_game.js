@@ -56,7 +56,9 @@ $(function() {
 
         },
         toggleSendFacebookRequest: function(){
-            this.set({sendFacebookRequest: ! this.get("sendFacebookRequest")});
+            this.set({
+                sendFacebookRequest: ! this.get("sendFacebookRequest")
+            });
         },
         saveGameFacebookRequestId: function(requestIds){
             if (!requestIds) {
@@ -68,14 +70,6 @@ $(function() {
                 console.log("FB:Request response ERROR, no request id:" + requestIds);
                 return;
             }
-//            $.ajax({
-//                url: "/confirmations/" + this.get("game_data").confirmations[0].code,
-//                type: 'PUT',
-//                data: {
-//                    'confirmation[facebook_request_id]': requestIds
-//                },
-//                success: this.user_logged_in
-//            });
         }
         
     });
@@ -84,11 +78,39 @@ $(function() {
         el: "#new_game",
         
         initialize: function(){
-            _.bindAll(this, 'render','sendFacebookGameRequest', 'toggleSendFacebookRequest');
+            _.bindAll(this, 'render','sendFacebookGameRequest', 'toggleSendFacebookRequest','markPlaygroundInMap');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
+            $('select#game_playground_id').bind('click', this.markPlaygroundInMap);
+
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();
+        },
+        markPlaygroundInMap: function(e,value){
+            if (! this.map){
+                var mapOptions = {
+                    zoom: 13,
+                    center: new google.maps.LatLng(43.35564,-8.389435),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                this.map= new google.maps.Map($("#map")[0],mapOptions);
+            }
+            var playground = e.target.value;
+            $.ajax({
+                url: "/playgrounds/" + playground +".json",
+                type: 'GET',
+                success: function(data, response){
+                    var coordinates = new google.maps.LatLng(
+                        parseFloat(data.playground.latitude),
+                        parseFloat(data.playground.longitude));
+                    newGameView.map.panTo( coordinates );
+                     marker = new google.maps.Marker( {
+                        position: coordinates,
+                        map: this.map
+                    //title: place.get("full_address")
+                    } );
+                }
+            });
         },
         render: function(){
             return this;
@@ -96,14 +118,14 @@ $(function() {
         sendFacebookGameRequest: function(message){
             console.debug("FB:Request panel for Game:" +this.model.get('id'));
             var game = {
-                    description: this.model.get("description"),
-                    team1: this.model.get("team1"),
-                    team2: this.model.get("team2"),
-                    play_date: this.model.get("play_date")
+                description: this.model.get("description"),
+                team1: this.model.get("team1"),
+                team2: this.model.get("team2"),
+                play_date: this.model.get("play_date")
             }
             var destination_players = _([game.team1.players[1]]).chain()
-                                       .union(game.team2.players)
-                                       .uniq();
+            .union(game.team2.players)
+            .uniq();
                                         
             FB.ui({
                 method: 'apprequests',

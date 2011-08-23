@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <h3>Playground</h3>
+    <%= collection_select :game, :playground_id, Playground.all, :id, :name %><br />
+  </div>
+  <div id="map"></div>
 
   <div class="field">
     <h3>Equipo 1</h3>
