@@ -25,7 +25,7 @@ module ApplicationHelper
 
   def  player_achievements(player)
     list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
-      achievements = player.achievements.group(:achievement_type_id).group('achievements.id').collect do |achievement|
+      achievements = player.achievements.collect do |achievement|
         content_tag :li, achievement_image(achievement),
           :class => "achievement #{'new' if achievement.read.blank?}"
       end
@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def  team_achievements(team)
     list = content_tag :ul, "Achievements", :class => "team_achievements" do |ul|
-      achievements = team.achievements.group(:achievement_type_id, 'achievements.id').collect do |achievement|
+      achievements = team.achievements.collect do |achievement|
         content_tag :li, achievement_image(achievement),
           :class => "achievement #{'new' if achievement.read.blank?}"
       end
