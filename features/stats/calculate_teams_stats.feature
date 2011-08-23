@@ -4,6 +4,9 @@ Feature: Track team's game stats confirmating the result of a game
   As a Player and team member
   I want to know the games I've played, how many victories, losses, etc
 
+  Before do
+    Team.delete_all
+  end
   Background: Existing players "player1/1a@a.com", "player2/2@a.com", "player3/3@a.com" and "player4/4@a.com",
   existing confirmed team "team1" and "team2", existing confirmed game results:
     Given 4 players exist
