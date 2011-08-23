@@ -106,7 +106,7 @@ $(function() {
                     newGameView.map.panTo( coordinates );
                      marker = new google.maps.Marker( {
                         position: coordinates,
-                        map: this.map
+                        map: newGameView.map
                     //title: place.get("full_address")
                     } );
                 }

@@ -6,4 +6,7 @@ class Playground < ActiveRecord::Base
   delegate :longitude, :to => :place
   delegate :full_address, :to => :place
 
+  def as_json(options)
+    super(:methods => [:latitude, :longitude])
+  end
 end

@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.all
+    @games = Game.limit(10).all
 
     respond_to do |format|
       format.html # index.html.erb
