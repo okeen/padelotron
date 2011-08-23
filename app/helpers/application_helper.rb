@@ -6,7 +6,8 @@ module ApplicationHelper
         "<li>#{link_to("Players", players_path)}</li>"+
           "<li>#{link_to("Teams", teams_path)}</li>"+
           "<li>#{link_to("Games", games_path)}</li>"+
-          "<li>#{link_to("Create a Game", new_game_path)}</li>"
+          "<li>#{link_to("Create a Game", new_game_path)}</li>"+
+          "<li>#{link_to("Places", places_path)}</li>"
       ).html_safe
     end
   end
@@ -30,11 +31,12 @@ module ApplicationHelper
       end
       achievements.join("\n").html_safe
     end
-    messages =  player.achievements.collect do |achievement|
-      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-      "#{intro} #{achievement.message}"
-    end
-    (list + content_tag(:p, messages.join("\n"))).html_safe
+#    messages =  player.achievements.collect do |achievement|
+#      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+#      "#{intro} #{achievement.message}"
+#   end
+#    (list + content_tag(:p, messages.join("\n"))).html_safe
+    list.html_safe
   end
 
   def  team_achievements(team)
@@ -45,11 +47,12 @@ module ApplicationHelper
       end
       achievements.join("\n").html_safe
     end
-    messages =  team.achievements.collect do |achievement|
-      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-      "#{intro} #{achievement.message}"
-    end
-    (list + content_tag(:p, messages.join("\n"))).html_safe
+#    messages =  team.achievements.collect do |achievement|
+#      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+#      "#{intro} #{achievement.message}"
+#    end
+#    (list + content_tag(:p, messages.join("\n"))).html_safe
+    list.html_safe
   end
 
   def achievement_image(achievement)
@@ -79,7 +82,7 @@ module ApplicationHelper
   end
 
   def google_maps
-    '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAA0ABhsi94_QBEemORCuekWhTQb5oFIWqRUhWFXeBCl1qnXIchCxR2d3ijdCwerkhVW1ZKviQkM41YpQ" type="text/javascript"></script>'.html_safe
+    '<script src="http://maps.google.com/maps/api/js?v=3.6&sensor=false&key=ABQIAAAA0ABhsi94_QBEemORCuekWhTQb5oFIWqRUhWFXeBCl1qnXIchCxR2d3ijdCwerkhVW1ZKviQkM41YpQ" type="text/javascript"></script>'.html_safe
   end
 end
 

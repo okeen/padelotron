@@ -36,4 +36,11 @@ div.team_show {
         }
     }
   }
+ .team_achievements {
+    ul.team_achievements {
+      height: 20px;
+      list-style: none;
+      li {float: left;}
+    }
+  }
 }

@@ -4,9 +4,9 @@
       <h2><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h2>
 
       <ul>
-      <% @place.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @place.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -19,25 +19,14 @@
     <%= f.label :full_address %><br />
     <%= f.text_field :full_address %>
   </div>
-<button id="geocode">Geocode</button>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-<div id="map"style="float:right"></div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <div id="map" style="float:right;width:400px;height:400px"></div>
+  <button id="geocode">Geocode</button>
+  <ul id="geocoded_results"></ul>
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :country %>
+  <%= f.hidden_field :state %>
+  <%= f.hidden_field :city %>
+  <%= f.hidden_field :street %>
+  <%= f.submit %>
 <% end %>

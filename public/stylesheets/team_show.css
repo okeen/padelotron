@@ -23,3 +23,8 @@ div.team_show {
     div.team_show fieldset ul.team_players li {
       float: left;
       width: 49%; }
+  div.team_show .team_achievements ul.team_achievements {
+    height: 20px;
+    list-style: none; }
+    div.team_show .team_achievements ul.team_achievements li {
+      float: left; }

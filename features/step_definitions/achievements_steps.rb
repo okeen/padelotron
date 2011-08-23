@@ -8,7 +8,7 @@ Then /^the following players should have these achievements:$/ do |table|
     And "the player should have the new achievement \"#{achievements_data['new_achievement']}\""
     And "the player's achievements should include \"#{achievements_data['new_achievement']}\""
     And "the player should have lost the achievement \"#{achievements_data['lost_achievement']}\""
-    And "I should see \"#{achievements_data['message']}\""
+    #And "I should see \"#{achievements_data['message']}\""
   end
 end
 
