@@ -11,7 +11,7 @@ Feature: New Playground / Place creation
         |team1| the 1st player | the 2nd player |
         |team2| the 3rd player | the 4th player |
 
-@wip
+@todo
   Scenario: Create a new player with name "El lider" and email "leader@coremain.es"
     When I go to the new place page
     And I enter "Pista de Coremain" as place name

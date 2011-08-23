@@ -29,6 +29,7 @@ Padelotron::Application.routes.draw do
     get '/auth/:provider/callback' => 'players/omniauth_callbacks#facebook'
     get '/players/auth/:provider' => 'players/omniauth_callbacks#passthru'
     get "sign_in", :to => "devise/sessions#new"
+    get "sign_out", :to => "devise/sessions#destroy"
   end
   resources :players
 

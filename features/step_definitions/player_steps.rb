@@ -36,9 +36,13 @@ end
 
 When /^I login as #{capture_model}$/ do |player_ref|
   player = model(player_ref)
-  login_as player, :scope => :player
+  scope = player.class == Player ? :player : :customer
+  login_as player, :scope => scope
   visit root_path
-  page.should have_content "Kaixo #{player.name}"
+end
+
+Given /^I am not logged$/ do
+  logout
 end
 
 Then /^I should see #{capture_model}'s name$/ do |player_ref|

@@ -36,7 +36,6 @@ Feature: Players get achievements after they finish some quest
             | the 3rd player   | 1                  |  buzzed         |  0               |  Oh, no! You got the buzzed achievement |
             | the 4th player   | 1                  |  buzzed         |  0               |  Oh, no! You got the buzzed achievement |
 
-@wip
   Scenario: Player 1 and 2 wins 5 games and get a hot achievement
         Given a result of "6-2/2-6/6-2" for the game "game4"
         And a result of "6-2/2-6/6-2" for the game "game5"
