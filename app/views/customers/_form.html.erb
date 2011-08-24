@@ -4,22 +4,57 @@
       <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
       <ul>
-      <% @customer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @customer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+  <fieldset class="step" id="place">
+    <%=  f.fields_for :places do |place_form| %>
+      <div class="field">
+        <%= place_form.label :name %><br />
+        <%= place_form.text_field :name %>
+      </div>
+      <div class="field">
+        <%= place_form.label :full_address %><br />
+        <%= place_form.text_field :full_address %>
+      </div>
+      <div id="map" style="float:right;width:400px;height:400px"></div>
+      <button id="geocode">Geocode</button>
+      <ul id="geocoded_results"></ul>
+      <%= place_form.hidden_field :latitude %>
+      <%= place_form.hidden_field :longitude %>
+      <%= place_form.hidden_field :country %>
+      <%= place_form.hidden_field :state %>
+      <%= place_form.hidden_field :city %>
+      <%= place_form.hidden_field :street %>
+    <%end%>
+  </fieldset>
+  <fieldset class="step" id="customer">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname %>
-  </div>
+    <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+
+    <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
+
+  </fieldset>
   <div class="actions">
-    <%= f.submit %>
+  </div>
+  <div id="demoNavigation">
+    <input class="navigation_button" id="back" value="Back" type="reset" />
+    <input class="navigation_button" id="next" value="Next" type="submit" />
   </div>
 <% end %>

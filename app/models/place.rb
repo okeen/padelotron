@@ -4,6 +4,8 @@ class Place < ActiveRecord::Base
   geocoded_by :address
   after_create :create_playgrounds
 
+  belongs_to :customer
+  
   def address
     [street, city, state, country].compact.join(', ')
   end

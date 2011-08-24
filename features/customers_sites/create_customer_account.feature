@@ -9,8 +9,8 @@ Feature: Customers create accounts to manage their Playgrounds
         Given I am not logged
         When I go to the customers page
         And I follow "Create an account"
-        And I fill in "Association Name" with "Padel Club a Rosa"
-        And I fill in "Address" with "Rua da Rosa 27, Santiago Compostela"
+        And I fill in "Name" with "Padel Club a Rosa"
+        And I fill in "Full address" with "Rua da Rosa 27, Santiago Compostela"
         And I press "Find"
         And I select the first map result
         And I select "4" from "Number of playgrounds"

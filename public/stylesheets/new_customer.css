@@ -1,0 +1,10 @@
+form#new_customer {
+  width: 600px;
+  height: 600px; }
+  form#new_customer div#map {
+    height: 400px;
+    width: 400px;
+    float: right;
+    border: 1px solid;
+    border-radius: 7px 7px 7px 7px;
+    border-color: red; }

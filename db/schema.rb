@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110823233817) do
+ActiveRecord::Schema.define(:version => 20110824001848) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(:version => 20110823233817) do
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.string   "surname"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20110823233817) do
     t.string   "full_address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "customer_id"
   end
 
   create_table "players", :force => true do |t|
