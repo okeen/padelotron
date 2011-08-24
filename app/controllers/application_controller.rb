@@ -33,4 +33,8 @@ class ApplicationController < ActionController::Base
       logger.info "Facebook user: #{params[:player].inspect}"
     end
   end
+
+  def after_sign_up_path_for(resource)
+    customer_path(resource)
+  end
 end

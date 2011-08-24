@@ -44,11 +44,12 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        message = "Your info has been received. We just sent you an email with the confirmation code to activate the account"
         format.html { redirect_to(@customer, :notice => 'Customer was successfully created.') }
-        format.xml  { render :xml => @customer, :status => :created, :location => @customer }
+        format.js { render :json =>{:message => message, :model => @customer}.to_json, :status => :created}
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @customer.errors, :status => :unprocessable_entity }
+        format.js  { render :json=> @customer.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -79,5 +80,15 @@ class CustomersController < ApplicationController
       format.html { redirect_to(customers_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+
+  def after_sign_up_path_for(resource)
+    customer_path(resource)
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    root_path
   end
 end

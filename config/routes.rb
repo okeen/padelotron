@@ -34,8 +34,11 @@ Padelotron::Application.routes.draw do
   end
   resources :players
 
+  devise_for :customers, :controllers => { :registrations => "customers"}
+  devise_scope :customers do
+    #post '/customers/' => 'customers#create'
+  end
   resources :customers
-  devise_for :customers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

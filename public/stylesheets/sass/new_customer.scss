@@ -1,5 +1,5 @@
 form#new_customer {
-    width: 600px;
+    width: 800px;
     height: 600px;
 
     div#map {
@@ -8,12 +8,19 @@ form#new_customer {
         height: $map_height;
         width: $map_width;
         float: right;
-
+        margin: 10px;
         border: 1px solid;
         border: {
             radius: 7px 7px 7px 7px;
             color: red;
         }
+    }
+    div#message_box_panel {
+        $box_width: 400px;
+        $box_height: 400px;
+        box: $box_height;
+        box: $box_width;
 
     }
+
 }
