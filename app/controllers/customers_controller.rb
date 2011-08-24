@@ -1,6 +1,8 @@
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.xml
+  before_filter :login_as_owner_required, :except => [:index, :create, :new]
+  
   def index
     @customers = Customer.all
 
@@ -90,5 +92,14 @@ class CustomersController < ApplicationController
 
   def after_inactive_sign_up_path_for(resource)
     root_path
+  end
+
+  def login_as_owner_required
+    authenticate_customer!
+    unless current_customer.id == params[:id].to_i
+      flash[:notice] = "Unauthorized"
+      redirect_to customers_path
+      return false
+    end
   end
 end

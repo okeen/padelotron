@@ -4,7 +4,6 @@ Feature: Customers create accounts to manage their Playgrounds
   As a Customer
   I want to create a customer account
 
-@wip
 @javascript
   Scenario: Unknown customer creates an account
         Before do
@@ -31,13 +30,13 @@ Feature: Customers create accounts to manage their Playgrounds
         When I press "Ok"
         Then 1 email should be delivered to customer1@a.com
         When I click the first link in the first email
-        Then I should be on the first customer's home
+        Then I should be on the 1st unconfirmed customer's page
         And I should see "Welcome Name Surname"
         
 @wip
 Scenario: Confirmed Customer logs in and select the basic plan type
-    Given a confirmed customer
+    Given a confirmed customer exists
     When I login as the first customer
     Then I should see "Select your plan type"
-    
+    When I press "Free"
 

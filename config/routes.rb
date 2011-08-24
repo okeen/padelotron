@@ -34,7 +34,8 @@ Padelotron::Application.routes.draw do
   end
   resources :players
 
-  devise_for :customers, :controllers => { :registrations => "customers"}
+  devise_for :customers, :controllers => { :registrations => "customers",
+                                           :confirmation => "customers/confirmations"}
   devise_scope :customers do
     #post '/customers/' => 'customers#create'
   end

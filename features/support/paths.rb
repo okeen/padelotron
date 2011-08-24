@@ -10,6 +10,8 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    when /the 1st unconfirmed customer's page/
+      customer_path Customer.first
 
     # the following are examples using path_to_pickle
 

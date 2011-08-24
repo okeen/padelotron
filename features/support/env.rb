@@ -78,3 +78,9 @@ include Warden::Test::Helpers
 #World(Warden::Test::Helpers,Warden::Test::WardenHelpers)
 #
 #After{ Warden.test_reset! }
+#
+#require 'factory_girl'
+#require File.dirname(__FILE__) + '/../../spec/factories/customer.rb'
+#require File.dirname(__FILE__) + '/../../spec/factories/game.rb'
+#require File.dirname(__FILE__) + '/../../spec/factories/player.rb'
+#require File.dirname(__FILE__) + '/../../spec/factories/team.rb'
