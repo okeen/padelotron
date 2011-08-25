@@ -36,7 +36,6 @@ Scenario Outline: Confirmed Customer logs in and selects plan type
     And we should have '<total>' total earnings from all the subscriptions
 
 @javascript
-@wip
 Scenarios: Confirmed Customer logs in and select the plan type
     | subscription | earnings | customer         | total  |
     | free         | 0.0      | the 1st customer | 0.0    |

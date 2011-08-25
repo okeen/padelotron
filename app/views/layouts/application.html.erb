@@ -18,13 +18,12 @@
 <body>
   
 
-  <%= if player_signed_in?
-        puts "Current: #{current_player.inspect}"
-        render 'players/player_session_panel', :locals => {:player => current_player}
-      else
-        link_to "Sign in with Facebook", player_omniauth_authorize_path(:facebook)
-      end
-  %>
+ <% if player_signed_in? %>
+    <%= render 'players/player_session_panel', :locals => {:player => current_player} %>
+    <%= hidden_player_location_inputs(current_player) %>
+ <% else%>>
+    <%=  link_to "Sign in with Facebook", player_omniauth_authorize_path(:facebook) %>
+ <%end%>
 <fb:login-button perms="rsvp_event,email,create_event" show-faces="false" width="200" max-rows="1"></fb:login-button>
 <%= top_navigation_menu %>
 

@@ -81,7 +81,22 @@ $(function() {
             _.bindAll(this, 'render','sendFacebookGameRequest', 'toggleSendFacebookRequest','markPlaygroundInMap');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
             $('select#game_playground_id').bind('click', this.markPlaygroundInMap);
-
+            this.detectUserPositionAndpanMapTo();
+        },
+        detectUserPositionAndpanMapTo: function(){
+            var lat_input = $('input.[name="player_latitude"]')[0];
+            var lng_input = $('input.[name="player_longitude"]')[0];
+            if (lat_input && lng_input){
+                var coordinates = new google.maps.LatLng(
+                    parseFloat(lat_input.value),
+                    parseFloat(lng_input.value));
+                var mapOptions = {
+                    zoom: 13,
+                    center: coordinates,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                this.map= new google.maps.Map($("#map")[0],mapOptions);
+            }
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();
@@ -104,7 +119,7 @@ $(function() {
                         parseFloat(data.playground.latitude),
                         parseFloat(data.playground.longitude));
                     newGameView.map.panTo( coordinates );
-                     marker = new google.maps.Marker( {
+                    marker = new google.maps.Marker( {
                         position: coordinates,
                         map: newGameView.map
                     //title: place.get("full_address")
