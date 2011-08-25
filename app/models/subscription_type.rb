@@ -11,6 +11,9 @@ class SubscriptionType < ActiveRecord::Base
     SubscriptionType.create(:name => "premium",
                             :external_id => 48882,
                             :external_url => "https://tendel.chargify.com/h/48882/subscriptions/new")
+    SubscriptionType.create(:name => "platinum",
+                            :external_id => 48910,
+                            :external_url => "https://tendel.chargify.com/h/48910/subscriptions/new")
   end
 
   if self.all.blank?

@@ -36,15 +36,14 @@ Feature: Players get achievements after they finish some quest
             | the 3rd player   | 1                  |  buzzed         |  0               |  Oh, no! You got the buzzed achievement |
             | the 4th player   | 1                  |  buzzed         |  0               |  Oh, no! You got the buzzed achievement |
 
-@wip
   Scenario: Player 1 and 2 wins 5 games and get a hot achievement
         Given a result of "6-2/2-6/6-2" for the game "game4"
         And a result of "6-2/2-6/6-2" for the game "game5"
         And a result of "6-2/2-6/6-2" for the game "game6"
         When I go to the players page
         Then the following players should have these achievements:
-            | player           | achievements_count | new_achievement | lost_achievement | message                              |
-            | the first player | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
-            | the 2nd player   | 2                  |  hot            |  0               |  Good! You got the hot achievement   |
-            | the 3rd player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement |
+            | player           | achievements_count | new_achievement | lost_achievement | message                               |
+            | the first player | 2                  |  hot            |  0               |  Good! You got the hot achievement    |
+            | the 2nd player   | 1                  |  0              |  0               |                                       |
+            | the 3rd player   | 1                  |  0              |  0               |                                       |
             | the 4th player   | 2                  |  cold           |  0               |  Oh, no! You got the cold achievement |

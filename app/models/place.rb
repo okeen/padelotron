@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
   has_many :playgrounds
-
+  has_many :games, :through => :playgrounds
+  
   geocoded_by :address
   after_create :create_playgrounds
 

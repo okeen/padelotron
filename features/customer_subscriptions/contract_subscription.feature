@@ -33,12 +33,15 @@ Scenario Outline: Confirmed Customer logs in and selects plan type
     And I press "Place My Order"
     Then I should see "Subscription <subscription> was successfully created"
     And we should have '<earnings>' total earnings from <customer>'s subscriptions
+    And we should have '<total>' total earnings from all the subscriptions
 
 @javascript
+@wip
 Scenarios: Confirmed Customer logs in and select the plan type
-    | subscription | earnings | customer         |
-    | free         | 0.0      | the 1st customer |
-    | premium      | 7.95     | the 2nd customer |
-    | premium      | 7.95     | the 3rd customer |
+    | subscription | earnings | customer         | total  |
+    | free         | 0.0      | the 1st customer | 0.0    |
+    | premium      | 7.95     | the 2nd customer | 7.95   |
+    | platinum     | 19.95    | the 3rd customer | 27.90  |
+
 
     

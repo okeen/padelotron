@@ -15,5 +15,9 @@ module SubscriptionsHelper
       return link_to "premium",SubscriptionType.named("premium").first.external_url+"?#{params}",
               :class => "product"
     end
+    if (subscription_type == :platinum)
+      return link_to "premium",SubscriptionType.named("platinum").first.external_url+"?#{params}",
+              :class => "product"
+    end
   end
 end

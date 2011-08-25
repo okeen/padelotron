@@ -9,12 +9,6 @@ class CreateSubscriptionTypes < ActiveRecord::Migration
     end
 
 
-    SubscriptionType.create(:name => "free",
-                            :external_id => 48733,
-                            :external_url => "https://tendel.chargify.com/h/48733/subscriptions/new")
-    SubscriptionType.create(:name => "premium", 
-                            :external_id => 48734, 
-                            :external_url => "https://tendel.chargify.com/h/48734/subscriptions/new")
   end
 
   def self.down
