@@ -8,6 +8,8 @@ class Players::FacebookSessionsController < ApplicationController
                         params[:player][:name],
                         params[:player][:email]
                       )
+    @player.full_address = params[:player][:full_address]
+    @player.save
     if @player and sign_in(@player)
       session[:facebook_access_token] = params[:facebook_access_token]
       cookies[:_padelotron_tcg]= { :value => "1", :expires => 15.minutes.from_now.utc}

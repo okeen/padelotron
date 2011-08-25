@@ -28,7 +28,8 @@ class ApplicationController < ActionController::Base
       params[:player] = {
         'name' => player_data['name'],
         'facebook_id' => player_data['id'],
-        'email' => player_data['email']
+        'email' => player_data['email'],
+        'full_address' => player_data['location']['name']
       }
       logger.info "Facebook user: #{params[:player].inspect}"
     end

@@ -30,6 +30,13 @@ FactoryGirl.define do
     password {Factory.next :password}
     password_confirmation {"#{password}"}
     facebook_id {Factory.next :facebook_id}
+    country {Factory.next :place_country}
+    city {Factory.next :place_city}
+    street {Factory.next :place_street}
+    latitude {42.88256 + (rand) - 0.5}
+    longitude {(-8.535357) + (rand) - 0.5}
+    full_address {"#{street}, #{city}, #{country}"}
+
   end
 
   sequence :unconnected_player_name do |n|
@@ -55,6 +62,13 @@ FactoryGirl.define do
     password_confirmation {"#{password}"}
     encrypted_password {"#{password}"}
     facebook_id {Factory.next :unconnected_facebook_id}
+    country {Factory.next :place_country}
+    city {Factory.next :place_city}
+    street {Factory.next :place_street}
+    latitude {42.88256 + (rand) - 0.5}
+    longitude {(-8.535357) + (rand) - 0.5}
+    full_address {"#{street}, #{city}, #{country}"}
+
   end
 
 end

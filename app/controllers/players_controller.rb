@@ -44,7 +44,8 @@ class PlayersController < ApplicationController
   # POST /players.xml
   def create
     @player = Player.new(params[:player])
-
+    @player.full_address = params[:player][:full_address]
+    
     respond_to do |format|
       if @player.save
         sign_in(@player)

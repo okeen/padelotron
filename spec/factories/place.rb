@@ -6,11 +6,11 @@ FactoryGirl.define do
       "Spain"
     end
     sequence :place_city do |n|
-      "city #{n}"
+      ["Santiago Compostela", "Vilagarcia de Arousa", "Pontevedra"][rand(3)+1]
     end
 
     sequence :place_street do |n|
-      "street #{n}"
+      ""
     end
 
 

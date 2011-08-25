@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110824231142) do
+ActiveRecord::Schema.define(:version => 20110825200229) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -100,6 +100,15 @@ ActiveRecord::Schema.define(:version => 20110824231142) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "remember_created_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street"
+    t.string   "area_level1"
+    t.string   "area_level2"
+    t.string   "full_address"
   end
 
   create_table "playgrounds", :force => true do |t|
