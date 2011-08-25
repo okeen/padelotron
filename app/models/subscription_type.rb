@@ -6,11 +6,11 @@ class SubscriptionType < ActiveRecord::Base
 
   def self.create_all_achievement_types
     SubscriptionType.create(:name => "free",
-                            :external_id => 48733,
-                            :external_url => "https://tendel.chargify.com/h/48733/subscriptions/new")
+                            :external_id => 48876,
+                            :external_url => "https://tendel.chargify.com/h/48876/subscriptions/new")
     SubscriptionType.create(:name => "premium",
-                            :external_id => 48734,
-                            :external_url => "https://tendel.chargify.com/h/48734/subscriptions/new")
+                            :external_id => 48882,
+                            :external_url => "https://tendel.chargify.com/h/48882/subscriptions/new")
   end
 
   if self.all.blank?

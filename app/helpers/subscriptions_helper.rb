@@ -8,7 +8,8 @@ module SubscriptionsHelper
     }
     params= customer_params.keys.collect{|attr| "#{attr}=#{customer_params[attr]}"}.join("&")
     if (subscription_type == :free)
-      link_to "Free",Subscription.subscription_type_url(:free)+"?#{params}", :class => "product"
+      link_to "Free",SubscriptionType.named("free").first.external_url+"?#{params}",
+              :class => "product"
     end
   end
 end

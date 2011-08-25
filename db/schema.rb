@@ -140,7 +140,6 @@ ActiveRecord::Schema.define(:version => 20110824231142) do
   end
 
   create_table "subscriptions", :force => true do |t|
-    t.string   "type"
     t.integer  "customer_id"
     t.boolean  "payment_to_date",                         :default => false
     t.boolean  "active",                                  :default => true

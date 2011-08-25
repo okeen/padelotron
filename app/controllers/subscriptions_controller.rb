@@ -46,8 +46,7 @@ class SubscriptionsController < ApplicationController
     @customer = Customer.find(params[:customer_reference])
     @subscription = @customer.subscriptions.build(
       :subscription_type => SubscriptionType.with_external_id(params[:product_id]).first,
-      :external_signup_payment_id => params[:subscription_id],
-      :payment_to_date => true    )
+      :external_signup_payment_id => params[:subscription_id] )
     respond_to do |format|
       if @subscription.save
         format.html { redirect_to(@customer, :notice => "Subscription #{@subscription.type} was successfully created.") }
