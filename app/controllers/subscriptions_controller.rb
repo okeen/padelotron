@@ -3,7 +3,8 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions.xml
   before_filter :load_owner_customer,:login_as_owner_required, :except => :create
   before_filter :authenticate_customer!, :only => :create
-
+  layout "customers"
+  
   def index
     @subscriptions = Subscription.all
 
@@ -46,7 +47,9 @@ class SubscriptionsController < ApplicationController
     @customer = Customer.find(params[:customer_reference])
     @subscription = @customer.subscriptions.build(
       :subscription_type => SubscriptionType.with_external_id(params[:product_id]).first,
-      :external_signup_payment_id => params[:subscription_id] )
+      :external_signup_payment_id => params[:subscription_id],
+      :external_id => params[:subscription_id]
+    )
     respond_to do |format|
       if @subscription.save
         format.html { redirect_to(@customer, :notice => "Subscription #{@subscription.type} was successfully created.") }

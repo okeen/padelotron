@@ -4,6 +4,7 @@ class Customers::ConfirmationsController < Devise::ConfirmationsController
   protected
 
   def after_confirmation_path_for(name, resource)
+    sign_in(resource)
     customer_path(resource)
   end
 

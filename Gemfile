@@ -48,3 +48,4 @@ gem 'heroku'
 gem "sass"
 gem "paperclip", "~> 2.3"
 gem "geocoder"
+gem 'chargify_api_ares'

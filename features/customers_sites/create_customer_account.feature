@@ -30,6 +30,5 @@ Feature: Customers create accounts to manage their Playgrounds
         When I press "Ok"
         Then 1 email should be delivered to customer1@a.com
         When I click the first link in the first email
-        Then I should be on the 1st unconfirmed customer's page
-        And I should see "Welcome Name Surname"
+        Then I should see "Welcome Name Surname"
        

@@ -10,7 +10,17 @@ Then /^I should be the free subscription type purchase page$/ do
   pending # express the regexp above with the code you wish you had
 end
 
-Then /^we should have '(\d+.\d+)' total earnings from #{capture_model}'s subscriptions$/ do |our_money, customer_ref|
+Then /^we should have '(\d+)\.(\d+)' total earnings from #{capture_model}'s subscriptions$/ do |euros, cents, customer_ref|
   customer = model(customer_ref)
-  customer.subscriptions.collect(&:total_revenue).sum.should == our_money.to_f
+  puts "Expecting #{euros}#{cents.to_f / 100}"
+  customer.subscriptions.collect(&:total_revenue).sum.should == (euros.to_i + (cents.to_f / 100))
+end
+
+Then /^I save the page$/ do
+  puts page.inspect
+end
+
+When /^I follow the "([^"]*)" subscription link$/ do |subscription_link_text|
+  puts "   \n#{page.find("a.product", :text => subscription_link_text)['href'].inspect}"
+  visit page.find("a.product", :text => subscription_link_text)['href']
 end
