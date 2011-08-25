@@ -41,7 +41,7 @@ Scenarios: Confirmed Customer logs in and select the plan type
     | subscription | earnings | customer         | total  |
     | free         | 0.0      | the 1st customer | 0.0    |
     | premium      | 7.95     | the 2nd customer | 7.95   |
-    | platinum     | 19.95    | the 3rd customer | 27.90  |
+    | platinum     | 19.95    | the 3rd customer | 19.95  |
 
 
     
