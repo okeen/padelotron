@@ -18,7 +18,13 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+        if (@customer.subscriptions.current.blank?)
+          redirect_to new_customer_subscription_path(@customer)
+        else
+          render 'show'
+        end
+        }
       format.xml  { render :xml => @customer }
     end
   end

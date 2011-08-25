@@ -32,11 +32,4 @@ Feature: Customers create accounts to manage their Playgrounds
         When I click the first link in the first email
         Then I should be on the 1st unconfirmed customer's page
         And I should see "Welcome Name Surname"
-        
-@wip
-Scenario: Confirmed Customer logs in and select the basic plan type
-    Given a confirmed customer exists
-    When I login as the first customer
-    Then I should see "Select your plan type"
-    When I press "Free"
-
+       

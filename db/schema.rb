@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110824172923) do
+ActiveRecord::Schema.define(:version => 20110824231142) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -129,6 +129,29 @@ ActiveRecord::Schema.define(:version => 20110824172923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "lost_strike",   :default => 0
+  end
+
+  create_table "subscription_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "external_id",  :limit => 8
+    t.string   "external_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "type"
+    t.integer  "customer_id"
+    t.boolean  "payment_to_date",                         :default => false
+    t.boolean  "active",                                  :default => true
+    t.datetime "last_payment"
+    t.integer  "external_id",                :limit => 8
+    t.integer  "external_customer_id",       :limit => 8
+    t.integer  "external_signup_payment_id", :limit => 8
+    t.float    "total_revenue",                           :default => 0.0
+    t.integer  "subscription_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teams", :force => true do |t|

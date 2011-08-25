@@ -9,3 +9,4 @@ end
 Then /^I should be the free subscription type purchase page$/ do
   pending # express the regexp above with the code you wish you had
 end
+

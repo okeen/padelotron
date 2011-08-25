@@ -1,10 +1,7 @@
 Padelotron::Application.routes.draw do
   
-  
   resources :playgrounds
-
   resources :places
-
   resources :achievements
 
   get "home" => "home#home", :as => "home"
@@ -35,11 +32,17 @@ Padelotron::Application.routes.draw do
   resources :players
 
   devise_for :customers, :controllers => { :registrations => "customers",
-                                           :confirmation => "customers/confirmations"}
+    :confirmation => "customers/confirmations"}
   devise_scope :customers do
     #post '/customers/' => 'customers#create'
   end
-  resources :customers
+
+  get "subscriptions/create" => "subscriptions#create"
+  get "subscriptions/update" => "subscriptions#update"
+
+  resources :customers do
+    resources :subscriptions
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

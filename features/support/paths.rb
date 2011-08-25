@@ -13,6 +13,10 @@ module NavigationHelpers
     when /the 1st unconfirmed customer's page/
       customer_path Customer.first
 
+    when /the "([^"]*)" subscription type purchase page/
+      URI.split(SubscriptionType.named($1).first.external_url)[5]
+
+
     # the following are examples using path_to_pickle
 
     when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page

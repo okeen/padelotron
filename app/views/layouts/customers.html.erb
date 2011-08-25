@@ -17,14 +17,13 @@
 <body>
   
 
-  <%= if customer_signed_in?
-        puts "Current Customer: #{current_customer.inspect}"
-        "Welcome #{current_customer.name} #{current_customer.surname}"
-      else
-        link_to("Log in", new_customer_session_path) + " - " +
-        link_to("Create an account", new_customer_path)
-      end
-  %>
+  <% if customer_signed_in? %>
+      <h4>Welcome <%= current_customer.name %> <%=current_customer.surname %></h4>
+      <%=  link_to("Logout", destroy_customer_session_path, :method => :delete) %>
+  <% else %>
+       <%= link_to("Log in", new_customer_session_path) %> -
+       <%= link_to("Create an account", new_customer_path) %>
+    <%  end %>
 <%= top_navigation_menu %>
 
 <%= yield %>

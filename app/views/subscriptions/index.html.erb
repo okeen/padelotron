@@ -1,0 +1,33 @@
+<h1>Listing subscriptions</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Product url</th>
+    <th>Customer</th>
+    <th>Payment to date</th>
+    <th>Last payment</th>
+    <th>External</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subscriptions.each do |subscription| %>
+  <tr>
+    <td><%= subscription.type %></td>
+    <td><%= subscription.product_url %></td>
+    <td><%= subscription.customer %></td>
+    <td><%= subscription.payment_to_date %></td>
+    <td><%= subscription.last_payment %></td>
+    <td><%= subscription.external_id %></td>
+    <td><%= link_to 'Show', subscription %></td>
+    <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
+    <td><%= link_to 'Destroy', subscription, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subscription', new_subscription_path %>

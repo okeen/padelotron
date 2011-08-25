@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @subscription.type %>
+</p>
+
+<p>
+  <b>Product url:</b>
+  <%= @subscription.product_url %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @subscription.customer %>
+</p>
+
+<p>
+  <b>Payment to date:</b>
+  <%= @subscription.payment_to_date %>
+</p>
+
+<p>
+  <b>Last payment:</b>
+  <%= @subscription.last_payment %>
+</p>
+
+<p>
+  <b>External:</b>
+  <%= @subscription.external_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+<%= link_to 'Back', subscriptions_path %>
