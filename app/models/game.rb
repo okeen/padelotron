@@ -39,6 +39,8 @@ class Game < ActiveRecord::Base
     )
   }
 
+  scope :upcoming, lambda { where("play_date >= ?", DateTime.now)}
+
   def as_json(options)
     super(:include => {:team1 => {:methods =>[:players]},
         :team2 => {:methods =>[:players]}})

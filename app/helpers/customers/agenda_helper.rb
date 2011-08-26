@@ -1,0 +1,2 @@
+module Customers::AgendaHelper
+end

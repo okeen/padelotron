@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
    # GET /teams
   # GET /teams.xml
   def index
-    @teams = Team.all
+    @teams = Team.scoped.includes(:player1,:player2).all
 
     respond_to do |format|
       format.html # index.html.erb

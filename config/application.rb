@@ -32,6 +32,7 @@ module Padelotron
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery rails underscore json2 backbone jquery.cookie)
     config.action_view.javascript_expansions[:jquery_ui] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.js"
+    config.action_view.javascript_expansions[:google] = "https://www.google.com/jsapi"
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

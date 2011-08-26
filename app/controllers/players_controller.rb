@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.xml
   def index
-    @players = Player.all
+    @players = Player.includes(:stat).includes(:achievements).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.xml
   def show
-    @player = Player.find(params[:id])
+    @player = Player.includes(:stat).includes(:achievements).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

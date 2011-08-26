@@ -40,9 +40,14 @@ Padelotron::Application.routes.draw do
   get "subscriptions/create" => "subscriptions#create"
   get "subscriptions/update" => "subscriptions#update"
 
+  namespace :customers do
+    resource :agenda
+  end
+
   resources :customers do
     resources :subscriptions
   end
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

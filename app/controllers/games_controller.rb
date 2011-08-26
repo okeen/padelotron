@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.limit(10).all
+    @games = Game.limit(10).includes(:team1,:team2).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +24,9 @@ class GamesController < ApplicationController
     end
   end
 
+  def upcoming
+    @games = @games.upcoming
+  end
   # GET /games/new
   # GET /games/new.xml
   def new
@@ -98,5 +101,10 @@ class GamesController < ApplicationController
       'fb:app_id' => "270031589679955",
       'og:description' => "#{@game.description} page at Padelotron"
     }
+  end
+
+  def load_parent_place
+    @place = Place.find(params[:place_id])
+    @games = @place.games
   end
 end

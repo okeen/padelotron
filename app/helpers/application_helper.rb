@@ -91,4 +91,3 @@ module ApplicationHelper
     "<input type='hidden' name='player_longitude' value='#{player.longitude}'></input>").html_safe
   end
 end
-

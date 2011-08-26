@@ -6,6 +6,8 @@ class Place < ActiveRecord::Base
   after_create :create_playgrounds
 
   belongs_to :customer
+
+  default_scope includes(:playgrounds)
   
   def address
     [street, city, state, country].compact.join(', ')

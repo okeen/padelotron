@@ -10,6 +10,8 @@ class Achievement < ActiveRecord::Base
     joins(:achievement_type).where("name = ?", achievement_type)
   }
 
+  default_scope includes(:achievement_type)
+
   def Achievement.update_achievements_for(statable)
     new_achievements= []
     if (statable.class == Player)
