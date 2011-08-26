@@ -30,16 +30,41 @@ $(function(){
         events: {
         },
         initialize: function() {
+            _.bindAll(this,['initScheduler']);
             GameEvents.bind('add',   this.addGameEvent, this);
             GameEvents.bind('reset', this.resetGameEvents, this);
-            scheduler.init('scheduler',null,"day");
-            scheduler.config.api_date=""
-            scheduler.attachEvent("onClick", this.showGameDetails);
+            $.when( 
+                $.ajax("/places/"+GameEvents.place_id+"/playgrounds.json"))
+            .then(
+                this.initScheduler);
             GameEvents.fetch({
                 data: {
                     place_id: GameEvents.place_id
                 }
             });
+        },
+        initScheduler: function(playgrounds){
+            if (!playgrounds){
+                console.debug("Customer:Agenda error loading place playgrounds");
+                return;
+            }
+            var sections=_(playgrounds).map(function(item){
+                console.debug("PlacePlaygrounds::Loaded " + item.name);
+                return {
+                    key: item.id,
+                    label: item.name
+                };
+            });
+            scheduler.createUnitsView({
+                name: "unit",
+                property: "playground_id",
+                list: sections
+            });
+            scheduler.locale.labels.unit_tab = "Playground"
+            scheduler.init('scheduler',null,"day");
+            scheduler.config.api_date=""
+            scheduler.attachEvent("onClick", this.showGameDetails);
+
         },
         showGameDetails:function(gameId,event){
             console.log("Customer:Agenda selected from schedule Game" + gameId);
@@ -47,7 +72,7 @@ $(function(){
             console.log("Customer:Agenda loaded Game" + game);
             $("#game_title").html('Game: ' + game.get("team1").name + " VS " + game.get("team2").name);
             $("#game_description").html(game.get("description"));
-            $("#game_date_and_place").html(game.get("play_date") + game.get("playground").id);
+            $("#game_date_and_place").html(game.get("play_date") +" @ "+ game.get("playground").name);
             var gameTeamsPanel = $("#game_team1_panel");
             gameTeamsPanel.find("h4[name='team_name']").html(game.get("team1").name);
             gameTeamsPanel.find("li[name='team_player1']").html(game.get("team1").players[0].name);
@@ -69,8 +94,7 @@ $(function(){
                 start_date: start_date,
                 end_date: end_date,
                 id: event.get("id"),
-                text:event.get('description'),
-                custom_data:"some data"
+                text:event.get('team1').name + " VS " + event.get('team1').name +": "+ event.get('description')
             });
         },
         resetGameEvents: function(){

@@ -2,11 +2,13 @@ class PlaygroundsController < ApplicationController
   # GET /playgrounds
   # GET /playgrounds.xml
   def index
-    @playgrounds = Playground.all
+    @playgrounds = params[:place_id].blank? ?
+        Playground.all :
+        Place.find(params[:place_id]).playgrounds
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @playgrounds }
+      format.json  { render :json => @playgrounds }
     end
   end
 

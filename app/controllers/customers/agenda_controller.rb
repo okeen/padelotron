@@ -10,9 +10,9 @@ class Customers::AgendaController < ApplicationController
   end
 
   def games
-    @place=Place.find(params[:place_id])
+    @place=Place.includes(:games).find(params[:place_id])
     #games = @place.games.upcoming
-    games = @place.games.all
+    games = @place.games.includes(:team1,:team2).all
     respond_to do |format|
       format.json {render :json => games.to_json}
     end

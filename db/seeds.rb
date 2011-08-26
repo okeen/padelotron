@@ -26,14 +26,15 @@ def create_a_winner_set_for_team2
 end
 
 
-10.times do |t|
-  Factory.create :place_with_customer
+50.times do |t|
+  p = Factory.create :place_with_customer
+  p.playgrounds.create(:name => "playground #{t+1}")
 end
 
 playgrounds = Place.all.collect(&:playgrounds).flatten
 
 
-50.times do |i|
+200.times do |i|
   first_team = rand(3) +1
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
@@ -47,7 +48,7 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
   puts "Created Friendly confirmed game: #{g.reload.inspect}"
 end
 
-100.times do |i|
+500.times do |i|
   first_team = rand(3) +1
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
