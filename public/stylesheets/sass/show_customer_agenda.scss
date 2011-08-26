@@ -1,0 +1,26 @@
+div#main_panel {
+    width: 1120px;
+    height: 800px;
+
+    div#game_info_panel {
+        $detail_panel_width: 300px;
+        $detail_panel_height: 600px;
+        height: $detail_panel_height;
+        width: $detail_panel_width;
+        float: right;
+        margin: 10px;
+        border: 1px solid;
+        border: {
+            radius: 7px 7px 7px 7px;
+            color: red;
+        }
+    }
+    div#scheduler {
+        $scheduler_width: 800px;
+        $scheduler_height: 500px;
+        height: $scheduler_height;
+        width: $scheduler_width;
+
+    }
+
+}
