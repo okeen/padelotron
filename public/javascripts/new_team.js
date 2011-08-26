@@ -14,7 +14,7 @@ $(function() {
             $('form#new_team').live('ajax:error', this.teamCreateError);
         },
         teamCreateSuccess: function(e,response){
-            this.set({team_data: response.model.team});
+            this.set({team_data: response.model});
             $("<div></div>").html(response.message +
                 "<br/><input type='checkbox' class='create_facebook_request'>Send Request via Facebook</input>")
             .dialog({

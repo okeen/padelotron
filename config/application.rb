@@ -42,3 +42,4 @@ module Padelotron
     config.action_mailer.default_url_options = { :host => 'padelotron.heroku.com' }
   end
 end
+ ActiveRecord::Base.include_root_in_json = false

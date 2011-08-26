@@ -14,7 +14,7 @@ $(function() {
             $('form#new_game').live('ajax:error', this.gameCreateError);
         },
         gameCreateSuccess: function(e,response){
-            this.set(response.model.game);
+            this.set(response.model);
             $("<div></div>").html(response.message +
                 "<br/><input type='checkbox' class='create_facebook_request'>Send Request via Facebook</input>")
             .dialog({

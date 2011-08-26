@@ -43,7 +43,8 @@ class Game < ActiveRecord::Base
 
   def as_json(options)
     super(:include => {:team1 => {:methods =>[:players]},
-        :team2 => {:methods =>[:players]}})
+        :team2 => {:methods =>[:players]},
+        :playground => {}})
   end
 
   def is_friendly?

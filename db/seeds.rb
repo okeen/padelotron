@@ -32,6 +32,21 @@ end
 
 playgrounds = Place.all.collect(&:playgrounds).flatten
 
+
+50.times do |i|
+  first_team = rand(3) +1
+  second_team = (first_team + (1 + rand(1))) % 3
+  second_team = 1 if second_team == 0
+  puts "#{first_team}/#{second_team}"
+  g = FactoryGirl.create :friendly_game,
+                         :team1_id => first_team,
+                         :team2_id => second_team,
+                         :playground => playgrounds[rand(playgrounds.count)],
+                         :play_date => DateTime.now + rand(100).hours
+  g.confirm!
+  puts "Created Friendly confirmed game: #{g.reload.inspect}"
+end
+
 100.times do |i|
   first_team = rand(3) +1
   second_team = (first_team + (1 + rand(1))) % 3
@@ -40,9 +55,10 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
   g = FactoryGirl.create :friendly_game, 
                          :team1_id => first_team,
                          :team2_id => second_team,
-                         :playground => playgrounds[rand(playgrounds.count)]
+                         :playground => playgrounds[rand(playgrounds.count)],
+                         :play_date => DateTime.now - rand(100).hours
   g.confirm!
-  puts "Created Friendly confirmed game: #{g.reload.inspect}"
+  puts "Created past Friendly confirmed game: #{g.reload.inspect}"
 
   result = g.create_result  \
                :result_sets =>
@@ -52,12 +68,4 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
                                       create_a_winner_set_for_team2
                }
      result.confirm!
-
 end
-g1 = FactoryGirl.create :friendly_game, :team1 => t1, :team2 => t2,
-  :description => 'unconfirmed game'
-puts "Created unconfirmed Friendly game: #{g1.reload.inspect}"
-
-g2 = FactoryGirl.create :friendly_game, :team1 => t2, :team2 => t3
-g2.confirm!
-puts "Created Friendly confirmed game: #{g2.reload.inspect}"

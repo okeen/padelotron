@@ -14,7 +14,7 @@ $(function() {
         },
         gameResultCreateSuccess: function(e,response){
             console.log("Result created OK")
-            this.set(response.model.result);
+            this.set(response.model);
             $("<div></div>").html(response.message +
                 "<br/><input type='checkbox' class='create_facebook_request'>Send Request via Facebook</input>")
             .dialog({
@@ -169,7 +169,6 @@ $(function() {
         showResult: function (score){
             $('h3.provisional_score').html("Score: " + score.team1 + ":" + score.team2);
         }
-
     });
     window.GameResult = new GameResult();
     window.GameResultView = new GameResultView({
