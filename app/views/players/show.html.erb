@@ -4,3 +4,5 @@
 
 <%= player_like_button(@player) %>
 <%= facebook_player_comments_panel(@player) %>
+
+<%= render :partial => 'player_statistics', :locals => {:graph => @graph}  %>
