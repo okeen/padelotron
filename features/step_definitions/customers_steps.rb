@@ -60,3 +60,23 @@ Then /^the game "([^"]*)" players should receive a reservation ok info for the p
   pending # express the regexp above with the code you wish you had
 end
 
+Given /^the following confirmed friendly games exist for the playground:$/ do |game_table|
+  game_table.hashes.each do |game_data|
+    team1 = model(game_data['team1'])
+    team2 = model(game_data['team2'])
+    date = Chronic.parse(game_data['play_date'])
+    playground = Playground.find_by_name(game_data["playground"])
+    #playground = model(game_data["playground"])
+    data = {:team1 => team1,
+           :team2 => team2,
+           :play_date => date,
+           :playground => playground,
+           :description => game_data['description']
+           }
+    puts "PPPPP>>>> #{data.inspect}"
+    game = Factory.create :confirmed_friendly_game, data
+    puts "GAme #{game}"
+  end
+end
+
+
