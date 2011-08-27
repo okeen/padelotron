@@ -35,7 +35,8 @@ FactoryGirl.define do
     password_confirmation "aaaaaa"
     after_create {|customer|
       customer.confirm!
-      customer.subscriptions.create(Factory.build :premium_subscription)
+      customer.subscriptions << (Factory.build :premium_subscription)
+      customer.save
     }
   end
 

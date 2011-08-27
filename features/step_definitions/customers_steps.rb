@@ -33,8 +33,12 @@ end
 
 
 Given /^#{capture_model} has the following playgrounds:$/ do |customer_ref, playgrounds_table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  customer = model(customer_ref)
+  customer.places.create({:name => "Customer#{customer.id} place "}) unless customer.places.count > 0
+  place = customer.places.first
+  playgrounds_table.hashes.each do |playground_data|
+    place.playgrounds.create(playground_data)
+  end
 end
 
 

@@ -5,14 +5,14 @@ FactoryGirl.define do
     payment_to_date  true
     active  true
     last_payment { DateTime.now}
-    subscription_type {SubscriptionType.named("free").first}
+    subscription_type_id {SubscriptionType.named("free").first.id}
   end
 
   factory :premium_subscription, :class => Subscription do
     payment_to_date  true
     active  true
     last_payment { DateTime.now}
-    subscription_type {SubscriptionType.named("premium").first}
+    subscription_type_id {SubscriptionType.named("premium").first.id}
   end
 
 
@@ -20,6 +20,6 @@ FactoryGirl.define do
     payment_to_date  true
     active  true
     last_payment { DateTime.now}
-    subscription_type {SubscriptionType.named("platinum").first}
+    subscription_type_id {SubscriptionType.named("platinum").first.id}
   end
 end
