@@ -1,6 +1,6 @@
 div.player_panel {
   
-  height: 200px;
+  height: 180px;
   width: 700px;
 
   div.player_info_subpanel {
@@ -20,6 +20,7 @@ div.player_panel {
     }
   }
   div.player_emblems_subpanel {
+    float:right;
     ul.player_achievements {
       height: 20px;
       list-style: none;

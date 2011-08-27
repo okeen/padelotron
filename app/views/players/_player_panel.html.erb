@@ -1,4 +1,8 @@
 <div class="player_panel">
+  <div class="player_emblems_subpanel">
+   <%= render :partial => '/achievements/large_achievements_panel',
+              :locals => {:statable => player}%>
+  </div>
   <div class="player_info_subpanel">
     <div class="player_photo">
       <%= player_photo(player) %>
@@ -12,7 +16,5 @@
       </ul>
     </div>
   </div>
-  <div class="player_emblems_subpanel">
-    Emblemas: <%=player_achievements(player)%>
-  </div>
+  
 </div>

@@ -1,5 +1,5 @@
 div.player_panel {
-  height: 200px;
+  height: 180px;
   width: 700px; }
   div.player_panel div.player_info_subpanel {
     padding: 5px; }
@@ -12,8 +12,10 @@ div.player_panel {
         margin: 0px; }
       div.player_panel div.player_info_subpanel div.player_info ul {
         padding-left: 10px; }
-  div.player_panel div.player_emblems_subpanel ul.player_achievements {
-    height: 20px;
-    list-style: none; }
-    div.player_panel div.player_emblems_subpanel ul.player_achievements li {
-      float: left; }
+  div.player_panel div.player_emblems_subpanel {
+    float: right; }
+    div.player_panel div.player_emblems_subpanel ul.player_achievements {
+      height: 20px;
+      list-style: none; }
+      div.player_panel div.player_emblems_subpanel ul.player_achievements li {
+        float: left; }

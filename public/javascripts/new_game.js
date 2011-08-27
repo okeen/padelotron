@@ -116,8 +116,8 @@ $(function() {
                 type: 'GET',
                 success: function(data, response){
                     var coordinates = new google.maps.LatLng(
-                        parseFloat(data.playground.latitude),
-                        parseFloat(data.playground.longitude));
+                        parseFloat(data.latitude),
+                        parseFloat(data.longitude));
                     newGameView.map.panTo( coordinates );
                     marker = new google.maps.Marker( {
                         position: coordinates,

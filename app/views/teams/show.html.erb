@@ -2,10 +2,11 @@
 
 <div class="team_show">
   <div class="team_info_upper_subpanel">
-    <fieldset class="team_achievements">
-      <legend>Emblemas</legend>
-      <%= team_achievements(@team) %>
-    </fieldset>
+    <div class="team_achievements">
+      <%= render :partial => '/achievements/large_achievements_panel',
+              :locals => {:statable => @team}%>
+  </div>
+    </div>
 
     <div class="team_info_subpanel">
       <%= team_photo(@team) %>

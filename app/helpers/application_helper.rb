@@ -32,11 +32,11 @@ module ApplicationHelper
       end
       achievements.join("\n").html_safe
     end
-#    messages =  player.achievements.collect do |achievement|
-#      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-#      "#{intro} #{achievement.message}"
-#   end
-#    (list + content_tag(:p, messages.join("\n"))).html_safe
+    #    messages =  player.achievements.collect do |achievement|
+    #      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+    #      "#{intro} #{achievement.message}"
+    #   end
+    #    (list + content_tag(:p, messages.join("\n"))).html_safe
     list.html_safe
   end
 
@@ -48,18 +48,32 @@ module ApplicationHelper
       end
       achievements.join("\n").html_safe
     end
-#    messages =  team.achievements.collect do |achievement|
-#      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-#      "#{intro} #{achievement.message}"
-#    end
-#    (list + content_tag(:p, messages.join("\n"))).html_safe
+    #    messages =  team.achievements.collect do |achievement|
+    #      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
+    #      "#{intro} #{achievement.message}"
+    #    end
+    #    (list + content_tag(:p, messages.join("\n"))).html_safe
     list.html_safe
   end
 
-  def achievement_image(achievement)
-    image_tag "achievements/#{achievement.name}.png",
-          :alt => achievement.name,
-          :class => "achievement_icon"
+  def achievement_image(achievement_type_name, active=true)
+    image_tag "achievements/#{achievement_type_name}.png",
+      :alt => achievement_type_name,
+      :class => "achievement_icon"
+  end
+
+  def grouped_achievements(achievements)
+    achievements.inject({}) do |a,b|
+      a[b.achievement_type.name]||=0
+      a[b.achievement_type.name]+=1
+      a
+    end
+  end
+
+  def get_achievement_image_with_count(achievement_type_name, achievements_table)
+    logger.debug "#{achievements_table.inspect}"
+    count = achievements_table[achievement_type_name] || 0
+    achievement_image(achievement_type_name, count > 0 )+" x #{count}".html_safe
   end
 
   def google_analytics
@@ -88,6 +102,8 @@ module ApplicationHelper
 
   def hidden_player_location_inputs(player)
     ("<input type='hidden' name='player_latitude' value='#{player.latitude}'></input>"+
-    "<input type='hidden' name='player_longitude' value='#{player.longitude}'></input>").html_safe
+        "<input type='hidden' name='player_longitude' value='#{player.longitude}'></input>").html_safe
   end
+
+
 end

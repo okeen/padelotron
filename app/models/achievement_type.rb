@@ -2,6 +2,8 @@ class AchievementType < ActiveRecord::Base
 
   scope :named, lambda {|name| where('name = ?', name)}
 
+  scope :by_group, lambda {|group| where('group = ?', group)}
+
   def self.create_all_achievement_types
     AchievementType.create(:name => "striked", :nature => "positive", :group => "basic")
     AchievementType.create(:name => "hot", :nature => "positive", :group => "basic")

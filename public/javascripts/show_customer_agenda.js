@@ -94,7 +94,7 @@ $(function(){
                 start_date: start_date,
                 end_date: end_date,
                 id: event.get("id"),
-                text:event.get('team1').name + " VS " + event.get('team1').name +": "+ event.get('description')
+                text:event.get('team1').name + " VS " + event.get('team2').name +": "+ event.get('description')
             });
         },
         resetGameEvents: function(){
