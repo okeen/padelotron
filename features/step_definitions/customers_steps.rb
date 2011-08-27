@@ -27,7 +27,6 @@ Then /^I save the page$/ do
 end
 
 When /^I follow the "([^"]*)" subscription link$/ do |subscription_link_text|
-  puts "   \n#{page.find("a.product", :text => subscription_link_text)['href'].inspect}"
   visit page.find("a.product", :text => subscription_link_text)['href']
 end
 
@@ -79,4 +78,25 @@ Given /^the following confirmed friendly games exist for the playground:$/ do |g
   end
 end
 
+When /^I click on the game "([^"]*)" in the agenda$/ do |game_description|
+  page.find("div.dhx_cal_event", :content => game_description).click
+end
+
+Then /^I should see game "([^"]*)" information on the agenda detail panel$/ do |game_description|
+  game = Game.find_by_description game_description
+  within "#game_info_panel" do
+    page.should have_selector "h3#game_title", :content => "#{game.team1.name} VS #{game.team2.name}"
+    page.should have_selector "p#game_description", :content => "#{game_description}"
+    within "#game_team1_panel" do
+      page.should have_selector "h4[name='team_name']", :content => game.team1.name
+      page.should have_selector "li[name='team_player1']", :content => game.team1.player1.name
+      page.should have_selector "li[name='team_player2']", :content => game.team1.player2.name
+    end
+    within "#game_team2_panel" do
+      page.should have_selector "h4[name='team_name']", :content => game.team2.name
+      page.should have_selector "li[name='team_player1']", :content => game.team2.player1.name
+      page.should have_selector "li[name='team_player2']", :content => game.team2.player2.name
+    end
+  end
+end
 
