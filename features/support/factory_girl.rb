@@ -1,5 +1,6 @@
 require 'factory_girl'
 
+require File.dirname(__FILE__) + '/../../spec/factories/subscription.rb'
 require File.dirname(__FILE__) + '/../../spec/factories/customer.rb'
 require File.dirname(__FILE__) + '/../../spec/factories/place.rb'
 require File.dirname(__FILE__) + '/../../spec/factories/game.rb'

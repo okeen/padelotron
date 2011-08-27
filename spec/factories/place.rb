@@ -1,5 +1,6 @@
 FactoryGirl.define do
-    sequence :place_name do |n|
+
+sequence :place_name do |n|
       "place #{n}"
     end
     sequence :place_country do |n|
@@ -12,7 +13,6 @@ FactoryGirl.define do
     sequence :place_street do |n|
       ""
     end
-
 
   factory :place, :class => Place do
     name {Factory.next :place_name}

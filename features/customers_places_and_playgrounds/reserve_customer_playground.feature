@@ -7,7 +7,7 @@ Feature: Reserve game playground for playrgounds from customers with premium or
 
   Background: existing customer with premium account
         Given the date is "10 August 2011, 12:00"
-        Given a customer with premium account exists
+        Given a customer with premium subscription exists
         And the first customer has the following playgrounds:
             | name         | sport |
             | playground 1 | padel |

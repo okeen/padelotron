@@ -47,6 +47,8 @@ class Subscription < ActiveRecord::Base
       end
     end
     save
+  rescue => e
+    logger.warn "Chargify confirmation error: #{e.inspect}"
   end
 
 

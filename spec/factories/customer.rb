@@ -27,4 +27,17 @@ FactoryGirl.define do
   end
 
 
+  factory :customer_with_premium_subscription, :class => Customer do
+    name {Factory.next :customer_name}
+    surname {Factory.next :customer_surname}
+    email {Factory.next :customer_email}
+    password "aaaaaa"
+    password_confirmation "aaaaaa"
+    after_create {|customer|
+      customer.confirm!
+      customer.subscriptions.create(Factory.build :premium_subscription)
+    }
+  end
+
+
 end

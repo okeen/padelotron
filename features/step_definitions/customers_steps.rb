@@ -32,7 +32,7 @@ When /^I follow the "([^"]*)" subscription link$/ do |subscription_link_text|
 end
 
 
-Given /^#{capture_model} has the following playgrounds:$/ do |playgrounds_table|
+Given /^#{capture_model} has the following playgrounds:$/ do |customer_ref, playgrounds_table|
   # table is a Cucumber::Ast::Table
   pending # express the regexp above with the code you wish you had
 end
