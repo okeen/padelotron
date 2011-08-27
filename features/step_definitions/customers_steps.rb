@@ -51,8 +51,9 @@ Then /^I should see '(\d+)' games with confirmation pending with:$/ do |game_cou
 end
 
 
-Then /^I should see the game "([^"]*)" confirmed in the customer agenda$/ do |game_name|
-  pending # express the regexp above with the code you wish you had
+Then /^I should see the game "([^"]*)" confirmed in the customer agenda$/ do |game_description|
+  page.find("div.dhx_cal_event.confirmed", :content => game_description)
+
 end
 
 Then /^the game "([^"]*)" players should receive a reservation ok info for the playground "([^"]*)"$/ do |game_description, playground_name|
