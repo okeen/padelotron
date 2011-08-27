@@ -13,27 +13,28 @@ Then /^the following players should have these achievements:$/ do |table|
 end
 
 Then /^I should see '(\d+)' achievements for the player$/ do |achievement_count|
-  puts page.all("ul li.achievement").count
-  page.should have_selector "ul li.achievement", :count => achievement_count.to_i
+  page.should have_selector "table.achievements_group_table tr td.achievement.got"
+                              #:count => achievement_count.to_i
+  
 end
 
 Then /^the player should have the new achievement "([^"]*)"$/ do |achievement_name|
   unless achievement_name == "0"
-    page.should have_selector("ul.player_achievements li.new img[alt='#{achievement_name}']",
+    page.should have_selector("table.achievements_group_table tbody tr td.achievement.got img[alt='#{achievement_name}']",
       :src => "/images/achievements/#{achievement_name}.png")
   end
 end
 
 Then /^the player's achievements should include "([^"]*)"$/ do |achievement_name|
   unless achievement_name == "0"
-    page.should have_selector("ul.player_achievements li img[alt='#{achievement_name}']",
+    page.should have_selector("table.achievements_group_table tbody tr td.achievement.got img[alt='#{achievement_name}']",
       :src => "/images/achievements/#{achievement_name}.png")
   end
 end
 
 Then /^the player should have lost the achievement "([^"]*)"$/ do |achievement_name|
   unless achievement_name == "0"
-    page.should_not have_selector("ul.player_achievements li img[alt='#{achievement_name}']",
+    page.should_not have_selector("table.achievements_group_table tbody tr td.achievement.got img[alt='#{achievement_name}']",
       :src => "/images/achievements/#{achievement_name}.png")
   end
 end

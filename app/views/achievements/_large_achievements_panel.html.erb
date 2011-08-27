@@ -3,12 +3,20 @@
     <% achievements_table = grouped_achievements(statable.achievements)%>
   <table class="achievements_group_table basic_achievements">
     <tr name="victory_strikes">
-      <td><%= get_achievement_image_with_count("striked", achievements_table)%></td>
-      <td><%= get_achievement_image_with_count("hot", achievements_table)%></td>
+      <td class="achievement<%= " got" unless achievements_table["striked"].blank? %>">
+        <%= get_achievement_image_with_count("striked", achievements_table)%>
+      </td>
+      <td class="achievement<%= " got" unless achievements_table["hot"].blank? %>">
+        <%= get_achievement_image_with_count("hot", achievements_table)%>
+      </td>
     </tr>
     <tr name="defeat_strikes">
-      <td><%= get_achievement_image_with_count("buzzed", achievements_table)%></td>
-      <td><%= get_achievement_image_with_count("cold", achievements_table)%></td>
+      <td class="achievement<%= " got" unless achievements_table["buzzed"].blank? %>">
+        <%= get_achievement_image_with_count("buzzed", achievements_table)%>
+      </td>
+      <td class="achievement<%= " got" unless achievements_table["cold"].blank? %>">
+        <%= get_achievement_image_with_count("cold", achievements_table)%>
+      </td>
     </tr>
 
   </table>
