@@ -8,4 +8,12 @@ class Customer < ActiveRecord::Base
 
   accepts_nested_attributes_for :places, :allow_destroy => true
 
+  def is_premium?
+    subscriptions.current.last.name == "premium"
+  end
+
+  def is_platinum?
+    subscriptions.current.last.name == "platinum"
+  end
+
 end

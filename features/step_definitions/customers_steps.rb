@@ -57,7 +57,13 @@ Then /^I should see the game "([^"]*)" confirmed in the customer agenda$/ do |ga
 end
 
 Then /^the game "([^"]*)" players should receive a reservation ok info for the playground "([^"]*)"$/ do |game_description, playground_name|
-  pending # express the regexp above with the code you wish you had
+  game = Game.find_by_description game_description
+  game.players.each do |player|
+    email = ActionMailer::Base.deliveries.last
+    email.should_not be_blank
+    email.to.should be_include(player.email)
+    email.body.should be_include("Reservation ok for the game #{game_description} in playground #{playground_name}")
+  end
 end
 
 Given /^the following confirmed friendly games exist for the playground:$/ do |game_table|
@@ -80,7 +86,7 @@ Given /^the following confirmed friendly games exist for the playground:$/ do |g
 end
 
 When /^I click on the game "([^"]*)" in the agenda$/ do |game_description|
-  page.find("div.dhx_cal_event", :content => game_description).click
+  page.find("div.dhx_cal_event div.dhx_body", :content => game_description).click
 end
 
 Then /^I should see game "([^"]*)" information on the agenda detail panel$/ do |game_description|

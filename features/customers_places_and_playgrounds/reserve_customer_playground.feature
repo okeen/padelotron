@@ -16,6 +16,19 @@ Feature: Reserve game playground for playrgounds from customers with premium or
             | description | team1        | team2        | play_date    | playground         |
             | game1       | the 1st team | the 2nd team | today, 18:00 | playground 1 |
 
+@javascript
+  Scenario: Player creates new game and asks for playground confirmation
+        When I login as the first customer
+        And I go to the first customer's page
+        And I follow "Agenda"
+        Then I should see '1' games with confirmation pending with:
+            | description | team1        | team2        | play_date      |
+            | game1       | the 1st team | the 2nd team | today, 18:00|
+        When I click on the game "game1" in the agenda
+        Then I should see game "game1" information on the agenda detail panel
+        And I press "Confirm"
+        Then the game "game1" players should receive a reservation ok info for the playground "playground 1"
+        And I should see the game "game1" confirmed in the customer agenda
 
 @wip
 @javascript
@@ -29,5 +42,5 @@ Feature: Reserve game playground for playrgounds from customers with premium or
         When I click on the game "game1" in the agenda
         Then I should see game "game1" information on the agenda detail panel
         And I press "Confirm"
-        Then I should see the game "game1" confirmed in the customer agenda
-        And the game "game1" players should receive a reservation ok info for the playground "playground 1"
+        Then the game "game1" players should receive a reservation ok info for the playground "playground 1"
+        And I should not see the game "game1" confirmed in the customer agenda

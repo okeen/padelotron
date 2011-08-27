@@ -7,7 +7,7 @@ class Game < ActiveRecord::Base
   has_one :playground_request, :class_name => "Customer::PlaygroundRequest"
 
   has_one :result
-  #after_create :create_result
+  after_create :create_playground_request_if_needed
 
   delegate :sets, :to => :result
   delegate :place, :to => :playground
@@ -116,4 +116,9 @@ class Game < ActiveRecord::Base
     teams
   end
 
+  def create_playground_request_if_needed
+    if self.playground and self.playground.reservation_required?
+      playground.playground_requests.create(:game => self)
+    end
+  end
 end

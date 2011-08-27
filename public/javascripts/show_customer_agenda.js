@@ -110,8 +110,18 @@ $(function(){
 
         },
         confirmGame: function(event){
-            console.log("Agenda: confirming game" + this.selectedGame.get("id") );
-            $("div.dhx_cal_event.selected").addClass("confirmed");
+            var gameId= this.selectedGame.get("id");
+            console.log("Agenda: confirming game" + gameId);
+            $.ajax({
+                type: "PUT",
+                url: "/customers/playground_requests/" + gameId +".json",
+                data: {customer_playground_request:{status: 'confirmed'}},
+                success: function(data, status){
+                    console.debug("Agenda: confirmed game" + data.model.game_id);
+                    $("div.dhx_cal_event.selected").addClass("confirmed");
+                }
+            });
+            
         }
     });
     Backbone.sync= function(method, model, options){

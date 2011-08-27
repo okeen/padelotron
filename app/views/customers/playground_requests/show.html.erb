@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Game:</b>
+  <%= @customer_playground_request.game %>
+</p>
+
+<p>
+  <b>Playground:</b>
+  <%= @customer_playground_request.playground %>
+</p>
+
+<p>
+  <b>Accept code:</b>
+  <%= @customer_playground_request.accept_code %>
+</p>
+
+<p>
+  <b>Reject code:</b>
+  <%= @customer_playground_request.reject_code %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @customer_playground_request.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_playground_request_path(@customer_playground_request) %> |
+<%= link_to 'Back', customer_playground_requests_path %>

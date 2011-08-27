@@ -5,6 +5,11 @@ class Playground < ActiveRecord::Base
   delegate :latitude, :to => :place
   delegate :longitude, :to => :place
   delegate :full_address, :to => :place
+  delegate :customer, :to => :place
+
+  def reservation_required?
+    self.place.customer.is_premium? or self.place.customer.is_platinum?
+  end
 
   def as_json(options)
     super(:methods => [:latitude, :longitude])
