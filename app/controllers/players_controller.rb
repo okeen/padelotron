@@ -17,7 +17,7 @@ class PlayersController < ApplicationController
   # GET /players/1.xml
   def show
     @player = Player.find(params[:id])
-    @graph = open_flash_chart_object(600,300,"/players/:id/graph_code")
+    @graph = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_code")
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @player }
@@ -89,6 +89,39 @@ class PlayersController < ApplicationController
     end
   end
 
+   def graph_code
+    @player = Player.find(params[:id])
+    title = Title.new("Games wins and lost")
+
+    pie = Pie.new
+    pie.start_angle = 35
+    pie.animate = true
+    pie.tooltip = '#val# of #total#<br>#percent# of 100%'
+    pie.colours = ["#d01f3c", "#356aa0", "#C79810"]
+
+    contWins = 0
+    contPlayed = 0
+    @player.player_games.each do |game|
+      unless  game.winner_team.nil?
+        contPlayed = contPlayed +1
+        if game.winner_team.player1.id == @player.id || game.winner_team.player2.id == @player.id
+          contWins = contWins +1
+        end
+      end
+    end
+
+    newValues = [PieValue.new(contWins,"Wins"),PieValue.new(contPlayed-contWins,"Lost")]
+    pie.values  = newValues
+
+    chart = OpenFlashChart.new
+    chart.title = title
+    chart.add_element(pie)
+
+    chart.x_axis = nil
+
+    render :text => chart.to_s
+  end
+
   private
 
   def load_facebook_metadata
@@ -102,34 +135,5 @@ class PlayersController < ApplicationController
       'fb:app_id' => "270031589679955",
       'og:description' => "#{@player.name} page at Padelotron"
     }
-  end
-
-  def graph_code   
-    @player = Player.find(params[:id])
-    title = Title.new("Wins - lost")
-
-    pie = Pie.new
-    pie.start_angle = 35
-    pie.animate = true
-    pie.tooltip = '#val# of #total#<br>#percent# of 100%'
-    pie.colours = ["#d01f3c", "#356aa0", "#C79810"]
-
-    contWins = 0
-    @player.player_games.each do |game|
-      if game.played_by_player(@player)
-        contWins = contWins +1
-      end
-    end
-
-    newValues = [2,3,4]
-    pie.values  = newValues
-
-    chart = OpenFlashChart.new
-    chart.title = title
-    chart.add_element(pie)
-
-    chart.x_axis = nil
-
-    render :text => chart.to_s
   end
 end
