@@ -24,38 +24,6 @@ module ApplicationHelper
     link_to image_tag(photo_url), "http://www.facebook.com/#{player.facebook_id}"
   end
 
-  def  player_achievements(player)
-    list = content_tag :ul, "Achievements", :class => "player_achievements" do |ul|
-      achievements = player.achievements.collect do |achievement|
-        content_tag :li, achievement_image(achievement),
-          :class => "achievement #{'new' if achievement.read.blank?}"
-      end
-      achievements.join("\n").html_safe
-    end
-    #    messages =  player.achievements.collect do |achievement|
-    #      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-    #      "#{intro} #{achievement.message}"
-    #   end
-    #    (list + content_tag(:p, messages.join("\n"))).html_safe
-    list.html_safe
-  end
-
-  def  team_achievements(team)
-    list = content_tag :ul, "Achievements", :class => "team_achievements" do |ul|
-      achievements = team.achievements.collect do |achievement|
-        content_tag :li, achievement_image(achievement),
-          :class => "achievement #{'new' if achievement.read.blank?}"
-      end
-      achievements.join("\n").html_safe
-    end
-    #    messages =  team.achievements.collect do |achievement|
-    #      intro = achievement.nature == "positive" ? "Good!" : "Oh, no!"
-    #      "#{intro} #{achievement.message}"
-    #    end
-    #    (list + content_tag(:p, messages.join("\n"))).html_safe
-    list.html_safe
-  end
-
   def achievement_image(achievement_type_name, active=true)
     image_tag "achievements/#{achievement_type_name}.png",
       :alt => achievement_type_name,
