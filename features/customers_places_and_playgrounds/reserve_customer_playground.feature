@@ -13,8 +13,8 @@ Feature: Reserve game playground for playrgounds from customers with premium or
             | playground 2 | padel |
         And 2 confirmed teams exist
         And the following confirmed friendly games exist:
-            | description | team1        | team2        | play_date   | playground          |
-            | game1       | the 1st team | the 2nd team | today, 18:00| the first playground|
+            | description | team1        | team2        | play_date    | playground         |
+            | game1       | the 1st team | the 2nd team | today, 18:00 | the 2nd playground |
 
 
 

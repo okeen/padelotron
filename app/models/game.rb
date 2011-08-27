@@ -10,7 +10,7 @@ class Game < ActiveRecord::Base
 
   delegate :sets, :to => :result
   delegate :place, :to => :playground
-  
+
   include Confirmable
 
   def teams
