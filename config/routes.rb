@@ -1,5 +1,6 @@
 Padelotron::Application.routes.draw do
-  
+  match 'players/:id/graph_code' => 'players#graph_code', :as => :graph_code
+
   resources :playgrounds
   resources :places do
     resources :playgrounds

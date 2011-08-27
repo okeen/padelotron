@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
-
-<%= render :partial => 'player_panel', :locals => {:player => @player}  %>
+<%= render :partial => 'player_panel', :locals => {:player => @player} %>
 
 <%= player_like_button(@player) %>
 <%= facebook_player_comments_panel(@player) %>
+
+<%= render :partial => 'player_statistics', :locals => {:graph => @graph} %>
