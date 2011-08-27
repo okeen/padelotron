@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   belongs_to :team2, :class_name => "Team"
   belongs_to :winner_team, :class_name => "Team"
   belongs_to :playground
+  has_one :playground_request, :class_name => "Customer::PlaygroundRequest"
 
   has_one :result
   #after_create :create_result

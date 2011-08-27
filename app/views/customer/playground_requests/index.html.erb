@@ -1,0 +1,31 @@
+<h1>Listing customer_playground_requests</h1>
+
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Playground</th>
+    <th>Accept code</th>
+    <th>Reject code</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @customer_playground_requests.each do |customer_playground_request| %>
+  <tr>
+    <td><%= customer_playground_request.game %></td>
+    <td><%= customer_playground_request.playground %></td>
+    <td><%= customer_playground_request.accept_code %></td>
+    <td><%= customer_playground_request.reject_code %></td>
+    <td><%= customer_playground_request.status %></td>
+    <td><%= link_to 'Show', customer_playground_request %></td>
+    <td><%= link_to 'Edit', edit_customer_playground_request_path(customer_playground_request) %></td>
+    <td><%= link_to 'Destroy', customer_playground_request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Playground request', new_customer_playground_request_path %>

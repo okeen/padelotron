@@ -1,4 +1,5 @@
 Padelotron::Application.routes.draw do
+  
   match 'players/:id/graph_code' => 'players#graph_code', :as => :graph_code
 
   resources :playgrounds
@@ -44,8 +45,9 @@ Padelotron::Application.routes.draw do
   get "subscriptions/update" => "subscriptions#update"
 
   namespace :customers do
-      get "agenda/show", :to => "agenda#show", :as => "agenda"
-      get "agenda/games", :to => "agenda#games", :as => "agenda_games"
+    resources :playground_requests
+    get "agenda/show", :to => "agenda#show", :as => "agenda"
+    get "agenda/games", :to => "agenda#games", :as => "agenda_games"
 
   end
 

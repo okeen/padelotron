@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827152728) do
+ActiveRecord::Schema.define(:version => 20110827182312) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20110827152728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "facebook_request_id"
+  end
+
+  create_table "customer_playground_requests", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "playground_id"
+    t.string   "accept_code"
+    t.string   "reject_code"
+    t.string   "status",        :default => "new"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "customers", :force => true do |t|
