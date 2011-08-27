@@ -42,9 +42,13 @@ Given /^#{capture_model} has the following playgrounds:$/ do |customer_ref, play
 end
 
 
-Then /^I should see '(\d+)' games with confirmation pending with:$/ do |game_description, game_table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+Then /^I should see '(\d+)' games with confirmation pending with:$/ do |game_count, game_table|
+  game_table.hashes.each do |game_data|
+    team1 = model(game_data['team1'])
+    team2 = model(game_data['team2'])
+    page.should have_selector "div.dhx_cal_event",
+       :content => "#{team1.name} VS #{team2.name} #{game_data['description']}"
+  end
 end
 
 

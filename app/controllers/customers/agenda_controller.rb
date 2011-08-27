@@ -12,8 +12,12 @@ class Customers::AgendaController < ApplicationController
   def games
     @place=Place.includes(:games).find(params[:place_id])
     #games = @place.games.upcoming
-    games = @place.games.includes(:team1,:team2).all
+    games = Game.send(:with_exclusive_scope) {
+      Game.includes(:team1,:team2).joins(:playground).where("playgrounds.place_id = ?", @place.id).all
+
+    }
     respond_to do |format|
+      logger.info "Retsurning games: #{games.inspect}"
       format.json {render :json => games.to_json}
     end
   end
