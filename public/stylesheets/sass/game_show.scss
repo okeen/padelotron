@@ -1,3 +1,6 @@
+h2 {
+  text-align: center;
+}
 div.game_info {
     padding: 15px;
     h2[name=title] {color: blue}
@@ -13,7 +16,7 @@ div.game_info {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
 
-        height: $team_photo_height + 2px;
+        height: 120px;
         border: 0px solid;
         border: {
             radius: 7px 7px 7px 7px;
@@ -48,5 +51,9 @@ div.game_info {
             }
         }
     }
-    
+    div#map{
+	height: 200px;
+	width: 200px;
+	float:right;
+    }
 }

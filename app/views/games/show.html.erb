@@ -1,46 +1,53 @@
+<%= javascript_include_tag 'show_game' %>
 <%= javascript_include_tag 'game_result' %>
+<%= google_maps %>
 
 <p id="notice"><%= notice %></p>
 
+<h2 name="title"><%= game_title(@game) %></h2>
 <div class="game_info">
-  <h2 name="title"><%= game_title(@game) %></h2>
-  <%= game_date_and_location(@game)%>
   <div class="game_teams_subpanel">
     <span>VS</span>
-    <%= first_team_info(@game) %>
-    <%= second_team_info(@game) %>
+    <div class="first_team">
+      <%=  image_tag @game.team1.image.url %>
+      <h3><%= @game.team1.name %></h3>
+      <ul class="team_players_list">
+        <% @game.team1.players.each do |player| %>
+          <li class="player">
+            <%= player_photo(player) %>
+            <%=  link_to player.name, player_path(player) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="second_team">
+      <%=  image_tag @game.team2.image.url %>
+      <h3><%= @game.team2.name %></h3>
+      <ul class="team_players_list">
+        <% @game.team2.players.each do |player| %>
+          <li class="player">
+            <%= player_photo(player) %>
+            <%=  link_to player.name, player_path(player) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <h4 name="description"><%= @game.description%></h4>
+  <%= game_date_and_location(@game)%>
+  <% if @game.playground %>
+    <div id="map"></div>
+    <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
+    <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
+  <% end %>
   <% if @game.winner_team %>
     <%= render :partial => 'game_result_panel', :locals => {:game => @game} %>
   <% end %>
+
   <%= game_like_button(@game) %>
 
   <% if @game.players.include?(current_player) and @game.winner_team.blank? %>
-    <%= set_game_result_button(@game) %>
-    <div class="game_result_panel inactive" >
-      <h4>Please set the result of the game</h4>
-      <%= form_for @game.build_result,
-        :url =>game_result_path(@game),
-        :remote => true             do |f| %>
-
-        <table class="result_sets_table">
-          <tr>
-            <th><%= @game.team1.name %></th>
-            <th><%= @game.team2.name %></th>
-            <th>Agregar set</th>
-          </tr>
-          <tr class="result_set_row">
-            <td><input class="result_set_team_score_input" type="text" name="result[result_sets][0][team1]"></input></td>
-            <td><input class="result_set_team_score_input lastInput" type="text" name="result[result_sets][0][team2]"></input></td>
-            <td><button class="result_add_new_set_button" onclick="return false;">+</button></td>
-          </tr>
-        </table>
-        <h3 class="provisional_score">Score: 0:0</h3>
-        <label>Disconforme?</label> <%= check_box_tag "result[movida]", :no, false, %>
-        <%= f.submit "Send the result" %>
-      <% end %>
-    </div>
+    <%=  render :partial => 'set_game_result_panel', :locals => {:game => @game}  %>
   <%end%>
   <%= facebook_game_comments_panel(@game) %>
 

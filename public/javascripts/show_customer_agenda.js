@@ -31,9 +31,14 @@ $(function(){
         },
         initialize: function() {
             _.bindAll(this,['initScheduler']);
+            this.confirmGame= _.bind(this.confirmGame, this);
+            this.rejectGame= _.bind(this.rejectGame, this);
             GameEvents.bind('add',   this.addGameEvent, this);
             GameEvents.bind('reset', this.resetGameEvents, this);
-            $.when( 
+            $("button#confirm_game_action").bind("click", this.confirmGame);
+            $("button#reject_game_action").bind("click", this.rejectGame);
+            $("div.dhx_cal_event div").live("click", this.setSelectedGame);
+            $.when(
                 $.ajax("/places/"+GameEvents.place_id+"/playgrounds.json"))
             .then(
                 this.initScheduler);
@@ -42,6 +47,11 @@ $(function(){
                     place_id: GameEvents.place_id
                 }
             });
+        },
+        setSelectedGame: function(scheduleGameElem){
+            console.log("Selected new game from agenda:" + scheduleGameElem.target);
+            $("div.dhx_cal_event.selected").removeClass("selected");
+            $(scheduleGameElem.target).parent().addClass("selected");
         },
         initScheduler: function(playgrounds){
             if (!playgrounds){
@@ -69,6 +79,7 @@ $(function(){
         showGameDetails:function(gameId,event){
             console.log("Customer:Agenda selected from schedule Game" + gameId);
             var game = GameEvents.get(gameId);
+            App.selectedGame = game;
             console.log("Customer:Agenda loaded Game" + game);
             $("#game_title").html('Game: ' + game.get("team1").name + " VS " + game.get("team2").name);
             $("#game_description").html(game.get("description"));
@@ -98,6 +109,34 @@ $(function(){
             });
         },
         resetGameEvents: function(){
+
+        },
+        confirmGame: function(event){
+            var gameId= this.selectedGame.get("id");
+            console.log("Agenda: confirming game" + gameId);
+            $.ajax({
+                type: "PUT",
+                url: "/customers/playground_requests/" + gameId +".json",
+                data: {customer_playground_request:{status: 'confirmed'}},
+                success: function(data, status){
+                    console.debug("Agenda: confirmed game" + data.model.game_id);
+                    $("div.dhx_cal_event.selected").addClass("confirmed");
+                }
+            });
+
+        },
+        rejectGame: function(event){
+            var gameId= this.selectedGame.get("id");
+            console.log("Agenda: confirming game" + gameId);
+            $.ajax({
+                type: "PUT",
+                url: "/customers/playground_requests/" + gameId +".json",
+                data: {customer_playground_request:{status: 'rejected'}},
+                success: function(data, status){
+                    console.debug("Agenda: confirmed game" + data.model.game_id);
+                    $("div.dhx_cal_event.selected").addClass("rejected");
+                }
+            });
 
         }
     });

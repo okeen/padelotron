@@ -1,0 +1,20 @@
+<h1>Confirm action</h1>
+<p>
+  <b>Game: </b>
+  <%= @customer_playground_request.game.description %>
+</p>
+<p>
+  <b>Playground:</b>
+  <%= @customer_playground_request.playground.name %>
+</p>
+
+
+<%  %>
+
+<p>Are you sure you want to confirm the reserve?</p>
+
+<%= confirm_reservation_action_button(@customer_playground_request,
+        @customer_playground_request.accept_code == params[:code])%>
+<br></br>
+<%= cancel_reservation_action_button(@customer_playground_request)%>
+

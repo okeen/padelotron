@@ -1,0 +1,12 @@
+Reserve request:
+
+Playground: <%= @game.playground.name %>
+Date: <%= @game.play_date %>
+Players: <%= @game.players.collect(&:name).join", " %>
+
+
+To confirm the reservation, please click on the following link:
+  <%= link_to "Aceptar", customers_show_playground_request_url(@game.playground_request.accept_code) %>
+
+To reject the reservation, please click on the following link:
+  <%= link_to "Rechazar", customers_show_playground_request_url(@game.playground_request.reject_code) %>

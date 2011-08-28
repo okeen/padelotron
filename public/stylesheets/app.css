@@ -14,3 +14,23 @@ div.game_result_panel.inactive {
   vertical-align: middle;
 }
     
+div.dhx_cal_event.selected {
+    background-color: red;
+}
+
+div.dhx_cal_event.confirmed {
+    background-color: green;
+}
+
+div.dhx_cal_event.confirmed div{
+    background-color: green;
+}
+
+
+div.dhx_cal_event.rejected {
+    background-color: blue;
+}
+
+div.dhx_cal_event.rejected div{
+    background-color: blue;
+}

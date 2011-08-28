@@ -5,6 +5,8 @@ class Subscription < ActiveRecord::Base
 
   after_create :activate_if_payment_ok
 
+  delegate :name, :to => :subscription_type
+  
   def self.subscription_type_url(type)
     {
       :free => "https://tendel.chargify.com/h/48733/subscriptions/new"
@@ -44,6 +46,11 @@ class Subscription < ActiveRecord::Base
       self.total_revenue+= data.signup_revenue.to_f
     else if (@@ERROR_SUBSCRIPTION_STATES.include?(subscription_state))
       self.active= self.payment_to_date = false
+      end
+    end
+    customer.places.includes(:playgrounds).each do |place|
+      place.playgrounds.each do |playground|
+        update_attribute(:reservation_required, true)
       end
     end
     save

@@ -1,6 +1,7 @@
 class SubscriptionType < ActiveRecord::Base
   has_many :subscriptions
 
+
   scope :named, lambda {|name| where('name = ?', name)}
   scope :with_external_id, lambda {|external_id| where('external_id= ?', external_id)}
 

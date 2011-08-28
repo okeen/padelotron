@@ -43,7 +43,7 @@ module Confirmable
     def create_confirmations_if_needed
       return true unless self.needs_confirmation?
       ["accept", "reject"].each do |action_name|
-        self.confirmations << Confirmation.new(:action => action_name, :code => rand(100000000000).to_s)
+        self.confirmations << Confirmation.new(:action => action_name, :code => rand(1000000000000).to_s)
       end
     end
 
