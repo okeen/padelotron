@@ -68,6 +68,11 @@ module ApplicationHelper
     '<script src="http://maps.google.com/maps/api/js?v=3.6&sensor=false&key=ABQIAAAA0ABhsi94_QBEemORCuekWhTQb5oFIWqRUhWFXeBCl1qnXIchCxR2d3ijdCwerkhVW1ZKviQkM41YpQ" type="text/javascript"></script>'.html_safe
   end
 
+  def google_loader
+    '<script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAA0ABhsi94_QBEemORCuekWhTQb5oFIWqRUhWFXeBCl1qnXIchCxR2d3ijdCwerkhVW1ZKviQkM41YpQ"></script>'.html_safe
+  end
+
+
   def hidden_player_location_inputs(player)
     ("<input type='hidden' name='player_latitude' value='#{player.latitude}'></input>"+
         "<input type='hidden' name='player_longitude' value='#{player.longitude}'></input>").html_safe

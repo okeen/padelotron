@@ -2,6 +2,7 @@ class Playground < ActiveRecord::Base
   belongs_to :place
   has_many :games
   has_many :playground_requests, :class_name => "Customer::PlaygroundRequest"
+  delegate :geocoded?, :to => :place
   delegate :latitude, :to => :place
   delegate :longitude, :to => :place
   delegate :full_address, :to => :place
