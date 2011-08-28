@@ -7,6 +7,9 @@ class Customer::PlaygroundRequest < ActiveRecord::Base
 
   after_update :deliver_info_email_players_if_reservation_status_changed
 
+  scope :by_code, lambda {|code| where("accept_code = :code OR reject_code = :code",
+                                        :code => code)}
+  
   private
 
   def deliver_info_email_players_if_reservation_status_changed

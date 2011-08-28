@@ -45,10 +45,13 @@ Padelotron::Application.routes.draw do
   get "subscriptions/update" => "subscriptions#update"
 
   namespace :customers do
-    resources :playground_requests
+    get "playground_requests/show/:code",
+      :to => "playground_requests#show",
+      :as=> "show_playground_request"
     get "agenda/show", :to => "agenda#show", :as => "agenda"
     get "agenda/games", :to => "agenda#games", :as => "agenda_games"
-
+    resources :playground_requests do
+    end
   end
 
   resources :customers do

@@ -128,5 +128,9 @@ end
 When /^#{capture_model} clicks on the "([^"]*)" link of the received playground reserve request email$/ do \
     |customer_ref, button|
   customer= model(customer_ref)
-  pendind "lkj"
+  email = ActionMailer::Base.deliveries.select {|email| email.to.include?(customer.email) }.last
+  email.should_not be_blank
+  confirm_url,reject_url = email.body.to_s.scan /\/customers\/playground_requests\/show\/\d*/
+  next_url = button == 'confirm' ? confirm_url : reject_url
+  visit next_url
 end
