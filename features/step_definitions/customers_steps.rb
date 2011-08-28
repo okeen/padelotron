@@ -111,3 +111,13 @@ Then /^I should see game "([^"]*)" information on the agenda detail panel$/ do |
   end
 end
 
+
+Then /^#{capture_model} should receive a reserve request for the playground "([^"]*)" for the game "([^"]*)"$/ do \
+  |customer_ref, playground_name, game_desc|
+  pending # express the regexp above with the code you wish you had
+end
+
+When /^#{capture_model} clicks on the "([^"]*)" link of the received playground reserve request email$/ do \
+    |customer_ref,confirm|
+  pending # express the regexp above with the code you wish you had
+end
