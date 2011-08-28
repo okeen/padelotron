@@ -28,6 +28,9 @@ class Customers::PlaygroundRequestsController < ApplicationController
 
   def do
     @customer_playground_request = Customer::PlaygroundRequest.by_code(params[:code]).first
+    new_status =  @customer_playground_request.accept_code == params[:code] ? 
+      "confirmed" : "rejected"
+    @customer_playground_request.update_attribute "status" , new_status
   end
 
   # DELETE /customer/playground_requests/1

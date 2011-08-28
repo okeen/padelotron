@@ -42,9 +42,9 @@ Feature: Reserve game playground for playrgounds from customers with premium or
         And I press "Reject"
         Then the game "game1" players should receive a reservation "rejection" info for the playground "playground 1"
         And I should see the game "game1" "cancelled" in the customer agenda
-@wip
+
 @javascript
-Scenario: Player creates new game and asks for playground confirmation, customers rejects via web agenda
+Scenario: Player creates new game and asks for playground confirmation, customers accepts via email
         When I login as the first customer
         Then the first customer should receive a reserve request for the playground "playground 1" for the game "game1"
         When the first customer clicks on the "confirm" link of the received playground reserve request email
@@ -54,5 +54,18 @@ Scenario: Player creates new game and asks for playground confirmation, customer
         When I press "Yes"
         Then I should see "Reservation Confirmed"
         And the game "game1" players should receive a reservation "confirmation" info for the playground "playground 1"
+
+@wip
+@javascript
+Scenario: Player creates new game and asks for playground confirmation, customers rejects via email
+        When I login as the first customer
+        Then the first customer should receive a reserve request for the playground "playground 1" for the game "game1"
+        When the first customer clicks on the "reject" link of the received playground reserve request email
+        Then I should see "Playground: playground 1"
+        And I should see "Game: game1"
+        And I should see "Are you sure you want to confirm the reserve?"
+        When I press "Yes"
+        Then I should see "Reservation Rejected"
+        And the game "game1" players should receive a reservation "rejection" info for the playground "playground 1"
 
 
