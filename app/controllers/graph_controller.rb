@@ -35,11 +35,40 @@ class GraphController < ApplicationController
 
 
   def graph_games_played
+    @player = Player.find(params[:id])
     title = Title.new("Games played in last month")
 
-    date = Date.today
-    data1 = []
+    today = Date.today
+    last_month = today - 1.month
 
+    values = Hash.new
+
+    4.times do |time|
+      last_month = last_month + 7.days
+      start_date = last_month.beginning_of_week
+      end_date = last_month.end_of_week
+      @player.teams.each do |team|
+        team.games.each do |game|
+          if game.play_date >= start_date && game.play_date <=end_date
+            if values.has_key?(start_date)
+              values[start_date]=values[start_date]+1
+            else
+              values[start_date ] = 1
+            end
+          end
+        end
+      end
+    end
+
+    values.sort
+    data = []
+    puts("-----------------------------")
+    values.values.each do |val|
+      data << val
+    end
+    puts(data)
+    puts("--- #{values.values} --- #{data}")
+    puts("----------------")
 #    line_dot = LineDot.new
 #    line_dot.text = "Line Dot"
 #    line_dot.width = 4
@@ -59,10 +88,10 @@ class GraphController < ApplicationController
     line.width = 1
     line.colour = '#5E4725'
     line.dot_size = 5
-    line.values = data3
+    line.values = data
 
     y = YAxis.new
-    y.set_range(0,20,5)
+    y.set_range(0,110,5)
 
     x_legend = XLegend.new("MY X Legend")
     x_legend.set_style('{font-size: 20px; color: #778877}')
@@ -75,9 +104,6 @@ class GraphController < ApplicationController
     chart.set_x_legend(x_legend)
     chart.set_y_legend(y_legend)
     chart.y_axis = y
-
-    chart.add_element(line_dot)
-    chart.add_element(line_hollow)
     chart.add_element(line)
 
     render :text => chart.to_s
