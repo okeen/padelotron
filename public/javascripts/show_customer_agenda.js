@@ -32,9 +32,11 @@ $(function(){
         initialize: function() {
             _.bindAll(this,['initScheduler']);
             this.confirmGame= _.bind(this.confirmGame, this);
+            this.rejectGame= _.bind(this.rejectGame, this);
             GameEvents.bind('add',   this.addGameEvent, this);
             GameEvents.bind('reset', this.resetGameEvents, this);
             $("button#confirm_game_action").bind("click", this.confirmGame);
+            $("button#reject_game_action").bind("click", this.rejectGame);
             $("div.dhx_cal_event div").live("click", this.setSelectedGame);
             $.when(
                 $.ajax("/places/"+GameEvents.place_id+"/playgrounds.json"))
@@ -121,7 +123,21 @@ $(function(){
                     $("div.dhx_cal_event.selected").addClass("confirmed");
                 }
             });
-            
+
+        },
+        rejectGame: function(event){
+            var gameId= this.selectedGame.get("id");
+            console.log("Agenda: confirming game" + gameId);
+            $.ajax({
+                type: "PUT",
+                url: "/customers/playground_requests/" + gameId +".json",
+                data: {customer_playground_request:{status: 'rejected'}},
+                success: function(data, status){
+                    console.debug("Agenda: confirmed game" + data.model.game_id);
+                    $("div.dhx_cal_event.selected").addClass("rejected");
+                }
+            });
+
         }
     });
     Backbone.sync= function(method, model, options){

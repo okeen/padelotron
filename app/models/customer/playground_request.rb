@@ -12,7 +12,7 @@ class Customer::PlaygroundRequest < ActiveRecord::Base
   def deliver_info_email_players_if_reservation_status_changed
     if (self.status == 'confirmed')
       PlaygroundRequestMailer.confirmation_mail(self.game).deliver
-    else if (self.status == 'cancelled')
+    else if (self.status == 'rejected')
         PlaygroundRequestMailer.cancellation_mail(self.game).deliver
       end
     end

@@ -51,18 +51,22 @@ Then /^I should see '(\d+)' games with confirmation pending with:$/ do |game_cou
 end
 
 
-Then /^I should see the game "([^"]*)" confirmed in the customer agenda$/ do |game_description|
-  page.find("div.dhx_cal_event.confirmed", :content => game_description)
-
+Then /^I should see the game "([^"]*)" "([^"]*)" in the customer agenda$/ do |game_description, game_state|
+  class_name = game_state == "confirmed" ? "confirmed" : "rejected"
+  page.find("div.dhx_cal_event.#{class_name}", :content => game_description)
 end
 
-Then /^the game "([^"]*)" players should receive a reservation ok info for the playground "([^"]*)"$/ do |game_description, playground_name|
+Then /^the game "([^"]*)" players should receive a reservation "([^"]*)" info for the playground "([^"]*)"$/ do |game_description, reservation_action,playground_name|
   game = Game.find_by_description game_description
+  message = reservation_action == "confirmation" ?
+    "Reservation confirmed for the game #{game_description} in playground #{playground_name}" :
+    "Reservation rejected for the game #{game_description} in playground #{playground_name}"
+
   game.players.each do |player|
     email = ActionMailer::Base.deliveries.last
     email.should_not be_blank
     email.to.should be_include(player.email)
-    email.body.should be_include("Reservation ok for the game #{game_description} in playground #{playground_name}")
+    email.body.should be_include(message)
   end
 end
 

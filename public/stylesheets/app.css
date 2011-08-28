@@ -19,9 +19,18 @@ div.dhx_cal_event.selected {
 }
 
 div.dhx_cal_event.confirmed {
-    background-color: blue;
+    background-color: green;
 }
 
 div.dhx_cal_event.confirmed div{
+    background-color: green;
+}
+
+
+div.dhx_cal_event.rejected {
+    background-color: blue;
+}
+
+div.dhx_cal_event.rejected div{
     background-color: blue;
 }
