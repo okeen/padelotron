@@ -16,12 +16,9 @@ class PlayersController < ApplicationController
   # GET /players/1
   # GET /players/1.xml
   def show
-
     @player = Player.includes(:stat).includes(:achievements).find(params[:id])
-
-
-
-    @graph = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_code")
+    @graphGamesWinLost = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_code")
+    @graphGamesPlayed = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_games_played")
 
     respond_to do |format|
       format.html # show.html.erb
@@ -92,39 +89,6 @@ class PlayersController < ApplicationController
       format.html { redirect_to(players_url) }
       format.xml  { head :ok }
     end
-  end
-
-   def graph_code
-    @player = Player.find(params[:id])
-    title = Title.new("Games wins and lost")
-
-    pie = Pie.new
-    pie.start_angle = 35
-    pie.animate = true
-    pie.tooltip = '#val# of #total#<br>#percent# of 100%'
-    pie.colours = ["#d01f3c", "#356aa0", "#C79810"]
-
-    contWins = 0
-    contPlayed = 0
-    @player.player_games.each do |game|
-      unless  game.winner_team.nil?
-        contPlayed = contPlayed +1
-        if game.winner_team.player1.id == @player.id || game.winner_team.player2.id == @player.id
-          contWins = contWins +1
-        end
-      end
-    end
-
-    newValues = [PieValue.new(contWins,"Wins"),PieValue.new(contPlayed-contWins,"Lost")]
-    pie.values  = newValues
-
-    chart = OpenFlashChart.new
-    chart.title = title
-    chart.add_element(pie)
-
-    chart.x_axis = nil
-
-    render :text => chart.to_s
   end
 
   private
