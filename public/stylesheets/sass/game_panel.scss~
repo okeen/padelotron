@@ -24,14 +24,12 @@ div.game_panel {
         div.first_team {
             float: left;
             width: 40%;
-	    
             img {
                 float: left;
             }
             h3 {
                 margin-left: $team_photo_width +2;
-		margin-bottom: 2px;
-		margin-top: 5px;
+		margin-bottom: 2px;		
             }
 	    ul.team_players_list {
 		margin-left: $team_photo_width +2;

@@ -18,13 +18,24 @@ module GamesHelper
 
   def team_info_for_game_team(game, team_number)
     team = team_number == :first ? game.team1 : game.team2
+    players_list= content_tag(:ul, :class=>"team_players_list" ) do |ul|
+      team.players.collect { |player|
+        content_tag :li, player.name, :class => "player"
+      }.join("\n").html_safe
+    end
     content_tag :div,
-      image_tag(team.image.url) + "<h3>#{team.name}</h3>".html_safe,
+      image_tag(team.image.url) + "<h3>#{team.name}</h3>".html_safe + players_list ,
       :class => "#{team_number}_team"
   end
 
   def game_date_and_location(game)
-    content_tag :h4, "#{game.play_date}", :class => "play_date"
+    date_str = game.play_date
+    if game.playground
+      link_to "#{date_str} @ #{game.playground.name}".html_safe,
+        place_path(game.playground.place)
+    else
+      content_tag :h4, date_str, :class => "game_date_location"
+    end
   end
 
   def game_like_button(game)

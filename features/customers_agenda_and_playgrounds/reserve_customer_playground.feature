@@ -55,7 +55,6 @@ Scenario: Player creates new game and asks for playground confirmation, customer
         Then I should see "Reservation Confirmed"
         And the game "game1" players should receive a reservation "confirmation" info for the playground "playground 1"
 
-@wip
 @javascript
 Scenario: Player creates new game and asks for playground confirmation, customers rejects via email
         When I login as the first customer
