@@ -1,4 +1,4 @@
-<h1>Confirm action</h1>
+<h1>Reservation <%= @customer_playground_request.status == "confirmed" ? "Confirmed" : "Rejected"%></h1>
 <p>
   <b>Game: </b>
   <%= @customer_playground_request.game.description %>
