@@ -49,7 +49,7 @@ Scenario: Player creates new game and asks for playground confirmation, customer
         Then the first customer should receive a reserve request for the playground "playground 1" for the game "game1"
         When the first customer clicks on the "confirm" link of the received playground reserve request email
         Then I should see "Playground: playground 1"
-        And I should see "Game: game 1"
+        And I should see "Game: game1"
         And I should see "Are you sure you want to confirm the reserve?"
         When I press "Yes"
         Then I should see "Reservation Confirmed"
