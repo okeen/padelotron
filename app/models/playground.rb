@@ -8,6 +8,7 @@ class Playground < ActiveRecord::Base
   delegate :customer, :to => :place
 
   def reservation_required?
+    return false if self.place.customer.blank?
     self.place.customer.is_premium? or self.place.customer.is_platinum?
   end
 

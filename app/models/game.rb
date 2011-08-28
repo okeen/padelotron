@@ -117,7 +117,7 @@ class Game < ActiveRecord::Base
   end
 
   def create_playground_request_if_needed
-    if self.playground and self.playground.reservation_required?
+    if not self.playground.blank? and self.playground.reservation_required?
       playground.playground_requests.create(:game => self)
     end
   end
