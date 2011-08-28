@@ -1,7 +1,8 @@
 module GamesHelper
 
   def game_title(game)
-    content_tag :h2, "Friendly game between #{game.team1.name} and #{game.team2.name}"
+    content_tag :h2, "Friendly game between #{game.team1.name} and #{game.team2.name}",
+              :name=>"title"
   end
 
   def set_game_result_button(game)
@@ -32,7 +33,7 @@ module GamesHelper
     date_str = game.play_date
     if game.playground
       link_to "#{date_str} @ #{game.playground.name}".html_safe,
-        place_path(game.playground.place)
+        place_path(game.playground.place), :class => "game_date_location"
     else
       content_tag :h4, date_str, :class => "game_date_location"
     end

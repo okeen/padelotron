@@ -2,16 +2,33 @@ h2 {
   text-align: center;
 }
 div.game_info {
+    width: 800px;
     padding: 15px;
     h2[name=title] {color: blue}
     h4,h2 {
         margin: {left: 25%; right: 25%;}
     }
 
-    h4[name=description] {
+    h4[name='description'] {
         margin: {left: 5px; right: 0px;}
+        width: 400px;
     }
-
+    div#game_date_and_location_sub_panel
+    {
+	width: 200px;
+	float: right;
+	.game_date_location{
+	  float:right;
+	  margin: 0 0 0 0;
+	}
+	div#map{
+	  margin: {top:23px; right:10px;}
+	  height: 200px;
+	  width: 200px;
+	  float:right;
+	}
+    
+    }
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
@@ -27,32 +44,85 @@ div.game_info {
             height: $team_photo_height;
         }
         span {
-            margin: {left: 5%; right: 5%}
+            margin: {left: 0%; right: 0%}
             padding-top: 10px;
         }
         div.first_team {
             float: left;
-            width: 40%;
-            img {
+	    margin-right: 100px;
+            width: 37%;
+	    img {
                 float: left;
             }
-            h3 {
-                margin-left: $team_photo_width +2
+            
+	    h3 {
+                margin-left: $team_photo_width +10;
+		margin-bottom: 2px;
+		margin-top: 5px;
+		text-align: left;
+		font-size: 20px;
             }
+	    ul.team_players_list {
+		//margin-right: $team_photo_width +2;
+		margin-top: 2px;
+		list-style: none;
+		float: right;
+		padding: 0px;
+		$team_player_height: 52px;
+		$team_player_width: 42px;
+				
+		li.player {
+		  height: $team_player_height + 2px;
+                  img {
+		    float: right;
+		    height: $team_player_height;
+		    width: $team_player_width;
+		  }
+		  a.player_name{
+		    margin-right: 10px;
+		    text-decoration:none;
+		  }
+		}
+	    }
         }
+        
         div.second_team {
             float: right;
-            width: 40%;
-            img {
+	    margin-right: 80px;
+            width: 37%;
+	    img {
                 float: right;
             }
-            h3 {
-                margin-right: $team_photo_width +2
+            
+	    h3 {
+                margin-right: $team_photo_width +10;
+		margin-bottom: 2px;
+		margin-top: 5px;
+		text-align: right;
+		font-size: 20px;
             }
+	    ul.team_players_list {
+		margin-top: 2px;
+		list-style: none;
+		float: left;
+		padding: 0px;
+		$team_player_height: 52px;
+		$team_player_width: 42px;
+				
+		li.player {
+		  height: $team_player_height + 2px;
+                  img {
+		    float: left;
+		    height: $team_player_height;
+		    width: $team_player_width;
+		  }
+		  a.player_name{
+		    margin-left: 5px;
+		    text-decoration:none;
+		  }
+		}
+	    }
         }
     }
-    div#map{
-	height: 200px;
-	width: 200px;
-    }
+    
 }

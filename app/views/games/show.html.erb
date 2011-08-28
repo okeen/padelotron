@@ -4,10 +4,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<h2 name="title"><%= game_title(@game) %></h2>
+<%= game_title(@game) %>
 <div class="game_info">
   <div class="game_teams_subpanel">
-    <span>VS</span>
+    <%#*<span>VS</span>%>
     <div class="first_team">
       <%=  image_tag @game.team1.image.url %>
       <h3><%= @game.team1.name %></h3>
@@ -15,7 +15,7 @@
         <% @game.team1.players.each do |player| %>
           <li class="player">
             <%= player_photo(player) %>
-            <%=  link_to player.name, player_path(player) %>
+            <%=  link_to player.name, player_path(player), :class => 'player_name' %>
           </li>
         <% end %>
       </ul>
@@ -27,19 +27,21 @@
         <% @game.team2.players.each do |player| %>
           <li class="player">
             <%= player_photo(player) %>
-            <%=  link_to player.name, player_path(player) %>
+            <%=  link_to player.name, player_path(player), :class => 'player_name' %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
+  <div id="game_date_and_location_sub_panel">
+    <% if @game.playground %>
+    <%= game_date_and_location(@game)%>
+        <div id="map"></div>
+      <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
+      <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
+    <% end %>
+  </div>
   <h4 name="description"><%= @game.description%></h4>
-  <%= game_date_and_location(@game)%>
-  <% if @game.playground %>
-    <div id="map"></div>
-    <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
-    <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
-  <% end %>
   <% if @game.winner_team %>
     <%= render :partial => 'game_result_panel', :locals => {:game => @game} %>
   <% end %>

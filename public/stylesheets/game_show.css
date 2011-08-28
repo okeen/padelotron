@@ -2,15 +2,31 @@ h2 {
   text-align: center; }
 
 div.game_info {
+  width: 800px;
   padding: 15px; }
   div.game_info h2[name=title] {
     color: blue; }
   div.game_info h4, div.game_info h2 {
     margin-left: 25%;
     margin-right: 25%; }
-  div.game_info h4[name=description] {
+  div.game_info h4[name='description'] {
     margin-left: 5px;
-    margin-right: 0px; }
+    margin-right: 0px;
+    width: 400px; }
+  div.game_info div#game_date_and_location_sub_panel {
+    width: 200px;
+    float: right; }
+    div.game_info div#game_date_and_location_sub_panel .game_date_location {
+      float: right;
+      margin: 0 0 0 0;
+      text-decoration: none;
+      font-size: 18px; }
+    div.game_info div#game_date_and_location_sub_panel div#map {
+      margin-top: 23px;
+      margin-right: 10px;
+      height: 200px;
+      width: 200px;
+      float: right; }
   div.game_info div.game_teams_subpanel {
     height: 120px;
     border: 0px solid;
@@ -20,24 +36,58 @@ div.game_info {
       width: 50px;
       height: 70px; }
     div.game_info div.game_teams_subpanel span {
-      margin-left: 5%;
-      margin-right: 5%;
+      margin-left: 0%;
+      margin-right: 0%;
       padding-top: 10px; }
     div.game_info div.game_teams_subpanel div.first_team {
       float: left;
-      width: 40%; }
+      margin-right: 100px;
+      width: 37%; }
       div.game_info div.game_teams_subpanel div.first_team img {
         float: left; }
       div.game_info div.game_teams_subpanel div.first_team h3 {
-        margin-left: 52px; }
+        margin-left: 60px;
+        margin-bottom: 2px;
+        margin-top: 5px;
+        text-align: left;
+        font-size: 20px; }
+      div.game_info div.game_teams_subpanel div.first_team ul.team_players_list {
+        margin-top: 2px;
+        list-style: none;
+        float: right;
+        padding: 0px; }
+        div.game_info div.game_teams_subpanel div.first_team ul.team_players_list li.player {
+          height: 54px; }
+          div.game_info div.game_teams_subpanel div.first_team ul.team_players_list li.player img {
+            float: right;
+            height: 52px;
+            width: 42px; }
+          div.game_info div.game_teams_subpanel div.first_team ul.team_players_list li.player a.player_name {
+            margin-right: 10px;
+            text-decoration: none; }
     div.game_info div.game_teams_subpanel div.second_team {
       float: right;
-      width: 40%; }
+      margin-right: 80px;
+      width: 37%; }
       div.game_info div.game_teams_subpanel div.second_team img {
         float: right; }
       div.game_info div.game_teams_subpanel div.second_team h3 {
-        margin-right: 52px; }
-  div.game_info div#map {
-    height: 200px;
-    width: 200px;
-    float: right; }
+        margin-right: 60px;
+        margin-bottom: 2px;
+        margin-top: 5px;
+        text-align: right;
+        font-size: 20px; }
+      div.game_info div.game_teams_subpanel div.second_team ul.team_players_list {
+        margin-top: 2px;
+        list-style: none;
+        float: left;
+        padding: 0px; }
+        div.game_info div.game_teams_subpanel div.second_team ul.team_players_list li.player {
+          height: 54px; }
+          div.game_info div.game_teams_subpanel div.second_team ul.team_players_list li.player img {
+            float: left;
+            height: 52px;
+            width: 42px; }
+          div.game_info div.game_teams_subpanel div.second_team ul.team_players_list li.player a.player_name {
+            margin-left: 5px;
+            text-decoration: none; }
