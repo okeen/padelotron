@@ -113,11 +113,20 @@ end
 
 
 Then /^#{capture_model} should receive a reserve request for the playground "([^"]*)" for the game "([^"]*)"$/ do \
-  |customer_ref, playground_name, game_desc|
-  pending # express the regexp above with the code you wish you had
+    |customer_ref, playground_name, game_desc|
+  customer= model(customer_ref)
+  game = Game.find_by_description(game_desc)
+  email = ActionMailer::Base.deliveries.select {|email| email.to.include?(customer.email) }.last
+  email.should_not be_blank
+  email.subject.should == "Game request for playground #{game.playground.name}"
+  email.body.should be_include "Reserve request:"
+  email.body.should be_include "Playground: #{game.playground.name}"
+  email.body.should be_include "Date: #{game.play_date}"
+  email.body.should be_include "Players: #{game.players.collect(&:name).join", " }"
 end
 
 When /^#{capture_model} clicks on the "([^"]*)" link of the received playground reserve request email$/ do \
-    |customer_ref,confirm|
-  pending # express the regexp above with the code you wish you had
+    |customer_ref, button|
+  customer= model(customer_ref)
+  pendind "lkj"
 end

@@ -7,7 +7,8 @@ class PlaygroundRequestMailer < ActionMailer::Base
   #   en.playground_request.ask_mail.subject
   #
   def ask_mail(customer, game)
-    @customer = customer
+    @customer= customer
+    @game= game
     mail :to => customer.email, :subject => "Game request for playground #{game.playground.name}"
   end
 

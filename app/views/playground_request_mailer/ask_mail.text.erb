@@ -1,3 +1,5 @@
-PlaygroundRequest#ask_mail
+Reserve request:
 
-<%= @greeting %>, find me in app/views/app/views/playground_request/ask_mail.text.erb
+Playground: <%= @game.playground.name %>
+Date: <%= @game.play_date %>
+Players: <%= @game.players.collect(&:name).join", " %>
