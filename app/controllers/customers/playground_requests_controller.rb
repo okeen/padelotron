@@ -25,6 +25,11 @@ class Customers::PlaygroundRequestsController < ApplicationController
     @customer_playground_request = Customer::PlaygroundRequest.by_code(params[:code]).first
   end
 
+
+  def do
+    @customer_playground_request = Customer::PlaygroundRequest.by_code(params[:code]).first
+  end
+
   # DELETE /customer/playground_requests/1
   # DELETE /customer/playground_requests/1.xml
   def destroy
