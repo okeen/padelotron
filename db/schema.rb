@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(:version => 20110827152728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
-    t.boolean  "reservation_required"
   end
 
   create_table "players", :force => true do |t|

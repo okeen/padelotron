@@ -43,7 +43,7 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
                          :team1_id => first_team,
                          :team2_id => second_team,
                          :playground => playgrounds[rand(playgrounds.count)],
-                         :play_date => DateTime.now + rand(100).hours
+                         :play_date => DateTime.now - rand(100).days
   g.confirm!
   puts "Created Friendly confirmed game: #{g.reload.inspect}"
 end
