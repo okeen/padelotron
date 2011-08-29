@@ -1,6 +1,30 @@
 <h1>Listing games</h1>
 
-<% @games.each do |game| %>
-   <%=  render :partial => 'game_panel', :locals => {:game => game} %>
-<% end %>
+<div id="upcoming_games_container" class="game_listing_main_panel">
+
+  <div class="game_listing_main_panel_header">
+    <h3>Upcoming games</h3>
+  </div>
+  <div class="game_listing_main_panel_body">
+    <% @upcoming_games.each do |game| %>
+      <%=  render :partial => 'game_panel', :locals => {:game => game} %>
+    <% end %>
+
+  </div>
+
+</div>
+
+<div id="recent_results_container" class="game_listing_main_panel">
+
+  <div class="game_listing_main_panel_header">
+    <h3>Recent results</h3>
+  </div>
+  <div class="game_listing_main_panel_body">
+    <% @recent_results.each do |game| %>
+      <%=  render :partial => 'game_panel', :locals => {:game => game} %>
+    <% end %>
+
+  </div>
+
+</div>
 

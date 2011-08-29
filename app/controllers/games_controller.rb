@@ -6,7 +6,8 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.limit(10).includes(:team1,:team2).all
+    @upcoming_games = Game.to_play.limit(10).includes(:team1,:team2).all
+    @recent_results = Game.finished.limit(10).includes(:team1,:team2).all
 
     respond_to do |format|
       format.html # index.html.erb

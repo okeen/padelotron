@@ -33,6 +33,9 @@ class Game < ActiveRecord::Base
     for_date(Date.today)
   }
 
+  scope :finished, where("winner_team_id not null")
+  scope :to_play, where(:winner_team_id => nil)
+
   scope :played_by_player, lambda { |player|
     where("team1_id in( "+
         "select t.id from teams t where t.player1_id = #{player.id} or t.player2_id = #{player.id}) OR team2_id in( "+
