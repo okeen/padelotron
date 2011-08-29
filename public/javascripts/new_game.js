@@ -91,7 +91,12 @@ $(function() {
                 watermark: "Select a playground",
                 onSelect: this.markPlaygroundInMap
             });
-            $('input[name="game[play_date]"]').datetimepicker();
+            $('input[name="game[play_date]"]').datetimepicker({
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'hh:mm',
+                stepHour: 1,
+                stepMinute: 5
+            });
             this.detectUserPositionAndpanMapTo();
         },
         detectUserPositionAndpanMapTo: function(){
