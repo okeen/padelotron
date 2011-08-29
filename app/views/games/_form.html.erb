@@ -13,28 +13,29 @@
   <div id="teams_selection_panel">
     
     <div class="team_field">
-      <h3>Equipo 1</h3>
+      <h3>Team 1</h3>
       <div id="game[team1_id]" name="game[team1_id]" class="team_selector first_team_selector"></div>
     </div>
     <div class="team_field">
-      <h3>Equipo 2</h3>
+      <h3>Team 2</h3>
       <div id="game[team2_id]" name="game[team2_id]" class="team_selector second_team_selector"></div>
     </div>
   </div>
+  <div id="map"></div>
   <div class="field">
     <h3>Playground</h3>
-    <%= collection_select :game, :playground_id, Playground.all, :id, :name %><br />
+    <div id="game[playground_id]" name="game[playground_id]" class="playground_selector"></div>
   </div>
-  <div id="map"></div>
-
+  
   <div class="field">
     <h3>Crear evento en Facebook?</h3>
     <%= f.check_box :create_facebook_event %>
 
   </div>
+
   <div class="field">
     <%= f.label :play_date %><br />
-    <%= f.datetime_select :play_date %>
+    <%= f.text_field :play_date %>
   </div>
   <%= f.hidden_field :game_type, :value => "friendly" %>
   <div class="actions">

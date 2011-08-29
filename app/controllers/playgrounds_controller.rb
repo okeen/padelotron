@@ -8,7 +8,7 @@ class PlaygroundsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json  { render :json => @playgrounds }
+      format.json  { render :json => {:results => @playgrounds }}
     end
   end
 

@@ -87,6 +87,11 @@ $(function() {
             $('div.team_selector.second_team_selector').flexbox('/teams.json', {
                 watermark: "Select the rival team"
             });
+            $('div.playground_selector').flexbox('/playgrounds.json', {
+                watermark: "Select a playground",
+                onSelect: this.markPlaygroundInMap
+            });
+            $('input[name="game[play_date]"]').datetimepicker();
             this.detectUserPositionAndpanMapTo();
         },
         detectUserPositionAndpanMapTo: function(){
@@ -116,7 +121,7 @@ $(function() {
                 };
                 this.map= new google.maps.Map($("#map")[0],mapOptions);
             }
-            var playground = e.target.value;
+            var playground = $('input[name="game[playground_id]"]').val();
             $.ajax({
                 url: "/playgrounds/" + playground +".json",
                 type: 'GET',
