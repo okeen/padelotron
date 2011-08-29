@@ -12,6 +12,7 @@ div.game_info {
     h4[name='description'] {
         margin: {left: 5px; right: 0px;}
         width: 400px;
+	text-align:left;
     }
     div#game_date_and_location_sub_panel
     {
@@ -20,6 +21,8 @@ div.game_info {
 	.game_date_location{
 	  float:right;
 	  margin: 0 0 0 0;
+	  text-decoration:none;
+	  font-size: 18px;
 	}
 	div#map{
 	  margin: {top:23px; right:10px;}
@@ -39,18 +42,23 @@ div.game_info {
             radius: 7px 7px 7px 7px;
             color: red;
         }
+        img#tennis_field_image {
+            width: 100px;
+	    heigth: 70px;
+	    margin: {top:40px;left:10px;right:10px;}
+        }
         img {
             width: $team_photo_width;
             height: $team_photo_height;
         }
+        
         span {
             margin: {left: 0%; right: 0%}
             padding-top: 10px;
         }
         div.first_team {
             float: left;
-	    margin-right: 100px;
-            width: 37%;
+	   width: 37%;
 	    img {
                 float: left;
             }
@@ -123,6 +131,10 @@ div.game_info {
 		}
 	    }
         }
+    }
+    div#facebook_like_and_comments_subpanel{
+      margin-top: 30px;
+      width:500px;
     }
     
 }

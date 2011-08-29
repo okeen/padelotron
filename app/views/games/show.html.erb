@@ -7,7 +7,8 @@
 <%= game_title(@game) %>
 <div class="game_info">
   <div class="game_teams_subpanel">
-    <%#*<span>VS</span>%>
+<%#*<span>VS</span>%>
+    <%= image_tag image_path("tennis_field.png"), :id=> "tennis_field_image" %>
     <div class="first_team">
       <%=  image_tag @game.team1.image.url %>
       <h3><%= @game.team1.name %></h3>
@@ -35,8 +36,8 @@
   </div>
   <div id="game_date_and_location_sub_panel">
     <% if @game.playground %>
-    <%= game_date_and_location(@game)%>
-        <div id="map"></div>
+      <%= game_date_and_location(@game)%>
+      <div id="map"></div>
       <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
       <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
     <% end %>
@@ -45,12 +46,13 @@
   <% if @game.winner_team %>
     <%= render :partial => 'game_result_panel', :locals => {:game => @game} %>
   <% end %>
-
-  <%= game_like_button(@game) %>
-
   <% if @game.players.include?(current_player) and @game.winner_team.blank? %>
     <%=  render :partial => 'set_game_result_panel', :locals => {:game => @game}  %>
   <%end%>
-  <%= facebook_game_comments_panel(@game) %>
+
+  <div id="facebook_like_and_comments_subpanel">
+    <%= game_like_button(@game) %>
+    <%= facebook_game_comments_panel(@game) %>
+  </div>
 
 </div>
