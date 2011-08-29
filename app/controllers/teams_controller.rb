@@ -22,6 +22,14 @@ class TeamsController < ApplicationController
     end
   end
 
+
+  def my
+    @teams = current_player.teams
+      respond_to do |format|
+        format.json { render :json => {:results => @teams}}
+      end
+  end
+
   # GET /teams/1
   # GET /teams/1.xml
   def show

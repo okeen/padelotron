@@ -81,6 +81,7 @@ $(function() {
             _.bindAll(this, 'render','sendFacebookGameRequest', 'toggleSendFacebookRequest','markPlaygroundInMap');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
             $('select#game_playground_id').bind('click', this.markPlaygroundInMap);
+            $('div.team_selector').flexbox('/teams/my.json');
             this.detectUserPositionAndpanMapTo();
         },
         detectUserPositionAndpanMapTo: function(){

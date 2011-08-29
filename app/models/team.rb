@@ -27,7 +27,7 @@ class Team < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(:only => [:name],
+    super(:only => [:name, :id],
           :methods => :image_url,
           :include => {
              :player1 => {:only => [:name, :id, :facebook_id]},
