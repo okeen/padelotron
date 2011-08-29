@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
+  <div id="teams_selection_panel">
+    
+    <div class="team_field">
+      <h3>Equipo 1</h3>
+      <div id="game[team1_id]" name="game[team1_id]" class="team_selector first_team_selector"></div>
+    </div>
+    <div class="team_field">
+      <h3>Equipo 2</h3>
+      <div id="game[team2_id]" name="game[team2_id]" class="team_selector second_team_selector"></div>
+    </div>
+  </div>
   <div class="field">
     <h3>Playground</h3>
     <%= collection_select :game, :playground_id, Playground.all, :id, :name %><br />
   </div>
   <div id="map"></div>
 
-  <div id="team1_selector" class="team_selector"></div>
-
-  <div class="field">
-    <h3>Equipo 1</h3>
-    <%= collection_select :game, :team1_id, current_player.teams, :id, :name %><br />
-  </div>
-  <div class="field">
-    <h3>Equipo 2</h3>
-    <%= collection_select :game, :team2_id, Team.all - current_player.teams, :id, :name %><br />
-  </div>
   <div class="field">
     <h3>Crear evento en Facebook?</h3>
     <%= f.check_box :create_facebook_event %>

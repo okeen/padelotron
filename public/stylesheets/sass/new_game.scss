@@ -1,5 +1,11 @@
 form#new_game {
-    
+    div#teams_selection_panel {
+        height: 100px;
+        width: 100%;
+        div.team_field {
+            float:left;
+        }
+    }
     div#map {
         $map_width: 400px;
         $map_height: 400px;

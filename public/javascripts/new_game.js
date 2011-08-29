@@ -81,7 +81,12 @@ $(function() {
             _.bindAll(this, 'render','sendFacebookGameRequest', 'toggleSendFacebookRequest','markPlaygroundInMap');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
             $('select#game_playground_id').bind('click', this.markPlaygroundInMap);
-            $('div.team_selector').flexbox('/teams/my.json');
+            $('div.team_selector.first_team_selector').flexbox('/teams/my.json', {
+                watermark: "Select one of your teams"
+            });
+            $('div.team_selector.second_team_selector').flexbox('/teams.json', {
+                watermark: "Select the rival team"
+            });
             this.detectUserPositionAndpanMapTo();
         },
         detectUserPositionAndpanMapTo: function(){

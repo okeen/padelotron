@@ -5,11 +5,12 @@ class TeamsController < ApplicationController
    # GET /teams
   # GET /teams.xml
   def index
-    @teams = Team.scoped.includes(:player1,:player2).all
-
+    @teams = Team.scoped.includes(:player1,:player2)
+    @teams = @teams.where('name like ?', "%#{params[:q]}%") unless params[:q].blank?
+    @teams = @teams.all
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @teams }
+      format.json  { render :json => {:results => @teams}}
     end
   end
 
