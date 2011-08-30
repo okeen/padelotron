@@ -1,21 +1,33 @@
 div.player_panel {
-  height: 180px;
-  width: 700px; }
+  overflow: hidden;
+  width: 320px;
+  border: 1px solid;
+  border-radius: 7px 7px 7px 7px; }
   div.player_panel div.player_info_subpanel {
     padding: 5px; }
+    div.player_panel div.player_info_subpanel h3 {
+      margin-top: 0px;
+      margin-bottom: 15px;
+      margin-left: 6px;
+      font-size: 20px; }
+      div.player_panel div.player_info_subpanel h3 a {
+        text-decoration: none; }
     div.player_panel div.player_info_subpanel div.player_photo {
-      width: 70px;
+      width: 60px;
       float: left; }
     div.player_panel div.player_info_subpanel div.player_info {
-      margin-left: 71px; }
+      margin-left: 60px; }
       div.player_panel div.player_info_subpanel div.player_info h3 {
         margin: 0px; }
       div.player_panel div.player_info_subpanel div.player_info ul {
-        padding-left: 10px; }
+        padding-left: 0px;
+        list-style: none; }
   div.player_panel div.player_emblems_subpanel {
     float: right; }
-    div.player_panel div.player_emblems_subpanel ul.player_achievements {
-      height: 20px;
-      list-style: none; }
-      div.player_panel div.player_emblems_subpanel ul.player_achievements li {
-        float: left; }
+    div.player_panel div.player_emblems_subpanel fieldset {
+      legend-font-size: 15px !important; }
+      div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements {
+        height: 15px;
+        list-style: none; }
+        div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements li {
+          float: left; }

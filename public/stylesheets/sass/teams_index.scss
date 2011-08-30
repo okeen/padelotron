@@ -44,8 +44,12 @@
             position: relative;
             right: -30px;
             text-align: right;
-            padding-right: 40px;
-            width: 25%;
+            padding-right: 0px;
+            width: 15%;
+            a{
+               text-align: center;
+               border-radius: 40px 0 0 0;
+            }
         }
         .last_tab {
             right: 0 !important;

@@ -74,6 +74,33 @@ $(function() {
         initialize: function(){
             _.bindAll(this, 'render','sendFacebookTeamRequest', 'toggleSendFacebookRequest');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
+             $('div.player_selector.second_player_selector').flexbox('/players.json', {
+                watermark: "Select your team mate",
+                onSelect: this.selectPlayerFromCombo,
+                width: 300,
+                resultTemplate: '<div class="player_result_row">'+
+            '<div class="mini_player_info_row"><h5>{name}</h5></div>'+
+            '<img class="player_mini_image" src=""></img></div>'
+            });
+        },
+        selectPlayerFromCombo: function(valueInput,idInput){
+            var playerInfoPanel = $(valueInput.parentNode.parentNode).
+                                 find("div.player_info_mini_panel");
+            $.when($.ajax('/players/' + idInput.value )).
+                then(function(response){
+                    var d=response.model;
+                    playerInfoPanel.html(
+            '<img class="team_mini_image" src="'+d.image_path+'"></img>'+
+            '<div class="team_info_details_subpanel">'+
+                '<h5>'+d.name+'</h5>'+
+                '<ul class="team_players">'+
+                    '<li class="team_players">'+d.player1.name+'</li>'+
+                     '<li class="team_players">'+d.player2.name+'</li>'+
+                '</ul>'+
+            '</div>');
+
+            });
+
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();

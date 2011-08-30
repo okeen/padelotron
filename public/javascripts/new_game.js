@@ -132,17 +132,7 @@ $(function() {
                                  find("div.team_info_mini_panel");
             $.when($.ajax('/teams/' + idInput.value + ".json")).
                 then(function(response){
-                    var d=response.model;
-                    teamInfoPanel.html(
-            '<img class="team_mini_image" src="'+d.image_path+'"></img>'+
-            '<div class="team_info_details_subpanel">'+
-                '<h5>'+d.name+'</h5>'+
-                '<ul class="team_players">'+
-                    '<li class="team_players">'+d.player1.name+'</li>'+
-                     '<li class="team_players">'+d.player2.name+'</li>'+
-                '</ul>'+
-            '</div>');
-           
+                    teamInfoPanel.html(response);
             });
 
         },

@@ -34,8 +34,11 @@
       position: relative;
       right: -30px;
       text-align: right;
-      padding-right: 40px;
-      width: 25%; }
+      padding-right: 0px;
+      width: 15%; }
+      #teams_catalogue .catalogue_header .catalogue_header_tab a {
+        text-align: center;
+        border-radius: 40px 0 0 0; }
     #teams_catalogue .catalogue_header .last_tab {
       right: 0 !important; }
   #teams_catalogue #catalogue_items_list_container {

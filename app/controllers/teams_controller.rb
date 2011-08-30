@@ -38,6 +38,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      
       format.json { render :json => {:model => @team}}
     end
   end

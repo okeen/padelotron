@@ -1,30 +1,46 @@
 div.player_panel {
-  
-  height: 180px;
-  width: 700px;
+  //padding: 5px;
+  overflow: hidden;
 
+  width: 320px;
+  border: 1px solid;
+  border: {
+    radius: 7px 7px 7px 7px;
+  }
+  
   div.player_info_subpanel {
     padding: 5px;
-    $photo_margin: 70px;
-
+    $photo_margin: 60px;
+    h3 {
+        margin: {top: 0px; bottom: 15px; left: 6px;}
+        font-size: 20px;
+        a {text-decoration:none;}
+    }
     div.player_photo {
         width: $photo_margin;
         float: left;
     }
     div.player_info {
-        margin-left: $photo_margin +1px;
+        margin-left: $photo_margin ;
         h3 {
           margin: 0px;
         }
-        ul {padding-left: 10px}
+        ul {
+            padding-left: 0px;
+            list-style: none;
+        }
     }
   }
   div.player_emblems_subpanel {
     float:right;
-    ul.player_achievements {
-      height: 20px;
-      list-style: none;
-      li {float: left;}
+    fieldset {
+      legend: {font-size: 15px !important}
+      ul.player_achievements {
+        height: 15px;
+        list-style: none;
+        li {float: left;}
+      }
     }
+
   }
 }

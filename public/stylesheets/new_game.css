@@ -54,9 +54,12 @@ div.team_result_row div.mini_team_info_row {
     div.team_result_row div.mini_team_info_row h5 padding {
       top: 0px; }
 
-fieldset legend {
-  color: #333333;
-  display: block;
-  font-size: 18px;
-  line-height: 1.5em;
-  margin: 0; }
+fieldset {
+  border: 0 solid #8EC03D;
+  margin-top: 12px; }
+  fieldset legend {
+    color: #333333;
+    display: block;
+    font-size: 18px;
+    line-height: 1.5em;
+    margin: 0; }

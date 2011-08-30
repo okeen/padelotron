@@ -10,22 +10,29 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
-  <%#*<div class="field">%>
-    <%#*<h3>Jugador 1</h3>%>
-    <%#= collection_select :team, :player1_id, Player.all, :id, :name %><br />
-  <%#*</div>%>
-  <div class="field">
-    <h3>Jugador 2</h3>
-    <%= collection_select :team, :player2_id, Player.all, :id, :name %><br />
-  </div>
+  <fieldset>
+    <legend>Team info</legend>
+    <div id="team_basic_info_panel" class="fields_container_panel">
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :image %><br />
+        <%= f.file_field :image %>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Players</legend>
+    <div id="team_basic_info_panel" class="fields_container_panel">
+      <%= f.label :player2, "Player 2" %><br />
+      <div class="field">
+        <div id="team[player2_id]" name="team[player2_id]" class="player_selector second_player_selector"></div>
+
+      </div>
+    </div>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
