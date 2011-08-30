@@ -13,18 +13,20 @@ div.team_panel {
     margin-left: 46px;
     height: 60px; }
     div.team_panel div.team_info h4 {
-      margin: 0px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-left: 20px;
       font-size: 18px;
-      text-align: center;
       text-decoration: none; }
     div.team_panel div.team_info ul.team_players {
       list-style: none;
       margin-top: 5px;
-      margin-bottom: 0px; }
+      margin-bottom: 5px;
+      padding: 0px; }
       div.team_panel div.team_info ul.team_players li.player {
-        width: 46%;
         margin-left: 1px;
-        margin-right: 1px; }
+        margin-right: 1px;
+        margin-bottom: 10px; }
         div.team_panel div.team_info ul.team_players li.player img {
           margin-left: 4px;
           margin-right: 4px;
@@ -32,7 +34,12 @@ div.team_panel {
           width: 30px; }
       div.team_panel div.team_info ul.team_players li[name='player1'] img {
         float: right; }
+      div.team_panel div.team_info ul.team_players li[name='player1'] a {
+        margin-right: 31px;
+        text-align: right; }
       div.team_panel div.team_info ul.team_players li[name='player2'] img {
         float: left; }
       div.team_panel div.team_info ul.team_players li[name='player2'] a {
-        text-align: right; }
+        margin-left: 31px;
+        margin-top: 3px;
+        text-align: left; }

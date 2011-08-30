@@ -21,22 +21,22 @@ div.team_panel {
     margin-left: $photo_height +1px;
     height: 60px;
     h4 {
-      margin: 0px;
+      margin: {top: 0px; bottom: 0px; left: 20px;}
       font-size: 18px;
       text: {
-        align: center;
+        //align: center;
         decoration: none;
       }
     }
     ul.team_players {
       list-style: none;
-      margin: {top: 5px; bottom: 0px;}
+      margin: {top: 5px; bottom: 5px;}
       $player_img_height: 30px;
       $player_img_width: 30px;
-
+      padding: 0px;
       li.player {
-        width: 46%;
-        margin: {left: 1px; right: 1px;}
+        //width: 46%;
+        margin: {left: 1px; right: 1px; bottom: 10px;}
         img {
           margin: {left: 4px; right: 4px;}
           height: $player_img_height;
@@ -46,13 +46,17 @@ div.team_panel {
       }
       li[name='player1'] {
         img {float: right;}
-        //a  { margin-right: $player_img_width + 1px;}
+        a  {
+           margin-right: $player_img_width + 1px;
+           text-align: right;
+        }
       }
       li[name='player2'] {
         img {float: left;}
         a  {
-         // margin-left: $player_img_width + 1px;
-          text-align: right;
+          margin-left: $player_img_width + 1px;
+          margin-top: 3px;
+          text-align: left;
         }
       }
     }
