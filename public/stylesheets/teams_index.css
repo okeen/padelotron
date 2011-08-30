@@ -23,6 +23,21 @@
     border-radius: 40px 0 0 0;
     height: 38px;
     width: 100%; }
+    #teams_catalogue .catalogue_header .z-index-2 {
+      z-index: 2; }
+    #teams_catalogue .catalogue_header .catalogue_header_tab {
+      background-image: -moz-linear-gradient(left center, #0a0a0a, #303030);
+      border: 0 solid white;
+      border-radius: 40px 0 0 0;
+      float: right;
+      height: 94%;
+      position: relative;
+      right: -30px;
+      text-align: right;
+      padding-right: 40px;
+      width: 25%; }
+    #teams_catalogue .catalogue_header .last_tab {
+      right: 0 !important; }
   #teams_catalogue #catalogue_items_list_container {
     height: 100%;
     margin-left: 20px;

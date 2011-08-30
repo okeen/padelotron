@@ -18,6 +18,22 @@ module TeamsHelper
     end
   end
 
+
+  def teams_catalogue_header
+    content_tag :div, :class=> 'catalogue_header' do
+        (
+        content_tag :div, :class => 'catalogue_header_tab clickable_container z-index-2  last_tab'do
+          link_to "Latests", root_path
+        end
+      )+  (
+        content_tag :div, :class => 'catalogue_header_tab clickable_container z-index-1 ' do
+          link_to "Favourites", root_path
+        end
+      ) 
+    
+    end
+  end
+
   def facebook_comments_panel(team)
     "<fb:comments href='#{team_url(team)}' num_posts='10' width='500'></fb:comments>".html_safe
   end
