@@ -17,7 +17,10 @@ class Team < ActiveRecord::Base
   scope :available_for_today, lambda {
     where('not id in (?)',Game.for_today.collect(&:teams).flatten.collect(&:id) )
   }
-  
+
+  def image_path
+    image.url
+  end
   def players
     [player1,player2]
   end
@@ -28,7 +31,7 @@ class Team < ActiveRecord::Base
 
   def as_json(options = {})
     super(:only => [:name, :id],
-          :methods => :image_url,
+          :methods => [:image_path],
           :include => {
              :player1 => {:only => [:name, :id, :facebook_id]},
              :player2 => {:only => [:name, :id, :facebook_id]},

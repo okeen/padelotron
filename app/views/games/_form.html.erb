@@ -10,33 +10,45 @@
       </ul>
     </div>
   <% end %>
-  <div id="teams_selection_panel">
-    
-    <div class="team_field">
-      <h3>Team 1</h3>
-      <div id="game[team1_id]" name="game[team1_id]" class="team_selector first_team_selector"></div>
-    </div>
-    <div class="team_field">
-      <h3>Team 2</h3>
-      <div id="game[team2_id]" name="game[team2_id]" class="team_selector second_team_selector"></div>
-    </div>
-  </div>
-  <div id="map"></div>
-  <div class="field">
-    <h3>Playground</h3>
-    <div id="game[playground_id]" name="game[playground_id]" class="playground_selector"></div>
-  </div>
-  
-  <div class="field">
-    <h3>Crear evento en Facebook?</h3>
-    <%= f.check_box :create_facebook_event %>
+  <fieldset>
+    <legend>Teams</legend>
+    <div id="teams_selection_panel" class="fields_container_panel">
 
-  </div>
+      <div class="team_field">
+        <%= f.label :team1_id, "Team 1"%><br />
+        <div id="game[team1_id]" name="game[team1_id]" class="team_selector first_team_selector"></div>
+        <div class="team_info_mini_panel">
+          Select a team to load info...
+        </div>
+      </div>
+      <div class="team_field">
+        <%= f.label :team2_id, "Team 2"%><br />
+        <div id="game[team2_id]" name="game[team2_id]" class="team_selector second_team_selector"></div>
+        <div class="team_info_mini_panel">
+          Select a team to load info...
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Date & Location</legend>
+    <div id="date_and_location_selection_panel" class="fields_container_panel">
+      <div id="map"></div>
+      <div class="field">
+        <%= f.label :playground %><br />
+        <div id="game[playground_id]" name="game[playground_id]" class="playground_selector"></div>
+      </div>
+      <div class="field">
+        <%= f.label :play_date %><br />
+        <%= f.text_field :play_date %>
+      </div>
+      <div class="field">
+        <%= f.label :create_facebook_event , "Create Facebook event?" %>
+        <%= f.check_box :create_facebook_event %>
+      </div>
+    </div>
+  </fieldset>>
 
-  <div class="field">
-    <%= f.label :play_date %><br />
-    <%= f.text_field :play_date %>
-  </div>
   <%= f.hidden_field :game_type, :value => "friendly" %>
   <div class="actions">
     <%= f.submit "Create Friendly"%>

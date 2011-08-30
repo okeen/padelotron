@@ -34,10 +34,11 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.xml
   def show
-    
+    @team = Team.find(params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @team }
+      format.json { render :json => {:model => @team}}
     end
   end
 

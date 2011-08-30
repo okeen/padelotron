@@ -1,12 +1,62 @@
-form#new_game div#teams_selection_panel {
-  height: 100px;
+form#new_game {
   width: 100%; }
-  form#new_game div#teams_selection_panel div.team_field {
-    float: left; }
-form#new_game div#map {
-  height: 400px;
-  width: 400px;
-  float: right;
-  border: 1px solid;
-  border-radius: 7px 7px 7px 7px;
-  border-color: red; }
+  form#new_game fieldset {
+    border: 0 solid #8EC03D;
+    margin-top: 12px; }
+    form#new_game fieldset div#teams_selection_panel {
+      height: 170px; }
+      form#new_game fieldset div#teams_selection_panel div.team_field {
+        margin-right: 10px;
+        float: left; }
+        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel img {
+          float: left;
+          width: 40px;
+          margin-top: 10px;
+          margin-left: 7px; }
+        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel div.team_info_details_subpanel h5 {
+          font-size: 18px;
+          text-align: center;
+          margin-top: 10px;
+          margin-bottom: 10px; }
+        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel div.team_info_details_subpanel ul.team_players {
+          list-style: none;
+          margin-left: 20px; }
+  form#new_game div#date_and_location_selection_panel {
+    height: 320px; }
+    form#new_game div#date_and_location_selection_panel div#map {
+      height: 300px;
+      width: 300px;
+      float: right;
+      border: 1px solid; }
+      form#new_game div#date_and_location_selection_panel div#map border {
+        radius: 7px 7px 7px 7px;
+        color: red; }
+    form#new_game div#date_and_location_selection_panel input#game_play_date {
+      width: 150px; }
+
+div.fields_container_panel {
+  background-color: #F7F7F7;
+  border: 2px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  padding: 7px 7px; }
+
+div.team_result_row img {
+  height: 40px;
+  width: 33px; }
+div.team_result_row div.mini_team_info_row {
+  float: right; }
+  div.team_result_row div.mini_team_info_row h5 {
+    margin-top: 0px;
+    margin-bottom: 25%;
+    height: 100%;
+    width: 180px;
+    text-align: left; }
+    div.team_result_row div.mini_team_info_row h5 padding {
+      top: 0px; }
+
+fieldset legend {
+  color: #333333;
+  display: block;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin: 0; }

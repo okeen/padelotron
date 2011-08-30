@@ -49,7 +49,7 @@ form#new_game {
 	  color: red;
 	}
       }
-    input#game_play_date {width:150px;}
+    input#game_play_date {width:40px;}
   }
   
 }

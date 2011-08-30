@@ -48,8 +48,9 @@
 }
 .ffb .content .row {
 	border-bottom:1px solid #828790;
+	overflow:hidden;
 	color:#000;
-	height:20px;
+	height:40px;
 	clear:both;
 }
 .ffb-sel {
