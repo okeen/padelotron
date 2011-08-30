@@ -1,7 +1,7 @@
 div.team_panel {
   padding: 5px;
   overflow: hidden;
-  border: 1px solid;
+  background-color: #EBEBEB;
   border-radius: 7px 7px 7px 7px; }
   div.team_panel div.team_photo {
     float: left; }

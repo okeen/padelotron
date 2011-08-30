@@ -34,7 +34,25 @@ a:hover { color: #fff; background-color:#000; }
   text-decoration: none;
   vertical-align: middle;
 }
-    
+
+div.fields_container_panel{
+  background-color: #F7F7F7;
+  border: 2px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  padding: 7px 7px;
+
+}
+fieldset {
+    border: 0 solid #8EC03D;
+    margin-top: 12px;
+}
+fieldset legend {
+      color: #333333;
+      display: block;
+      font-size: 18px;
+      line-height: 1.5em;
+      margin: 0;
+    }
 div.dhx_cal_event.selected {
     background-color: red;
 }
