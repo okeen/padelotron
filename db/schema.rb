@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(:version => 20110827182312) do
     t.integer  "confirmable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "facebook_request_id"
   end
 
   create_table "customer_playground_requests", :force => true do |t|
@@ -99,17 +98,17 @@ ActiveRecord::Schema.define(:version => 20110827182312) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "customer_id"
+    t.boolean  "reservation_required"
   end
 
   create_table "players", :force => true do |t|
     t.string   "name"
-    t.string   "email",                              :default => "", :null => false
-    t.string   "encrypted_password",  :limit => 128, :default => "", :null => false
-    t.integer  "facebook_id",         :limit => 8
+    t.string   "email",                             :default => "", :null => false
+    t.string   "encrypted_password", :limit => 128, :default => "", :null => false
+    t.integer  "facebook_id",        :limit => 8
     t.string   "extra_field"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "remember_created_at"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "country"

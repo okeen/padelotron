@@ -42,11 +42,14 @@ class GraphController < ApplicationController
     last_month = today - 1.month
 
     values = Hash.new
+    gamesWin = Hash.new
+    allLabels = []
 
     4.times do |time|
       last_month = last_month + 7.days
       start_date = last_month.beginning_of_week
       end_date = last_month.end_of_week
+      allLabels << "#{start_date} \n #{end_date}"
       @player.teams.each do |team|
         team.games.each do |game|
           if game.play_date >= start_date && game.play_date <=end_date
@@ -55,6 +58,14 @@ class GraphController < ApplicationController
             else
               values[start_date ] = 1
             end
+
+            if game.winner_team.player1.id == @player.id || game.winner_team.player2.id == @player.id
+              if gamesWin.has_key?(start_date)
+                gamesWin[start_date] = values[start_date] + 1
+              else
+                gamesWin[start_date] = 1
+              end
+            end
           end
         end
       end
@@ -62,49 +73,68 @@ class GraphController < ApplicationController
 
     values.sort
     data = []
-    puts("-----------------------------")
+    wins = []
+    lost = []
+    
     values.values.each do |val|
       data << val
     end
-    puts(data)
-    puts("--- #{values.values} --- #{data}")
-    puts("----------------")
-#    line_dot = LineDot.new
-#    line_dot.text = "Line Dot"
-#    line_dot.width = 4
-#    line_dot.colour = '#DFC329'
-#    line_dot.dot_size = 5
-#    line_dot.values = data1
-#
-#    line_hollow = LineHollow.new
-#    line_hollow.text = "Line Hollow"
-#    line_hollow.width = 1
-#    line_hollow.colour = '#6363AC'
-#    line_hollow.dot_size = 5
-#    line_hollow.values = data2
+
+    cont=0
+    gamesWin.values.each do |val|
+      wins << val
+      lost << data[cont]-val
+      cont = cont + 1
+    end
 
     line = Line.new
-    line.text = "Line"
+    line.text = "Games played"
     line.width = 1
     line.colour = '#5E4725'
     line.dot_size = 5
     line.values = data
 
-    y = YAxis.new
-    y.set_range(0,110,5)
+    lineWin = Line.new
+    lineWin.text = "Games win"
+    lineWin.width = 1
+    lineWin.colour = '#DFC329'
+    lineWin.dot_size = 5
+    lineWin.values = wins
 
-    x_legend = XLegend.new("MY X Legend")
+    lineLost = Line.new
+    lineLost.text = "Games lost"
+    lineLost.width = 1
+    lineLost.colour = '#6363AC'
+    lineLost.dot_size = 5
+    lineLost.values = lost
+
+    order = data.sort
+    y = YAxis.new
+    y.set_range(0,order.last+(order.last * 0.1),1)
+
+    x_legend = XLegend.new("Weeks")
     x_legend.set_style('{font-size: 20px; color: #778877}')
 
-    y_legend = YLegend.new("MY Y Legend")
+    y_legend = YLegend.new("Games")
     y_legend.set_style('{font-size: 20px; color: #770077}')
+
+    labels = XAxisLabels.new
+    labels.text = allLabels
+    labels.steps = 86400
+    labels.visible_steps = 1
+
+    x = XAxis.new
+    x.labels = labels
 
     chart =OpenFlashChart.new
     chart.set_title(title)
     chart.set_x_legend(x_legend)
     chart.set_y_legend(y_legend)
     chart.y_axis = y
+    chart.x_axis = x
     chart.add_element(line)
+    chart.add_element(lineWin)
+    chart.add_element(lineLost)
 
     render :text => chart.to_s
   end

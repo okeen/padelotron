@@ -1,5 +1,5 @@
 body {
-    background: none repeat scroll 0 0 #EBEBEB;
+    background: none repeat scroll 0 0 #FFFFFF;
     color: #666666;
     font: 0.8em/1.5em Arial,Helvetica,sans-serif;
     margin: 100px auto;
@@ -9,7 +9,7 @@ a {
     color: #333333;
 }
 #nav {
-    background: -moz-linear-gradient(center top , #A9A9A9, #7A7A7A) repeat scroll 0 0 transparent;
+    background: -moz-linear-gradient(center top , #248734, #248734) repeat scroll 0 0 transparent;
     border: 1px solid #6D6D6D;
     border-radius: 2em 2em 2em 2em;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -26,7 +26,7 @@ a {
 }
 #nav a {
     border-radius: 1.6em 1.6em 1.6em 1.6em;
-    color: #E7E5E5;
+    color: white;
     display: block;
     font-weight: bold;
     margin: 0;

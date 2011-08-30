@@ -1,10 +1,16 @@
+h1 {
+  color: #14511D;
+  text-align: center; }
+
 div.game_listing_main_panel {
   border: 3px solid #222222;
   border-radius: 15px 15px 5px 5px;
   margin: 8px 8px 20px;
-  width: 42%; }
+  width: 42%;
+  border-color: #14511D;
+  background-color: #FFFFFF; }
   div.game_listing_main_panel div.game_listing_main_panel_header {
-    background-color: #222222;
+    background-color: #14511D;
     border-radius: 5px 5px 0 0;
     height: 15%;
     padding-bottom: 5px;

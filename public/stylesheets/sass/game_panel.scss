@@ -3,6 +3,8 @@ div.game_panel {
     width: 320px;
     height: 140px;
     padding: 4px;
+    border-color:#248734;
+    background-color:#EAFCD6;
     
     div.game_teams_subpanel {
         $team_photo_width: 50px;
@@ -71,17 +73,20 @@ div.game_panel {
 	padding: 0px;
       }
       div.view_game_button {
+        background-color:#248734;
 	height: 30px;
 	width: 50px;
 	float:right;
 	margin: {left:100px;}
 	a {
+          color:#FFFFFF;
 	  text-align: center;
 	  border-radius: 10%;
 	  padding: {top: 4px;bottom:4px;}
 	}
 	border: 1px solid;
 	border-radius: 10% ;
+        border-color:#248734;
       }
     }
 }

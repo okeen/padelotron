@@ -2,7 +2,9 @@ div.game_panel {
   margin-bottom: 10px;
   width: 320px;
   height: 140px;
-  padding: 4px; }
+  padding: 4px;
+  border-color: #248734;
+  background-color: #EAFCD6; }
   div.game_panel div.game_teams_subpanel {
     margin-bottom: 5px;
     height: 72px;
@@ -55,13 +57,16 @@ div.game_panel {
       text-align: left;
       padding: 0px; }
     div.game_panel div.game_details_subpanel div.view_game_button {
+      background-color: #248734;
       height: 30px;
       width: 50px;
       float: right;
       margin-left: 100px;
       border: 1px solid;
-      border-radius: 10%; }
+      border-radius: 10%;
+      border-color: #248734; }
       div.game_panel div.game_details_subpanel div.view_game_button a {
+        color: #FFFFFF;
         text-align: center;
         border-radius: 10%;
         padding-top: 4px;
