@@ -1,18 +1,16 @@
 div.team_panel {
   width: 270px;
-  height: 70px;
+  height: 75px;
   padding: 5px;
   overflow: hidden;
-  margin-top: 10px;
   border: 1px solid;
   border-radius: 7px 7px 7px 7px; }
   div.team_panel div.team_photo {
     float: left; }
     div.team_panel div.team_photo img {
-      width: 50px;
-      height: 70px; }
+      width: 40px; }
   div.team_panel div.team_info {
-    margin-left: 51px;
+    margin-left: 46px;
     height: 60px; }
     div.team_panel div.team_info h4 {
       margin: 0px;

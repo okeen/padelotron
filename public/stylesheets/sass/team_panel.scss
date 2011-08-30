@@ -1,11 +1,10 @@
 div.team_panel {
   width: 270px;
-  height: 70px;
+  height: 75px;
   padding: 5px;
   overflow: hidden;
-  margin-top: 10px;
 
-  $photo_height: 50px;
+  $photo_height: 45px;
 
   border: 1px solid;
   border: {
@@ -15,8 +14,7 @@ div.team_panel {
   div.team_photo {
     float: left;
     img {
-        width: $photo_height;
-        height: 70px;
+        width: 40px;
     }
   }
   div.team_info {

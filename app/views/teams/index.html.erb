@@ -1,8 +1,29 @@
 <h1>Listing teams</h1>
+<div id="teams_catalogue">
+  <div class="catalogue_header">
+    <div class="catalogue_header_tab clickable_container z-index-2 last_tab">
+      <a href="/home">Favourites</a>
+    </div>
+  </div>
+  <div id="catalogue_body">
+    <div id="letter_filter_side_bar">
+      <%=  teams_letter_filter_links_sidebar %>
+      
+    </div>
+    <div id="catalogue_items_list_container">
+      <% @teams.in_groups_of(3).each do |n_teams_group| %>
+        <div class="catalogue_items_container_row">
+          <% n_teams_group.compact.each do |team|%>
 
-<%= link_to "Show available teams for today", available_teams_path %>
-<% @teams.each do |team| %>
-   <%=  render :partial => 'team_panel', :locals => {:team => team} %>
-<% end %>
+            <div class="catalogue_item_container clickable_container">
+              <%=  render :partial => 'team_panel', :locals => {:team => team} %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
 
 <%= link_to 'New Team', new_team_path %>
