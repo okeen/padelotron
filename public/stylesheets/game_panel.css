@@ -66,3 +66,9 @@ div.game_panel {
         border-radius: 10%;
         padding-top: 4px;
         padding-bottom: 4px; }
+
+div.game_panel {
+  border: 1px solid; }
+
+div.game_result_panel.inactive {
+  display: none; }

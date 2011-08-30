@@ -1,13 +1,4 @@
-body {
-    background: none repeat scroll 0 0 #EBEBEB;
-    color: #666666;
-    font: 0.8em/1.5em Arial,Helvetica,sans-serif;
-    margin: 100px auto;
-    width: 900px;
-}
-a {
-    color: #333333;
-}
+
 #nav {
     background: -moz-linear-gradient(center top , #A9A9A9, #7A7A7A) repeat scroll 0 0 transparent;
     border: 1px solid #6D6D6D;

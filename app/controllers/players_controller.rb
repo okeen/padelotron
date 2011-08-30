@@ -21,8 +21,12 @@ class PlayersController < ApplicationController
 #    @graphGamesPlayed = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_games_played")
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.js { render :partial => 'player_panel', :locals => {:player=> @player}}
+      format.html {
+            if request.xhr?
+              render :partial => 'player_panel', :locals => {:player=> @player}
+            end
+      }
+      format.js { }
     end
   end
 

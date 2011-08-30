@@ -85,3 +85,12 @@ div.game_panel {
       }
     }
 }
+
+
+div.game_panel {
+    border: 1px solid;
+}
+
+div.game_result_panel.inactive {
+    display: none;
+}

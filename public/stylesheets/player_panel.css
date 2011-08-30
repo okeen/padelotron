@@ -1,7 +1,7 @@
 div.player_panel {
   overflow: hidden;
   width: 320px;
-  border: 1px solid;
+  background: #EBEBEB;
   border-radius: 7px 7px 7px 7px; }
   div.player_panel div.player_info_subpanel {
     padding: 5px; }

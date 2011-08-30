@@ -86,19 +86,9 @@ $(function() {
         selectPlayerFromCombo: function(valueInput,idInput){
             var playerInfoPanel = $(valueInput.parentNode.parentNode).
                                  find("div.player_info_mini_panel");
-            $.when($.ajax('/players/' + idInput.value )).
+            $.when($.ajax('/players/' + idInput.value + ".html")).
                 then(function(response){
-                    var d=response.model;
-                    playerInfoPanel.html(
-            '<img class="team_mini_image" src="'+d.image_path+'"></img>'+
-            '<div class="team_info_details_subpanel">'+
-                '<h5>'+d.name+'</h5>'+
-                '<ul class="team_players">'+
-                    '<li class="team_players">'+d.player1.name+'</li>'+
-                     '<li class="team_players">'+d.player2.name+'</li>'+
-                '</ul>'+
-            '</div>');
-
+                    playerInfoPanel.html(response);
             });
 
         },
