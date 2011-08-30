@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<div class="team_show">
+<h2>Team details: <%= @team.name%></h2>
+<div class="team_show fields_container_panel">
   <div class="team_info_upper_subpanel">
     <div class="team_achievements">
       <%= render :partial => '/achievements/large_achievements_panel',
               :locals => {:statable => @team}%>
   </div>
-    </div>
-
     <div class="team_info_subpanel">
       <%= team_photo(@team) %>
       <h2><%= @team.name %></h2>
@@ -18,19 +17,26 @@
         <li>% victorias: </li>
       </ul>
     </div>
-  </div>
+    </div>
 
-  <fieldset><legend>Jugadores</legend>
-    <ul class="team_players">
+    
+
+  <fieldset ><legend>Jugadores</legend>
+    <div id="players_list" class="inner_container">
+      <ul id="team_players">
       <% @team.players.each do |player| %>
-        <li class="player"><%= player_photo(player, :size => :normal)%><%= link_to player.name , player_path(player) %> </li>
+        <li class="player">
+          <%= render :partial => 'players/player_panel', :locals => {:player => player}%>
+        </li>
       <% end %>
     </ul>
+    </div>
   </fieldset>
+  </div>
   <div class="facebook_like_panel">
     <%= team_like_button(@team) %>
     <%= facebook_comments_panel(@team) %>
   </div>
   
-</div>
+
 

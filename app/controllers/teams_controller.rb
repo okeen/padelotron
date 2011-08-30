@@ -37,8 +37,11 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      
+      format.html {
+        if request.xhr?
+              render :partial => 'team_panel', :locals => {:team=> @team}
+            end
+      }
       format.json { render :json => {:model => @team}}
     end
   end

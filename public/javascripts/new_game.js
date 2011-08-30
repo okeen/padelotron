@@ -130,7 +130,7 @@ $(function() {
         selectTeamFromCombo: function(valueInput,idInput){
             var teamInfoPanel = $(valueInput.parentNode.parentNode).
                                  find("div.team_info_mini_panel");
-            $.when($.ajax('/teams/' + idInput.value + ".json")).
+            $.when($.ajax('/teams/' + idInput.value + ".html")).
                 then(function(response){
                     teamInfoPanel.html(response);
             });
