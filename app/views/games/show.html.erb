@@ -5,8 +5,8 @@
 <p id="notice"><%= notice %></p>
 
 <%= game_title(@game) %>
-<div class="game_info">
-  <div class="game_teams_subpanel">
+<div class="game_info fields_container_panel">
+  <div class="game_teams_subpanel ">
 <%#*<span>VS</span>%>
     <%= image_tag image_path("tennis_field.png"), :id=> "tennis_field_image" %>
     <div class="first_team">
@@ -49,10 +49,8 @@
   <% if @game.players.include?(current_player) and @game.winner_team.blank? %>
     <%=  render :partial => 'set_game_result_panel', :locals => {:game => @game}  %>
   <%end%>
-
-  <div id="facebook_like_and_comments_subpanel">
-    <%= game_like_button(@game) %>
-    <%= facebook_game_comments_panel(@game) %>
-  </div>
-
+</div>
+<div id="facebook_like_and_comments_subpanel">
+  <%= game_like_button(@game) %>
+  <%= facebook_game_comments_panel(@game) %>
 </div>

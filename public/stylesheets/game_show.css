@@ -3,6 +3,7 @@ h2 {
 
 div.game_info {
   width: 800px;
+  margin-bottom: 32px;
   padding: 15px; }
   div.game_info h2[name=title] {
     color: blue; }

@@ -1,92 +1,110 @@
-body { background-color: white; color: grey; }
+body {
+  background-color: white;
+  color: grey; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
-}
+  font-size: 13px;
+  line-height: 18px; }
 
 pre {
   background-color: #eee;
   padding: 5px;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
 body {
-    background: none repeat scroll 0 0 white;
-    color: #666666;
-    font: 0.8em/1.5em Arial,Helvetica,sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    width: 900px;
-}
+  background: none repeat scroll 0 0 white;
+  color: #666666;
+  font: 0.8em/1.5em Arial, Helvetica, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 900px; }
 
 body h1 {
-    margin-bottom: 40px;
-}
-a {
-    /*color: #333333;*/
-}
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+  margin-bottom: 40px; }
 
-.clickable_container a{
+a {
+  /*color: #333333;*/ }
+
+a.new_item_creation {
+  float: right;
+  width: 200px;
+  height: 20px;
+  color: white;
+  border-radius: 10px;
+  background-color: #8B8B8B;
+  font-size: 1.5em;
+  margin-top: 10px;
+  text-decoration: none;
+  text-align: center; }
+  a.new_item_creation :visited {
+    color: white; }
+
+a {
+  color: #000; }
+
+a:hover {
+  color: #fff;
+  background-color: #000; }
+
+.clickable_container a {
   display: block;
   height: 100%;
   width: 100%;
   border-radius: parent;
   text-decoration: none;
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-div.fields_container_panel{
+div.fields_container_panel {
   background-color: #F7F7F7;
   border: 2px solid #CCCCCC;
   border-radius: 5px 5px 5px 5px;
-  padding: 7px 7px;
+  padding: 7px 7px; }
 
-}
 fieldset {
-    border: 0 solid #8EC03D;
-    margin-top: 12px;
-}
+  border: 0 solid #8EC03D;
+  margin-top: 12px; }
+
 fieldset legend {
-      color: #333333;
-      display: block;
-      font-size: 18px;
-      line-height: 1.5em;
-      margin: 0;
-    }
-div.inner_container{
+  color: #333333;
+  display: block;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin: 0; }
+
+div.inner_container {
   background-color: white;
   border: 2px solid #CCCCCC;
   border-radius: 5px 5px 5px 5px;
-  padding: 7px 7px;
-}
+  padding: 7px 7px; }
+
 div.dhx_cal_event.selected {
-    background-color: red;
-}
+  background-color: red; }
 
 div.dhx_cal_event.confirmed {
-    background-color: green;
-}
+  background-color: green; }
 
-div.dhx_cal_event.confirmed div{
-    background-color: green;
-}
-
+div.dhx_cal_event.confirmed div {
+  background-color: green; }
 
 div.dhx_cal_event.rejected {
-    background-color: blue;
-}
+  background-color: blue; }
 
-div.dhx_cal_event.rejected div{
-    background-color: blue;
-}
-.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
-.ui-timepicker-div dl{ text-align: left; }
-.ui-timepicker-div dl dt{ height: 25px; }
-.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
+div.dhx_cal_event.rejected div {
+  background-color: blue; }
+
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px; }
+
+.ui-timepicker-div dl {
+  text-align: left; }
+
+.ui-timepicker-div dl dt {
+  height: 25px; }
+
+.ui-timepicker-div dl dd {
+  margin: -25px 0 10px 65px; }
+
+.ui-timepicker-div td {
+  font-size: 90%; }
