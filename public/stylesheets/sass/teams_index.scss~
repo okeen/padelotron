@@ -30,7 +30,6 @@
         background: none repeat scroll 0 0 #222222;
         border-radius: 40px 0 0 0;
         height: 38px;
-	z-index: 2;
         width: 100%;
         .z-index-2 {
             z-index: 2;

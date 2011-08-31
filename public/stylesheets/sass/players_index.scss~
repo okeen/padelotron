@@ -1,5 +1,6 @@
-#teams_catalogue {
+#players_catalogue {
     height: 700px;
+    width: 800px;
     background: none repeat scroll 0 0 white;
     border: {
         bottom: 3px solid #222222;
@@ -58,8 +59,8 @@
     }
     #catalogue_items_list_container {
         height: 100%;
-        margin-left: 20px;
-        padding-top: 2px;
+        //margin: {top: 20px;bottom: 20px;}
+        padding: 20px;
         .catalogue_items_container_row {
             border:{
                 bottom: 0 solid #222222;
@@ -70,14 +71,14 @@
                 right: 3px;
             }
             .catalogue_item_container {
-                background-color: #CFCFCF;
                 border-radius: 4px 4px 4px 4px;
                 float: left;
-                width: 33%;
-                margin: 1px;
-                div.team_panel{
+                //width: 40%;
+                margin: {left: 6px; right: 30px;bottom: 20px;}
+                div.player_panel{
                     display: block;
                     height: 100%;
+		    margin: {left: 10px;right: 10px;}
                     text-decoration: none;
                     vertical-align: middle;
                     

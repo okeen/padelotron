@@ -1,5 +1,6 @@
-#teams_catalogue {
+#players_catalogue {
   height: 700px;
+  width: 820px;
   background: none repeat scroll 0 0 white;
   border-bottom: 3px solid #222222;
   border-color: #222222;
@@ -7,7 +8,7 @@
   border-radius: 40px 0 0 0;
   border-right: 3px solid #222222;
   margin: 4px; }
-  #teams_catalogue #letter_filter_side_bar {
+  #players_catalogue #letter_filter_side_bar {
     border-bottom: 3px solid #222222;
     border-color: #222222;
     border-right: 3px solid #222222;
@@ -15,18 +16,18 @@
     height: 100%;
     text-align: center;
     width: 20px; }
-    #teams_catalogue #letter_filter_side_bar .letter_filter_letter_container {
+    #players_catalogue #letter_filter_side_bar .letter_filter_letter_container {
       border-bottom: 2px solid black;
       border-color: black; }
-  #teams_catalogue .catalogue_header {
+  #players_catalogue .catalogue_header {
     background: none repeat scroll 0 0 #222222;
     border-radius: 40px 0 0 0;
     height: 38px;
     z-index: 2;
     width: 100%; }
-    #teams_catalogue .catalogue_header .z-index-2 {
+    #players_catalogue .catalogue_header .z-index-2 {
       z-index: 2; }
-    #teams_catalogue .catalogue_header .catalogue_header_tab {
+    #players_catalogue .catalogue_header .catalogue_header_tab {
       background-image: -moz-linear-gradient(left center, #0a0a0a, #303030);
       border: 0 solid white;
       border-radius: 40px 0 0 0;
@@ -37,28 +38,29 @@
       text-align: right;
       padding-right: 0px;
       width: 15%; }
-      #teams_catalogue .catalogue_header .catalogue_header_tab a {
+      #players_catalogue .catalogue_header .catalogue_header_tab a {
         text-align: center;
         border-radius: 40px 0 0 0; }
-    #teams_catalogue .catalogue_header .last_tab {
+    #players_catalogue .catalogue_header .last_tab {
       right: 0 !important; }
-  #teams_catalogue #catalogue_items_list_container {
+  #players_catalogue #catalogue_items_list_container {
     height: 100%;
-    margin-left: 20px;
-    padding-top: 2px; }
-    #teams_catalogue #catalogue_items_list_container .catalogue_items_container_row {
+    padding: 20px; }
+    #players_catalogue #catalogue_items_list_container .catalogue_items_container_row {
       border-bottom: 0 solid #222222;
       border-color: #222222;
       padding-left: 6px;
       padding-right: 3px; }
-      #teams_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
-        background-color: #CFCFCF;
+      #players_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
         border-radius: 4px 4px 4px 4px;
         float: left;
-        width: 33%;
-        margin: 1px; }
-        #teams_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container div.team_panel {
+        margin-left: 6px;
+        margin-right: 30px;
+        margin-bottom: 20px; }
+        #players_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container div.player_panel {
           display: block;
           height: 100%;
+          margin-left: 10px;
+          margin-right: 10px;
           text-decoration: none;
           vertical-align: middle; }

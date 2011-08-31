@@ -5,8 +5,9 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.xml
   def index
-    @players = Player.includes(:stat).includes(:achievements).all
-
+    @players = Player.includes(:stat).includes(:achievements)
+    @players = @players.by_letter(params[:letter]) unless params[:letter].blank?
+    @players =@players.all
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :json => {:results => @players}}

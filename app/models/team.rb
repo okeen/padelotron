@@ -18,6 +18,9 @@ class Team < ActiveRecord::Base
     where('not id in (?)',Game.for_today.collect(&:teams).flatten.collect(&:id) )
   }
 
+  scope :by_letter, lambda{ |letter|
+    where("lower(name) like ?", "#{letter.downcase}%")
+  }
   def image_path
     image.url
   end

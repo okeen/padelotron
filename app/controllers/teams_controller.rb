@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.scoped.includes(:player1,:player2)
     @teams = @teams.where('name like ?', "%#{params[:q]}%") unless params[:q].blank?
+    @teams = @teams.by_letter(params[:letter]) unless params[:letter].blank?
     @teams = @teams.all
     respond_to do |format|
       format.html # index.html.erb

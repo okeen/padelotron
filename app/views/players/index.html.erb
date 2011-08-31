@@ -1,5 +1,22 @@
 <h1>Lista jugadores</h1>
+<div id="players_catalogue">
+  <%= players_catalogue_header %>
+  <div id="catalogue_body">
+    <div id="letter_filter_side_bar">
+      <%=  players_letter_filter_links_sidebar %>
 
-<% @players.each do |player| %>
-  <%= render :partial => 'player_panel', :locals => {:player => player} %>
-<% end %>
+    </div>
+    <div id="catalogue_items_list_container">
+      <% @players.in_groups_of(2).each do |n_players_group| %>
+        <div class="catalogue_items_container_row">
+          <% n_players_group.compact.each do |player|%>
+
+            <div class="catalogue_item_container clickable_container">
+              <%=  render :partial => 'player_panel', :locals => {:player => player} %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
