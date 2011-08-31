@@ -10,9 +10,16 @@ class Customers::GraphicController < ApplicationController
     today = DateTime.now
     week = today.beginning_of_week
     month = today.beginning_of_month
+    puts('-----------------------')
     @customer.places.each do |place|
+      
       place.playgrounds.each do |play|
+        puts('placccccccccccccccccccccccccce')
+        puts(play.games.count)
         play.games.each do |game|
+
+          puts('---------------popo')
+          puts(game.play_date)
           if game.play_date == today
             numDay = numDay + 1
           end
