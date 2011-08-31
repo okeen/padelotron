@@ -22,11 +22,14 @@ Padelotron::Application.routes.draw do
   post "confirmations/:code/do" => "confirmations#do_confirmation", :as => "do_confirmation"
 
   get "teams/available" => "teams#available", :as => "available_teams"
-  
+
+  get "teams/catalog/:letter" => "teams#index", :as => "teams_catalog_letter"
   get "teams/my" => "teams#my", :as => "my_teams"
   resources :teams do
     
   end
+
+  get "players/catalog/:letter" => "players#index", :as => "players_catalog_letter"
 
   post "player_session/facebook/login" => "players/facebook_sessions#login", :as => "facebook_js_login"
   post "player_session/facebook/logout" => "players/facebook_sessions#logout", :as => "facebook_js_logout"

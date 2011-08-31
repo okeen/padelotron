@@ -82,14 +82,27 @@ $(function() {
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
             $('select#game_playground_id').bind('click', this.markPlaygroundInMap);
             $('div.team_selector.first_team_selector').flexbox('/teams/my.json', {
-                watermark: "Select one of your teams"
+                watermark: "Select one of your teams",
+                onSelect: this.selectTeamFromCombo,
+                hiddenValue: 'id',
+                width: 300,
+                resultTemplate: '<div class="team_result_row">'+
+            '<div class="mini_team_info_row"><h5>{name}</h5></div>'+
+            '<img class="team_mini_image" src="{image_path}"></img></div>'
+                                
             });
             $('div.team_selector.second_team_selector').flexbox('/teams.json', {
-                watermark: "Select the rival team"
+                watermark: "Select the rival team",
+                onSelect: this.selectTeamFromCombo,
+                width: 300,
+                resultTemplate: '<div class="team_result_row">'+
+            '<div class="mini_team_info_row"><h5>{name}</h5></div>'+
+            '<img class="team_mini_image" src="{image_path}"></img></div>'
             });
             $('div.playground_selector').flexbox('/playgrounds.json', {
                 watermark: "Select a playground",
                 onSelect: this.markPlaygroundInMap
+                
             });
             $('input[name="game[play_date]"]').datetimepicker({
                 dateFormat: 'yy-mm-dd',
@@ -113,6 +126,15 @@ $(function() {
                 };
                 this.map= new google.maps.Map($("#map")[0],mapOptions);
             }
+        },
+        selectTeamFromCombo: function(valueInput,idInput){
+            var teamInfoPanel = $(valueInput.parentNode.parentNode).
+                                 find("div.team_info_mini_panel");
+            $.when($.ajax('/teams/' + idInput.value + ".html")).
+                then(function(response){
+                    teamInfoPanel.html(response);
+            });
+
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();

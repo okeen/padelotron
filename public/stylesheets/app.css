@@ -1,10 +1,31 @@
-div.game_panel {
-    border: 1px solid;
+body { background-color: white; color: grey; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
 }
 
-div.game_result_panel.inactive {
-    display: none;
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
 }
+
+body {
+    background: none repeat scroll 0 0 white;
+    color: #666666;
+    font: 0.8em/1.5em Arial,Helvetica,sans-serif;
+    margin: 100px auto;
+    width: 900px;
+}
+a {
+    /*color: #333333;*/
+}
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
 .clickable_container a{
   display: block;
   height: 100%;
@@ -13,7 +34,31 @@ div.game_result_panel.inactive {
   text-decoration: none;
   vertical-align: middle;
 }
-    
+
+div.fields_container_panel{
+  background-color: #F7F7F7;
+  border: 2px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  padding: 7px 7px;
+
+}
+fieldset {
+    border: 0 solid #8EC03D;
+    margin-top: 12px;
+}
+fieldset legend {
+      color: #333333;
+      display: block;
+      font-size: 18px;
+      line-height: 1.5em;
+      margin: 0;
+    }
+div.inner_container{
+  background-color: white;
+  border: 2px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  padding: 7px 7px;
+}
 div.dhx_cal_event.selected {
     background-color: red;
 }

@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.scoped.includes(:player1,:player2)
     @teams = @teams.where('name like ?', "%#{params[:q]}%") unless params[:q].blank?
+    @teams = @teams.by_letter(params[:letter]) unless params[:letter].blank?
     @teams = @teams.all
     respond_to do |format|
       format.html # index.html.erb
@@ -34,10 +35,15 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.xml
   def show
-    
+    @team = Team.find(params[:id])
+
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @team }
+      format.html {
+        if request.xhr?
+              render :partial => 'team_panel', :locals => {:team=> @team}
+            end
+      }
+      format.json { render :json => {:model => @team}}
     end
   end
 

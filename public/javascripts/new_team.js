@@ -74,6 +74,23 @@ $(function() {
         initialize: function(){
             _.bindAll(this, 'render','sendFacebookTeamRequest', 'toggleSendFacebookRequest');
             $('input.create_facebook_request').live('click', this.toggleSendFacebookRequest);
+             $('div.player_selector.second_player_selector').flexbox('/players.json', {
+                watermark: "Select your team mate",
+                onSelect: this.selectPlayerFromCombo,
+                width: 300,
+                resultTemplate: '<div class="player_result_row">'+
+            '<div class="mini_player_info_row"><h5>{name}</h5></div>'+
+            '<img class="player_mini_image" src=""></img></div>'
+            });
+        },
+        selectPlayerFromCombo: function(valueInput,idInput){
+            var playerInfoPanel = $(valueInput.parentNode.parentNode).
+                                 find("div.player_info_mini_panel");
+            $.when($.ajax('/players/' + idInput.value + ".html")).
+                then(function(response){
+                    playerInfoPanel.html(response);
+            });
+
         },
         toggleSendFacebookRequest: function(e,value){
             this.model.toggleSendFacebookRequest();

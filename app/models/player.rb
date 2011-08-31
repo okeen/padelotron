@@ -14,7 +14,11 @@ class Player < ActiveRecord::Base
   before_update :geocode_with_gmaps
   
   geocoded_by :full_address
-  
+
+  scope :by_letter, lambda{ |letter|
+    where("lower(name) like ?", "#{letter.downcase}%")
+  }
+
   def self.find_or_create_by_name_and_email(facebook_id,name,email)
     Player.find_by_facebook_id(facebook_id) ||
       Player.create(:name => name, :email => email, :facebook_id => facebook_id)

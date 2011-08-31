@@ -649,12 +649,12 @@
             $curr = getCurr();
 
             if ($curr) {
-				$hdn.val($curr.attr('id'));
+		$hdn.val($curr.attr('id'));
                 $input.val($curr.attr('val')).focus();
                 hideResults();
 
                 if (o.onSelect) {
-                    o.onSelect.apply($input[0]);
+                    o.onSelect($input[0],$hdn[0]);
                 }
             }
         }

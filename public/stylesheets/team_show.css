@@ -1,6 +1,6 @@
 div.team_show {
   margin-top: 10px;
-  border: 1px solid;
+  margin-bottom: 20px;
   border-radius: 7px 7px 7px 7px; }
   div.team_show div.team_info_upper_subpanel div.team_info_subpanel img {
     width: 50px;
@@ -9,20 +9,26 @@ div.team_show {
     margin-left: 10px;
     margin-right: 10px; }
   div.team_show div.team_info_upper_subpanel div.team_info_subpanel h2 {
-    margin-left: 51px; }
+    margin-left: 51px;
+    text-align: left; }
   div.team_show div.team_info_upper_subpanel div.team_info_subpanel ul#team_stats {
     list-style: none; }
   div.team_show div.team_info_upper_subpanel fieldset {
     float: right;
     width: 60%; }
-  div.team_show fieldset ul.team_players {
-    list-style: none;
-    margin-top: 15px;
-    margin-bottom: 0px;
-    padding-left: 5px; }
-    div.team_show fieldset ul.team_players li {
-      float: left;
-      width: 49%; }
+  div.team_show div#players_list {
+    width: 75%;
+    height: 150px; }
+    div.team_show div#players_list ul#team_players {
+      list-style: none;
+      margin-top: 5px;
+      margin-bottom: 0px;
+      padding-left: 5px;
+      padding-righ: 5px; }
+      div.team_show div#players_list ul#team_players li:first-child {
+        float: left; }
+      div.team_show div#players_list ul#team_players li:nth-child(2) {
+        float: right; }
   div.team_show .team_achievements ul.team_achievements {
     height: 20px;
     list-style: none; }

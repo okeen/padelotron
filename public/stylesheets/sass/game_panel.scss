@@ -5,16 +5,15 @@ div.game_panel {
     padding: 4px;
     border-color:#248734;
     background-color:#EAFCD6;
-    
+
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
 	margin-bottom: 5px;
         height: $team_photo_height + 2px;
-        border: 0px solid;
+        background-color: #EBEBE7;
         border: {
             radius: 7px 7px 7px 7px;
-            color: red;
         }
         img {
             width: $team_photo_width;
@@ -65,6 +64,8 @@ div.game_panel {
         }
     }
     div.game_details_subpanel{
+      background-color: white;
+      border: 1px solid #EBEBEB;
       margin: 2px;
       margin-top: 1px;
       h4 {
@@ -89,4 +90,10 @@ div.game_panel {
         border-color:#248734;
       }
     }
+}
+
+
+
+div.game_result_panel.inactive {
+    display: none;
 }

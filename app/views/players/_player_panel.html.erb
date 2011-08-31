@@ -1,20 +1,21 @@
 <div class="player_panel">
   <div class="player_emblems_subpanel">
-   <%= render :partial => '/achievements/large_achievements_panel',
-              :locals => {:statable => player}%>
+    <%= render :partial => '/achievements/large_achievements_panel',
+      :locals => {:statable => player}%>
   </div>
   <div class="player_info_subpanel">
-    <div class="player_photo">
-      <%= player_photo(player) %>
-    </div>
+      <h3><%= link_to_unless_current player.name.capitalize, player_path(player)%></h3>
+      <div class="player_photo">
+        <%= player_photo(player) %>
+      </div>
     <div class="player_info">
-      <h3><%= link_to_unless_current player.name, player_path(player)%></h3>
+
       <ul class="player_stats_list">
-        <li>Partidos jugados:<%= player.stat.wins + player.stat.lost %> </li>
+        <li>Partidos: <%= player.stat.wins + player.stat.lost %> </li>
         <li>Ganados: <%= player.stat.wins %> </li>
         <li>Perdidos: <%= player.stat.lost %></li>
       </ul>
     </div>
   </div>
-  
+
 </div>

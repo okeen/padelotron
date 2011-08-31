@@ -5,11 +5,12 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.xml
   def index
-    @players = Player.includes(:stat).includes(:achievements).all
-
+    @players = Player.includes(:stat).includes(:achievements)
+    @players = @players.by_letter(params[:letter]) unless params[:letter].blank?
+    @players =@players.all
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @players }
+      format.json  { render :json => {:results => @players}}
     end
   end
 
@@ -17,12 +18,16 @@ class PlayersController < ApplicationController
   # GET /players/1.xml
   def show
     @player = Player.includes(:stat).includes(:achievements).find(params[:id])
-    @graphGamesWinLost = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_code")
-    @graphGamesPlayed = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_games_played")
+#    @graphGamesWinLost = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_code")
+#    @graphGamesPlayed = open_flash_chart_object(600,300,"/players/#{params[:id]}/graph_games_played")
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @player }
+      format.html {
+            if request.xhr?
+              render :partial => 'player_panel', :locals => {:player=> @player}
+            end
+      }
+      format.js { }
     end
   end
 

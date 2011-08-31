@@ -11,7 +11,7 @@ form#new_game {
 	    margin-right: 10px;
             float:left;
             div.team_info_mini_panel {
-	      margin: {top: 15px; bottom:15px; left: 20px;}
+	      margin: {top: 15px; bottom:15px}
 	    }
 	    
         }

@@ -4,7 +4,29 @@ class Customers::GraphicController < ApplicationController
   before_filter :authenticate_customer!, :load_customer
   
   def show
-     respond_to do |format|
+    numDay = 0
+    numWeek = 0
+    numMonth = 0
+    today = DateTime.now
+    week = today.beginning_of_week
+    month = today.beginning_of_month
+    @customer.places.each do |place|
+      place.playgrounds.each do |play|
+        play.games.each do |game|
+          if game.play_date == today
+            numDay = numDay + 1
+          end
+          if game.play_date <=today && game.play_date >= week
+            numWeek = numWeek +1
+          end
+          if game.play_date <= today && game.play_date >= month
+            numMonth = numMonth +1
+          end
+        end
+      end
+    end
+    
+    respond_to do |format|
       format.html
     end
   end
