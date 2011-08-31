@@ -1,0 +1,35 @@
+
+div#player_session_panel {
+  margin-top: 0px;
+  padding: 3px;
+  width: 220px;
+  float:right;
+  ul{
+    margin: {top: 0px; bottom: 0px;}
+    list-style: none;
+  }
+  div#player_session_info {
+    img {float: left;}
+    fieldset{
+      margin: {left: 50px; top:1px;}
+      
+    }
+  }
+  div#player_session_menu{
+    height: 20px;
+    ul {
+      //width: 270px;
+      padding-left: 4px;
+      
+    }
+    li {
+      width: 31%;	
+      a {text-decoration: none;}
+      font-size: 1.1em;
+      text-align: center;
+      background-color: white;
+      float: left;
+      border: 2px solid #CCCCCC;
+    }
+  }
+}

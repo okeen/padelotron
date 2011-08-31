@@ -8,7 +8,7 @@ body, p, ol, ul, td {
 
 pre {
   background-color: #eee;
-  padding: 10px;
+  padding: 5px;
   font-size: 11px;
 }
 
@@ -16,8 +16,14 @@ body {
     background: none repeat scroll 0 0 white;
     color: #666666;
     font: 0.8em/1.5em Arial,Helvetica,sans-serif;
-    margin: 100px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
     width: 900px;
+}
+
+body h1 {
+    margin-bottom: 40px;
 }
 a {
     /*color: #333333;*/

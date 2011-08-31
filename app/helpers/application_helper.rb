@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def header
+    content_tag :h1, "Tendel"
+  end
+
   def top_navigation_menu
     content_tag :ul, :id => 'nav' do |ul|
       (
@@ -7,8 +11,8 @@ module ApplicationHelper
           "<li>#{link_to("Teams", teams_path)}</li>"+
           "<li>#{link_to("Games", games_path)}</li>"+
           "<li>#{link_to("Create a Game", new_game_path)}</li>"+
-          "<li>#{link_to("Places", places_path)}</li>"+
-          "<li>#{link_to("Customers", customers_path)}</li>"
+          "<li>#{link_to("Places", places_path)}</li>"
+#          "<li>#{link_to("Customers", customers_path)}</li>"
       ).html_safe
     end
   end
