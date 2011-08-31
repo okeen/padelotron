@@ -8,18 +8,9 @@ form#new_game {
       form#new_game fieldset div#teams_selection_panel div.team_field {
         margin-right: 10px;
         float: left; }
-        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel img {
-          float: left;
-          width: 40px;
-          margin-top: 10px;
-          margin-left: 7px; }
-        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel div.team_info_details_subpanel h5 {
-          font-size: 18px;
-          text-align: center;
-          margin-top: 10px;
-          margin-bottom: 10px; }
-        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel div.team_info_details_subpanel ul.team_players {
-          list-style: none;
+        form#new_game fieldset div#teams_selection_panel div.team_field div.team_info_mini_panel {
+          margin-top: 15px;
+          margin-bottom: 15px;
           margin-left: 20px; }
   form#new_game div#date_and_location_selection_panel {
     height: 320px; }
@@ -44,6 +35,8 @@ div.team_result_row img {
   height: 40px;
   width: 33px; }
 div.team_result_row div.mini_team_info_row {
+  margin-top: 25px;
+  margin-bottom: 25px;
   float: right; }
   div.team_result_row div.mini_team_info_row h5 {
     margin-top: 0px;

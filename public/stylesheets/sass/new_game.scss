@@ -10,28 +10,10 @@ form#new_game {
             //border: 1px solid;
 	    margin-right: 10px;
             float:left;
-            div.team_selector {
-
-            }
-	    div.team_info_mini_panel{
-	      img{
-		float:left;
-		width: 40px;
-		margin: {top: 10px; left: 7px;}
-	      }
-	      div.team_info_details_subpanel{
-		//border {left:43px; }
-		h5{	
-		  font-size: 18px;
-		  text-align: center;
-		  margin: {top:10px; bottom: 10px;}
-		}
-		ul.team_players {
-		  list-style: none;
-		  margin: {left:20px;}
-		}
-	      }
+            div.team_info_mini_panel {
+	      margin: {top: 15px; bottom:15px; left: 20px;}
 	    }
+	    
         }
     }
   }
@@ -68,7 +50,7 @@ div.team_result_row {
         width: 33px;
     }
     div.mini_team_info_row {
-        //margin: {top: 25%; bottom:25%}
+        margin: {top: 25px; bottom:25px}
         float:right;
         h5 {
             padding {top:0px;}

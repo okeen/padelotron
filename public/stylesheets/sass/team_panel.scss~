@@ -49,14 +49,14 @@ div.team_panel {
       li[name='player1'] {
         img {float: right;}
         a  {
-           //margin-right: $player_img_width + 1px;
+           margin-right: $player_img_width + 1px;
            text-align: right;
         }
       }
       li[name='player2'] {
         img {float: left;}
         a  {
-          //margin-left: $player_img_width + 1px;
+          margin-left: $player_img_width + 1px;
           margin-top: 3px;
           text-align: left;
         }

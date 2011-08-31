@@ -1,5 +1,6 @@
 form#new_team {
   width: 100%; }
   form#new_team div.player_info_mini_panel {
-    margin-top: 10px;
-    margin-bottom: 2px; }
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-left: 4px; }
