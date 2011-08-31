@@ -1,1 +1,24 @@
-Kaixo <%= current_player.name %>!
+<div id="player_session_panel" class="fields_container_panel">
+  <div id="player_session_info">
+    <%= player_photo(player) %>
+    <fieldset>
+      <legend><%= player.name %></legend>
+      <ul id="player_session_more_info">
+        <li><%= player.stat.wins %> won, <%= player.stat.lost %> lost</li>
+      </ul>
+    </fieldset>
+  </div>
+  <div id="player_session_menu" class="clickable_container">
+    <ul id="player_session_menu_items">
+      <li>
+        <%=  link_to "Teams", teams_path %>
+      </li>
+      <li>
+        <%=  link_to "Profile", teams_path %>
+      </li>
+      <li>
+        <%=  link_to "News", teams_path %>
+      </li>
+    </ul>
+  </div>
+</div>
