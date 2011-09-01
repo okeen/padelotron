@@ -25,7 +25,7 @@ module ApplicationHelper
   def player_photo(player, options = {})
     photo_url = player.facebook_url + "/picture"
     photo_url+= "?type=#{options[:size].to_s}" if options[:size]
-    link_to image_tag(photo_url), "http://www.facebook.com/#{player.facebook_id}"
+    image_tag(photo_url) #, "http://www.facebook.com/#{player.facebook_id}"
   end
 
   def achievement_image(achievement_type_name, active=true)

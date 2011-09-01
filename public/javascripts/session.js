@@ -43,16 +43,7 @@ $(function() {
         },
         first_time_session: function(session_data){
             //New user on site, notify it
-//            $.ajax({
-//                url: "/players/",
-//                type: 'POST',
-//                data: {
-//                    facebook_access_token: session_data.session.access_token
-//                },
-//                success: function(response){
-//                    alert("New User created OK");
-//                }
-//            })
+            $("<div></div>").dialog("Player created");
         }
     });
 

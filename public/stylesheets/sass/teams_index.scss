@@ -1,5 +1,5 @@
 #teams_catalogue {
-    height: 700px;
+    height: 690px;
     background: none repeat scroll 0 0 white;
     border: {
         bottom: 3px solid #222222;
@@ -73,15 +73,8 @@
                 background-color: #CFCFCF;
                 border-radius: 4px 4px 4px 4px;
                 float: left;
-                width: 33%;
-                margin: 1px;
-                div.team_panel{
-                    display: block;
-                    height: 100%;
-                    text-decoration: none;
-                    vertical-align: middle;
-                    
-                }
+                margin: 5px;
+                
             }
         }
     }

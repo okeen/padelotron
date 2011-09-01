@@ -56,8 +56,9 @@ div.team_panel {
       li[name='player2'] {
         img {float: left;}
         a  {
-          //margin-left: $player_img_width + 1px;
-          margin-top: 3px;
+          margin-top:  1px;
+          padding-top: 10px;
+	  
           text-align: left;
         }
       }

@@ -22,7 +22,7 @@
     <%= render :partial => 'players/player_session_panel',
                :locals => {:player => current_player} %>
     <%= hidden_player_location_inputs(current_player) %>
- <% else%>>
+ <% else%>
     <%=  render :partial => 'players/player_login_panel' %>
     <% cookies['_padelotron_tcg']= nil %>
  <%end%>
