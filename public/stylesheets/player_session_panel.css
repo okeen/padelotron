@@ -24,3 +24,8 @@ div#player_session_panel {
       border: 2px solid #CCCCCC; }
       div#player_session_panel div#player_session_menu li a {
         text-decoration: none; }
+  div#player_session_panel div#player_login_panel h3 {
+    text-align: center; }
+  div#player_session_panel div#player_login_panel div.login_button_subpanel {
+    margin-left: 31%;
+    margin-right: 31%; }

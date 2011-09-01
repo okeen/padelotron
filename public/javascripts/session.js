@@ -6,7 +6,7 @@ $(function() {
         },
 
         initialize: function(){
-            _.bindAll(this, 'session_changed', 'first_time_session', 'user_logged_in');
+            _.bindAll(this, 'session_changed', 'first_time_session', 'userLoggedIn');
             if ($.cookie("_padelotron_tcg")== "1"){
                 console.log("Found active Padelotron session cookie")
                 this.set({
@@ -33,16 +33,13 @@ $(function() {
             $.ajax({
                 url: "/player_session/facebook/login",
                 type: 'POST',
-                data: {
-                    facebook_access_token: session_data.session.access_token
-                },
-                success: this.user_logged_in
-            })
+                data: {facebook_access_token: session_data.session.access_token},
+                success:this.userLoggedIn});
         },
-        user_logged_in: function(e, response){
+        userLoggedIn: function(response, status){
             console.log("Padelotron::session logged in for user: ");
             this.set({'logged_padelotron': true});
-
+            $("#player_session_panel").replaceWith(response);
         },
         first_time_session: function(session_data){
             //New user on site, notify it
