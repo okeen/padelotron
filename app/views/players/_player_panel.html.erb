@@ -9,6 +9,9 @@
         <%= player_photo(player) %>
       </div>
     <div class="player_info">
+      <button id="proba" value="sssasdf">kldasl
+      <%= tooltip "proba", { :tooltip => 'some keywords to categorize your data and help in future searches' }, :class => 'mytooltip' %>
+        </button>
 
       <ul class="player_stats_list">
         <li>Partidos: <%= player.stat.wins + player.stat.lost %> </li>

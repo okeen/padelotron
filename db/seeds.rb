@@ -39,11 +39,12 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
   puts "#{first_team}/#{second_team}"
+  ran=rand(365)
   g = FactoryGirl.create :friendly_game,
                          :team1_id => first_team,
                          :team2_id => second_team,
                          :playground => playgrounds[rand(playgrounds.count)],
-                         :play_date => DateTime.now - rand(100).days
+                         :play_date => DateTime.now + ran.days
   g.confirm!
   puts "Created Friendly confirmed game: #{g.reload.inspect}"
 end
@@ -53,11 +54,12 @@ end
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
   puts "#{first_team}/#{second_team}"
+  ran=rand(365)
   g = FactoryGirl.create :friendly_game, 
                          :team1_id => first_team,
                          :team2_id => second_team,
                          :playground => playgrounds[rand(playgrounds.count)],
-                         :play_date => DateTime.now - rand(100).hours
+                         :play_date => DateTime.now - ran.days
   g.confirm!
   puts "Created past Friendly confirmed game: #{g.reload.inspect}"
 

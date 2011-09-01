@@ -61,6 +61,7 @@ Padelotron::Application.routes.draw do
       :as=> "do_playground_request"
     get "agenda/show", :to => "agenda#show", :as => "agenda"
     get "agenda/games", :to => "agenda#games", :as => "agenda_games"
+    get "graphics/show", :to => "graphic#show", :as =>"graphic"
     resources :playground_requests do
     end
   end
