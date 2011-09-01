@@ -6,10 +6,26 @@
 
 <%= game_title(@game) %>
 <div class="game_info fields_container_panel">
+  <fieldset id="game_date_and_location_sub_panel">
+    <legend>Location</legend>
+    <div  class="inner_container">
+    <% if @game.playground %>
+      <%= game_date_and_location(@game)%>
+      <div id="map"></div>
+      <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
+      <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
+    <% end %>
+  </div>
+  </fieldset>
+  
   <div class="game_teams_subpanel ">
-<%#*<span>VS</span>%>
-    <%= image_tag image_path("tennis_field.png"), :id=> "tennis_field_image" %>
-    <div class="first_team">
+    <% if @game.winner_team %>
+      
+    <% else %>
+      <%= image_tag image_path("tennis_net.jpg"), :id=> "tennis_field_image" %>
+    <% end %>
+    
+    <div class="first_team inner_container<%= " winner_team" if @game.winner_team == @game.team1%>">
       <%=  image_tag @game.team1.image.url %>
       <h3><%= @game.team1.name %></h3>
       <ul class="team_players_list">
@@ -21,7 +37,7 @@
         <% end %>
       </ul>
     </div>
-    <div class="second_team">
+    <div class="second_team inner_container<%= " winner_team" if @game.winner_team == @game.team2%>">
       <%=  image_tag @game.team2.image.url %>
       <h3><%= @game.team2.name %></h3>
       <ul class="team_players_list">
@@ -33,19 +49,11 @@
         <% end %>
       </ul>
     </div>
-  </div>
-  <div id="game_date_and_location_sub_panel">
-    <% if @game.playground %>
-      <%= game_date_and_location(@game)%>
-      <div id="map"></div>
-      <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
-      <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
-    <% end %>
-  </div>
-  <h4 name="description"><%= @game.description%></h4>
   <% if @game.winner_team %>
     <%= render :partial => 'game_result_panel', :locals => {:game => @game} %>
   <% end %>
+  </div>
+  
   <% if @game.players.include?(current_player) and @game.winner_team.blank? %>
     <%=  render :partial => 'set_game_result_panel', :locals => {:game => @game}  %>
   <%end%>

@@ -84,7 +84,6 @@ $(function() {
             $('div.team_selector.first_team_selector').flexbox('/teams/my.json', {
                 watermark: "Select one of your teams",
                 onSelect: this.selectTeamFromCombo,
-                hiddenValue: 'id',
                 width: 300,
                 resultTemplate: '<div class="team_result_row">'+
             '<div class="mini_team_info_row"><h5>{name}</h5></div>'+

@@ -2,7 +2,6 @@ h2 {
   text-align: center; }
 
 div.game_info {
-  width: 800px;
   margin-bottom: 32px;
   padding: 15px; }
   div.game_info h2[name=title] {
@@ -16,31 +15,34 @@ div.game_info {
     margin-top: 40px;
     width: 400px;
     text-align: left; }
-  div.game_info div#game_date_and_location_sub_panel {
-    width: 200px;
-    float: right; }
-    div.game_info div#game_date_and_location_sub_panel .game_date_location {
+  div.game_info fieldset#game_date_and_location_sub_panel {
+    width: 160px;
+    float: right;
+    margin-top: 1px; }
+    div.game_info fieldset#game_date_and_location_sub_panel div.inner_container {
+      height: 210px; }
+    div.game_info fieldset#game_date_and_location_sub_panel .game_date_location {
       float: right;
       margin: 0 0 0 0;
       text-decoration: none;
       font-size: 18px; }
-    div.game_info div#game_date_and_location_sub_panel div#map {
-      margin-top: 23px;
-      margin-right: 10px;
-      height: 200px;
-      width: 200px;
+    div.game_info fieldset#game_date_and_location_sub_panel div#map {
+      margin-top: 5px;
+      margin-right: 0px;
+      height: 150px;
+      width: 150px;
       float: right; }
   div.game_info div.game_teams_subpanel {
-    height: 120px;
+    height: 260px;
     border: 0px solid;
     border-radius: 7px 7px 7px 7px;
     border-color: red; }
     div.game_info div.game_teams_subpanel img#tennis_field_image {
       width: 100px;
       heigth: 70px;
-      margin-top: 40px;
-      margin-left: 10px;
-      margin-right: 10px; }
+      margin-top: 50px;
+      margin-left: 0px;
+      margin-right: 0px; }
     div.game_info div.game_teams_subpanel img {
       width: 50px;
       height: 70px; }
@@ -50,7 +52,7 @@ div.game_info {
       padding-top: 10px; }
     div.game_info div.game_teams_subpanel div.first_team {
       float: left;
-      width: 37%; }
+      width: 265px; }
       div.game_info div.game_teams_subpanel div.first_team img {
         float: left; }
       div.game_info div.game_teams_subpanel div.first_team h3 {
@@ -65,7 +67,8 @@ div.game_info {
         float: right;
         padding: 0px; }
         div.game_info div.game_teams_subpanel div.first_team ul.team_players_list li.player {
-          height: 54px; }
+          height: 54px;
+          overflow: none; }
           div.game_info div.game_teams_subpanel div.first_team ul.team_players_list li.player img {
             float: right;
             height: 52px;
@@ -75,8 +78,8 @@ div.game_info {
             text-decoration: none; }
     div.game_info div.game_teams_subpanel div.second_team {
       float: right;
-      margin-right: 80px;
-      width: 37%; }
+      margin-right: 10px;
+      width: 265px; }
       div.game_info div.game_teams_subpanel div.second_team img {
         float: right; }
       div.game_info div.game_teams_subpanel div.second_team h3 {
@@ -102,3 +105,43 @@ div.game_info {
   div.game_info div#facebook_like_and_comments_subpanel {
     margin-top: 30px;
     width: 500px; }
+  div.game_info div.first_team.winner_team {
+    background-image: url("images/trophy.png");
+    background-position: -25px 30px;
+    background-repeat: no-repeat; }
+  div.game_info div.second_team.winner_team {
+    background-image: url("images/trophy.png");
+    background-position: 160px 40px;
+    background-repeat: no-repeat; }
+  div.game_info div#winner_team_subpanel {
+    width: 200px;
+    text-align: center;
+    margin-top: 15px;
+    float: left;
+    background-color: #2B5C84;
+    border-radius: 7px;
+    padding: 10px;
+    color: white;
+    margin-left: 10px; }
+    div.game_info div#winner_team_subpanel p {
+      font-size: 1.4em; }
+  div.game_info div#winner_team_subpanel.team2_won {
+    float: right;
+    margin-right: 40px; }
+
+div#game_result_panel h4 {
+  text-align: center;
+  margin-bottom: 0px; }
+div#game_result_panel table#game_result_sets {
+  padding: 0px;
+  margin: auto auto;
+  width: 80px;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  border-top: 1px solid;
+  text-align: center; }
+  div#game_result_panel table#game_result_sets tbody tr th {
+    width: 100%;
+    border-bottom: 1px solid; }
+  div#game_result_panel table#game_result_sets td.win {
+    border: 1px solid green; }

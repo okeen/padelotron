@@ -2,7 +2,6 @@ h2 {
   text-align: center;
 }
 div.game_info {
-    width: 800px;
     margin: {bottom: 32px;}
     padding: 15px;
     h2[name=title] {color: blue}
@@ -16,10 +15,14 @@ div.game_info {
 	text-align:left;
 	
     }
-    div#game_date_and_location_sub_panel
+    fieldset#game_date_and_location_sub_panel
     {
-	width: 200px;
+	div.inner_container{
+	  height: 210px;
+	}
+	width: 160px;
 	float: right;
+	margin: {top: 1px}
 	.game_date_location{
 	  float:right;
 	  margin: 0 0 0 0;
@@ -27,9 +30,9 @@ div.game_info {
 	  font-size: 18px;
 	}
 	div#map{
-	  margin: {top:23px; right:10px;}
-	  height: 200px;
-	  width: 200px;
+	  margin: {top:5px; right:0px;}
+	  height: 150px;
+	  width: 150px;
 	  float:right;
 	}
     
@@ -37,8 +40,8 @@ div.game_info {
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
-
-        height: 120px;
+	
+        height: 260px;
         border: 0px solid;
         border: {
             radius: 7px 7px 7px 7px;
@@ -47,7 +50,7 @@ div.game_info {
         img#tennis_field_image {
             width: 100px;
 	    heigth: 70px;
-	    margin: {top:40px;left:10px;right:10px;}
+	    margin: {top:50px;left:0px;right:0px;}
         }
         img {
             width: $team_photo_width;
@@ -59,8 +62,8 @@ div.game_info {
             padding-top: 10px;
         }
         div.first_team {
-            float: left;
-	   width: 37%;
+	    float: left;
+	    width: 265px;
 	    img {
                 float: left;
             }
@@ -83,6 +86,7 @@ div.game_info {
 				
 		li.player {
 		  height: $team_player_height + 2px;
+		  overflow: none;
                   img {
 		    float: right;
 		    height: $team_player_height;
@@ -98,8 +102,8 @@ div.game_info {
         
         div.second_team {
             float: right;
-	    margin-right: 80px;
-            width: 37%;
+	    margin-right: 10px;
+	    width: 265px;
 	    img {
                 float: right;
             }
@@ -138,5 +142,62 @@ div.game_info {
       margin-top: 30px;
       width:500px;
     }
+    div.first_team.winner_team {
+      background-image: url('images/trophy.png');
+      background-position:  -25px 30px ;
+      background-repeat: no-repeat;
+    }
+    div.second_team.winner_team {
+      background-image: url('images/trophy.png');
+      background-position: 160px 40px;
+      background-repeat: no-repeat;
+      
+    }
+    div#winner_team_subpanel {
+      width: 200px;
+      text-align: center;
+      margin: {top:15px;}
+      float:left;
+      background-color: #2B5C84;
+      border-radius: 7px;
+      padding: 10px;
+      color: white;
+      margin-left: 10px;
+      p {font-size: 1.4em;}
+    }
+    div#winner_team_subpanel.team2_won{
+	float:right;
+	margin-right: 40px;
+    }
+}
+
+div#game_result_panel{
+  h4 {	
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  table#game_result_sets{
+    padding: 0px;
+    margin: auto auto;
+    width: 80px;
+    background-color: white;
+    border:{
+      radius: 0 0 10px 10px;		
+      top: 1px solid;
+    }
+    text-align:center;
     
+    tbody tr {
+      th {
+	width: 100%;
+	border-bottom: 1px solid;
+      }
+    }
+    td.win {
+      border: 1px solid green;
+      
+    }
+  }
+
+  
 }
