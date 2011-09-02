@@ -33,6 +33,9 @@ class Result < ActiveRecord::Base
   def on_confirm
     game.update_attribute :winner_team_id, winner.id
     Stat.update_all_for_game(game)
+    notification= NotificationType.RESULT_CONFIRMED
+    notification[:params][:name] = self.name
+    notifications.create notification
   end
 
   def as_json(options={})

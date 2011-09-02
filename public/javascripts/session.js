@@ -23,15 +23,15 @@ $(function() {
                 $.when( $.ajax("/notifications.json")).then(function(data, status){
                     $("#notifications_button").addClass("with_notifications");
                     this.set({"notifications": data});
-                    var urgentNotifications = _(data).find(function(notif){
+                    var urgentNotifications = _(data).select(function(notif){
                         return notif.params.urgent == true;
                     });
                     for (var i=0; i<urgentNotifications.length; i++)
                         $.gritter.add({
-                            title: data[i].params.title,
+                            title: urgentNotifications[i].params.title,
                             class_name: "under_panel_notifications",
                             sticky: true,
-                            text: data[i].params.message
+                            text: urgentNotifications[i].params.message
                         });
 
                 }.bind(this));
