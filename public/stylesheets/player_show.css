@@ -1,0 +1,38 @@
+h2.player_name_title {
+  font-size: 1.8em; }
+
+div#player_info {
+  margin-top: 10px;
+  margin-bottom: 20px; }
+  div#player_info fieldset#player_info_card_subpanel {
+    float: right;
+    margin-top: 10px;
+    margin-right: 40px; }
+  div#player_info fieldset#player_info_basic_info_subpanel {
+    width: 45%; }
+    div#player_info fieldset#player_info_basic_info_subpanel table#player_basic_info_table {
+      cell-spacing: 15px; }
+      div#player_info fieldset#player_info_basic_info_subpanel table#player_basic_info_table td {
+        overflow: none; }
+      div#player_info fieldset#player_info_basic_info_subpanel table#player_basic_info_table td.info_attribute {
+        text-align: right;
+        width: 100px; }
+        div#player_info fieldset#player_info_basic_info_subpanel table#player_basic_info_table td.info_attribute label {
+          font-size: 1.1em;
+          font-style: oblique; }
+  div#player_info fieldset#player_info_teams_subpanel {
+    margin-top: 40px; }
+    div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container {
+      height: 100%;
+      padding: 10px; }
+      div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container .catalogue_items_container_row {
+        border-bottom: 0 solid #222222;
+        border-color: #222222;
+        padding-left: 6px;
+        padding-right: 3px; }
+        div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
+          border-radius: 4px 4px 4px 4px;
+          float: left;
+          margin-left: 0px;
+          margin-right: 18px;
+          margin-bottom: 20px; }

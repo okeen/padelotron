@@ -58,7 +58,7 @@ a:hover {
 
 div.fields_container_panel {
   background-color: #F7F7F7;
-  border: 2px solid #CCCCCC;
+  border: 2px solid #C4CDE0;
   border-radius: 5px 5px 5px 5px;
   padding: 7px 7px; }
 
@@ -73,11 +73,26 @@ fieldset legend {
   line-height: 1.5em;
   margin: 0; }
 
-div.inner_container {
+fieldset.inner_container, div.inner_container {
   background-color: white;
   border: 2px solid #CCCCCC;
   border-radius: 5px 5px 5px 5px;
   padding: 7px 7px; }
+
+#catalogue_items_list_container {
+  height: 100%;
+  margin-left: 20px;
+  padding-top: 2px; }
+  #catalogue_items_list_container .catalogue_items_container_row {
+    border-bottom: 0 solid #222222;
+    border-color: #222222;
+    padding-left: 6px;
+    padding-right: 3px; }
+    #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
+      background-color: #CFCFCF;
+      border-radius: 4px 4px 4px 4px;
+      float: left;
+      margin: 5px; }
 
 div.dhx_cal_event.selected {
   background-color: red; }

@@ -1,7 +1,7 @@
 <div id="game_result_panel">
   <div id="winner_team_subpanel"
         <%= "class='team2_won'" if game.winner_team == game.team2 %>>
-    <p>Winner: <%= game.winner_team %> </p>
+    <p>Winner: <%= game.winner_team.name %> </p>
   </div>
   <h4>Score</h4>
   <table id="game_result_sets">

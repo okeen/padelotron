@@ -43,24 +43,3 @@
         border-radius: 40px 0 0 0; }
     #players_catalogue .catalogue_header .last_tab {
       right: 0 !important; }
-  #players_catalogue #catalogue_items_list_container {
-    height: 100%;
-    padding: 20px; }
-    #players_catalogue #catalogue_items_list_container .catalogue_items_container_row {
-      border-bottom: 0 solid #222222;
-      border-color: #222222;
-      padding-left: 6px;
-      padding-right: 3px; }
-      #players_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
-        border-radius: 4px 4px 4px 4px;
-        float: left;
-        margin-left: 6px;
-        margin-right: 30px;
-        margin-bottom: 20px; }
-        #players_catalogue #catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container div.player_panel {
-          display: block;
-          height: 100%;
-          margin-left: 10px;
-          margin-right: 10px;
-          text-decoration: none;
-          vertical-align: middle; }

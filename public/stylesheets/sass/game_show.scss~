@@ -167,7 +167,7 @@ div.game_info {
     }
     div#winner_team_subpanel.team2_won{
 	float:right;
-	margin-right: 30px;
+	margin-right: 40px;
     }
 }
 

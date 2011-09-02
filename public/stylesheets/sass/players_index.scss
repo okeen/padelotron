@@ -57,34 +57,5 @@
             right: 0 !important;
         }
     }
-    #catalogue_items_list_container {
-        height: 100%;
-        //margin: {top: 20px;bottom: 20px;}
-        padding: 20px;
-        .catalogue_items_container_row {
-            border:{
-                bottom: 0 solid #222222;
-                color: #222222;
-            }
-            padding: {
-                left: 6px;
-                right: 3px;
-            }
-            .catalogue_item_container {
-                border-radius: 4px 4px 4px 4px;
-                float: left;
-                //width: 40%;
-                margin: {left: 6px; right: 30px;bottom: 20px;}
-                div.player_panel{
-                    display: block;
-                    height: 100%;
-		    margin: {left: 10px;right: 10px;}
-                    text-decoration: none;
-                    vertical-align: middle;
-                    
-                }
-            }
-        }
-    }
 }
 

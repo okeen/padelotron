@@ -38,12 +38,17 @@ $(function() {
         },
         userLoggedIn: function(response, status){
             console.log("Padelotron::session logged in for user: ");
+            if (this.redirectToPlayerHomeAfterLogin){
+                 window.location.href= window.location.protocol + "//" +
+                        window.location.host + "/home";
+                return;
+            }
             this.set({'logged_padelotron': true});
             $("#player_session_panel").replaceWith(response);
         },
         first_time_session: function(session_data){
             //New user on site, notify it
-            $("<div></div>").dialog("Player created");
+            this.redirectToPlayerHomeAfterLogin = true;
         }
     });
 

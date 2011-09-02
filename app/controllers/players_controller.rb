@@ -14,6 +14,10 @@ class PlayersController < ApplicationController
     end
   end
 
+  def home
+    redirect_to  player_path(current_player)
+  end
+  
   # GET /players/1
   # GET /players/1.xml
   def show

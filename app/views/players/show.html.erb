@@ -1,8 +1,58 @@
 <p id="notice"><%= notice %></p>
-<%= render :partial => 'player_panel', :locals => {:player => @player} %>
+<h2 class="player_name_title"><%= @player.name %></h2>
+<div id="player_info" class="fields_container_panel">
+  <fieldset id="player_info_card_subpanel"  class="inner_container">
+    <legend>Player Card</legend>
+    <%= render :partial => "players/player_panel",
+      :locals => {:player => @player} %>
+  </fieldset>
+  <fieldset id="player_info_basic_info_subpanel" class="inner_container">
+    <legend>Info</legend>
+    <table id="player_basic_info_table">
+      <tr>
+        <td class="info_attribute"><label>Name: </label></td>
+        <td><%= @player.name%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>From: </label></td>
+        <td><%= @player.city%>, <%= @player.country%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>Player since: </label></td>
+        <td><%= @player.created_at%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>games won: </label></td>
+        <td><%= @player.stat.wins%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>games lost: </label></td>
+        <td><%= @player.stat.lost%></td>
+      </tr>
+    </table>
+  </fieldset>
+  <fieldset id="player_info_teams_subpanel"  class="inner_container">
+    <legend>Teams</legend>
+    <table id="player_teams_table" >
+      <div class="catalogue_items_list_container">
+        <% @player.teams.in_groups_of(3) do |n_teams_group| %>
+          <div class="catalogue_items_container_row">
+            <% n_teams_group.compact.each do |team|%>
+
+              <div class="catalogue_item_container clickable_container">
+                <%=  render :partial => 'teams/team_panel',
+                  :locals => {:team => team} %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </table>
+  </fieldset>
+</div>
 
 <%= player_like_button(@player) %>
 <%= facebook_player_comments_panel(@player) %>
 
 <%#= render :partial => 'player_statistics', :locals => {:graphGamesWinLost => @graphGamesWinLost,
-                                                        :graph_games_played =>@graphGamesPlayed} %>
+:graph_games_played =>@graphGamesPlayed} %>

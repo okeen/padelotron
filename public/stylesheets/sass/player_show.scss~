@@ -1,0 +1,18 @@
+div#player_info {
+  margin: {top: 10px;bottom: 20px;}
+  
+  fieldset#player_info_card_subpanel {
+    float:right;
+    margin: {top: 20px;right:40px;}
+    
+  }    
+  fieldset#player_info_basic_info_subpanel {
+    width: 45%;
+    label {
+      font-size:1.1em;
+    }
+  }    
+  fieldset#player_info_teams_subpanel {
+    
+  }    
+}
