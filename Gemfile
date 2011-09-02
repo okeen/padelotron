@@ -31,8 +31,6 @@ group :development, :test do
    gem 'capybara'
    gem 'cucumber'
    gem 'rspec-rails'
-   gem "factory_girl", "2.0.2"
-   gem "factory_girl_rails"
    gem "pickle"
    gem "chronic"
    gem "timecop"
@@ -49,3 +47,5 @@ gem "sass"
 gem "paperclip", "~> 2.3"
 gem "geocoder"
 gem 'chargify_api_ares'
+gem "factory_girl", "2.0.2"
+gem "factory_girl_rails"
