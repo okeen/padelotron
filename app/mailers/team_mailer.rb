@@ -6,9 +6,9 @@ class TeamMailer < ActionMailer::Base
     
     mail :to => @team.player2.email,
       :subject => "Padelotron. #{@team.player1.name} wants you to join a team"
-  rescue
+  rescue => e
    # logger.error "Error sending membership email for #{@team.players.collect(&:email)}"
-  
+  logger.warn "Error sending team membership email: #{e.inspect}"
   end
 
   def confirmation_mail(team, not_used)
@@ -31,8 +31,8 @@ class TeamMailer < ActionMailer::Base
       @message = "You just rejected joining the team #{@team.name}"
     end
     mail :to => @team.players.collect(&:email), :subject => subject
-  rescue
-#    logger.error "Error sending membership #{action} email for #{@team.players.collect(&:email)}"
+  rescue => e
+    logger.warn "Error sending team confirmation email: #{e.inspect}"
   end
 
 end

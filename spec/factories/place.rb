@@ -29,8 +29,8 @@ sequence :place_name do |n|
     country {Factory.next :place_country}
     city {Factory.next :place_city}
     street {Factory.next :place_street}
-    latitude {42.88256 + (rand) - 0.5}
-    longitude {(-8.535357) + (rand) - 0.5}
+    latitude {}
+    longitude {}
     full_address {"#{street}, #{city}, #{country}"}
     association :customer, :factory => :confirmed_customer
   end

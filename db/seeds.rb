@@ -1,14 +1,23 @@
 
-p1 = FactoryGirl.create :player
-p2 = FactoryGirl.create :player
-p3 = FactoryGirl.create :player
-p4 = FactoryGirl.create :player
-p5 = FactoryGirl.create :player
-p6 = FactoryGirl.create :player
+p1 = FactoryGirl.create :player, :name => "Alicia Ciaila",
+    :full_address => "Rua da Rosa 27, Santiago Compostela"
+p2 = FactoryGirl.create :player, :name => "Roberto Otrebor",
+    :full_address => "Plaza de Galicia , Santiago Compostela"
+p3 = FactoryGirl.create :player, :name => "Carlos Loscar",
+    :full_address => "Calle Dolores 2, Padron"
+p4 = FactoryGirl.create :player, :name => "Diego Godie",
+    :full_address => "Rua Quinteiro, Pontecesures"
+p5 = FactoryGirl.create :player, :name => "Elena Anele",
+    :full_address => "Rua Benito Corval 2, Pontevedra"
+p6 = FactoryGirl.create :player, :name => "Fernando Donanfer",
+    :full_address => "Rua das Estrigueiras, Pontevedra"
 
-t1 = FactoryGirl.create :team , :player1 => p1, :player2 => p2
-t2 = FactoryGirl.create :team , :player1 => p3, :player2 => p4
-t3 = FactoryGirl.create :team , :player1 => p5, :player2 => p6
+t1 = FactoryGirl.create :team , :player1 => p1, :player2 => p2,
+                        :name => "Rio y no se por que"
+t2 = FactoryGirl.create :team , :player1 => p3, :player2 => p4,
+                        :name => "Peligrosa Maria"
+t3 = FactoryGirl.create :team , :player1 => p5, :player2 => p6,
+                        :name => "Viena el tren"
 
 t1.confirm!
 t2.confirm!
@@ -26,15 +35,23 @@ def create_a_winner_set_for_team2
 end
 
 
-50.times do |t|
-  p = Factory.create :place_with_customer
-  p.playgrounds.create(:name => "playground #{t+1}")
-end
+  p = Factory.create :place_with_customer,
+              :name => "Fake Padel Club Santiago",
+              :full_address => "Plaza de la Quintana, Santiago Compostela"
+
+  p = Factory.create :place_with_customer,
+              :name => "Padel Coremain",
+              :full_address => "Rua de Amio, 128, Santiago Compostela"
+
+  p = Factory.create :place_with_customer,
+              :name => "Club Padel Tapadera",
+              :full_address => "Rua Castro 4, Vilagarcia"
+
 
 playgrounds = Place.all.collect(&:playgrounds).flatten
 
 
-200.times do |i|
+30.times do |i|
   first_team = rand(3) +1
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
@@ -49,7 +66,7 @@ playgrounds = Place.all.collect(&:playgrounds).flatten
   puts "Created Friendly confirmed game: #{g.reload.inspect}"
 end
 
-500.times do |i|
+100.times do |i|
   first_team = rand(3) +1
   second_team = (first_team + (1 + rand(1))) % 3
   second_team = 1 if second_team == 0
