@@ -5,6 +5,12 @@ module GamesHelper
               :name=>"title"
   end
 
+  def new_game_link
+    content_tag :div, :class=> "new_item_creation clickable_container" do |div|
+      link_to 'Create a New game', new_game_path
+    end
+  end
+
   def set_game_result_button(game)
     "<form><button onclick='return false' class='set_game_result_button'>Set the result</button></form>".html_safe
   end

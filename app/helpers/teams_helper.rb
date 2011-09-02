@@ -1,5 +1,11 @@
 module TeamsHelper
 
+  def new_team_link
+    content_tag :div, :class=> "new_item_creation clickable_container" do |div|
+      link_to 'Create a New Team', new_team_path
+    end
+  end
+  
   def team_photo(team, options = {})
     image_tag(team.image.url)
   end

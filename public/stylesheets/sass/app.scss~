@@ -28,22 +28,29 @@ body h1 {
 a {
     /*color: #333333;*/
 }
-a.new_item_creation {
+div.new_item_creation {
     float:right;
     width: 200px;
-    height: 20px;
-    color: white;
-    border-radius: 10px;
-    background-color: #8B8B8B;
+    height: 50px;
+    border-radius: 7px;
+    background-color: #C4CDE0;
     font-size: 1.5em;
-    margin-top: 10px;
+    margin-top: 13px;
     text-decoration: none;
     text-align: center;
-    :visited {color: white;}
+    a {
+      padding-top:15px;
+      border-radius: 7px;
+      color: #8B8B8B;
+      :hover {background-color: #2B5C84;}
+      :visited {
+	color: white;
+      }      
+    }
 }
 a { color: #000; }
 
-a:hover { color: #fff; background-color:#000; }
+a:hover { color: #2B5C84; background-color:#F7F7F7; }
 
 .clickable_container a{
   display: block;
@@ -72,11 +79,34 @@ fieldset legend {
       line-height: 1.5em;
       margin: 0;
     }
-fieldset, div .inner_container{
+fieldset.inner_container, div.inner_container{
   background-color: white;
   border: 2px solid #CCCCCC;
   border-radius: 5px 5px 5px 5px;
   padding: 7px 7px;
+}
+
+#catalogue_items_list_container {
+    height: 100%;
+    margin-left: 20px;
+    padding-top: 2px;
+    .catalogue_items_container_row {
+        border:{
+            bottom: 0 solid #222222;
+            color: #222222;
+        }
+        padding: {
+            left: 6px;
+            right: 3px;
+        }
+        .catalogue_item_container {
+            background-color: #CFCFCF;
+            border-radius: 4px 4px 4px 4px;
+            float: left;
+            margin: 5px;
+
+        }
+    }
 }
 div.dhx_cal_event.selected {
     background-color: red;

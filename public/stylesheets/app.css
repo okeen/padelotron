@@ -27,26 +27,31 @@ body h1 {
 a {
   /*color: #333333;*/ }
 
-a.new_item_creation {
+div.new_item_creation {
   float: right;
   width: 200px;
-  height: 20px;
-  color: white;
-  border-radius: 10px;
-  background-color: #8B8B8B;
+  height: 50px;
+  border-radius: 7px;
+  background-color: #C4CDE0;
   font-size: 1.5em;
-  margin-top: 10px;
+  margin-top: 13px;
   text-decoration: none;
   text-align: center; }
-  a.new_item_creation :visited {
-    color: white; }
+  div.new_item_creation a {
+    padding-top: 15px;
+    border-radius: 7px;
+    color: black; }
+    div.new_item_creation a :hover {
+      background-color: #2B5C84; }
+    div.new_item_creation a :visited {
+      color: white; }
 
 a {
   color: #000; }
 
 a:hover {
-  color: #fff;
-  background-color: #000; }
+  color: #2B5C84;
+  background-color: #F7F7F7; }
 
 .clickable_container a {
   display: block;
