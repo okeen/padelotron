@@ -1,29 +1,26 @@
 #players_catalogue {
     height: 700px;
-    width: 800px;
-    background: none repeat scroll 0 0 white;
+    width: 820px;
+    border: 3px solid #C4CDE0;
     border: {
-        bottom: 3px solid #222222;
-        color: #222222;
-        left: 3px solid #222222;
         radius: 40px 0 0 0;
-        right: 3px solid #222222;
     }
     margin: 4px;
     #letter_filter_side_bar {
-        border:{
-            bottom: 3px solid #222222;
-            color: #222222;
-            right: 3px solid #222222;
+       border: 3px solid #C4CDE0;
+	border: {
+            top: 3px ;
+            left: 0px;
         }
         float: left;
         height: 100%;
         text-align: center;
         width: 20px;
         .letter_filter_letter_container {
-            border: {
-                bottom: 2px solid black;
-                color: black;
+             border: {
+		left: 0px ;
+                bottom: 2px solid #C4CDE0;
+                color: #C4CDE0;
             }
         }
     }
@@ -55,35 +52,6 @@
         }
         .last_tab {
             right: 0 !important;
-        }
-    }
-    #catalogue_items_list_container {
-        height: 100%;
-        //margin: {top: 20px;bottom: 20px;}
-        padding: 20px;
-        .catalogue_items_container_row {
-            border:{
-                bottom: 0 solid #222222;
-                color: #222222;
-            }
-            padding: {
-                left: 6px;
-                right: 3px;
-            }
-            .catalogue_item_container {
-                border-radius: 4px 4px 4px 4px;
-                float: left;
-                //width: 40%;
-                margin: {left: 6px; right: 30px;bottom: 20px;}
-                div.player_panel{
-                    display: block;
-                    height: 100%;
-		    margin: {left: 10px;right: 10px;}
-                    text-decoration: none;
-                    vertical-align: middle;
-                    
-                }
-            }
         }
     }
 }

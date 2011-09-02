@@ -1,19 +1,18 @@
 #teams_catalogue {
-    height: 700px;
+    height: 690px;
     background: none repeat scroll 0 0 white;
+    border: 3px solid #C4CDE0;
     border: {
-        bottom: 3px solid #222222;
-        color: #222222;
-        left: 3px solid #222222;
+        
         radius: 40px 0 0 0;
-        right: 3px solid #222222;
+        
     }
     margin: 4px;
     #letter_filter_side_bar {
-        border:{
-            bottom: 3px solid #222222;
-            color: #222222;
-            right: 3px solid #222222;
+        border: 3px solid #C4CDE0;
+	border: {
+            top: 3px ;
+            left: 0px;
         }
         float: left;
         height: 100%;
@@ -21,14 +20,18 @@
         width: 20px;
         .letter_filter_letter_container {
             border: {
-                bottom: 2px solid black;
-                color: black;
+		left: 0px ;
+                bottom: 2px solid #C4CDE0;
+                color: #C4CDE0;
             }
         }
     }
     .catalogue_header {
-        background: none repeat scroll 0 0 #222222;
-        border-radius: 40px 0 0 0;
+        background: none repeat scroll 0 0 white;
+        border:{
+	  radius: 40px 0 0 0;
+	  bottom: 3px solid #C4CDE0;
+	}
         height: 38px;
 	z-index: 2;
         width: 100%;
