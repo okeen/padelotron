@@ -9,9 +9,10 @@ class Player < ActiveRecord::Base
   include Statable
 
   devise :database_authenticatable, :omniauthable, :rememberable
-  before_create :init_devise_password,:create_welcome_notification
+  before_create :init_devise_password
   before_create :geocode_with_gmaps
   before_update :geocode_with_gmaps
+  after_create :create_welcome_notification
   
   geocoded_by :full_address
 
@@ -80,9 +81,9 @@ class Player < ActiveRecord::Base
     password = Devise.friendly_token[0,20]
   end
 
-  def create_welcome_notifications
+  def create_welcome_notification
     notification= NotificationType.NEW_PLAYER
     notification[:params][:name] = self.name
-    @player.notifications.create notification
+    notifications.create notification
   end
 end
