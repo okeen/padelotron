@@ -3,13 +3,13 @@ class Player < ActiveRecord::Base
   validates :email, :presence => true,  :uniqueness => true
 
   has_many :teams, :finder_sql => 'select * from teams t where t.player1_id = #{id} or t.player2_id = #{id}'
-
+  has_many :notifications
   has_many :player_games, :class_name => "Game", :finder_sql => 'select * from games '
   
   include Statable
 
   devise :database_authenticatable, :omniauthable, :rememberable
-  before_create :init_devise_password
+  before_create :init_devise_password,:create_welcome_notification
   before_create :geocode_with_gmaps
   before_update :geocode_with_gmaps
   
@@ -78,5 +78,11 @@ class Player < ActiveRecord::Base
   
   def init_devise_password
     password = Devise.friendly_token[0,20]
+  end
+
+  def create_welcome_notifications
+    notification= NotificationType.NEW_PLAYER
+    notification[:params][:name] = self.name
+    @player.notifications.create notification
   end
 end

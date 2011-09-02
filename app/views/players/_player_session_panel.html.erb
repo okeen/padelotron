@@ -1,4 +1,6 @@
 <div id="player_session_panel" class="fields_container_panel">
+    <input type="hidden" id="player_has_notifications"
+           value="<%=player.notifications.unread.count%>"></input>
   <div id="player_session_info">
     <%= player_photo(player) %>
     <fieldset>
@@ -17,7 +19,7 @@
         <%=  link_to "Profile", player_home_path %>
       </li>
       <li>
-        <%=  link_to "News", teams_path %>
+        <%=  link_to "News", teams_path, :id=>"notifications_button" %>
       </li>
     </ul>
   </div>

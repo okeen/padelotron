@@ -1,0 +1,29 @@
+<h1>Listing notifications</h1>
+
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Notification type</th>
+    <th>Params</th>
+    <th>Read</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notifications.each do |notification| %>
+  <tr>
+    <td><%= notification.player %></td>
+    <td><%= notification.notification_type %></td>
+    <td><%= notification.params %></td>
+    <td><%= notification.read %></td>
+    <td><%= link_to 'Show', notification %></td>
+    <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
+    <td><%= link_to 'Destroy', notification, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Notification', new_notification_path %>

@@ -1,4 +1,5 @@
 Padelotron::Application.routes.draw do
+  
   match 'players/:id/graph_code' => 'graph#graph_code', :as => :graph_code
   match 'players/:id/graph_games_played' => 'graph#graph_games_played', :as => :graph_games_played
 
@@ -43,8 +44,11 @@ Padelotron::Application.routes.draw do
     get "sign_in", :to => "devise/sessions#new"
     get "sign_out", :to => "devise/sessions#destroy"
   end
-  resources :players
-
+  resources :players do
+    
+  end
+  resources :notifications
+  
   devise_for :customers, :controllers => { :registrations => "customers",
     :confirmation => "customers/confirmations"}
   devise_scope :customers do

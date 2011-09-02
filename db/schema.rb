@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110902144146) do
+ActiveRecord::Schema.define(:version => 20110902180309) do
 
   create_table "achievement_types", :force => true do |t|
     t.string   "name"
@@ -84,6 +84,21 @@ ActiveRecord::Schema.define(:version => 20110902144146) do
     t.integer  "facebook_event_id",     :limit => 8
     t.string   "facebook_requets_ids"
     t.integer  "playground_id"
+  end
+
+  create_table "notification_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "player_id"
+    t.integer  "notification_type_id"
+    t.text     "params"
+    t.boolean  "read",                 :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "places", :force => true do |t|

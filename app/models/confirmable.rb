@@ -6,7 +6,8 @@ module Confirmable
 
     after_create :set_initial_status,
       :create_confirmations_if_needed,
-      :deliver_ask_email
+      :deliver_ask_email,
+      :create_ask_notifications
       
     default_scope where(:status => "confirmed")
     
@@ -44,6 +45,14 @@ module Confirmable
       return true unless self.needs_confirmation?
       ["accept", "reject"].each do |action_name|
         self.confirmations << Confirmation.new(:action => action_name, :code => rand(1000000000000).to_s)
+      end
+    end
+
+    def create_ask_notifications
+      confirmating_player_groups.each do |notificating_group|
+        notificating_group.players.each do |player|
+          player.notifications.create NotificationType.NEW_TEAM
+        end
       end
     end
 

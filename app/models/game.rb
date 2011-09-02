@@ -116,7 +116,7 @@ class Game < ActiveRecord::Base
   private
 
   def confirmating_player_groups
-    teams
+    self.team2
   end
 
   def create_playground_request_if_needed

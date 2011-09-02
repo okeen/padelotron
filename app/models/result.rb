@@ -67,7 +67,7 @@ class Result < ActiveRecord::Base
   private
 
   def confirmating_player_groups
-    game.teams
+    game.winner == team1 ? team2 : team1
   end
 
 end

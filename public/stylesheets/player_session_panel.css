@@ -29,3 +29,6 @@ div#player_session_panel {
   div#player_session_panel div#player_login_panel div.login_button_subpanel {
     margin-left: 31%;
     margin-right: 31%; }
+  div#player_session_panel .with_notifications {
+    background-color: red;
+    color: white; }

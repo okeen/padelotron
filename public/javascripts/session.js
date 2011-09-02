@@ -6,13 +6,46 @@ $(function() {
         },
 
         initialize: function(){
-            _.bindAll(this, 'session_changed', 'first_time_session', 'userLoggedIn');
+            _.bindAll(this, 'session_changed', 'first_time_session', 'userLoggedIn',
+                'checkNotifications', 'showNotifications');
             if ($.cookie("_padelotron_tcg")== "1"){
                 console.log("Found active Padelotron session cookie")
                 this.set({
                     'logged_padelotron': true
                 });
+                this.checkNotifications();
             }
+        $(".with_notifications").live("click", this.showNotifications)
+        },
+        checkNotifications: function(){
+            var notifications_count= $("#player_has_notifications").val();
+            if (notifications_count > 0){
+                $.when( $.ajax("/notifications.json")).then(function(data, status){
+                    $("#notifications_button").addClass("with_notifications");
+                    this.set({"notifications": data});
+                    var urgentNotifications = _(data).find(function(notif){
+                        return notif.params.urgent == true;
+                    });
+                    for (var i=0; i<urgentNotifications.length; i++)
+                        $.gritter.add({
+                            title: data[i].params.title,
+                            class_name: "under_panel_notifications",
+                            sticky: true,
+                            text: data[i].params.message
+                        });
+
+                }.bind(this));
+            }
+        },
+        showNotifications: function(){
+            var data = this.get("notifications");
+            for (var i=0; i<data.length; i++)
+                $.gritter.add({
+                    title: data[i].params.title,
+                    class_name: "under_panel_notifications",
+                    text: data[i].params.message
+                });
+            return false;
         },
         session_changed: function(session_data){
             var status = session_data.status;
@@ -29,26 +62,35 @@ $(function() {
             }
             this.set({
                 'logged_facebook': session_data.status == "connected"
-                });
+            });
             $.ajax({
                 url: "/player_session/facebook/login",
                 type: 'POST',
-                data: {facebook_access_token: session_data.session.access_token},
-                success:this.userLoggedIn});
+                data: {
+                    facebook_access_token: session_data.session.access_token
+                    },
+                success:this.userLoggedIn
+                });
         },
         userLoggedIn: function(response, status){
-            console.log("Padelotron::session logged in for user: ");
-            if (this.redirectToPlayerHomeAfterLogin){
-                 window.location.href= window.location.protocol + "//" +
-                        window.location.host + "/home";
+            console.log("Session::Padelotron logged in for user: ");
+            if (this.get("newPlayer") == true){
+                console.debug("Session New player detected, redirecting to player's home");
+                window.location.href= window.location.protocol + "//" +
+                window.location.host + "/home";
                 return;
             }
-            this.set({'logged_padelotron': true});
+            this.set({
+                'logged_padelotron': true
+            });
             $("#player_session_panel").replaceWith(response);
+            this.checkNotifications();
         },
         first_time_session: function(session_data){
-            //New user on site, notify it
-            this.redirectToPlayerHomeAfterLogin = true;
+            console.debug("Session::Facebook first time session");
+            this.set({
+                'newPlayer': true
+            });
         }
     });
 
@@ -72,7 +114,7 @@ $(function() {
     window.session = new Session();
     window.session_view = new SessionView({
         model: window.session
-        });
+    });
 
 
     window.fbAsyncInit = function() {
