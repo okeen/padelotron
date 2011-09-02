@@ -33,7 +33,7 @@ class Game < ActiveRecord::Base
     for_date(Date.today)
   }
 
-  scope :finished, where("winner_team_id not null")
+  scope :finished, where("winner_team_id is not null")
   scope :to_play, where(:winner_team_id => nil)
 
   scope :played_by_player, lambda { |player|

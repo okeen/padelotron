@@ -39,6 +39,7 @@ group :development, :test do
    gem "ruby-debug19"
    gem "ruby-debug-ide19"
    gem "sqlite3"
+   gem 'pg', :require => 'pg'
 end
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
