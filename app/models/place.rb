@@ -32,6 +32,7 @@ class Place < ActiveRecord::Base
       self.latitude = loc['geometry']['location']['lat']
       self.longitude = loc['geometry']['location']['lng']
       self.country = get_geocode_attribute_value(loc, "country")
+      self.street = "#{get_geocode_attribute_value(loc, "route")} #{get_geocode_attribute_value(loc, "street_number")}"
       self.city = get_geocode_attribute_value(loc, "locality")
       self.area_level1 = get_geocode_attribute_value(loc, "administrative_area_level_1")
       self.area_level2 = get_geocode_attribute_value(loc, "administrative_area_level_2")

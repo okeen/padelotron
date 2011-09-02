@@ -64,6 +64,7 @@ class Player < ActiveRecord::Base
       self.longitude = loc['geometry']['location']['lng']
       self.country = get_geocode_attribute_value(loc, "country")
       self.city = get_geocode_attribute_value(loc, "locality")
+      self.street = "#{get_geocode_attribute_value(loc, "route")} #{get_geocode_attribute_value(loc, "street_number")}"
       self.area_level1 = get_geocode_attribute_value(loc, "administrative_area_level_1")
       self.area_level2 = get_geocode_attribute_value(loc, "administrative_area_level_2")
     end
