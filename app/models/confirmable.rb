@@ -67,8 +67,8 @@ module Confirmable
     end
 
     def create_ask_notifications
-      return true unless self.needs_confirmation?
-      
+      #return true unless self.needs_confirmation?
+      logger.debug "kjlkjl"
       factory_method= self.class == Team ? "NEW_TEAM" :
                       self.class == Game ? "NEW_GAME" :
                       self.class == Result ? "NEW_RESULT" : nil

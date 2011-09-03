@@ -32,15 +32,19 @@ class NotificationType < ActiveRecord::Base
   end
 
   def NotificationType.NEW_TEAM(team)
+    accept_code = team.confirmations.to_accept.first.code
+    reject_code = team.confirmations.to_reject.first.code
+
     {
       :notification_type_id => NotificationType.named("new_team").first.id,
       :params => {
         :title => "New Team Request",
-        :message => "You have received an offer to join the team #{team.name}, with #{team.players.collect(&:name)}",
+        :message => "You have received an offer to join the team #{team.name}, with #{team.players.collect(&:name)}<BR/>" +
+                   "Do you want to <a href='/confirmations/#{accept_code}'>ACCEPT</a> or <a href='/confirmations/#{reject_code}'>REJECT</a> the offer?",
        :confirmable_id => team.id,
        :confirmable_type => "Team",
-       :accept_code => team.confirmations.to_accept.first.code,
-       :reject_code => team.confirmations.to_reject.first.code,
+       :accept_code => accept_code,
+       :reject_code => reject_code,
        }
     }
   end
@@ -50,7 +54,7 @@ class NotificationType < ActiveRecord::Base
       :notification_type_id => NotificationType.named("team_confirmed").first.id,
       :params => {
         :title => "Team Joined",
-        :message => "You have joined the team #{team.name}, with #{team.players.collect(&:name)}"
+        :message => "You have joined the team <a href='/teams/#{team.id}'>#{team.name}</a>, with #{team.players.collect(&:name)}"
       }
     }
   end

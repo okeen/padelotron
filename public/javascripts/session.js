@@ -40,7 +40,7 @@ $(function() {
                             title: urgentNotifications[i].params.title,
                             class_name: "under_panel_notifications",
                             sticky: true,
-                            before_close: _.throttle(this.deleteNotification,3000),
+                            before_close: _.throttle(this.deleteNotification,1000),
                             notificationId: urgentNotifications[i].id,
                             text: urgentNotifications[i].params.message
                         });
@@ -57,7 +57,7 @@ $(function() {
                 $.gritter.add({
                     title: data[i].params.title,
                     class_name: "under_panel_notifications",
-                    before_close: _.throttle(this.deleteNotification,3000),
+                    before_close: _.throttle(this.deleteNotification,1000),
                     notificationId: data[i].id,
                     text: data[i].params.message
                 });
