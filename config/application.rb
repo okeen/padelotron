@@ -30,7 +30,7 @@ module Padelotron
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails underscore json2 backbone jquery.cookie jquery.gritter.min)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails underscore json2 backbone jquery.cookie jquery.gritter)
     config.action_view.javascript_expansions[:jquery_ui] = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.js"
     config.action_view.javascript_expansions[:google] = "https://www.google.com/jsapi"
 

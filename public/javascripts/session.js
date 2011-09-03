@@ -7,45 +7,99 @@ $(function() {
 
         initialize: function(){
             _.bindAll(this, 'session_changed', 'first_time_session', 'userLoggedIn',
-                'checkNotifications', 'showNotifications');
+                'checkNotifications', 'showNotifications', 'deleteNotification');
             if ($.cookie("_padelotron_tcg")== "1"){
                 console.log("Found active Padelotron session cookie")
                 this.set({
                     'logged_padelotron': true
                 });
+                this.deletedNotifications=[];
                 this.checkNotifications();
             }
-        $(".with_notifications").live("click", this.showNotifications)
+            $("#notifications_button").bind("click", this.showNotifications);
         },
         checkNotifications: function(){
-            var notifications_count= $("#player_has_notifications").val();
-            if (notifications_count > 0){
+            var notificationsCount= $("#player_has_notifications").val();
+            if (notificationsCount > 0){
+                console.debug("Session::Notif found: " +notificationsCount + " notifications" );
                 $.when( $.ajax("/notifications.json")).then(function(data, status){
-                    $("#notifications_button").addClass("with_notifications");
-                    this.set({"notifications": data});
-                    var urgentNotifications = _(data).select(function(notif){
-                        return notif.params.urgent == true;
+                    var unreadNotifications = _(data).select(function(notif){
+                        return !notif.read;
                     });
-                    for (var i=0; i<urgentNotifications.length; i++)
+                    if (unreadNotifications.length > 0){
+                        console.debug("Session:Notif found unread notifs");
+                        $("#notifications_button").addClass("with_notifications");
+                    }
+                    this.set({"notifications": data});
+                    var urgentNotifications = _(unreadNotifications).select(function(notif){
+                        return notif.params.urgent == true ;
+                    });
+                    for (var i=0; i<urgentNotifications.length; i++){
+                        console.debug("Session::UrgentNotif found " +urgentNotifications[i].id);
                         $.gritter.add({
                             title: urgentNotifications[i].params.title,
                             class_name: "under_panel_notifications",
                             sticky: true,
+                            before_close: _.throttle(this.deleteNotification,3000),
+                            notificationId: urgentNotifications[i].id,
                             text: urgentNotifications[i].params.message
                         });
-
+                    }
+                    this.markNotificationsAsShown(urgentNotifications);
                 }.bind(this));
             }
         },
         showNotifications: function(){
             var data = this.get("notifications");
-            for (var i=0; i<data.length; i++)
+            if (!data) return false;
+            for (var i=0; i<data.length; i++){
+                console.debug("Session::Notif " +data[i].id + " being shown" );
                 $.gritter.add({
                     title: data[i].params.title,
                     class_name: "under_panel_notifications",
+                    before_close: _.throttle(this.deleteNotification,3000),
+                    notificationId: data[i].id,
                     text: data[i].params.message
                 });
+            }
+            this.markNotificationsAsShown(data);
+            $("#notifications_button").removeClass("with_notifications");
             return false;
+        },
+        markNotificationsAsShown: function(notifications){
+            for (var i=0; i<notifications.length; i++){
+                var d= notifications[i];
+                if (d.read)
+                    continue;
+                console.debug("Session::Notif " +d.id + " to be marked READ" );
+                $.ajax({
+                    url: "/notifications/" + d.id + ".json",
+                    type: "PUT",
+                    data: {
+                        notification: {
+                            read: true
+                        }
+                    },
+                    success: function(){
+                        d.read = true;
+                        console.debug("Session::Notif " +d.id + " mrked as read" );
+                    }
+                })
+            }
+        },
+        deleteNotification: function(e, manualClose){
+            var nId = e.data("notificationId");
+            if (!manualClose || _(this.deletedNotifications).include(nId))
+                return false;
+            console.debug("Session:Notif deleting notification#" + nId);
+            $.ajax({
+                url: "/notifications/" + nId + ".json",
+                type: "DELETE",
+                success: function(){
+                    this.deletedNotifications.push(nId);
+                    console.debug("Session:Notif deleted notification#" + nId);
+                }
+            });
         },
         session_changed: function(session_data){
             var status = session_data.status;
@@ -68,9 +122,9 @@ $(function() {
                 type: 'POST',
                 data: {
                     facebook_access_token: session_data.session.access_token
-                    },
+                },
                 success:this.userLoggedIn
-                });
+            });
         },
         userLoggedIn: function(response, status){
             console.log("Session::Padelotron logged in for user: ");

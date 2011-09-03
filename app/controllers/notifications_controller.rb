@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.xml
   def index
-    @notifications = @player.notifications.unread.all
+    @notifications = @player.notifications.all
 
     respond_to do |format|
       format.json  { render :json => @notifications }
@@ -17,7 +17,7 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @notification }
+      format.json  { render :xml => @notification }
     end
   end
 
@@ -26,14 +26,12 @@ class NotificationsController < ApplicationController
   # PUT /notifications/1.xml
   def update
     @notification = @player.notifications.find(params[:id])
-
     respond_to do |format|
       if @notification.update_attributes(params[:notification])
-        format.html { redirect_to(@notification, :notice => 'Notification was successfully updated.') }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @notification.errors, :status => :unprocessable_entity }
+        format.json render :json => { :message => @notification.errors },
+                          :status => :unprocessable_entity
       end
     end
   end
@@ -45,8 +43,7 @@ class NotificationsController < ApplicationController
     @notification.destroy
 
     respond_to do |format|
-      format.html { redirect_to(notifications_url) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 

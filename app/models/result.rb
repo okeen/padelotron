@@ -4,7 +4,8 @@ class Result < ActiveRecord::Base
 
   delegate :team1, :to => :game
   delegate :team2, :to => :game
-  delegate :winner, :to => :game
+  delegate :winner_team, :to => :game
+  delegate :players, :to => :game
 
   include Confirmable
 
@@ -33,9 +34,7 @@ class Result < ActiveRecord::Base
   def on_confirm
     game.update_attribute :winner_team_id, winner.id
     Stat.update_all_for_game(game)
-    notification= NotificationType.RESULT_CONFIRMED
-    notification[:params][:name] = self.name
-    notifications.create notification
+    
   end
 
   def as_json(options={})
@@ -70,7 +69,7 @@ class Result < ActiveRecord::Base
   private
 
   def confirmating_player_groups
-    game.winner == team1 ? team2 : team1
+    winner_team == team1 ? [team2] : [team1]
   end
 
 end

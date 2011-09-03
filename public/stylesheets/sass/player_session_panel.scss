@@ -7,6 +7,12 @@ div#player_session_panel {
     margin: {top: 0px; bottom: 0px;}
     list-style: none;
   }
+  div.login_button_subpanel{
+    a {
+        img {height: 35px; }
+        margin-left: 20px;
+     }
+  }
   div#player_session_info {
     img {float: left;}
     fieldset{

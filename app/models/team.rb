@@ -45,6 +45,10 @@ class Team < ActiveRecord::Base
     "joined #{self.name}"
   end
 
+  def on_confirm
+
+  end
+
   def rejection_message
     "rejected joining #{self.name}"
   end

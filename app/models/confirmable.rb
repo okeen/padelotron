@@ -12,7 +12,7 @@ module Confirmable
     default_scope where(:status => "confirmed")
     
     scope :unconfirmed, where(:status => 'new')
-    
+
   end
 
   module ClassMethods
@@ -23,14 +23,14 @@ module Confirmable
     def confirm!
       update_attributes :status => 'confirmed'
       deliver_confirmation_email
-      #callback to insert custom behaviour
+      create_confirmation_notifications
       on_confirm
     end
 
     def reject!
       update_attribute :status , 'rejected'
       deliver_cancellation_email
-      #callback to insert custom behaviour
+      create_rejection_notifications
       on_reject
     end
 
@@ -41,6 +41,24 @@ module Confirmable
 
     private
 
+    def create_confirmation_notifications
+      factory_method= self.class == Team ? "TEAM_CONFIRMED" :
+                      self.class == Game ? "GAME_CONFIRMED" :
+                      self.class == Result ? "RESULT_CONFIRMED" : nil
+      players.each do |player|
+        player.notifications.create NotificationType.send(factory_method, self)
+      end
+    end
+    
+    def create_rejection_notifications
+      factory_method= self.class == Team ? "TEAM_CONFIRMED" :
+                      self.class == Game ? "GAME_CONFIRMED" :
+                      self.class == Result ? "RESULT_CONFIRMED" : nil
+      players.each do |player|
+        player.notifications.create NotificationType.send(factory_method, self)
+      end
+    end
+
     def create_confirmations_if_needed
       return true unless self.needs_confirmation?
       ["accept", "reject"].each do |action_name|
@@ -49,9 +67,14 @@ module Confirmable
     end
 
     def create_ask_notifications
+      return true unless self.needs_confirmation?
+      
+      factory_method= self.class == Team ? "NEW_TEAM" :
+                      self.class == Game ? "NEW_GAME" :
+                      self.class == Result ? "NEW_RESULT" : nil
       confirmating_player_groups.each do |notificating_group|
         notificating_group.players.each do |player|
-          player.notifications.create NotificationType.NEW_TEAM
+          player.notifications.create NotificationType.send(factory_method, self)
         end
       end
     end

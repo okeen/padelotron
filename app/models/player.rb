@@ -28,6 +28,11 @@ class Player < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
     player = Player.find_or_create_by_name_and_email(data["id"],data["name"],data["email"])
+    if player.full_address.blank?
+      player.full_address = data['location']['name'] if data['location']
+      player.save
+    end
+    player
   end
 
   def self.new_with_session(params, session)
@@ -82,7 +87,7 @@ class Player < ActiveRecord::Base
   end
 
   def create_welcome_notification
-    notification= NotificationType.NEW_PLAYER
+    notification= NotificationType.NEW_PLAYER(self)
     notification[:params][:name] = self.name
     notifications.create notification
   end
