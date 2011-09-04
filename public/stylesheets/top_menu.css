@@ -1,6 +1,7 @@
 
 #nav {
     background: -moz-linear-gradient(center top , #2B5C84, #2B5C84) repeat scroll 0 0 transparent;
+    background: -webkit-gradient(linear, center top, left bottom, from(#2B5C84), to(#2B5C84));
     border: 1px solid #6D6D6D;
     border-radius: 2em 2em 2em 2em;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);

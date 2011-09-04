@@ -70,11 +70,19 @@ class NotificationType < ActiveRecord::Base
   end
 
   def NotificationType.NEW_GAME(game)
+    accept_code = game.confirmations.to_accept.first.code
+    reject_code = game.confirmations.to_reject.first.code
+
     {
       :notification_type_id => NotificationType.named("new_game").first.id,
       :params => {
         :title => "Game Request",
-        :message => "You have received an offer to play a game between the teams #{game.team1.name} and #{game.team2.name} for #{game.play_date} "
+        :message => "You have received an offer to play a game between the teams #{game.team1.name} and #{game.team2.name}, on #{game.play_date} "+
+                     "Do you want to <a href='/confirmations/#{accept_code}'>ACCEPT</a> or <a href='/confirmations/#{reject_code}'>REJECT</a> the offer?",
+        :confirmable_id => game.id,
+       :confirmable_type => "Game",
+       :accept_code => accept_code,
+       :reject_code => reject_code,
       }
     }
   end
@@ -88,6 +96,7 @@ class NotificationType < ActiveRecord::Base
       }
     }
   end
+
   def NotificationType.GAME_REJECTED(game)
     {
       :notification_type_id => NotificationType.named("game_confirmed").first.id,
@@ -97,15 +106,24 @@ class NotificationType < ActiveRecord::Base
       }
     }
   end
+
   def NotificationType.NEW_RESULT(result)
+    accept_code = result.confirmations.to_accept.first.code
+    reject_code = result.confirmations.to_reject.first.code
     {
       :notification_type_id => NotificationType.named("new_result").first.id,
       :params => {
         :title => "Result confirmation request",
-        :message => "#{result.winner.name } claims that they won the game played against your team"
+        :message => "#{result.winner.name } claims that they won the game played against your team"+
+                     "Do you want to <a href='/confirmations/#{accept_code}'>ACCEPT</a> or <a href='/confirmations/#{reject_code}'>REJECT</a> the offer?",
+        :confirmable_id => result.id,
+       :confirmable_type => "Result",
+       :accept_code => accept_code,
+       :reject_code => reject_code,
       }
     }
   end
+
   def NotificationType.RESULT_CONFIRMED(result)
     {
       :notification_type_id => NotificationType.named("result_confirmed").first.id,
@@ -115,6 +133,7 @@ class NotificationType < ActiveRecord::Base
       }
     }
   end
+  
   def NotificationType.RESULT_REJECTED(result)
     {
       :notification_type_id => NotificationType.named("result_confirmed").first.id,

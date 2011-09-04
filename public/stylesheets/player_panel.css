@@ -1,6 +1,6 @@
 div.player_panel {
   overflow: hidden;
-  width: 320px;
+  width: 310px;
   background: #EBEBEB;
   border-radius: 7px 7px 7px 7px; }
   div.player_panel div.player_info_subpanel {
@@ -9,7 +9,7 @@ div.player_panel {
       margin-top: 0px;
       margin-bottom: 15px;
       margin-left: 6px;
-      font-size: 20px; }
+      font-size: 16px; }
       div.player_panel div.player_info_subpanel h3 a {
         text-decoration: none; }
     div.player_panel div.player_info_subpanel div.player_photo {
@@ -22,12 +22,16 @@ div.player_panel {
       div.player_panel div.player_info_subpanel div.player_info ul {
         padding-left: 0px;
         list-style: none; }
+        div.player_panel div.player_info_subpanel div.player_info ul li {
+          display: block;
+          float: none !important; }
   div.player_panel div.player_emblems_subpanel {
     float: right; }
-    div.player_panel div.player_emblems_subpanel fieldset {
-      legend-font-size: 15px !important; }
-      div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements {
-        height: 15px;
-        list-style: none; }
-        div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements li {
-          float: left; }
+    div.player_panel div.player_emblems_subpanel fieldset legend {
+      font-size: 14px;
+      text-align: center; }
+    div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements {
+      height: 15px;
+      list-style: none; }
+      div.player_panel div.player_emblems_subpanel fieldset ul.player_achievements li {
+        float: left !important; }

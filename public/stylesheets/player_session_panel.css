@@ -13,7 +13,6 @@ div#player_session_panel {
   div#player_session_panel div#player_session_info img {
     float: left; }
   div#player_session_panel div#player_session_info fieldset {
-    margin-left: 50px;
     margin-top: 1px; }
   div#player_session_panel div#player_session_menu {
     height: 20px; }

@@ -2,7 +2,7 @@ div.player_panel {
   //padding: 5px;
   overflow: hidden;
 
-  width: 320px;
+  width: 310px;
   background: #EBEBEB;
   border: {
     radius: 7px 7px 7px 7px;
@@ -13,7 +13,7 @@ div.player_panel {
     $photo_margin: 60px;
     h3 {
         margin: {top: 0px; bottom: 15px; left: 6px;}
-        font-size: 20px;
+        font-size: 16px;
         a {text-decoration:none;}
     }
     div.player_photo {
@@ -26,19 +26,21 @@ div.player_panel {
           margin: 0px;
         }
         ul {
+            
             padding-left: 0px;
             list-style: none;
+            li { display:block;float: none !important;}
         }
     }
   }
   div.player_emblems_subpanel {
     float:right;
     fieldset {
-      legend: {font-size: 15px !important}
+      legend {font-size: 14px ; text-align: center}
       ul.player_achievements {
         height: 15px;
         list-style: none;
-        li {float: left;}
+        li {float: left !important;}
       }
     }
 
