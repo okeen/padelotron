@@ -30,7 +30,7 @@ module ApplicationHelper
       location= request.location
       {
         :city => location.city,
-        :street => location.street,
+        #:street => location.street,
         :area_level1 => location.state,
         #:area_level2 => location.area_level2,
         :country => location.country

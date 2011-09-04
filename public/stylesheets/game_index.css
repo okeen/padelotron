@@ -19,3 +19,5 @@ h1 {
     width: 140px; }
     #games_catalogue #filter_side_bar li#root_country {
       padding-right: 100px; }
+  #games_catalogue div.catalogue_item_container {
+    margin-top: 20px; }

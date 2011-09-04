@@ -1,31 +1,30 @@
 div.game_panel {
-  margin-bottom: 10px;
-  width: 320px;
+  width: 350px;
   height: 140px;
   padding: 4px;
   border-color: #248734;
   background-color: #EBEBE7; }
   div.game_panel div.game_teams_subpanel {
-    margin-bottom: 5px;
     height: 72px;
     background-color: #EBEBE7;
     border-radius: 7px 7px 7px 7px; }
+    div.game_panel div.game_teams_subpanel h3 {
+      margin-left: 52px;
+      margin-bottom: 2px;
+      margin-top: 5px;
+      height: 20px;
+      overflow-y: hidden; }
     div.game_panel div.game_teams_subpanel img {
-      width: 50px;
-      height: 70px; }
+      width: 50px; }
     div.game_panel div.game_teams_subpanel span {
       margin-left: 5%;
       margin-right: 5%;
       padding-top: 10px; }
     div.game_panel div.game_teams_subpanel div.first_team {
       float: left;
-      width: 40%; }
+      width: 47%; }
       div.game_panel div.game_teams_subpanel div.first_team img {
         float: left; }
-      div.game_panel div.game_teams_subpanel div.first_team h3 {
-        margin-left: 52px;
-        margin-bottom: 2px;
-        margin-top: 5px; }
       div.game_panel div.game_teams_subpanel div.first_team ul.team_players_list {
         margin-left: 52px;
         margin-top: 2px;
@@ -33,14 +32,13 @@ div.game_panel {
         padding: 0px; }
     div.game_panel div.game_teams_subpanel div.second_team {
       float: right;
-      width: 40%; }
+      width: 47%; }
       div.game_panel div.game_teams_subpanel div.second_team img {
         float: right; }
       div.game_panel div.game_teams_subpanel div.second_team h3 {
-        margin-right: 52px;
         text-align: right;
-        margin-top: 5px;
-        margin-bottom: 2px; }
+        margin-left: 0px;
+        margin-right: 52px; }
       div.game_panel div.game_teams_subpanel div.second_team ul.team_players_list {
         margin-right: 52px;
         margin-top: 2px;
@@ -62,7 +60,8 @@ div.game_panel {
       height: 30px;
       width: 50px;
       float: right;
-      margin-left: 100px;
+      margin-right: 10px;
+      margin-top: 10px;
       border: 1px solid;
       border-radius: 10%;
       border-color: #2B5C84; }

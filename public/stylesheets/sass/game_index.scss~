@@ -1,0 +1,31 @@
+h1{
+    color:#2B5C84;
+    text-align: center;
+}
+#games_catalogue {
+    height: 690px;
+    background: none repeat scroll 0 0 white;
+    border: 3px solid #C4CDE0;
+    border: {
+        radius: 40px 0 0 0;
+    }
+    margin: 4px;
+    #filter_side_bar {
+        border: 3px solid #C4CDE0;
+        text-overflow: ellipsis;
+	border: {
+            top: 3px ;
+            left: 0px;
+        }
+        li#root_country {
+            padding-right: 100px;
+            //ins {display:none;}
+        }
+        float: left;
+        height: 700px;
+        text-align: center;
+        width: 140px;
+        
+    }
+}
+

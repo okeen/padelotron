@@ -1,5 +1,5 @@
 <div class="catalog_filter_sidebar">
-  <div class="sidebar_location_filter">
+  <div class="sidebar_location_filter" style="display:none">
     <ul name="countries">
       <% @places.collect(&:country).uniq.each do |country| %>
         <li name="country" id="root_country" value="<%= country %>"><a><%= country %></a>
@@ -11,22 +11,17 @@
                     <li name="area_level2" value="<%= area2 %>"><a><%= area2 %></a>
                       <ul name="cities">
                         <% @places.select{|p| p.area_level2 == area2}.collect(&:city).uniq.each do |city| %>
-
                           <li name="city" value="<%= city %>"><a><%= city %></a></li>
-
                         <% end %>
                       </ul>
                     </li>
                   <% end %>
                 </ul>
               </li>
-
             <% end %>
           </ul>
         </li>
       <% end %>
-
     </ul>
   </div>
-
 </div>

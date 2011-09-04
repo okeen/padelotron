@@ -22,7 +22,7 @@ $(function(){
                 },
                 plugins : [ "themes", "html_data" ]
             });
-        //$.jstree._fn.open_all.call(["#root_country", false], $.jstree);
+            $(".sidebar_location_filter").show();
         }
     });
     gamesView = new GamesView();

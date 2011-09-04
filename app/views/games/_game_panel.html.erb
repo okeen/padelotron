@@ -1,7 +1,7 @@
 <div class="game_panel">
 
     <div class="game_teams_subpanel">
-      <span>VS</span>
+      <%#*<span>VS</span>%>
       <%= first_team_info(game) %>
       <%= second_team_info(game) %>
     </div>
@@ -9,7 +9,7 @@
       <div class="view_game_button clickable_container">
         <%= link_to "View", game_path(game) %>
       </div>
-      <h4><%= game.game_type%>, <span class="game_descrition"><%= game.description%></span></h4>
+      <h4><%= game.game_type%></h4>
       <%= game_date_and_location(game)%>
     </div>
 

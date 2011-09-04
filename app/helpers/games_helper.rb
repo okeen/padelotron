@@ -53,7 +53,7 @@ module GamesHelper
   def game_date_and_location(game)
     date_str = game.play_date
     if game.playground
-      link_to "#{date_str} @ #{game.playground.name}".html_safe,
+      link_to "#{date_str} @ #{game.playground.name} (#{game.playground.city})".html_safe,
         place_path(game.playground.place), :class => "game_date_location"
     else
       content_tag :h4, date_str, :class => "game_date_location"

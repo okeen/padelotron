@@ -1,21 +1,30 @@
 div.game_panel {
-    width: 320px;
+    margin-bottom: 10px;
+    width: 350px;
     height: 140px;
     padding: 4px;
-    
+    border-color:#248734;
+    background-color:#EBEBE7;
+
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
-	margin-bottom: 5px;
-        height: $team_photo_height + 2px;
-        border: 0px solid;
+	height: $team_photo_height + 2px;
+        background-color: #EBEBE7;
+	
+	h3 {
+          margin-left: $team_photo_width +2;
+	  margin-bottom: 2px;
+	  margin-top: 5px;
+          height: 20px;  
+	  overflow-y: hidden;
+        }
         border: {
             radius: 7px 7px 7px 7px;
-            color: red;
         }
         img {
             width: $team_photo_width;
-            height: $team_photo_height;
+            //height: $team_photo_height;
         }
         span {
             margin: {left: 5%; right: 5%}
@@ -23,14 +32,12 @@ div.game_panel {
         }
         div.first_team {
             float: left;
-            width: 40%;
+            width: 47%;
+	    
             img {
                 float: left;
             }
-            h3 {
-                margin-left: $team_photo_width +2;
-		margin-bottom: 2px;		
-            }
+            
 	    ul.team_players_list {
 		margin-left: $team_photo_width +2;
 		margin-top: 2px;
@@ -40,15 +47,13 @@ div.game_panel {
         }
         div.second_team {
             float: right;
-            width: 40%;
+            width: 47%;
             img {
                 float: right;
             }
             h3 {
-                margin-right: $team_photo_width +2;
-		text-align: right;
-		margin-top: 5px;
-		margin-bottom: 2px;	
+                text-align: right;
+		margin: {left:0px;right:$team_photo_width +2;}
             }
 	    ul.team_players_list {
 		margin-right: $team_photo_width +2;
@@ -60,6 +65,8 @@ div.game_panel {
         }
     }
     div.game_details_subpanel{
+      background-color: white;
+      border: 1px solid #EBEBEB;
       margin: 2px;
       margin-top: 1px;
       h4 {
@@ -68,17 +75,26 @@ div.game_panel {
 	padding: 0px;
       }
       div.view_game_button {
+        background-color:#2B5C84;
 	height: 30px;
 	width: 50px;
 	float:right;
-	margin: {left:100px;}
+	margin: {right:10px;top:10px}
 	a {
+          color:#FFFFFF;
 	  text-align: center;
 	  border-radius: 10%;
 	  padding: {top: 4px;bottom:4px;}
 	}
 	border: 1px solid;
 	border-radius: 10% ;
+        border-color:#2B5C84;
       }
     }
+}
+
+
+
+div.game_result_panel.inactive {
+    display: none;
 }
