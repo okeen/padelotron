@@ -1,24 +1,32 @@
 <div class="catalog_filter_sidebar">
-  <ul name="countries">
-    <% @places.collect(&:country).uniq.each do |country| %>
-      <li name="country" value="<%= country %>"><%= country %></li>
+  <div class="sidebar_location_filter">
+    <ul name="countries">
+      <% @places.collect(&:country).uniq.each do |country| %>
+        <li name="country" id="root_country" value="<%= country %>"><a><%= country %></a>
+          <ul name="area_level1s">
+            <% @places.select{|p| p.country == country}.collect(&:area_level1).uniq.each do |area1| %>
+              <li name="area_level1" value="<%= area1 %>"><a><%= area1 %></a>
+                <ul name="area_level2s">
+                  <% @places.select{|p| p.area_level1 == area1}.collect(&:area_level2).uniq.each do |area2| %>
+                    <li name="area_level2" value="<%= area2 %>"><a><%= area2 %></a>
+                      <ul name="cities">
+                        <% @places.select{|p| p.area_level2 == area2}.collect(&:city).uniq.each do |city| %>
 
-      <% @places.select{|p| p.country == country}.collect(&:area_level1).uniq.each do |area1| %>
-        <ul name="area_level1s">
-          <li name="area_level1" value="<%= area1 %>"><%= area1 %></li>
+                          <li name="city" value="<%= city %>"><a><%= city %></a></li>
 
-          <% @places.select{|p| p.area_level1 == area1}.collect(&:area_level2).uniq.each do |area2| %>
-            <ul name="area_level2s">
-              <li name="area_level2" value="<%= area2 %>"><%= area2 %></li>
-              <% @places.select{|p| p.area_level2 == area2}.collect(&:city).uniq.each do |city| %>
-                <ul name="cities">
-                  <li name="city" value="<%= city %>"><%= city %></li>
+                        <% end %>
+                      </ul>
+                    </li>
+                  <% end %>
                 </ul>
-              <% end %>
-            </ul>
-          <% end %>
-        </ul>
+              </li>
+
+            <% end %>
+          </ul>
+        </li>
       <% end %>
-    <% end %>
-  </ul>
+
+    </ul>
+  </div>
+
 </div>

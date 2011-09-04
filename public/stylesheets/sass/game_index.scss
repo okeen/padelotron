@@ -12,9 +12,14 @@ h1{
     margin: 4px;
     #filter_side_bar {
         border: 3px solid #C4CDE0;
+        text-overflow: ellipsis;
 	border: {
             top: 3px ;
             left: 0px;
+        }
+        li#root_country {
+            padding-right: 100px;
+            //ins {display:none;}
         }
         float: left;
         height: 700px;
