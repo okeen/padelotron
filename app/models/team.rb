@@ -12,6 +12,8 @@ class Team < ActiveRecord::Base
   include Statable
   include Confirmable
 
+  default_scope includes(:player1,:player2)
+  
   has_many :games, :finder_sql => 'select * from games g where g.team1_id = #{id} or g.team2_id = #{id}'
 
   scope :available_for_today, lambda {

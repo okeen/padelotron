@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def get_user_geographic_area
-    if player_logged_in? and current_player.geocoded?
+    if current_player and current_player.geocoded?
       {
         :city => current_player.city,
         :street => current_player.street,

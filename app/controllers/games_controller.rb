@@ -6,9 +6,13 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    @upcoming_games = Game.to_play.limit(10).includes(:team1,:team2).all
-    @recent_results = Game.finished.limit(10).includes(:team1,:team2).all
-
+    if player_signed_in?
+      @places =Place.includes(:games).near(current_player, 50)
+      @games = @places.collect(&:games).flatten
+    else
+      @games = Game.to_play.limit(100).includes(:team1,:team2).all
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @games }

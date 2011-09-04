@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
   delegate :sets, :to => :result
   delegate :place, :to => :playground
 
+  default_scope includes(:team1,:team2, :playground)
   include Confirmable
 
   def teams

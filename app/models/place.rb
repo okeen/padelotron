@@ -5,6 +5,8 @@ class Place < ActiveRecord::Base
   before_create  :geocode_with_gmaps
   after_create :create_playgrounds
 
+  geocoded_by :full_address
+
   belongs_to :customer
 
   default_scope includes(:playgrounds)

@@ -16,28 +16,3 @@
       border-left: 0px;
       border-bottom: 2px solid #C4CDE0;
       border-color: #C4CDE0; }
-  #players_catalogue .catalogue_header {
-    background: none repeat scroll 0 0 white;
-    border-radius: 40px 0 0 0;
-    border-bottom: 3px solid #C4CDE0;
-    height: 38px;
-    z-index: 2;
-    width: 100%; }
-    #players_catalogue .catalogue_header .z-index-2 {
-      z-index: 2; }
-    #players_catalogue .catalogue_header .catalogue_header_tab {
-      background-image: -moz-linear-gradient(left center, #0a0a0a, #303030);
-      border: 0 solid white;
-      border-radius: 40px 0 0 0;
-      float: right;
-      height: 94%;
-      position: relative;
-      right: -30px;
-      text-align: right;
-      padding-right: 0px;
-      width: 15%; }
-      #players_catalogue .catalogue_header .catalogue_header_tab a {
-        text-align: center;
-        border-radius: 40px 0 0 0; }
-    #players_catalogue .catalogue_header .last_tab {
-      right: 0 !important; }

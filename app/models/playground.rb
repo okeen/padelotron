@@ -5,8 +5,14 @@ class Playground < ActiveRecord::Base
   delegate :geocoded?, :to => :place
   delegate :latitude, :to => :place
   delegate :longitude, :to => :place
+  delegate :area_level1, :to => :place
+  delegate :area_level2, :to => :place
+  delegate :city, :to => :place
+  delegate :street, :to => :place
   delegate :full_address, :to => :place
   delegate :customer, :to => :place
+
+  geocoded_by :full_address
 
   def reservation_required?
     return false if self.place.customer.blank?
