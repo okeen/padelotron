@@ -10,12 +10,13 @@ div.team_panel {
     div.team_panel div.left_subpanel div.team_photo img {
       width: 40px; }
   div.team_panel div.team_info {
-    margin-left: 46px; }
+    margin-left: 46px;
+    text-overflow: ellipsis; }
     div.team_panel div.team_info h4 {
       margin-top: 0px;
       margin-bottom: 0px;
       margin-left: 10px;
-      font-size: 18px;
+      font-size: 16px;
       height: 25px; }
       div.team_panel div.team_info h4 a {
         text-decoration: none; }

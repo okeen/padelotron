@@ -17,6 +17,27 @@ module ApplicationHelper
     end
   end
 
+  def get_user_geographic_area
+    if player_logged_in? and current_player.geocoded?
+      {
+        :city => current_player.city,
+        :street => current_player.street,
+        :area_level1 => current_player.area_level1,
+        :area_level2 => current_player.area_level2,
+        :country => current_player.country
+      }
+    else
+      location= request.location
+      {
+        :city => location.city,
+        :street => location.street,
+        :area_level1 => location.state,
+        #:area_level2 => location.area_level2,
+        :country => location.country
+      }
+    end
+  end
+  
   def facebook_app_id
     app_id = Padelotron::Application.config.facebook[RAILS_ENV][:app_id]
     "<script type='text/javascript'>window._facebook_app_id='#{app_id}'</script>".html_safe

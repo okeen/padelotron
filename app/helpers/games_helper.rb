@@ -11,6 +11,21 @@ module GamesHelper
     end
   end
 
+  def games_catalogue_header
+    content_tag :div, :class=> 'catalogue_header' do
+#        (
+#        content_tag :div, :class => 'catalogue_header_tab clickable_container z-index-2  last_tab'do
+#          link_to "Latests", root_path
+#        end
+#      )+  (
+#        content_tag :div, :class => 'catalogue_header_tab clickable_container z-index-1 ' do
+#          link_to "Favourites", root_path
+#        end
+#      )
+
+    end
+  end
+  
   def set_game_result_button(game)
     "<form><button onclick='return false' class='set_game_result_button'>Set the result</button></form>".html_safe
   end
