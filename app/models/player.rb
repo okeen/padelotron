@@ -12,7 +12,7 @@ class Player < ActiveRecord::Base
   before_create :init_devise_password
   before_create :geocode_with_gmaps
   before_update :geocode_with_gmaps
-  after_create :create_welcome_notification
+  after_create :create_welcome_notification, :create_geographic_location_notification_if_needed
   
   geocoded_by :full_address
 
@@ -55,6 +55,12 @@ class Player < ActiveRecord::Base
     "http://graph.facebook.com/#{facebook_id}"
   end
   private
+
+  def create_geographic_location_notification_if_needed
+    unless self.geocoded?
+      self.notifications.create(NotificationType.ASK_PLAYER_LOCATION(self))
+    end
+  end
 
   def geocode_with_gmaps
     return true if self.full_address.blank?

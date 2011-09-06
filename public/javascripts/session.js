@@ -154,8 +154,12 @@ $(function() {
     window.SessionView = Backbone.View.extend({
         id: "user_panel",
         initialize: function(){
-            _.bindAll(this, 'render');
+            _.bindAll(this, 'render', 'openUserLocationPanel');
             this.model.bind('change', this.render);
+            $("#ask_user_location").live("click", this.openUserLocationPanel);
+        },
+        openUserLocationPanel: function(e){
+            $.dialog("")
         },
         render: function(){
             if (this.model.get('logged')) {

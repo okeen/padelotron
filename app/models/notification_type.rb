@@ -6,6 +6,7 @@ class NotificationType < ActiveRecord::Base
 
   def self.create_all_notification_types
     NotificationType.create(:name => "new_player")
+    NotificationType.create(:name => "ask_player_location")
     NotificationType.create(:name => "new_team")
     NotificationType.create(:name => "team_confirmed")
     NotificationType.create(:name => "team_rejected")
@@ -26,6 +27,18 @@ class NotificationType < ActiveRecord::Base
       :params => {
         :title => "Welcome to Padelotron, #{player.name}",
         :message => "As your first actions, yo can create a new team, invite friends or check today's games in your area",
+        :urgent => true
+      }
+    }
+  end
+
+  def NotificationType.ASK_PLAYER_LOCATION(player)
+    {
+      :notification_type_id => NotificationType.named("ask_player_location").first.id,
+      :params => {
+        :title => "IMPORTANT: Where are you?",
+        :message => "We need to know where you are located to offer our best service."+
+                    "Please set your location in your profile page",
         :urgent => true
       }
     }

@@ -1,0 +1,78 @@
+<%= javascript_include_tag 'player_home' %>
+<%= google_maps %>
+<p id="notice"><%= notice %></p>
+<h2 class="player_name_title">Profile page: <%= @player.name %></h2>
+<div id="player_info" class="fields_container_panel">
+  <fieldset id="player_info_card_subpanel"  class="inner_container">
+    <legend>Player Card</legend>
+    <%= render :partial => "players/player_panel",
+      :locals => {:player => @player} %>
+  </fieldset>
+  <fieldset id="player_info_basic_info_subpanel" class="inner_container">
+    <legend>Info</legend>
+    <table id="player_basic_info_table">
+      <tr>
+        <td class="info_attribute"><label>Name: </label></td>
+        <td><%= @player.name%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>From: </label></td>
+        <td id="player_full_address"><%= @player.city%>, <%= @player.country%>  <a href="#" id="change_user_location">change</a></td>
+
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>Player since: </label></td>
+        <td><%= @player.created_at%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>games won: </label></td>
+        <td><%= @player.stat.wins%></td>
+      </tr>
+      <tr>
+        <td class="info_attribute"><label>games lost: </label></td>
+        <td><%= @player.stat.lost%></td>
+      </tr>
+    </table>
+    <%= form_for @player, :remote => true,
+     :html =>{:id =>"player_location_form", :style=>"display:none;"}  do |location_form|%>
+      <div id="map" style="float:right;width:400px;height:400px"></div>
+      <div class="field">
+        <%= location_form.label :full_address %><br />
+        <%= location_form.text_field :full_address, :id => "place_full_address"  %>
+      </div>
+      <button id="geocode">Find</button>
+      <%= location_form.submit "Save Location" %>
+      <ul id="geocoded_results"></ul>
+      <%= location_form.hidden_field :latitude, :id => "place_latitude" %>
+      <%= location_form.hidden_field :longitude, :id => "place_longitude" %>
+      <%= location_form.hidden_field :country, :id => "place_country" %>
+      <%= location_form.hidden_field :state, :id => "place_state" %>
+      <%= location_form.hidden_field :city, :id => "place_city" %>
+      <%= location_form.hidden_field :street, :id => "place_street" %>
+    <% end %>
+  </fieldset>
+  <fieldset id="player_info_teams_subpanel"  class="inner_container">
+    <legend>Teams</legend>
+    <table id="player_teams_table" >
+      <div class="catalogue_items_list_container">
+        <% @player.teams.in_groups_of(3) do |n_teams_group| %>
+          <div class="catalogue_items_container_row">
+            <% n_teams_group.compact.each do |team|%>
+
+              <div class="catalogue_item_container clickable_container">
+                <%=  render :partial => 'teams/team_panel',
+                  :locals => {:team => team} %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </table>
+  </fieldset>
+</div>
+
+<%= player_like_button(@player) %>
+<%= facebook_player_comments_panel(@player) %>
+
+<%#= render :partial => 'player_statistics', :locals => {:graphGamesWinLost => @graphGamesWinLost,
+:graph_games_played =>@graphGamesPlayed} %>

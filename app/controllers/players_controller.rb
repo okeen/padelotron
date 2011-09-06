@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
   before_filter :load_facebook_metadata, :only => :show
   before_filter :load_facebook_player_data, :only => :create
+  before_filter :authenticate_player!, :only => :home
 
   # GET /players
   # GET /players.xml
@@ -15,7 +16,7 @@ class PlayersController < ApplicationController
   end
 
   def home
-    redirect_to  player_path(current_player)
+    @player = Player.includes(:stat).includes(:achievements).find(current_player.id)
   end
   
   # GET /players/1
@@ -80,10 +81,10 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.update_attributes(params[:player])
         format.html { redirect_to(@player, :notice => 'Player was successfully updated.') }
-        format.xml  { head :ok }
+        format.js  { render :json => {},   :status => :created}
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @player.errors, :status => :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.js  { render :json => @player.errors, :status => :unprocessable_entity }
       end
     end
   end
