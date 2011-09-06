@@ -1,5 +1,6 @@
 <%= javascript_include_tag 'jquery.hotkeys' %>
 <%= javascript_include_tag 'jquery.jstree' %>
+<%= javascript_include_tag 'jquery.dataTables.min' %>
 <%= javascript_include_tag 'games_index' %>
 
 <%= new_game_link %>
@@ -14,16 +15,23 @@
                  :locals => {:geographic_area => get_user_geographic_area} %>
     </div>
     <div id="catalogue_items_list_container">
-      <% @games.in_groups_of(2).each do |n_games_group| %>
-        <div class="catalogue_items_container_row">
-          <% n_games_group.compact.each do |game|%>
+      <table id="games_table"  >
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>City</th>
+            <th>Playground</th>
+            <th>Team 1</th>
+            <th>Team 2</th>  
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
 
-            <div class="catalogue_item_container clickable_container">
-              <%=  render :partial => 'game_panel', :locals => {:game => game} %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+
     </div>
   </div>
 

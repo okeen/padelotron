@@ -7,17 +7,21 @@ class GamesController < ApplicationController
   # GET /games.xml
   def index
     if player_signed_in?
-      @places =Place.includes(:games).near(current_player, 50)
-      @games = Game.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).limit(8).order("play_date desc")
+      @places =Place.includes(:games).near(current_player, 100)
+      @games = Game.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date desc")
     else
-      puts "JHGJHGJHG #{request.location.inspect}"
       @places =Place.includes(:games).near([request.location ], 50)
-      @games = Game.to_play.limit(100).includes(:team1,:team2).all
+      @games = Game.to_play.includes(:team1,:team2)
     end
+    @paged_games = @games.limit(20).all
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @games }
+      format.json  { render :json => {
+                          :total => @games.count,
+                          :page_size => @paged_games.count,
+                          :data => @paged_games
+                     }.to_json    }
     end
   end
 

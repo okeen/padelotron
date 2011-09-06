@@ -19,6 +19,10 @@ class Playground < ActiveRecord::Base
     self.place.customer.is_premium? or self.place.customer.is_platinum?
   end
 
+  def to_s
+    place.name
+  end
+
   def as_json(options)
     super(:methods => [:latitude, :longitude])
   end
