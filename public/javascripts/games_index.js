@@ -39,6 +39,14 @@ $(function(){
                 "aoColumnDefs": [
                 {
                     "sClass": "center",
+                    "fnRender": function ( oObj ) {
+                       return new Date(oObj.aData[0]).format("mmm-d");
+                    },
+
+                    "aTargets": [ 0 ]
+                },
+                {
+                    "sClass": "center",
                     "aTargets": [ 1 ]
                 },
                 {
@@ -70,11 +78,13 @@ $(function(){
             if (onlyHide)
                 return;
             $(rowNode).addClass("selected");
+            $(document.body).addClass("loading");
             console.log("Games::Show details# " + gameId);
             $.when($.ajax("/games/"+gameId+".html")).then(function(response){
               var wrapper = "<div class='selected_game_info_panel_wrapper'></div>";
               gamesView.table.fnOpen(rowNode, wrapper, "game_info" ) ;
               $(".game_info div.selected_game_info_panel_wrapper").wrapInner(response);
+              $(document.body).removeClass("loading");
             });
         },
         updateTableData: function( sSource, aoData, fnCallback){

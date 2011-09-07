@@ -39,9 +39,12 @@ h1 {
         background-color: #C4CDE0; }
       #games_catalogue div#catalogue_items_list_container table#games_table tr.selected td {
         background-color: #C4CDE0 !important; }
-      #games_catalogue div#catalogue_items_list_container table#games_table td.game_info {
+      #games_catalogue div#catalogue_items_list_container table#games_table td.game_info, #games_catalogue div#catalogue_items_list_container table#games_table td.game_info:hover {
         width: 100%;
         background-color: white;
         padding-top: 15px;
         padding-left: 25px;
-        padding-bottom: 15px; }
+        padding-bottom: 15px;
+        cursor: default; }
+    #games_catalogue div#catalogue_items_list_container td.center {
+      text-align: center; }

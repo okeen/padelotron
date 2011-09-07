@@ -44,10 +44,11 @@ h1{
 	tr.even {background-color: white;}
 	tr:hover td {background-color: #C4CDE0;}
 	tr.selected td {background-color: #C4CDE0 !important;}
-	td.game_info {
+	td.game_info, td.game_info:hover {
 	  width: 100%;
-	  {background-color: white;}
+	  background-color: white;
 	  padding: {top:15px; left: 25px; bottom: 15px;}
+	  cursor: default;
 	}
        }
        padding: {left: 0px; right: 0px; top: 0px;}

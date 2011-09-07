@@ -1,6 +1,7 @@
 <%= javascript_include_tag 'jquery.hotkeys' %>
 <%= javascript_include_tag 'jquery.jstree' %>
 <%= javascript_include_tag 'jquery.dataTables.min' %>
+<%= javascript_include_tag 'date.format' %>
 <%= javascript_include_tag 'games_index' %>
 
 <%= new_game_link %>
@@ -18,11 +19,11 @@
       <table id="games_table" cellpadding="0" cellspacing="0" border="0" class="display" >
         <thead>
           <tr>
-            <th width="15%">Date</th>
-            <th width="15%">City</th>
-            <th width="15%">Playground</th>
-            <th width="20%">Team 1</th>
-            <th width="20%">Team 2</th>
+            <th width="6%">Date</th>
+            <th width="20%">City</th>
+            <th width="20%">Playground</th>
+            <th width="17%">Team 1</th>
+            <th width="17%">Team 2</th>
           </tr>
         </thead>
         <tbody>

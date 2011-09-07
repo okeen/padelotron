@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   def index
     if player_signed_in?
       @places =Place.includes(:games).near(current_player, 100)
-      @games = Game.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date desc")
+      @games = Game.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
     else
       @places =Place.includes(:games).near([request.location ], 50)
       @games = Game.to_play.includes(:team1,:team2)

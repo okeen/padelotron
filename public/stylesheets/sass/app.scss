@@ -21,7 +21,7 @@ body {
     margin-top: 1px;
     width: 900px;
 }
-
+body.loading * {cursor: wait !important;}
 body h1 {
     margin-bottom: 40px;
 }
