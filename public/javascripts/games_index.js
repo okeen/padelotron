@@ -61,11 +61,14 @@ $(function(){
         },
         showGameDetails: function(event, data){
             var rowNode = event.target.parentNode;
+            var onlyHide = $(rowNode).hasClass("selected");
             var gameId = rowNode.id;
             $.each($("tr.selected"), function(i, row){
                 gamesView.table.fnClose(row);
             });
             $("tr.selected").removeClass("selected");
+            if (onlyHide)
+                return;
             $(rowNode).addClass("selected");
             console.log("Games::Show details# " + gameId);
             $.when($.ajax("/games/"+gameId+".html")).then(function(response){

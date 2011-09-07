@@ -41,6 +41,7 @@ h1 {
         background-color: #C4CDE0 !important; }
       #games_catalogue div#catalogue_items_list_container table#games_table td.game_info {
         width: 100%;
+        background-color: white;
         padding-top: 15px;
         padding-left: 25px;
         padding-bottom: 15px; }

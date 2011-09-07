@@ -46,7 +46,8 @@ h1{
 	tr.selected td {background-color: #C4CDE0 !important;}
 	td.game_info {
 	  width: 100%;
-	  padding: {top:15px; left: 25px; bottom: 15px;
+	  {background-color: white;}
+	  padding: {top:15px; left: 25px; bottom: 15px;}
 	}
        }
        padding: {left: 0px; right: 0px; top: 0px;}
