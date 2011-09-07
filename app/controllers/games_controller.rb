@@ -28,9 +28,13 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.xml
   def show
-    
+    @game = Game.find(params[:id])
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+            if request.xhr?
+              render :partial => 'game_panel', :locals => {:game=> @game}
+            end
+      }
       format.xml  { render :xml => @game }
     end
   end
