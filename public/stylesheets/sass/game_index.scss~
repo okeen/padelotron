@@ -3,7 +3,7 @@ h1{
     text-align: center;
 }
 #games_catalogue {
-    height: 690px;
+    height:1090px;
     background: none repeat scroll 0 0 white;
     border: 3px solid #C4CDE0;
     border: {
@@ -27,5 +27,29 @@ h1{
         width: 140px;
         
     }
+    div#catalogue_items_list_container {
+       div#games_table_wrapper {
+            #games_table_processing {display:none;}
+        }
+       table#games_table {
+        width: 100% !important;
+	thead th {	
+	  background-color:#C4CDE0;
+	}
+	tr {
+	  cursor: pointer;
+	  background-color: #EBF1FD;
+	  
+	}
+	tr.even {background-color: white;}
+	tr:hover td {background-color: #C4CDE0;}
+	tr.selected td {background-color: #C4CDE0 !important;}
+	td.game_info {
+	  width: 100%;
+	  padding: {top:15px; left: 25px; bottom: 15px;
+	}
+       }
+       padding: {left: 0px; right: 0px; top: 0px;}
+       margin-left: 142px;
+    }
 }
-

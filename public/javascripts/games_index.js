@@ -60,10 +60,18 @@ $(function(){
             } );
         },
         showGameDetails: function(event, data){
-            var gameId = event.target.parentNode.id;
+            var rowNode = event.target.parentNode;
+            var gameId = rowNode.id;
+            $.each($("tr.selected"), function(i, row){
+                gamesView.table.fnClose(row);
+            });
+            $("tr.selected").removeClass("selected");
+            $(rowNode).addClass("selected");
             console.log("Games::Show details# " + gameId);
             $.when($.ajax("/games/"+gameId+".html")).then(function(response){
-              gamesView.table.fnOpen(event.target.parentNode, response, "Game Info" ) ;
+              var wrapper = "<div class='selected_game_info_panel_wrapper'></div>";
+              gamesView.table.fnOpen(rowNode, wrapper, "game_info" ) ;
+              $(".game_info div.selected_game_info_panel_wrapper").wrapInner(response);
             });
         },
         updateTableData: function( sSource, aoData, fnCallback){

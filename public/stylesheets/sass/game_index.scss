@@ -33,8 +33,23 @@ h1{
         }
        table#games_table {
         width: 100% !important;
+	thead th {	
+	  background-color:#C4CDE0;
+	}
+	tr {
+	  cursor: pointer;
+	  background-color: #EBF1FD;
+	  
+	}
+	tr.even {background-color: white;}
+	tr:hover td {background-color: #C4CDE0;}
+	tr.selected td {background-color: #C4CDE0 !important;}
+	td.game_info {
+	  width: 100%;
+	  padding: {top:15px; left: 25px; bottom: 15px;}
+	}
        }
-       padding: {left: 5px; right: 5px;}
+       padding: {left: 0px; right: 0px; top: 0px;}
        margin-left: 142px;
     }
 }

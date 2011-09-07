@@ -1,11 +1,10 @@
 div.game_panel {
-    margin-bottom: 10px;
-    width: 350px;
+    width: 600px;
     height: 140px;
     padding: 4px;
     border-color:#248734;
     background-color:#EBEBE7;
-
+    margin: {left: 20px;}
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
