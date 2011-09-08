@@ -14,8 +14,9 @@ class GamesController < ApplicationController
     end
     end
     @places = filter_table_location_params(@places, params[:q]) if params[:q]
-    logger.debug "Filtered places: #{@places.all.inspect}"
-    @games = Game.upcoming.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
+    @games = Game.to_play.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
+    @games = filter_table_date_params(@games, params[:q]) if params[:q]
+
     @paged_games = @games.limit(20).all
     
     respond_to do |format|
@@ -127,10 +128,28 @@ class GamesController < ApplicationController
   end
 
   def filter_table_location_params(places, q)
-    return if q['location'].blank? 
+    return places if q['location'].blank?
     q['location'].each do |location_filter, value|
       places = places.where("#{location_filter} = ?", value)
     end
     places
+  end
+  def filter_table_date_params(games, q)
+    return games if q['date'].blank?
+    filter = q['date']['filter']
+    case filter
+    when "today"
+      games = games.for_today
+    when "week"
+      games = games.where("play_date > ? and play_date < ?",
+        DateTime.now.beginning_of_week,DateTime.now.end_of_week)
+    when "month"
+      games = games.where("play_date > ? and play_date < ?",
+        DateTime.now.beginning_of_month,DateTime.now.end_of_month)
+    when "year"
+      games = games.where("play_date > ? and play_date < ?",
+        DateTime.now.beginning_of_year,DateTime.now.end_of_year)
+    end
+    games
   end
 end

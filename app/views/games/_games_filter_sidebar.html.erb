@@ -27,8 +27,8 @@
   <div class="sidebar_date_filter">
     <h3 id="date_sidebar_title">Date</h3>
     <ul id="date_sidebar_filters_list">
-      <% %w(today week month custom).each do |date_filter_option| %>
-        <li name="<%=date_filter_option%>" value="<%= date_filter_option%>">
+      <% %w(all today week month year).each do |date_filter_option| %>
+        <li name="filter" value="<%= date_filter_option%>">
           <%= link_to date_filter_option, "#" %>
         </li>
       <% end %>

@@ -22,8 +22,10 @@ $(function(){
                 },
                 plugins : [ "themes", "html_data" , "ui"]
             });
-            $(".sidebar_location_filter li a").live("click.jstree", 
-                _.bind(this.updateTableWithSidebarFilterParams, this));
+            $(".sidebar_location_filter li a").live("click.jstree",
+                _.bind(this.updateTableWithSidebarLocationParams, this));
+            $(".sidebar_date_filter li a").live("click",
+                _.bind(this.updateTableWithSidebarDateParams, this));
             $(".sidebar_location_filter").show();
             $("#games_table tbody tr").live("click", this.showGameDetails);
             this.table=$('#games_table').dataTable({
@@ -69,12 +71,21 @@ $(function(){
                 ]
             } );
         },
-        updateTableWithSidebarFilterParams: function(event){
-            console.log("Games:: LocaitonTree selected node" + event.target);
+        updateTableWithSidebarLocationParams: function(event){
             var locationItem = event.target.parentNode;
             var param = {};
             param[locationItem.getAttribute('name')]=locationItem.getAttribute('value');
+            console.log("Games:: LocationTree selected location: " + param);
             this.locationFilter = param;
+            //this.table.fnClearTable(true);
+            this.table.fnDraw();
+        },
+        updateTableWithSidebarDateParams: function(event){
+            var dateItem = event.target.parentNode;
+            var param = {};
+            param[dateItem.getAttribute('name')]=dateItem.getAttribute('value');
+            console.log("Games:: DateTree selected date " + param.name);
+            this.dateFilter = param;
             //this.table.fnClearTable(true);
             this.table.fnDraw();
         },
@@ -103,7 +114,8 @@ $(function(){
             $(document.body).addClass("loading");
             aoData= {
                     "offset": aoData.iDisplayStart,
-                    location: this.locationFilter
+                    location: this.locationFilter,
+                    date: this.dateFilter
                 
             } ;
             $.getJSON( sSource, {q:aoData}, function (json) {
