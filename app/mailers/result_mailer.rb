@@ -15,8 +15,6 @@ class ResultMailer < ActionMailer::Base
     #    logger.error "Error sending result #{action} email for #{@email_destination_team.players.collect(&:email)}"
   end
 
-
-
   def confirmation_mail(result, email_destination_team)
     friendly_result_new_status(result, email_destination_team, 'confirm')
   end

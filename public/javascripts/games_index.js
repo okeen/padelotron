@@ -26,6 +26,10 @@ $(function(){
                 _.bind(this.updateTableWithSidebarLocationParams, this));
             $(".sidebar_date_filter li a").live("click",
                 _.bind(this.updateTableWithSidebarDateParams, this));
+            $(".show_games a").live("click",
+                _.bind(this.updateTableWithGames, this));
+            $(".show_results a").live("click",
+                _.bind(this.updateTableWithResults, this));
             $(".sidebar_location_filter").show();
             $("#games_table tbody tr").live("click", this.showGameDetails);
             this.table=$('#games_table').dataTable({
@@ -89,6 +93,28 @@ $(function(){
             //this.table.fnClearTable(true);
             this.table.fnDraw();
         },
+        updateTableWithGames: function(event){
+            event.preventDefault();
+            var panel = $(event.target.parentNode);
+            panel.addClass("current");
+            $(".show_results").removeClass("current");
+            this.modelFilter = undefined;
+            //this.table.fnClearTable(true);
+            console.log("Games::Results show false" );
+            this.modelFilter = undefined;
+            this.table.fnDraw();
+        },
+         updateTableWithResults: function(event){
+            event.preventDefault();
+            var panel = $(event.target.parentNode);
+            panel.addClass("current");
+            $(".show_games").removeClass("current");
+            var param = {};
+            console.log("Games::Results show true" );
+            this.modelFilter = {"results": true};
+            //this.table.fnClearTable(true);
+            this.table.fnDraw();
+        },
         showGameDetails: function(event, data){
             var rowNode = event.target.parentNode;
             var onlyHide = $(rowNode).hasClass("selected");
@@ -115,7 +141,8 @@ $(function(){
             aoData= {
                     "offset": aoData.iDisplayStart,
                     location: this.locationFilter,
-                    date: this.dateFilter
+                    date: this.dateFilter,
+                    show_results: this.modelFilter ? true: false
                 
             } ;
             $.getJSON( sSource, {q:aoData}, function (json) {

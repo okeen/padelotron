@@ -14,10 +14,17 @@ class GamesController < ApplicationController
     end
     end
     @places = filter_table_location_params(@places, params[:q]) if params[:q]
-    @games = Game.to_play.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
+    if params[:q] and params[:q][:show_results] == "true"
+      logger.debug("Showing Results")
+      @games = Game.finished
+    else
+      @games = Game.to_play
+      logger.debug("Showing Gamess")
+    end
+    @games = @games.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
     @games = filter_table_date_params(@games, params[:q]) if params[:q]
 
-    @paged_games = @games.limit(20).all
+    @paged_games = @games.limit(40).all
     
     respond_to do |format|
       format.html # index.html.erb

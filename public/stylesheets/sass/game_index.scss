@@ -2,6 +2,35 @@ h1{
     color:#2B5C84;
     text-align: center;
 }
+div#show_games_or_results_links_panel {
+    float:left;
+    background-color: #2B5C84;
+    border-radius: 7px 7px 7px 7px;
+    font-size: 1.5em;
+    height: 50px;
+    margin-top: 13px;
+    text-align: center;
+    text-decoration: none;
+    width: 150px;
+    padding: 3px;
+    div {
+      background-color: white; 
+      border-radius: 7px 7px 7px 7px;
+      float:left;
+      height:40%;
+      width: 49%;
+      padding: {top:15px; bottom: 15px;};
+      
+    }
+    div.show_results {
+      float:right;
+    }
+    div.current {
+      background-color: #C4CDE0 !important; 
+    }
+    
+}
+
 #games_catalogue {
     height:1090px;
     background: none repeat scroll 0 0 white;

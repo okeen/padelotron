@@ -25,7 +25,18 @@ module GamesHelper
 
     end
   end
-  
+
+  def show_games_or_results_links_panel
+    content_tag :div, :id => "show_games_or_results_links_panel" do |div|
+      (content_tag :div, :class => "show_games current clickable_container" do |games_div|
+        link_to "Games"
+      end) +
+      (content_tag :div, :class => "show_results clickable_container" do |results_div|
+        link_to "Results"
+      end)
+    end
+  end
+
   def set_game_result_button(game)
     "<form><button onclick='return false' class='set_game_result_button'>Set the result</button></form>".html_safe
   end
