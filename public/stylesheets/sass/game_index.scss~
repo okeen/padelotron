@@ -17,15 +17,24 @@ h1{
             top: 3px ;
             left: 0px;
         }
-        li#root_country {
-            padding-right: 100px;
-            //ins {display:none;}
-        }
         float: left;
         height: 700px;
         text-align: center;
         width: 140px;
-        
+	div.sidebar_location_filter{
+	  height: 300px;
+	  li#root_country {
+	      padding-right: 100px;
+	      //ins {display:none;}
+	  }
+	}
+	div.sidebar_date_filter{
+	  height: 200px;
+	  input {float:right; }
+	  label {text-align: right; width: 100%}
+  
+	}
+
     }
     div#catalogue_items_list_container {
        div#games_table_wrapper {
@@ -35,6 +44,8 @@ h1{
         width: 100% !important;
 	thead th {	
 	  background-color:#C4CDE0;
+	}thead th:hover {	
+	  background-color:#EBF1FD;
 	}
 	tr {
 	  cursor: pointer;
@@ -51,6 +62,7 @@ h1{
 	  cursor: default;
 	}
        }
+	td.center {text-align: center;}
        padding: {left: 0px; right: 0px; top: 0px;}
        margin-left: 142px;
     }

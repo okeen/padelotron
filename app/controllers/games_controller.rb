@@ -6,22 +6,25 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.xml
   def index
-    if player_signed_in?
+    @places = Place.scoped
+    if player_signed_in? && params[:q].blank?
       @places =Place.includes(:games).near(current_player, 100)
-      @games = Game.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
-    else
-      @places =Place.includes(:games).near([request.location ], 50)
-      @games = Game.to_play.includes(:team1,:team2)
+    else if  params[:q].blank?
+        @places =Place.includes(:games).near([request.location ], 50)
     end
+    end
+    @places = filter_table_location_params(@places, params[:q]) if params[:q]
+    logger.debug "Filtered places: #{@places.all.inspect}"
+    @games = Game.upcoming.where(:playground_id => @places.collect(&:playgrounds).flatten.collect(&:id)).order("play_date asc")
     @paged_games = @games.limit(20).all
     
     respond_to do |format|
       format.html # index.html.erb
       format.json  { render :json => {
-                          :total => @games.count,
-                          :page_size => @paged_games.count,
-                          :data => @paged_games
-                     }.to_json    }
+          :total => @games.count,
+          :page_size => @paged_games.count,
+          :data => @paged_games
+        }.to_json    }
     end
   end
 
@@ -31,9 +34,9 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     respond_to do |format|
       format.html {
-            if request.xhr?
-              render :partial => 'game_panel', :locals => {:game=> @game}
-            end
+        if request.xhr?
+          render :partial => 'game_panel', :locals => {:game=> @game}
+        end
       }
       format.xml  { render :xml => @game }
     end
@@ -121,5 +124,13 @@ class GamesController < ApplicationController
   def load_parent_place
     @place = Place.find(params[:place_id])
     @games = @place.games
+  end
+
+  def filter_table_location_params(places, q)
+    return if q['location'].blank? 
+    q['location'].each do |location_filter, value|
+      places = places.where("#{location_filter} = ?", value)
+    end
+    places
   end
 end

@@ -17,8 +17,18 @@ h1 {
     height: 700px;
     text-align: center;
     width: 140px; }
-    #games_catalogue #filter_side_bar li#root_country {
+    #games_catalogue #filter_side_bar div.sidebar_location_filter {
+      height: 300px; }
+      #games_catalogue #filter_side_bar div.sidebar_location_filter li#root_country {
+        padding-right: 100px; }
+    #games_catalogue #filter_side_bar div.sidebar_date_filter {
+      height: 200px;
       padding-right: 100px; }
+      #games_catalogue #filter_side_bar div.sidebar_date_filter input {
+        float: right; }
+      #games_catalogue #filter_side_bar div.sidebar_date_filter label {
+        text-align: right;
+        width: 100%; }
   #games_catalogue div#catalogue_items_list_container {
     padding-left: 0px;
     padding-right: 0px;
@@ -30,6 +40,8 @@ h1 {
       width: 100% !important; }
       #games_catalogue div#catalogue_items_list_container table#games_table thead th {
         background-color: #C4CDE0; }
+      #games_catalogue div#catalogue_items_list_container table#games_table thead th:hover {
+        background-color: #EBF1FD; }
       #games_catalogue div#catalogue_items_list_container table#games_table tr {
         cursor: pointer;
         background-color: #EBF1FD; }

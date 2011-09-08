@@ -11,7 +11,7 @@ $(function(){
     window.GamesView = Backbone.View.extend({
         initialize: function(){
             _.bindAll(this, ['updateTableData']);
-            $(".sidebar_location_filter").jstree({
+            this.filterSidebar = $(".sidebar_location_filter").jstree({
                 "themes" : {
                     "theme" : "apple",
                     "dots" : false,
@@ -20,8 +20,10 @@ $(function(){
                 core : {
                     "initially_open" : [ "root_country" ]
                 },
-                plugins : [ "themes", "html_data" ]
+                plugins : [ "themes", "html_data" , "ui"]
             });
+            $(".sidebar_location_filter li a").live("click.jstree", 
+                _.bind(this.updateTableWithSidebarFilterParams, this));
             $(".sidebar_location_filter").show();
             $("#games_table tbody tr").live("click", this.showGameDetails);
             this.table=$('#games_table').dataTable({
@@ -67,6 +69,15 @@ $(function(){
                 ]
             } );
         },
+        updateTableWithSidebarFilterParams: function(event){
+            console.log("Games:: LocaitonTree selected node" + event.target);
+            var locationItem = event.target.parentNode;
+            var param = {};
+            param[locationItem.getAttribute('name')]=locationItem.getAttribute('value');
+            this.locationFilter = param;
+            //this.table.fnClearTable(true);
+            this.table.fnDraw();
+        },
         showGameDetails: function(event, data){
             var rowNode = event.target.parentNode;
             var onlyHide = $(rowNode).hasClass("selected");
@@ -89,16 +100,17 @@ $(function(){
         },
         updateTableData: function( sSource, aoData, fnCallback){
             //add location filter params
+            $(document.body).addClass("loading");
             aoData= {
-                q:{
-                    "offset": aoData.iDisplayStart
-                }
+                    "offset": aoData.iDisplayStart,
+                    location: this.locationFilter
+                
             } ;
-            $.getJSON( sSource, aoData, function (json) {
+            $.getJSON( sSource, {q:aoData}, function (json) {
                 /* Do whatever additional processing you want on the callback, then tell DataTables */
                gamesView.data = json.data;
                var data = {
-                    "sEcho": 1,
+                    "sEcho": aoData.sEcho - 1,
                     "iTotalRecords": json.page_size,
                     "iTotalDisplayRecords": json.total,
                     "aaData": _(json.data).map(function(game_row){
@@ -124,6 +136,7 @@ $(function(){
                     })
                 }
                 fnCallback(data);
+                $(document.body).removeClass("loading");
             } );
         }
     });
