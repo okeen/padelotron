@@ -1,6 +1,8 @@
-Hello world!
+Hello!
 
-You received an offer to play a padel game against <%= @game.team1.name %> at <%= @game.play_date.strftime "%d/%m/%Y, %H:%M" %>
+You received an offer to play a padel game between the teams <%= @game.team1.name %> against <%= @game.team1.name %> \
+and <%= @game.team2.name %> at <%= @game.play_date.strftime "%d/%m/%Y, %H:%M" %> \
+<%= " at #{@game.playground.name}" if @game.playground %>
 
 
 To confirm the game, please click on the following link:
@@ -9,3 +11,6 @@ To reject the game, please click on the following link:
   <%= link_to "Reject", show_confirmation_url(@game.confirmations.to_reject.first) %>
 
 
+The Padelotron team
+
+www.padelotron.heroku.com

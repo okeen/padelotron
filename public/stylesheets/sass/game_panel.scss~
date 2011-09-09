@@ -1,10 +1,10 @@
 div.game_panel {
-    width: 600px;
+    width: 500px;
     height: 140px;
-    padding: 4px;
+    padding: 8px;
     border-color:#248734;
     background-color:#EBEBE7;
-    margin: {left: 20px;}
+    
     div.game_teams_subpanel {
         $team_photo_width: 50px;
         $team_photo_height: 70px;
@@ -12,7 +12,7 @@ div.game_panel {
         background-color: #EBEBE7;
 	
 	h3 {
-          margin-left: $team_photo_width +2;
+          margin-left: $team_photo_width +6;
 	  margin-bottom: 2px;
 	  margin-top: 5px;
           height: 20px;  
@@ -38,7 +38,7 @@ div.game_panel {
             }
             
 	    ul.team_players_list {
-		margin-left: $team_photo_width +2;
+		margin-left: $team_photo_width +6;
 		margin-top: 2px;
 		list-style: none;
 		padding: 0px;
@@ -52,10 +52,10 @@ div.game_panel {
             }
             h3 {
                 text-align: right;
-		margin: {left:0px;right:$team_photo_width +2;}
+		margin: {left:0px;right:$team_photo_width +6;}
             }
 	    ul.team_players_list {
-		margin-right: $team_photo_width +2;
+		margin-right: $team_photo_width +6;
 		margin-top: 2px;
 		list-style: none;
 		padding: 0px;

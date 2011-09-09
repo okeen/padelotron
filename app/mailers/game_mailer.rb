@@ -13,34 +13,33 @@ class GameMailer < ActionMailer::Base
          :subject => "Friendly game offer from #{@game.team1.name} received"
   end
 
-  def confirmation_mail(game, email_destination_team)
-    friendly_game_new_status(game, email_destination_team, 'confirm')
+  def confirmation_mail(game)
+    friendly_game_new_status(game, 'confirm')
   end
 
-  def cancellation_mail(game, email_destination_team)
-    friendly_game_new_status(game, email_destination_team,'cancel')
+  def cancellation_mail(game)
+    friendly_game_new_status(game,'cancel')
   end
 
   private
 
-  def friendly_game_new_status(game, email_destination_team, action)
+  def friendly_game_new_status(game, action)
     @game = game
-    @email_destination_team = email_destination_team
-    @rival_team = game.teams.reject {|team| team == email_destination_team}.first
+
+    @starting_team = game.team1
+    @rival_team = game.team2
 
 #    puts "Game teams: #{game.teams.inspect}"
 #    puts "Destiny team #{@email_destination_team.inspect}"
 #    puts "Rival team #{@rival_team.inspect}"
 
     if (action == 'confirm')
-      subject = "Friendly game against #{@rival_team.name} confirmed"
-      @message = "You confirmed a friendly game against #{@rival_team.name}"
+      subject = "Friendly game confirmed"
     else
-      subject = "Friendly game against #{@rival_team.name} cancelled"
-      @message = "You cancelled a friendly game against #{@rival_team.name}"
+      subject = "Friendly game cancelled"
     end
 
-    mail :to => email_destination_team.players.collect(&:email),
+    mail :to => @game.players.collect(&:email),
          :subject => subject
 
 #  rescue

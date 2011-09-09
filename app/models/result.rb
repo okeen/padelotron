@@ -69,7 +69,8 @@ class Result < ActiveRecord::Base
   private
 
   def confirmating_player_groups
-    winner_team == team1 ? [team2] : [team1]
+    winner_team == team1 ? [team2.player1, team2.player2] :
+                           [team1.player1, team1.player2]
   end
 
 end

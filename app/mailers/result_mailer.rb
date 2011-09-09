@@ -15,20 +15,19 @@ class ResultMailer < ActionMailer::Base
     #    logger.error "Error sending result #{action} email for #{@email_destination_team.players.collect(&:email)}"
   end
 
-  def confirmation_mail(result, email_destination_team)
-    friendly_result_new_status(result, email_destination_team, 'confirm')
+  def confirmation_mail(result)
+    friendly_result_new_status(result, 'confirm')
   end
 
-  def cancellation_mail(result, email_destination_team)
-    friendly_result_new_status(result, email_destination_team,'cancel')
+  def cancellation_mail(result)
+    friendly_result_new_status(result,'cancel')
   end
 
   private
 
-  def friendly_result_new_status(result, email_destination_team, action)
+  def friendly_result_new_status(result, action)
     @result = result
-    @email_destination_team = email_destination_team
-    @rival_team = result.game.teams.reject {|team| team == email_destination_team}.first
+    @rival_team = result.game.team2
 
     if (action == 'confirm')
       subject = "Game result for game #{@result.game.description} confirmed"
@@ -36,7 +35,7 @@ class ResultMailer < ActionMailer::Base
       subject = "Game result for game #{@result.game.description} cancelled"
     end
 
-    mail :to => email_destination_team.players.collect(&:email),
+    mail :to => @result.players.collect(&:email),
       :subject => subject
 
   rescue

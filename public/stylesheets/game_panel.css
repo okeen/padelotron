@@ -1,7 +1,7 @@
 div.game_panel {
-  width: 600px;
+  width: 500px;
   height: 140px;
-  padding: 4px;
+  padding: 8px;
   border-color: #248734;
   background-color: #EBEBE7; }
   div.game_panel div.game_teams_subpanel {
@@ -9,7 +9,7 @@ div.game_panel {
     background-color: #EBEBE7;
     border-radius: 7px 7px 7px 7px; }
     div.game_panel div.game_teams_subpanel h3 {
-      margin-left: 52px;
+      margin-left: 56px;
       margin-bottom: 2px;
       margin-top: 5px;
       height: 20px;
@@ -26,7 +26,7 @@ div.game_panel {
       div.game_panel div.game_teams_subpanel div.first_team img {
         float: left; }
       div.game_panel div.game_teams_subpanel div.first_team ul.team_players_list {
-        margin-left: 52px;
+        margin-left: 56px;
         margin-top: 2px;
         list-style: none;
         padding: 0px; }
@@ -36,11 +36,11 @@ div.game_panel {
       div.game_panel div.game_teams_subpanel div.second_team img {
         float: right; }
       div.game_panel div.game_teams_subpanel div.second_team h3 {
-        text-align: right;
+        text-align: right !important;
         margin-left: 0px;
-        margin-right: 52px; }
+        margin-right: 56px; }
       div.game_panel div.game_teams_subpanel div.second_team ul.team_players_list {
-        margin-right: 52px;
+        margin-right: 56px;
         margin-top: 2px;
         list-style: none;
         padding: 0px;

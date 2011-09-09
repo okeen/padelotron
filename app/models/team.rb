@@ -66,6 +66,6 @@ class Team < ActiveRecord::Base
   private
 
   def confirmating_player_groups
-    [self]
+    [player2]
   end
 end

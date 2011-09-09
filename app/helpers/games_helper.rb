@@ -53,21 +53,22 @@ module GamesHelper
     team = team_number == :first ? game.team1 : game.team2
     players_list= content_tag(:ul, :class=>"team_players_list" ) do |ul|
       team.players.collect { |player|
-        content_tag :li, player.name, :class => "player"
+        content_tag :li, link_to(player.name, player_path(player)), :class => "player"
       }.join("\n").html_safe
     end
     content_tag :div,
-      image_tag(team.image.url) + "<h3>#{team.name}</h3>".html_safe + players_list ,
-      :class => "#{team_number}_team"
+      image_tag(team.image.url) + "<h3>#{link_to team.name, team_path(team)}</h3>".html_safe + players_list ,
+      :class => "#{team_number}_team clickable_container"
   end
 
   def game_date_and_location(game)
-    date_str = game.play_date
+    date_str = game.play_date.strftime("%b %d, %H:%M")
+    returning = content_tag :h4, date_str, :class => "game_date_location"
     if game.playground
-      link_to "#{date_str} @ #{game.playground.name} (#{game.playground.city})".html_safe,
+      returning+= link_to "@#{game.playground.name} (#{game.playground.city})".html_safe,
         place_path(game.playground.place), :class => "game_date_location"
     else
-      content_tag :h4, date_str, :class => "game_date_location"
+      returning.html_safe
     end
   end
 

@@ -1,12 +1,17 @@
 Hi :
 
-You received a result offer for the game <%= @result.game.description %> you played
+You received a result offer for the game following game you played:
+- Team1: <%= @result.game.team1.name %>
+- Team2: <%= @result.game.team2.name %>
+- Date: <%= @result.game.play_date.strftime("%d/%m, %H:%M")%>
+
+-Winner Team: <%= @result.winner.name %>
+-Score: <%= @result.sets.collect{|set| "#{set.team1_score}-#{set.team2_score}"}.join "/" %>
 
 To confirm the result, please click on the following link:
   <%= link_to "Accept", show_confirmation_url(@result.confirmations.to_accept.first) %>
 To reject the result, please click on the following link:
   <%= link_to "Reject", show_confirmation_url(@result.confirmations.to_reject.first) %>
-
 
 
 Thanks for using Padelotron

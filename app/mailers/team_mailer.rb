@@ -1,5 +1,5 @@
 class TeamMailer < ActionMailer::Base
-  default :from => "mailer@padelotron.heroku.com"
+  default :from => "<Padelotron>mailer@padelotron.heroku.com"
   
   def ask_mail(team)
     @team = team

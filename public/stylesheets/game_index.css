@@ -1,5 +1,7 @@
 h1 {
   color: #2B5C84;
+  font-size: 2.8em;
+  margin-top: 30px;
   text-align: center; }
 
 div#show_games_or_results_links_panel {
@@ -7,24 +9,28 @@ div#show_games_or_results_links_panel {
   background-color: #2B5C84;
   border-radius: 7px 7px 7px 7px;
   font-size: 1.5em;
-  height: 50px;
+  height: 46px;
   margin-top: 13px;
   text-align: center;
   text-decoration: none;
   width: 150px;
+  text-color: white;
   padding: 3px; }
   div#show_games_or_results_links_panel div {
-    background-color: white;
+    background-color: #2B5C84;
     border-radius: 7px 7px 7px 7px;
     float: left;
-    height: 40%;
+    height: 35%;
     width: 49%;
     padding-top: 15px;
     padding-bottom: 15px; }
   div#show_games_or_results_links_panel div.show_results {
     float: right; }
+  div#show_games_or_results_links_panel div:hover {
+    background-color: #EBF1FD !important; }
   div#show_games_or_results_links_panel div.current {
-    background-color: #C4CDE0 !important; }
+    background-color: white !important;
+    text-color: black; }
 
 #games_catalogue {
   height: 1090px;
@@ -35,14 +41,16 @@ div#show_games_or_results_links_panel {
   #games_catalogue #filter_side_bar {
     border: 3px solid #C4CDE0;
     text-overflow: ellipsis;
+    overflow-x: none;
     border-top: 3px;
     border-left: 0px;
     float: left;
     height: 700px;
-    text-align: center;
     width: 140px; }
     #games_catalogue #filter_side_bar div.sidebar_location_filter {
-      height: 300px; }
+      height: 200px;
+      text-overflow: ellipsis;
+      overflow-x: none; }
       #games_catalogue #filter_side_bar div.sidebar_location_filter li#root_country {
         padding-right: 100px; }
     #games_catalogue #filter_side_bar div.sidebar_date_filter {
@@ -50,9 +58,12 @@ div#show_games_or_results_links_panel {
       padding-right: 100px; }
       #games_catalogue #filter_side_bar div.sidebar_date_filter input {
         float: right; }
-      #games_catalogue #filter_side_bar div.sidebar_date_filter label {
-        text-align: right;
-        width: 100%; }
+      #games_catalogue #filter_side_bar div.sidebar_date_filter ul#date_sidebar_filters_list {
+        padding-left: 20px;
+        list-style: none;
+        text-decoration: none !important; }
+        #games_catalogue #filter_side_bar div.sidebar_date_filter ul#date_sidebar_filters_list li div {
+          width: 100%; }
   #games_catalogue div#catalogue_items_list_container {
     padding-left: 0px;
     padding-right: 0px;
@@ -79,7 +90,7 @@ div#show_games_or_results_links_panel {
         width: 100%;
         background-color: white;
         padding-top: 15px;
-        padding-left: 25px;
+        padding-left: 15px;
         padding-bottom: 15px;
         cursor: default; }
     #games_catalogue div#catalogue_items_list_container td.center {

@@ -73,7 +73,7 @@ module Confirmable
                       self.class == Game ? "NEW_GAME" :
                       self.class == Result ? "NEW_RESULT" : nil
       confirmating_player_groups.each do |notificating_group|
-        notificating_group.players.each do |player|
+        notificating_group.each do |player|
           player.notifications.create NotificationType.send(factory_method, self)
         end
       end
@@ -88,15 +88,11 @@ module Confirmable
     end
 
     def deliver_confirmation_email
-      confirmating_player_groups.each do |emailing_group|
-        mailer.confirmation_mail(self, emailing_group).deliver
-      end
+        mailer.confirmation_mail(self).deliver
     end
 
     def deliver_cancellation_email
-      confirmating_player_groups.each do |emailing_group|
-        mailer.cancellation_mail(self, emailing_group).deliver
-      end
+        mailer.cancellation_mail(self).deliver
     end
 
     def set_initial_status

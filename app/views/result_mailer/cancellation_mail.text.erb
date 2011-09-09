@@ -1,6 +1,13 @@
-Hello world!
+Hi:
 
-You cancelled the result of the game <%= @result.game.description %>
+The requested victory of the team <%= @result.winner.name %> for hte following game has been rejected:
+- Team1: <%= @result.game.team1.name %>
+- Team2: <%= @result.game.team2.name %>
+
+-Winner Team: <%= @result.winner.name %>
+-Score: <%= @result.sets.collect{|set| "#{set.team1_score}-#{set.team2_score}"}.join "/" %>
+
+
 
 
 Thanks for using Padelotron

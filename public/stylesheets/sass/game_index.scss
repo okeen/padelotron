@@ -1,5 +1,7 @@
 h1{
     color:#2B5C84;
+    font-size: 2.8em;
+    margin-top: 30px;
     text-align: center;
 }
 div#show_games_or_results_links_panel {
@@ -7,26 +9,30 @@ div#show_games_or_results_links_panel {
     background-color: #2B5C84;
     border-radius: 7px 7px 7px 7px;
     font-size: 1.5em;
-    height: 50px;
+    height: 46px;
     margin-top: 13px;
     text-align: center;
     text-decoration: none;
     width: 150px;
+    text-color: white;
     padding: 3px;
     div {
-      background-color: white; 
+      background-color: #2B5C84; 
       border-radius: 7px 7px 7px 7px;
       float:left;
-      height:40%;
+      height:35%;
       width: 49%;
       padding: {top:15px; bottom: 15px;};
       
     }
     div.show_results {
       float:right;
+    }div:hover {
+      background-color: #EBF1FD !important; 
     }
     div.current {
-      background-color: #C4CDE0 !important; 
+      background-color: white !important; 
+      text-color: black;
     }
     
 }
@@ -42,16 +48,19 @@ div#show_games_or_results_links_panel {
     #filter_side_bar {
         border: 3px solid #C4CDE0;
         text-overflow: ellipsis;
+	overflow-x: none;
 	border: {
             top: 3px ;
             left: 0px;
         }
         float: left;
         height: 700px;
-        text-align: center;
+        //text-align: center;
         width: 140px;
 	div.sidebar_location_filter{
-	  height: 300px;
+	  height: 200px;
+	  text-overflow: ellipsis;
+	  overflow-x: none;
 	  li#root_country {
 	      padding-right: 100px;
 	      //ins {display:none;}
@@ -60,7 +69,18 @@ div#show_games_or_results_links_panel {
 	div.sidebar_date_filter{
 	  height: 200px;
 	  input {float:right; }
-	  label {text-align: right; width: 100%}
+	  ul#date_sidebar_filters_list{
+	    padding-left: 20px;
+	    list-style: none;
+	    text-decoration: none !important;
+	    li {
+	    //  width: 100%;
+	      div {
+		width: 100%;
+	      }
+	    }
+	    
+	  }
 	  padding-right: 100px;
 	}
 
@@ -87,7 +107,7 @@ div#show_games_or_results_links_panel {
 	td.game_info, td.game_info:hover {
 	  width: 100%;
 	  background-color: white;
-	  padding: {top:15px; left: 25px; bottom: 15px;}
+	  padding: {top:15px; left: 15px; bottom: 15px;}
 	  cursor: default;
 	}
        }
