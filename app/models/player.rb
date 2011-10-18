@@ -14,8 +14,8 @@ class Player < ActiveRecord::Base
   before_update :geocode_with_gmaps
   after_create :create_welcome_notification, :create_geographic_location_notification_if_needed
   #vaya mie4rda
-  
-  
+  #--
+
   geocoded_by :full_address
 
   scope :by_letter, lambda{ |letter|
