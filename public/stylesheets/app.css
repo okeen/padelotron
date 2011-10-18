@@ -19,13 +19,15 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 1px;
-  width: 900px; }
+  width: 900px;
+  padding-top: 5px; }
 
 body.loading * {
   cursor: wait !important; }
 
-body h1 {
-  margin-bottom: 40px; }
+body h1#page_title {
+  margin-top: 10px !important;
+  margin-bottom: 15px !important; }
 
 a {
   /*color: #333333;*/ }
@@ -37,7 +39,7 @@ div.new_item_creation {
   border-radius: 7px;
   background-color: #C4CDE0;
   font-size: 1.5em;
-  margin-top: 13px;
+  margin-top: 16px;
   text-decoration: none;
   text-align: center; }
   div.new_item_creation a {

@@ -2,7 +2,7 @@ h2 {
   text-align: center;
 }
 div.game_info {
-    margin: {bottom: 32px;}
+    margin: {bottom: 32px; top: 30px;}
     padding: 15px;
     h2[name=title] {color: blue}
     h4,h2 {
@@ -20,19 +20,28 @@ div.game_info {
 	div.inner_container{
 	  height: 210px;
 	}
-	width: 160px;
 	float: right;
 	margin: {top: 1px}
 	.game_date_location{
-	  float:right;
+	  width: 160px;
+	  text-align: center;
+	  height: 50px;
+	  overflow-y: none;
 	  margin: 0 0 0 0;
-	  text-decoration:none;
-	  font-size: 18px;
+	  a {
+	    text-align: left;
+	    text-decoration:none;
+	  }
+	  font-size: 12px;
+	  h4 {
+	    margin: {top: 0px; bottom: 0px; left: 0px; right: 0px;}
+	    font-size: 14px;
+	  }
 	}
 	div#map{
-	  margin: {top:5px; right:0px;}
+	  margin: {top:10px; right:0px; left: 0px;}
 	  height: 150px;
-	  width: 150px;
+	  width: 160px;
 	  float:right;
 	}
     
@@ -156,7 +165,7 @@ div.game_info {
     div#winner_team_subpanel {
       width: 200px;
       text-align: center;
-      margin: {top:15px;}
+      margin: {top:15px; left:20px;}
       float:left;
       background-color: #2B5C84;
       border-radius: 7px;

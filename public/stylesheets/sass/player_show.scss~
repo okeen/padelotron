@@ -1,18 +1,58 @@
+h2.player_name_title {
+    font-size: 1.8em;
+    
+}
 div#player_info {
   margin: {top: 10px;bottom: 20px;}
   
   fieldset#player_info_card_subpanel {
     float:right;
-    margin: {top: 20px;right:40px;}
+    margin: {top: 10px;right:40px;}
     
   }    
   fieldset#player_info_basic_info_subpanel {
     width: 45%;
-    label {
-      font-size:1.1em;
+    table#player_basic_info_table{
+        cell-spacing: 15px;
+      td {
+        overflow: none;
+        
+      }
+      td.info_attribute {
+        text-align: right;
+        width: 100px;
+       
+        label {
+          font-size: 1.1em;
+          font-style: oblique;
+        }
+      }
     }
+    
   }    
   fieldset#player_info_teams_subpanel {
-    
+    margin: {top: 40px;}
+    .catalogue_items_list_container {
+        height: 100%;
+        //margin: {top: 20px;bottom: 20px;}
+        padding: 1px;
+        .catalogue_items_container_row {
+            border:{
+                bottom: 0 solid #222222;
+                color: #222222;
+            }
+            padding: {
+                left: 6px;
+                right: 0px;
+            }
+            .catalogue_item_container {
+                border-radius: 4px 4px 4px 4px;
+                float: left;
+                //width: 40%;
+                margin: {left: 0px; right: 15px;bottom: 18px;}
+                
+            }
+        }
+    }
   }    
 }

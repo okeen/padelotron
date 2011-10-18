@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def header
-    content_tag :h1, "Tendel"
+    content_tag :h1, "Padelotron", :id=>"page_title"
   end
 
   def top_navigation_menu
@@ -9,6 +9,7 @@ module ApplicationHelper
       (
         "<li>#{link_to("Players", players_path)}</li>"+
           "<li>#{link_to("Teams", teams_path)}</li>"+
+          "<li>#{link_to("Create a Team", new_team_path)}</li>"+
           "<li>#{link_to("Games", games_path)}</li>"+
           "<li>#{link_to("Create a Game", new_game_path)}</li>"
 #          "<li>#{link_to("Places", places_path)}</li>"

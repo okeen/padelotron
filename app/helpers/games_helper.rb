@@ -63,10 +63,10 @@ module GamesHelper
 
   def game_date_and_location(game)
     date_str = game.play_date.strftime("%b %d, %H:%M")
-    returning = content_tag :h4, date_str, :class => "game_date_location"
+    returning = content_tag :h4, date_str
     if game.playground
       returning+= link_to "@#{game.playground.name} (#{game.playground.city})".html_safe,
-        place_path(game.playground.place), :class => "game_date_location"
+        place_path(game.playground.place)
     else
       returning.html_safe
     end

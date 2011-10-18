@@ -38,9 +38,35 @@ div#player_session_panel {
     }
   }
   div#player_login_panel {
-    h3 {text-align: center;}
+    h3 {
+      text-align: center;
+      margin: {top: 0px; bottom: 0px}
+      
+    }
+    label {float:left; width:60px;text-align:right;}
+    input {width:90px; margin-left: 5px;}
+    a.signup_link {
+      margin: {left: 20px; right:10px;}
+      float:right;
+    }
+    input[type='submit'] {
+      width:45px; 
+      height: 40px;
+      padding: 0 0 0 0;
+      margin-right: 4px;
+      float:right; 
+      
+    }
+    
     div.login_button_subpanel {
-        margin: {left: 31%; right: 31%}
+	height: 20px;
+	width: 200px;
+        margin: {left: 10px; right: 31%; top:5px;}
+	img{
+	  float:left;
+	  height: 20px;
+	  margin-right: 5px;
+	}	
     }
   }
   .with_notifications {
