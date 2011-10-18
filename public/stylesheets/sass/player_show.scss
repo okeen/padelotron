@@ -35,7 +35,7 @@ div#player_info {
     .catalogue_items_list_container {
         height: 100%;
         //margin: {top: 20px;bottom: 20px;}
-        padding: 10px;
+        padding: 1px;
         .catalogue_items_container_row {
             border:{
                 bottom: 0 solid #222222;
@@ -43,13 +43,13 @@ div#player_info {
             }
             padding: {
                 left: 6px;
-                right: 3px;
+                right: 0px;
             }
             .catalogue_item_container {
                 border-radius: 4px 4px 4px 4px;
                 float: left;
                 //width: 40%;
-                margin: {left: 0px; right: 18px;bottom: 20px;}
+                margin: {left: 0px; right: 14px;bottom: 18px;}
                 
             }
         }

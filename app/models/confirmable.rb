@@ -72,10 +72,10 @@ module Confirmable
       factory_method= self.class == Team ? "NEW_TEAM" :
                       self.class == Game ? "NEW_GAME" :
                       self.class == Result ? "NEW_RESULT" : nil
-      confirmating_player_groups.each do |notificating_group|
-        notificating_group.each do |player|
+      confirmating_player_groups.each do |player|
+        #notificating_group.each do |player|
           player.notifications.create NotificationType.send(factory_method, self)
-        end
+        #end
       end
     end
 

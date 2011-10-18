@@ -28,10 +28,36 @@ div#player_session_panel {
       div#player_session_panel div#player_session_menu li a {
         text-decoration: none; }
   div#player_session_panel div#player_login_panel h3 {
-    text-align: center; }
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px; }
+  div#player_session_panel div#player_login_panel label {
+    float: left;
+    width: 60px;
+    text-align: right; }
+  div#player_session_panel div#player_login_panel input {
+    width: 90px;
+    margin-left: 5px; }
+  div#player_session_panel div#player_login_panel a.signup_link {
+    margin-left: 20px;
+    margin-right: 10px;
+    float: right; }
+  div#player_session_panel div#player_login_panel input[type='submit'] {
+    width: 45px;
+    height: 40px;
+    padding: 0 0 0 0;
+    margin-right: 4px;
+    float: right; }
   div#player_session_panel div#player_login_panel div.login_button_subpanel {
-    margin-left: 31%;
-    margin-right: 31%; }
+    height: 20px;
+    width: 200px;
+    margin-left: 10px;
+    margin-right: 31%;
+    margin-top: 5px; }
+    div#player_session_panel div#player_login_panel div.login_button_subpanel img {
+      float: left;
+      height: 20px;
+      margin-right: 5px; }
   div#player_session_panel .with_notifications {
     background-color: red;
     color: white; }

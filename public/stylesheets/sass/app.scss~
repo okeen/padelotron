@@ -20,11 +20,14 @@ body {
     margin-right: auto;
     margin-top: 1px;
     width: 900px;
+    padding: {top: 5px;}
+}
+body.loading * {cursor: wait !important;}
+body h1#page_title {
+    margin: {top: 10px !important; bottom: 15px !important;}
 }
 
-body h1 {
-    margin-bottom: 40px;
-}
+
 a {
     /*color: #333333;*/
 }
@@ -41,7 +44,7 @@ div.new_item_creation {
     a {
       padding-top:15px;
       border-radius: 7px;
-      color: #8B8B8B;
+      color: black;
       :hover {background-color: #2B5C84;}
       :visited {
 	color: white;
@@ -85,7 +88,39 @@ fieldset.inner_container, div.inner_container{
   border-radius: 5px 5px 5px 5px;
   padding: 7px 7px;
 }
+.catalogue_header {
+    background: none repeat scroll 0 0 white;
+    border:{
+      radius: 40px 0 0 0;
+      bottom: 3px solid #C4CDE0;
+    }
+    height: 38px;
+    z-index: 2;
+    width: 100%;
+    .z-index-2 {
+        z-index: 2;
+    }
 
+    .catalogue_header_tab {
+        background-image: -moz-linear-gradient(left center , #0A0A0A, #303030);
+        border: 0 solid white;
+        border-radius: 40px 0 0 0;
+        float: right;
+        height: 94%;
+        position: relative;
+        right: -30px;
+        text-align: right;
+        padding-right: 0px;
+        width: 15%;
+        a{
+           text-align: center;
+           border-radius: 40px 0 0 0;
+        }
+    }
+    .last_tab {
+        right: 0 !important;
+    }
+}
 #catalogue_items_list_container {
     height: 100%;
     margin-left: 20px;

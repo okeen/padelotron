@@ -16,21 +16,32 @@ div.game_info {
     width: 400px;
     text-align: left; }
   div.game_info fieldset#game_date_and_location_sub_panel {
-    width: 160px;
     float: right;
     margin-top: 1px; }
     div.game_info fieldset#game_date_and_location_sub_panel div.inner_container {
       height: 210px; }
     div.game_info fieldset#game_date_and_location_sub_panel .game_date_location {
-      float: right;
+      width: 160px;
+      text-align: center;
+      height: 50px;
+      overflow-y: none;
       margin: 0 0 0 0;
-      text-decoration: none;
-      font-size: 14px; }
+      font-size: 12px; }
+      div.game_info fieldset#game_date_and_location_sub_panel .game_date_location a {
+        text-align: left;
+        text-decoration: none; }
+      div.game_info fieldset#game_date_and_location_sub_panel .game_date_location h4 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        font-size: 14px; }
     div.game_info fieldset#game_date_and_location_sub_panel div#map {
-      margin-top: 5px;
+      margin-top: 10px;
       margin-right: 0px;
+      margin-left: 0px;
       height: 150px;
-      width: 150px;
+      width: 160px;
       float: right; }
   div.game_info div.game_teams_subpanel {
     height: 260px;

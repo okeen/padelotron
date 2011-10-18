@@ -7,10 +7,12 @@
 <%= game_title(@game) %>
 <div class="game_info fields_container_panel">
   <fieldset id="game_date_and_location_sub_panel">
-    <legend>Location</legend>
+    <legend>Date & Location</legend>
     <div  class="inner_container">
     <% if @game.playground %>
-      <%= game_date_and_location(@game)%>
+      <div class="game_date_location">
+        <%= game_date_and_location(@game)%>
+      </div>
       <div id="map"></div>
       <input type="hidden" name="playground_latitude" value="<%= @game.playground.latitude%>"></input>
       <input type="hidden" name="playground_longitude" value="<%= @game.playground.longitude%>"></input>
@@ -22,7 +24,7 @@
     <% if @game.winner_team %>
       
     <% else %>
-      <%= image_tag image_path("tennis_net.jpg"), :id=> "tennis_field_image" %>
+      <%#= image_tag image_path("tennis_net.jpg"), :id=> "tennis_field_image" %>
     <% end %>
     
     <div class="first_team inner_container<%= " winner_team" if @game.winner_team == @game.team1%>">

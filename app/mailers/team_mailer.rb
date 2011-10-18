@@ -11,11 +11,11 @@ class TeamMailer < ActionMailer::Base
   logger.warn "Error sending team membership email: #{e.inspect}"
   end
 
-  def confirmation_mail(team, not_used)
+  def confirmation_mail(team)
     team_membership_new_status(team, 'confirm')
   end
 
-  def cancellation_mail(team, not_used)
+  def cancellation_mail(team)
     team_membership_new_status(team, 'cancel')
   end
 

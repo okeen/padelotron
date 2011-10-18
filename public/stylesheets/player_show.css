@@ -24,15 +24,15 @@ div#player_info {
     margin-top: 40px; }
     div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container {
       height: 100%;
-      padding: 10px; }
+      padding: 1px; }
       div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container .catalogue_items_container_row {
         border-bottom: 0 solid #222222;
         border-color: #222222;
         padding-left: 6px;
-        padding-right: 3px; }
+        padding-right: 0px; }
         div#player_info fieldset#player_info_teams_subpanel .catalogue_items_list_container .catalogue_items_container_row .catalogue_item_container {
           border-radius: 4px 4px 4px 4px;
           float: left;
           margin-left: 0px;
-          margin-right: 18px;
-          margin-bottom: 20px; }
+          margin-right: 14px;
+          margin-bottom: 18px; }
