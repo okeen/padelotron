@@ -1,6 +1,4 @@
 class AchievementsController < ApplicationController
-  # GET /achievements
-  # GET /achievements.xml
   def index
     @achievements = Achievement.all
 
