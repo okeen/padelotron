@@ -4,11 +4,17 @@
 <%= javascript_include_tag 'date.format' %>
 <%= javascript_include_tag 'games_index' %>
 
-<%= show_games_or_results_links_panel %>
 <%#= new_game_link %>
-<h1>Game board</h1>
+<div class="grid_7">
+  <%= page_section_title("Game board") %>
+  
+</div>
+<div class="grid_6">
+<%= show_games_or_results_links_panel %>
+  
+</div>
 
-<div id="games_catalogue">
+<div id="games_catalogue" class="grid_16">
   <%= games_catalogue_header %>
   <div id="catalogue_body">
     <div id="filter_side_bar">

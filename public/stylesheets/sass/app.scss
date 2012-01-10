@@ -16,10 +16,10 @@ body {
     background: none repeat scroll 0 0 white;
     color: #666666;
     font: 0.8em/1.5em Arial,Helvetica,sans-serif;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-top: 1px;
-    width: 900px;
+    width: 980px;
     padding: {top: 5px;}
 }
 body.loading * {cursor: wait !important;}
@@ -27,6 +27,15 @@ body h1#page_title {
     margin: {top: 10px !important; bottom: 15px !important;}
 }
 
+header {
+    margin-top: 5px;
+}
+
+h1.section_title{
+    color:#2B5C84;
+    font-size: 2.8em;
+    margin: {top: 25px; bottom: 20px}
+}
 
 a {
     /*color: #333333;*/
@@ -64,6 +73,7 @@ a:hover { color: #2B5C84; background-color:#F7F7F7; }
   vertical-align: middle;
 }
 
+
 div.fields_container_panel{
   background-color: #F7F7F7;
   border: 2px solid #C4CDE0;
@@ -88,6 +98,10 @@ fieldset.inner_container, div.inner_container{
   border-radius: 5px 5px 5px 5px;
   padding: 7px 7px;
 }
+
+/*catalogues*/
+
+
 .catalogue_header {
     background: none repeat scroll 0 0 white;
     border:{

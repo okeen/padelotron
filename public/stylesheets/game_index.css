@@ -1,20 +1,14 @@
-h1 {
-  color: #2B5C84;
-  font-size: 2.8em;
-  margin-top: 30px;
-  text-align: center; }
-
 div#show_games_or_results_links_panel {
-  float: left;
   background-color: #2B5C84;
   border-radius: 7px 7px 7px 7px;
   font-size: 1.5em;
   height: 46px;
-  margin-top: 13px;
   text-align: center;
   text-decoration: none;
   width: 150px;
   text-color: white;
+  margin-top: 8px;
+  margin-bottom: 10px;
   padding: 3px; }
   div#show_games_or_results_links_panel div {
     background-color: #2B5C84;

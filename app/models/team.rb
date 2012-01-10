@@ -3,7 +3,12 @@ class Team < ActiveRecord::Base
   belongs_to :player1, :class_name => "Player"
   belongs_to :player2, :class_name => "Player"
 
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image, 
+    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+    :storage => :s3,
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+    :path => ":attachment/:id/:style.:extension",
+    :bucket => 'etware'
 
   validates :name, :presence => true, :uniqueness => true
   validates_associated :player1
@@ -36,11 +41,11 @@ class Team < ActiveRecord::Base
 
   def as_json(options = {})
     super(:only => [:name, :id],
-          :methods => [:image_path],
-          :include => {
-             :player1 => {:only => [:name, :id, :facebook_id]},
-             :player2 => {:only => [:name, :id, :facebook_id]},
-             :confirmations => {:only => [:code, :action]   }})
+      :methods => [:image_path],
+      :include => {
+        :player1 => {:only => [:name, :id, :facebook_id]},
+        :player2 => {:only => [:name, :id, :facebook_id]},
+        :confirmations => {:only => [:code, :action]   }})
   end
   #TODO: refactorizar esto para no crear estos cuatro métodos por cada confirmable
   def confirmation_message

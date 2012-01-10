@@ -5,8 +5,8 @@
 <head>
   <title>Padelotron</title>
 
-  <%= stylesheet_link_tag "reset.css" %>
   <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "reset.css" %>
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag :jquery_ui %>
   <%= javascript_include_tag "session"%>
@@ -17,21 +17,11 @@
   
 </head>
 <body>
-  
-
- <% if player_signed_in? %>
-    <%= render :partial => 'players/player_session_panel',
-               :locals => {:player => current_player} %>
-    <%= hidden_player_location_inputs(current_player) %>
- <% else%>
-    <%=  render :partial => 'players/player_login_panel' %>
-    <% cookies['_padelotron_tcg']= nil %>
- <%end%>
-
-<%= header %>
-<%= top_navigation_menu %>
-
+  <div class="container_16">
+   <%= render :partial => 'shared/header' %>
 <%= yield %>
+
+  </div>
 
 </body>
 </html>

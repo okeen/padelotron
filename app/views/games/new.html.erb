@@ -4,8 +4,10 @@
 <%= stylesheet_link_tag  'jquery-ui-timepicker-addon' %>
 <%= javascript_include_tag 'jquery-ui-timepicker-addon'  %>
 <%= javascript_include_tag 'new_game'  %>
-<h1>New game</h1>
-
+<div class="grid_16">
+  <%= page_section_title("New Game") %>
+  
+</div>
 <%= render 'form' %>
 
 <%= link_to 'Back', games_path %>

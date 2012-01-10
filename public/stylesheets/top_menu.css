@@ -7,14 +7,14 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     line-height: 100%;
     margin: 0;
-    padding: 7px 6px 0;
-    width: 620px !important;
+    padding: 1px 0px 0;
+    height: 36px;
 }
 #nav li {
     float: left;
     list-style: none outside none;
-    margin: 0 5px;
-    padding: 0 0 8px;
+    margin: 0 3px;
+    padding: 0 0 2px;
     position: relative;
 }
 #nav a {
@@ -23,7 +23,7 @@
     display: block;
     font-weight: bold;
     margin: 0;
-    padding: 8px 20px;
+    padding: 8px 13px;
     text-decoration: none;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }

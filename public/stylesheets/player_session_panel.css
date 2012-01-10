@@ -1,7 +1,8 @@
 div#player_session_panel {
   padding: 3px;
-  width: 220px;
-  float: right; }
+  width: 100%;
+  float: right;
+  border: 2px solid #2B5C84; }
   div#player_session_panel ul {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -11,22 +12,24 @@ div#player_session_panel {
     div#player_session_panel div.login_button_subpanel a img {
       height: 35px; }
   div#player_session_panel div#player_session_info img {
-    float: left; }
+    float: left;
+    height: 45px;
+    margin: 5px; }
   div#player_session_panel div#player_session_info fieldset {
-    margin-top: 1px; }
-  div#player_session_panel div#player_session_menu {
-    height: 20px; }
-    div#player_session_panel div#player_session_menu ul {
-      padding-left: 4px; }
-    div#player_session_panel div#player_session_menu li {
-      width: 31%;
-      font-size: 1.1em;
-      text-align: center;
-      background-color: white;
-      float: left;
-      border: 2px solid #CCCCCC; }
-      div#player_session_panel div#player_session_menu li a {
-        text-decoration: none; }
+    margin-top: 1px;
+    margin-left: 5px; }
+  div#player_session_panel div#player_session_menu ul {
+    padding-left: 4px;
+    margin-top: 10px; }
+  div#player_session_panel div#player_session_menu li {
+    width: 31%;
+    font-size: 1.1em;
+    text-align: center;
+    background-color: white;
+    float: left;
+    border: 2px solid #C4CDE0; }
+    div#player_session_panel div#player_session_menu li a {
+      text-decoration: none; }
   div#player_session_panel div#player_login_panel h3 {
     text-align: center;
     margin-top: 0px;

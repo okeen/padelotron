@@ -1,0 +1,19 @@
+<header class="grid_16">
+  <div class="grid_10 suffix_1 clearfix">
+    <%= content_tag :h1, "Padelotron", :id=>"page_title" %>
+    <%= top_navigation_menu %>
+    
+  </div>
+  <div class="grid_4">
+    <% if player_signed_in? %>
+      <%= render :partial => 'players/player_session_panel',
+        :locals => {:player => current_player} %>
+      <%= hidden_player_location_inputs(current_player) %>
+    <% else%>
+      <%=  render :partial => 'players/player_login_panel' %>
+      <% cookies['_padelotron_tcg']= nil %>
+    <%end%>
+  </div>
+  <div class="clear"></div>
+</header>
+

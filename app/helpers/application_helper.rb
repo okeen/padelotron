@@ -1,9 +1,5 @@
 module ApplicationHelper
 
-  def header
-    content_tag :h1, "Padelotron", :id=>"page_title"
-  end
-
   def top_navigation_menu
     content_tag :ul, :id => 'nav' do |ul|
       (
@@ -16,6 +12,10 @@ module ApplicationHelper
 #          "<li>#{link_to("Customers", customers_path)}</li>"
       ).html_safe
     end
+  end
+  
+  def page_section_title(title)
+    content_tag :h1,title, :class => "section_title" 
   end
 
   def get_user_geographic_area
